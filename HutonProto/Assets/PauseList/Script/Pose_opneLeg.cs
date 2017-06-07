@@ -77,13 +77,15 @@ public class Pose_opneLeg : MonoBehaviour
         P_pos = GameObject.Find("Player_Body").GetComponent<Transform>().transform;
         P_angle = GameObject.Find("Player_Body").GetComponent<Transform>().transform.eulerAngles.y;
 
-    }
+        OpneLegPoseDisplayfalse();
+   
+}
 
 
     void Update()
     {
         pause_openLeg.GetComponent<Image>().color = new Color(r, g, b, alpha);
-        transform.position = new Vector3(P_pos.position.x, 0, P_pos.position.z);
+        transform.position = new Vector3(P_pos.position.x, 4, P_pos.position.z);
 
         //各関節の現在の角度
         R_shoulder_Y = R_shoulder.transform.localEulerAngles.y;

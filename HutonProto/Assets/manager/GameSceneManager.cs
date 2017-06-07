@@ -41,7 +41,7 @@ public class GameSceneManager : MonoBehaviour
            
             OnSuccess();
         }
-
+        
         //０になった場合
         if (currentsheepnum_<=0)
         {

@@ -97,7 +97,7 @@ public class Pose_H : MonoBehaviour
     {
         pause_H.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //プレイヤーの追従
-        transform.position = new Vector3(P_pos.position.x, 0, P_pos.position.z);
+        transform.position = new Vector3(P_pos.position.x, 4, P_pos.position.z);
 
         //各関節の現在の角度
         R_shoulder_Y = R_shoulder.transform.localEulerAngles.y;

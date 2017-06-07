@@ -86,7 +86,7 @@ public class Pose_eiffelt : MonoBehaviour {
     void Update()
     {
         pause_eiffelt.GetComponent<Image>().color = new Color(r, g, b, alpha);
-        transform.position = new Vector3(P_pos.position.x, 0, P_pos.position.z);
+        transform.position = new Vector3(P_pos.position.x, 4, P_pos.position.z);
 
 
         //各関節の現在の角度

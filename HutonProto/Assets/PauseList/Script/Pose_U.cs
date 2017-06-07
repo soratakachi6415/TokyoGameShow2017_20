@@ -122,13 +122,14 @@ public class Pose_U : MonoBehaviour
     }
     void AnglesCheck()
     {
+        //0606角度修正
         //右腕の判別
 
         //右肩の角度
-        if (R_shoulder_Y >= 260 && R_shoulder_Y <= 280)
+        if (R_shoulder_Y >= 250 && R_shoulder_Y <= 290)
         {
             //右肘
-            if (R_elbow_Y >= -10 && R_elbow_Y <= 10)
+            if (R_elbow_Y >= -20 && R_elbow_Y <= 20)
             {
                 R_arm_flag = true;
             }
@@ -149,10 +150,10 @@ public class Pose_U : MonoBehaviour
         //右足
 
         //右股の角度
-        if (R_crotch_Y >= 260 && R_crotch_Y <= 280)
+        if (R_crotch_Y >= 250 && R_crotch_Y <= 290)
         {
             //右膝
-            if (R_knee_Y >= -10 && R_knee_Y <= 10)
+            if (R_knee_Y >= -20 && R_knee_Y <= 20)
             {
                 R_leg_flag = true;
             }
@@ -170,10 +171,10 @@ public class Pose_U : MonoBehaviour
         //左側の判別
 
         //左腕の角度
-        if (L_shoulder_Y >= 260 && L_shoulder_Y <= 280)
+        if (L_shoulder_Y >= 250 && L_shoulder_Y <= 290)
         {
             //左肘
-            if (L_elbow_Y >= -10 && L_elbow_Y <= 10)
+            if (L_elbow_Y >= -20 && L_elbow_Y <= 20)
             {
                 L_arm_flag = true;
             }
@@ -189,10 +190,10 @@ public class Pose_U : MonoBehaviour
 
 
         //左股の角度
-        if (L_crotch_Y >= 260 && L_crotch_Y <= 280)
+        if (L_crotch_Y >= 250 && L_crotch_Y <= 290)
         {
             //左膝
-            if (L_knee_Y >= -10 && L_knee_Y <= 10)
+            if (L_knee_Y >= -20 && L_knee_Y <= 20)
             {
                 L_leg_flag = true;
             }

@@ -87,7 +87,7 @@ public class Pose_big : MonoBehaviour
     {
         pause_big.GetComponent<Image>().color = new Color(r, g, b, alpha);
         
-        transform.position = new Vector3(P_pos.position.x, 0, P_pos.position.z);
+        transform.position = new Vector3(P_pos.position.x, 4, P_pos.position.z);
 
         //各関節の現在の角度
         R_shoulder_Y = R_shoulder.transform.localEulerAngles.y;
@@ -117,6 +117,23 @@ public class Pose_big : MonoBehaviour
                  L_leg_flag == false)
         {
             imageDisplayflag = false;
+        }
+
+        if (R_arm_flag == true &&
+           L_arm_flag == true &&
+           R_leg_flag == true &&
+           L_leg_flag == true)
+        {
+          
+        }
+
+        if (imageDisplayflag == true)
+        {
+            BigPoseDisplaytrue();
+        }
+        else
+        {
+            BigPoseDisplayfalse();
         }
     }
     void AnglesCheck()

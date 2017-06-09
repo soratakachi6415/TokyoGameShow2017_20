@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Touch_Point : MonoBehaviour
 {
-    private bool hit;
     //
     private Vector3 m_touchPoint;
     private Vector3 touch_Offset;
     private float Cnt;
-    private float lifeCnt; //ライフの減少する時間
+    private float lifeCnt; //タッチし続けてライフが減少する時間
     //
 
     private Vector3 m_Offset;
@@ -20,7 +19,7 @@ public class Touch_Point : MonoBehaviour
 
     void Start()
     {
-        lifeCnt = GameObject.Find("ScriptController").GetComponent<LifeScript>().lifeDownTime_sec;
+        lifeCnt = 3;　　//3秒
         Cnt = 0;
     }
 
@@ -64,16 +63,7 @@ public class Touch_Point : MonoBehaviour
         // タッチキャンセル
         Cancle = 4,
     }
-
-    ///*
-    void OnCollisionStay(Collision other)
-    {
-        if(other.collider.tag == "Enemy")
-        {
-            hit = true;
-        }
-    }
-    //*/
+    
 
 
     /// <summary>
@@ -110,7 +100,7 @@ public class Touch_Point : MonoBehaviour
             GameObject.Find("ScriptController").GetComponent<SleepGageScript>().hitEnemy(false);
             Cnt = 0;
         }
-        Cnt++;
+        Cnt+=Time.deltaTime;
     }
 
     public static TouchInfo GetTouch(int n)

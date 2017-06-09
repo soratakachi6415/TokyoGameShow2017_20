@@ -7,33 +7,33 @@ public class Pose_U : MonoBehaviour
 {
     /*ポーズ_Hの判定を行う*/
     //「H」ポーズの画像を所得
-    private Image pause_U;
-    private float r, g, b, alpha;
+    protected Image pause_U;
+    protected float r, g, b, alpha;
 
     /****体の関節指定****/
     //右肩の角度を所得する
-    private GameObject R_shoulder;
+    protected GameObject R_shoulder;
     public float R_shoulder_Y;
     //右肘の角度を所得する
-    private GameObject R_elbow;
+    protected GameObject R_elbow;
     public float R_elbow_Y;
     //右股の角度を所得する
-    private GameObject R_crotch;
+    protected GameObject R_crotch;
     public float R_crotch_Y;
     //右膝の角度を所得する
-    private GameObject R_knee;
+    protected GameObject R_knee;
     public float R_knee_Y;
     //左肩の角度を所得する
-    private GameObject L_shoulder;
+    protected GameObject L_shoulder;
     public float L_shoulder_Y;
     //左肘の角度を所得する
-    private GameObject L_elbow;
+    protected GameObject L_elbow;
     public float L_elbow_Y;
     //左股の角度を所得する
-    private GameObject L_crotch;
+    protected GameObject L_crotch;
     public float L_crotch_Y;
     //左膝の角度を所得する
-    private GameObject L_knee;
+    protected GameObject L_knee;
     public float L_knee_Y;
     /********************/
 
@@ -88,7 +88,7 @@ public class Pose_U : MonoBehaviour
     {
         pause_U.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
-        transform.position = new Vector3(P_pos.position.x, 0, P_pos.position.z);
+        transform.position = new Vector3(P_pos.position.x, 10, P_pos.position.z);
 
         //各関節の現在の角度
         R_shoulder_Y = R_shoulder.transform.localEulerAngles.y;

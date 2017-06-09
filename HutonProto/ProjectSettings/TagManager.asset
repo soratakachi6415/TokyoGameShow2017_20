@@ -11,6 +11,10 @@ TagManager:
   - Score
   - Gameover
   - Scenemanager
+  - ScoreCanvas
+  - Tutorial
+  - PoseManager
+  - Posemanager
   layers:
   - Default
   - TransparentFX

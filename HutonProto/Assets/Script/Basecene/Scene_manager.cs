@@ -36,6 +36,8 @@ public class Scene_manager : MonoBehaviour
     //trueがロード中,falseがロード中じゃない
     [SerializeField]
     private bool loadingnow = false;
+    //
+    
 
     //フェードの値
     private float fade_alpha;
@@ -111,6 +113,7 @@ public class Scene_manager : MonoBehaviour
         {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(LevelSelect));
         }
+        fademane.fadeout();
         loadingnow = false;
     }
 
@@ -129,6 +132,7 @@ public class Scene_manager : MonoBehaviour
         {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(Game));
         }
+        fademane.fadeout();
         loadingnow = false;
     }
 
@@ -147,6 +151,7 @@ public class Scene_manager : MonoBehaviour
         {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(Result));
         }
+        fademane.fadeout();
         loadingnow = false;
     }
 
@@ -159,6 +164,7 @@ public class Scene_manager : MonoBehaviour
             //タイトルシーンステートからゲームシーンステートへ
             if (Scene_state == Scenestate.TitleScene)
             {
+                fademane.fadein();
                 //シーンのアンロード
                 SceneManager.UnloadSceneAsync(Title);
 
@@ -169,6 +175,7 @@ public class Scene_manager : MonoBehaviour
             //レベルセレクトシーンからゲームシーンステートへ
             else if (Scene_state == Scenestate.LevelSelect)
             {
+                fademane.fadein();
                 //シーンのアンロード
                 SceneManager.UnloadSceneAsync(LevelSelect);
 
@@ -179,6 +186,7 @@ public class Scene_manager : MonoBehaviour
             //ゲームシーンステートからリザルトシーンステートへ
             else if (Scene_state == Scenestate.GameScene)
             {
+                fademane.fadein();
                 //シーンのアンロード
                 SceneManager.UnloadSceneAsync(Game);
 
@@ -188,7 +196,7 @@ public class Scene_manager : MonoBehaviour
 
             //リザルトシーンステートからタイトルシーンステートへ
             else if (Scene_state == Scenestate.ResultScene)
-            {
+            {               
                 //追加ではなく読み込みし直しをしてスコア等の初期化
                 SceneManager.LoadScene("BaseScene");
             }

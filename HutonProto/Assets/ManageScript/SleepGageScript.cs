@@ -18,6 +18,8 @@ public class SleepGageScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        sleepPoint = 10;
+        sleepImage = GameObject.Find("Sheep");
         healCnt = 0;
         Cnt = 0;
         a_color = 1;
@@ -66,7 +68,7 @@ public class SleepGageScript : MonoBehaviour {
     }
 
 
-    public void hitEnemy(bool soundPlay)　　//プレイヤーと敵が衝突時の処理
+    public void hitEnemy(bool soundPlay)　　//プレイヤーと敵が衝突時はsoundPlayをtrueにして渡すと音再生。それ以外の時はfalseで渡すと音非再生。
     {
         if (sleepPoint > 0 && !hit)
         {
@@ -83,7 +85,7 @@ public class SleepGageScript : MonoBehaviour {
     {
         if (sleepPoint < 10 && sleepImage != null)
         {
-            if (healCnt >= 600)
+            if (healCnt >= 50)
             {
                 sleepPoint++;
                 drawImage();

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelselectManager : MonoBehaviour
 {
@@ -17,28 +18,22 @@ public class LevelselectManager : MonoBehaviour
     public GameObject Tutorial;
     public GameObject LevelSelect;
 
+    public Scene_manager scenemanager_;
 
     // Use this for initialization
     void Start()
     {
-        Tutorial = GameObject.Find("Tutorial");
+        Tutorial = GameObject.FindGameObjectWithTag("Tutorial");
         LevelSelect = GameObject.Find("LevelSelectUI");
         Levelselect_state = LevelselectState.LevelSelect;
+        //Tutorial.SetActive(false);
+        scenemanager_ = GameObject.FindGameObjectWithTag("Scenemanager").GetComponent<Scene_manager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Levelselect_state == LevelselectState.LevelSelect)
-        {
-
-            onLevelSelect();
-        }
-
-        if (Levelselect_state == LevelselectState.Tutorial)
-        {
-            TutorialStatet();
-        }
     }
 
     public void onLevelSelect()
@@ -56,5 +51,11 @@ public class LevelselectManager : MonoBehaviour
     {
         LevelSelect.SetActive(false);
         Tutorial.SetActive(true);
+    }
+
+    public void BackTitle()
+    {
+        scenemanager_.Scene_state = Scene_manager.Scenestate.TitleScene;
+        SceneManager.UnloadSceneAsync("LevelSelect");
     }
 }

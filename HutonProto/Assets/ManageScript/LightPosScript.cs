@@ -44,7 +44,7 @@ public class LightPosScript : MonoBehaviour {
             if(time <= lightUpTime_sec)　RenderSettings.ambientIntensity = 1.01f - i;
 
             //光の角度変化
-            gameObj.transform.rotation = Quaternion.Slerp(from, to, 1.01f - j);
+            //gameObj.transform.rotation = Quaternion.Slerp(from, to, 1.01f - j);
         }
     }
 }

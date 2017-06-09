@@ -1,0 +1,920 @@
+fileFormatVersion: 2
+guid: a5ea276b7613e494c8b1fca3a27dd663
+timeCreated: 1496724447
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: foot_L
+    100002: foot_L 1
+    100004: foot_L 10
+    100006: foot_L 11
+    100008: foot_L 12
+    100010: foot_L 2
+    100012: foot_L 3
+    100014: foot_L 4
+    100016: foot_L 5
+    100018: foot_L 6
+    100020: foot_L 7
+    100022: foot_L 8
+    100024: foot_L 9
+    100026: foot_L_end
+    100028: foot_L_end 1
+    100030: foot_L_end 10
+    100032: foot_L_end 11
+    100034: foot_L_end 12
+    100036: foot_L_end 2
+    100038: foot_L_end 3
+    100040: foot_L_end 4
+    100042: foot_L_end 5
+    100044: foot_L_end 6
+    100046: foot_L_end 7
+    100048: foot_L_end 8
+    100050: foot_L_end 9
+    100052: foot_R
+    100054: foot_R 1
+    100056: foot_R 10
+    100058: foot_R 11
+    100060: foot_R 12
+    100062: foot_R 2
+    100064: foot_R 3
+    100066: foot_R 4
+    100068: foot_R 5
+    100070: foot_R 6
+    100072: foot_R 7
+    100074: foot_R 8
+    100076: foot_R 9
+    100078: foot_R_end
+    100080: foot_R_end 1
+    100082: foot_R_end 10
+    100084: foot_R_end 11
+    100086: foot_R_end 12
+    100088: foot_R_end 2
+    100090: foot_R_end 3
+    100092: foot_R_end 4
+    100094: foot_R_end 5
+    100096: foot_R_end 6
+    100098: foot_R_end 7
+    100100: foot_R_end 8
+    100102: foot_R_end 9
+    100104: hand_L
+    100106: hand_L 1
+    100108: hand_L 10
+    100110: hand_L 11
+    100112: hand_L 12
+    100114: hand_L 2
+    100116: hand_L 3
+    100118: hand_L 4
+    100120: hand_L 5
+    100122: hand_L 6
+    100124: hand_L 7
+    100126: hand_L 8
+    100128: hand_L 9
+    100130: hand_L_end
+    100132: hand_L_end 1
+    100134: hand_L_end 10
+    100136: hand_L_end 11
+    100138: hand_L_end 12
+    100140: hand_L_end 2
+    100142: hand_L_end 3
+    100144: hand_L_end 4
+    100146: hand_L_end 5
+    100148: hand_L_end 6
+    100150: hand_L_end 7
+    100152: hand_L_end 8
+    100154: hand_L_end 9
+    100156: hand_R
+    100158: hand_R 1
+    100160: hand_R 10
+    100162: hand_R 11
+    100164: hand_R 12
+    100166: hand_R 2
+    100168: hand_R 3
+    100170: hand_R 4
+    100172: hand_R 5
+    100174: hand_R 6
+    100176: hand_R 7
+    100178: hand_R 8
+    100180: hand_R 9
+    100182: hand_R_end
+    100184: hand_R_end 1
+    100186: hand_R_end 10
+    100188: hand_R_end 11
+    100190: hand_R_end 12
+    100192: hand_R_end 2
+    100194: hand_R_end 3
+    100196: hand_R_end 4
+    100198: hand_R_end 5
+    100200: hand_R_end 6
+    100202: hand_R_end 7
+    100204: hand_R_end 8
+    100206: hand_R_end 9
+    100208: head
+    100210: head 1
+    100212: head 10
+    100214: head 11
+    100216: head 12
+    100218: head 13
+    100220: head 2
+    100222: head 3
+    100224: head 4
+    100226: head 5
+    100228: head 6
+    100230: head 7
+    100232: head 8
+    100234: head 9
+    100236: head_end
+    100238: head_end 1
+    100240: head_end 10
+    100242: head_end 11
+    100244: head_end 12
+    100246: head_end 2
+    100248: head_end 3
+    100250: head_end 4
+    100252: head_end 5
+    100254: head_end 6
+    100256: head_end 7
+    100258: head_end 8
+    100260: head_end 9
+    100262: hip_L
+    100264: hip_L 1
+    100266: hip_L 10
+    100268: hip_L 11
+    100270: hip_L 12
+    100272: hip_L 2
+    100274: hip_L 3
+    100276: hip_L 4
+    100278: hip_L 5
+    100280: hip_L 6
+    100282: hip_L 7
+    100284: hip_L 8
+    100286: hip_L 9
+    100288: hip_R
+    100290: hip_R 1
+    100292: hip_R 10
+    100294: hip_R 11
+    100296: hip_R 12
+    100298: hip_R 2
+    100300: hip_R 3
+    100302: hip_R 4
+    100304: hip_R 5
+    100306: hip_R 6
+    100308: hip_R 7
+    100310: hip_R 8
+    100312: hip_R 9
+    100314: leftankle
+    100316: leftelbow
+    100318: leftfoot
+    100320: lefthand
+    100322: leftHip joint
+    100324: leftknee
+    100326: leftlower leg
+    100328: leftshoulder
+    100330: leftupper arms
+    100332: leftupper leg
+    100334: lower  leg_R
+    100336: lower  leg_R 1
+    100338: lower  leg_R 10
+    100340: lower  leg_R 11
+    100342: lower  leg_R 12
+    100344: lower  leg_R 2
+    100346: lower  leg_R 3
+    100348: lower  leg_R 4
+    100350: lower  leg_R 5
+    100352: lower  leg_R 6
+    100354: lower  leg_R 7
+    100356: lower  leg_R 8
+    100358: lower  leg_R 9
+    100360: lower arms
+    100362: lower arms_L
+    100364: lower arms_L 1
+    100366: lower arms_L 10
+    100368: lower arms_L 11
+    100370: lower arms_L 12
+    100372: lower arms_L 2
+    100374: lower arms_L 3
+    100376: lower arms_L 4
+    100378: lower arms_L 5
+    100380: lower arms_L 6
+    100382: lower arms_L 7
+    100384: lower arms_L 8
+    100386: lower arms_L 9
+    100388: lower arms_R
+    100390: lower arms_R 1
+    100392: lower arms_R 10
+    100394: lower arms_R 11
+    100396: lower arms_R 12
+    100398: lower arms_R 2
+    100400: lower arms_R 3
+    100402: lower arms_R 4
+    100404: lower arms_R 5
+    100406: lower arms_R 6
+    100408: lower arms_R 7
+    100410: lower arms_R 8
+    100412: lower arms_R 9
+    100414: lower leg_L
+    100416: lower leg_L 1
+    100418: lower leg_L 10
+    100420: lower leg_L 11
+    100422: lower leg_L 12
+    100424: lower leg_L 2
+    100426: lower leg_L 3
+    100428: lower leg_L 4
+    100430: lower leg_L 5
+    100432: lower leg_L 6
+    100434: lower leg_L 7
+    100436: lower leg_L 8
+    100438: lower leg_L 9
+    100440: neck
+    100442: neck 1
+    100444: neck 10
+    100446: neck 11
+    100448: neck 12
+    100450: neck 2
+    100452: neck 3
+    100454: neck 4
+    100456: neck 5
+    100458: neck 6
+    100460: neck 7
+    100462: neck 8
+    100464: neck 9
+    100466: //RootNode
+    100468: rightankle
+    100470: rightelbow
+    100472: rightfoot
+    100474: righthand
+    100476: rightHip joint
+    100478: rightknee
+    100480: rightlower arms
+    100482: rightlower leg
+    100484: rightshoulder
+    100486: rightupper arms
+    100488: rightupper leg
+    100490: rightwrist
+    100492: shoulder_L
+    100494: shoulder_L 1
+    100496: shoulder_L 10
+    100498: shoulder_L 11
+    100500: shoulder_L 12
+    100502: shoulder_L 2
+    100504: shoulder_L 3
+    100506: shoulder_L 4
+    100508: shoulder_L 5
+    100510: shoulder_L 6
+    100512: shoulder_L 7
+    100514: shoulder_L 8
+    100516: shoulder_L 9
+    100518: shoulder_R
+    100520: shoulder_R 1
+    100522: shoulder_R 10
+    100524: shoulder_R 11
+    100526: shoulder_R 12
+    100528: shoulder_R 2
+    100530: shoulder_R 3
+    100532: shoulder_R 4
+    100534: shoulder_R 5
+    100536: shoulder_R 6
+    100538: shoulder_R 7
+    100540: shoulder_R 8
+    100542: shoulder_R 9
+    100544: spine
+    100546: spine 1
+    100548: spine 10
+    100550: spine 11
+    100552: spine 12
+    100554: spine 13
+    100556: spine 2
+    100558: spine 3
+    100560: spine 4
+    100562: spine 5
+    100564: spine 6
+    100566: spine 7
+    100568: spine 8
+    100570: spine 9
+    100572: spine.001
+    100574: spine.001 1
+    100576: spine.001 10
+    100578: spine.001 11
+    100580: spine.001 12
+    100582: spine.001 2
+    100584: spine.001 3
+    100586: spine.001 4
+    100588: spine.001 5
+    100590: spine.001 6
+    100592: spine.001 7
+    100594: spine.001 8
+    100596: spine.001 9
+    100598: spine.001_end
+    100600: spine.001_end 1
+    100602: spine.001_end 10
+    100604: spine.001_end 11
+    100606: spine.001_end 12
+    100608: spine.001_end 2
+    100610: spine.001_end 3
+    100612: spine.001_end 4
+    100614: spine.001_end 5
+    100616: spine.001_end 6
+    100618: spine.001_end 7
+    100620: spine.001_end 8
+    100622: spine.001_end 9
+    100624: spine1
+    100626: spine1 1
+    100628: spine1 10
+    100630: spine1 11
+    100632: spine1 12
+    100634: spine1 13
+    100636: spine1 2
+    100638: spine1 3
+    100640: spine1 4
+    100642: spine1 5
+    100644: spine1 6
+    100646: spine1 7
+    100648: spine1 8
+    100650: spine1 9
+    100652: UpBody
+    100654: upper arms_L
+    100656: upper arms_L 1
+    100658: upper arms_L 10
+    100660: upper arms_L 11
+    100662: upper arms_L 12
+    100664: upper arms_L 2
+    100666: upper arms_L 3
+    100668: upper arms_L 4
+    100670: upper arms_L 5
+    100672: upper arms_L 6
+    100674: upper arms_L 7
+    100676: upper arms_L 8
+    100678: upper arms_L 9
+    100680: upper arms_R
+    100682: upper arms_R 1
+    100684: upper arms_R 10
+    100686: upper arms_R 11
+    100688: upper arms_R 12
+    100690: upper arms_R 2
+    100692: upper arms_R 3
+    100694: upper arms_R 4
+    100696: upper arms_R 5
+    100698: upper arms_R 6
+    100700: upper arms_R 7
+    100702: upper arms_R 8
+    100704: upper arms_R 9
+    100706: upper leg_L
+    100708: upper leg_L 1
+    100710: upper leg_L 10
+    100712: upper leg_L 11
+    100714: upper leg_L 12
+    100716: upper leg_L 2
+    100718: upper leg_L 3
+    100720: upper leg_L 4
+    100722: upper leg_L 5
+    100724: upper leg_L 6
+    100726: upper leg_L 7
+    100728: upper leg_L 8
+    100730: upper leg_L 9
+    100732: upper leg_R
+    100734: upper leg_R 1
+    100736: upper leg_R 10
+    100738: upper leg_R 11
+    100740: upper leg_R 12
+    100742: upper leg_R 2
+    100744: upper leg_R 3
+    100746: upper leg_R 4
+    100748: upper leg_R 5
+    100750: upper leg_R 6
+    100752: upper leg_R 7
+    100754: upper leg_R 8
+    100756: upper leg_R 9
+    100758: wrist.001
+    100760: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2"
+    100762: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.001"
+    100764: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.002"
+    100766: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.003"
+    100768: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.004"
+    100770: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.005"
+    100772: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.006"
+    100774: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.007"
+    100776: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.008"
+    100778: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.009"
+    100780: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.010"
+    100782: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.011"
+    100784: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.012"
+    400000: foot_L
+    400002: foot_L 1
+    400004: foot_L 10
+    400006: foot_L 11
+    400008: foot_L 12
+    400010: foot_L 2
+    400012: foot_L 3
+    400014: foot_L 4
+    400016: foot_L 5
+    400018: foot_L 6
+    400020: foot_L 7
+    400022: foot_L 8
+    400024: foot_L 9
+    400026: foot_L_end
+    400028: foot_L_end 1
+    400030: foot_L_end 10
+    400032: foot_L_end 11
+    400034: foot_L_end 12
+    400036: foot_L_end 2
+    400038: foot_L_end 3
+    400040: foot_L_end 4
+    400042: foot_L_end 5
+    400044: foot_L_end 6
+    400046: foot_L_end 7
+    400048: foot_L_end 8
+    400050: foot_L_end 9
+    400052: foot_R
+    400054: foot_R 1
+    400056: foot_R 10
+    400058: foot_R 11
+    400060: foot_R 12
+    400062: foot_R 2
+    400064: foot_R 3
+    400066: foot_R 4
+    400068: foot_R 5
+    400070: foot_R 6
+    400072: foot_R 7
+    400074: foot_R 8
+    400076: foot_R 9
+    400078: foot_R_end
+    400080: foot_R_end 1
+    400082: foot_R_end 10
+    400084: foot_R_end 11
+    400086: foot_R_end 12
+    400088: foot_R_end 2
+    400090: foot_R_end 3
+    400092: foot_R_end 4
+    400094: foot_R_end 5
+    400096: foot_R_end 6
+    400098: foot_R_end 7
+    400100: foot_R_end 8
+    400102: foot_R_end 9
+    400104: hand_L
+    400106: hand_L 1
+    400108: hand_L 10
+    400110: hand_L 11
+    400112: hand_L 12
+    400114: hand_L 2
+    400116: hand_L 3
+    400118: hand_L 4
+    400120: hand_L 5
+    400122: hand_L 6
+    400124: hand_L 7
+    400126: hand_L 8
+    400128: hand_L 9
+    400130: hand_L_end
+    400132: hand_L_end 1
+    400134: hand_L_end 10
+    400136: hand_L_end 11
+    400138: hand_L_end 12
+    400140: hand_L_end 2
+    400142: hand_L_end 3
+    400144: hand_L_end 4
+    400146: hand_L_end 5
+    400148: hand_L_end 6
+    400150: hand_L_end 7
+    400152: hand_L_end 8
+    400154: hand_L_end 9
+    400156: hand_R
+    400158: hand_R 1
+    400160: hand_R 10
+    400162: hand_R 11
+    400164: hand_R 12
+    400166: hand_R 2
+    400168: hand_R 3
+    400170: hand_R 4
+    400172: hand_R 5
+    400174: hand_R 6
+    400176: hand_R 7
+    400178: hand_R 8
+    400180: hand_R 9
+    400182: hand_R_end
+    400184: hand_R_end 1
+    400186: hand_R_end 10
+    400188: hand_R_end 11
+    400190: hand_R_end 12
+    400192: hand_R_end 2
+    400194: hand_R_end 3
+    400196: hand_R_end 4
+    400198: hand_R_end 5
+    400200: hand_R_end 6
+    400202: hand_R_end 7
+    400204: hand_R_end 8
+    400206: hand_R_end 9
+    400208: head
+    400210: head 1
+    400212: head 10
+    400214: head 11
+    400216: head 12
+    400218: head 13
+    400220: head 2
+    400222: head 3
+    400224: head 4
+    400226: head 5
+    400228: head 6
+    400230: head 7
+    400232: head 8
+    400234: head 9
+    400236: head_end
+    400238: head_end 1
+    400240: head_end 10
+    400242: head_end 11
+    400244: head_end 12
+    400246: head_end 2
+    400248: head_end 3
+    400250: head_end 4
+    400252: head_end 5
+    400254: head_end 6
+    400256: head_end 7
+    400258: head_end 8
+    400260: head_end 9
+    400262: hip_L
+    400264: hip_L 1
+    400266: hip_L 10
+    400268: hip_L 11
+    400270: hip_L 12
+    400272: hip_L 2
+    400274: hip_L 3
+    400276: hip_L 4
+    400278: hip_L 5
+    400280: hip_L 6
+    400282: hip_L 7
+    400284: hip_L 8
+    400286: hip_L 9
+    400288: hip_R
+    400290: hip_R 1
+    400292: hip_R 10
+    400294: hip_R 11
+    400296: hip_R 12
+    400298: hip_R 2
+    400300: hip_R 3
+    400302: hip_R 4
+    400304: hip_R 5
+    400306: hip_R 6
+    400308: hip_R 7
+    400310: hip_R 8
+    400312: hip_R 9
+    400314: leftankle
+    400316: leftelbow
+    400318: leftfoot
+    400320: lefthand
+    400322: leftHip joint
+    400324: leftknee
+    400326: leftlower leg
+    400328: leftshoulder
+    400330: leftupper arms
+    400332: leftupper leg
+    400334: lower  leg_R
+    400336: lower  leg_R 1
+    400338: lower  leg_R 10
+    400340: lower  leg_R 11
+    400342: lower  leg_R 12
+    400344: lower  leg_R 2
+    400346: lower  leg_R 3
+    400348: lower  leg_R 4
+    400350: lower  leg_R 5
+    400352: lower  leg_R 6
+    400354: lower  leg_R 7
+    400356: lower  leg_R 8
+    400358: lower  leg_R 9
+    400360: lower arms
+    400362: lower arms_L
+    400364: lower arms_L 1
+    400366: lower arms_L 10
+    400368: lower arms_L 11
+    400370: lower arms_L 12
+    400372: lower arms_L 2
+    400374: lower arms_L 3
+    400376: lower arms_L 4
+    400378: lower arms_L 5
+    400380: lower arms_L 6
+    400382: lower arms_L 7
+    400384: lower arms_L 8
+    400386: lower arms_L 9
+    400388: lower arms_R
+    400390: lower arms_R 1
+    400392: lower arms_R 10
+    400394: lower arms_R 11
+    400396: lower arms_R 12
+    400398: lower arms_R 2
+    400400: lower arms_R 3
+    400402: lower arms_R 4
+    400404: lower arms_R 5
+    400406: lower arms_R 6
+    400408: lower arms_R 7
+    400410: lower arms_R 8
+    400412: lower arms_R 9
+    400414: lower leg_L
+    400416: lower leg_L 1
+    400418: lower leg_L 10
+    400420: lower leg_L 11
+    400422: lower leg_L 12
+    400424: lower leg_L 2
+    400426: lower leg_L 3
+    400428: lower leg_L 4
+    400430: lower leg_L 5
+    400432: lower leg_L 6
+    400434: lower leg_L 7
+    400436: lower leg_L 8
+    400438: lower leg_L 9
+    400440: neck
+    400442: neck 1
+    400444: neck 10
+    400446: neck 11
+    400448: neck 12
+    400450: neck 2
+    400452: neck 3
+    400454: neck 4
+    400456: neck 5
+    400458: neck 6
+    400460: neck 7
+    400462: neck 8
+    400464: neck 9
+    400466: //RootNode
+    400468: rightankle
+    400470: rightelbow
+    400472: rightfoot
+    400474: righthand
+    400476: rightHip joint
+    400478: rightknee
+    400480: rightlower arms
+    400482: rightlower leg
+    400484: rightshoulder
+    400486: rightupper arms
+    400488: rightupper leg
+    400490: rightwrist
+    400492: shoulder_L
+    400494: shoulder_L 1
+    400496: shoulder_L 10
+    400498: shoulder_L 11
+    400500: shoulder_L 12
+    400502: shoulder_L 2
+    400504: shoulder_L 3
+    400506: shoulder_L 4
+    400508: shoulder_L 5
+    400510: shoulder_L 6
+    400512: shoulder_L 7
+    400514: shoulder_L 8
+    400516: shoulder_L 9
+    400518: shoulder_R
+    400520: shoulder_R 1
+    400522: shoulder_R 10
+    400524: shoulder_R 11
+    400526: shoulder_R 12
+    400528: shoulder_R 2
+    400530: shoulder_R 3
+    400532: shoulder_R 4
+    400534: shoulder_R 5
+    400536: shoulder_R 6
+    400538: shoulder_R 7
+    400540: shoulder_R 8
+    400542: shoulder_R 9
+    400544: spine
+    400546: spine 1
+    400548: spine 10
+    400550: spine 11
+    400552: spine 12
+    400554: spine 13
+    400556: spine 2
+    400558: spine 3
+    400560: spine 4
+    400562: spine 5
+    400564: spine 6
+    400566: spine 7
+    400568: spine 8
+    400570: spine 9
+    400572: spine.001
+    400574: spine.001 1
+    400576: spine.001 10
+    400578: spine.001 11
+    400580: spine.001 12
+    400582: spine.001 2
+    400584: spine.001 3
+    400586: spine.001 4
+    400588: spine.001 5
+    400590: spine.001 6
+    400592: spine.001 7
+    400594: spine.001 8
+    400596: spine.001 9
+    400598: spine.001_end
+    400600: spine.001_end 1
+    400602: spine.001_end 10
+    400604: spine.001_end 11
+    400606: spine.001_end 12
+    400608: spine.001_end 2
+    400610: spine.001_end 3
+    400612: spine.001_end 4
+    400614: spine.001_end 5
+    400616: spine.001_end 6
+    400618: spine.001_end 7
+    400620: spine.001_end 8
+    400622: spine.001_end 9
+    400624: spine1
+    400626: spine1 1
+    400628: spine1 10
+    400630: spine1 11
+    400632: spine1 12
+    400634: spine1 13
+    400636: spine1 2
+    400638: spine1 3
+    400640: spine1 4
+    400642: spine1 5
+    400644: spine1 6
+    400646: spine1 7
+    400648: spine1 8
+    400650: spine1 9
+    400652: UpBody
+    400654: upper arms_L
+    400656: upper arms_L 1
+    400658: upper arms_L 10
+    400660: upper arms_L 11
+    400662: upper arms_L 12
+    400664: upper arms_L 2
+    400666: upper arms_L 3
+    400668: upper arms_L 4
+    400670: upper arms_L 5
+    400672: upper arms_L 6
+    400674: upper arms_L 7
+    400676: upper arms_L 8
+    400678: upper arms_L 9
+    400680: upper arms_R
+    400682: upper arms_R 1
+    400684: upper arms_R 10
+    400686: upper arms_R 11
+    400688: upper arms_R 12
+    400690: upper arms_R 2
+    400692: upper arms_R 3
+    400694: upper arms_R 4
+    400696: upper arms_R 5
+    400698: upper arms_R 6
+    400700: upper arms_R 7
+    400702: upper arms_R 8
+    400704: upper arms_R 9
+    400706: upper leg_L
+    400708: upper leg_L 1
+    400710: upper leg_L 10
+    400712: upper leg_L 11
+    400714: upper leg_L 12
+    400716: upper leg_L 2
+    400718: upper leg_L 3
+    400720: upper leg_L 4
+    400722: upper leg_L 5
+    400724: upper leg_L 6
+    400726: upper leg_L 7
+    400728: upper leg_L 8
+    400730: upper leg_L 9
+    400732: upper leg_R
+    400734: upper leg_R 1
+    400736: upper leg_R 10
+    400738: upper leg_R 11
+    400740: upper leg_R 12
+    400742: upper leg_R 2
+    400744: upper leg_R 3
+    400746: upper leg_R 4
+    400748: upper leg_R 5
+    400750: upper leg_R 6
+    400752: upper leg_R 7
+    400754: upper leg_R 8
+    400756: upper leg_R 9
+    400758: wrist.001
+    400760: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2"
+    400762: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.001"
+    400764: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.002"
+    400766: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.003"
+    400768: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.004"
+    400770: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.005"
+    400772: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.006"
+    400774: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.007"
+    400776: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.008"
+    400778: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.009"
+    400780: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.010"
+    400782: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.011"
+    400784: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.012"
+    4300000: head
+    4300002: rightupper leg
+    4300004: spine1
+    4300006: righthand
+    4300008: leftupper arms
+    4300010: leftshoulder
+    4300012: UpBody
+    4300014: leftelbow
+    4300016: lower arms
+    4300018: rightwrist
+    4300020: spine
+    4300022: rightHip joint
+    4300024: rightknee
+    4300026: rightlower leg
+    4300028: rightankle
+    4300030: rightfoot
+    4300032: rightshoulder
+    4300034: rightupper arms
+    4300036: rightelbow
+    4300038: rightlower arms
+    4300040: wrist.001
+    4300042: lefthand
+    4300044: leftHip joint
+    4300046: leftupper leg
+    4300048: leftknee
+    4300050: leftlower leg
+    4300052: leftankle
+    4300054: leftfoot
+    9500000: //RootNode
+    13700000: head
+    13700002: leftankle
+    13700004: leftelbow
+    13700006: leftfoot
+    13700008: lefthand
+    13700010: leftHip joint
+    13700012: leftknee
+    13700014: leftlower leg
+    13700016: leftshoulder
+    13700018: leftupper arms
+    13700020: leftupper leg
+    13700022: lower arms
+    13700024: rightankle
+    13700026: rightelbow
+    13700028: rightfoot
+    13700030: righthand
+    13700032: rightHip joint
+    13700034: rightknee
+    13700036: rightlower arms
+    13700038: rightlower leg
+    13700040: rightshoulder
+    13700042: rightupper arms
+    13700044: rightupper leg
+    13700046: rightwrist
+    13700048: spine
+    13700050: spine1
+    13700052: UpBody
+    13700054: wrist.001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

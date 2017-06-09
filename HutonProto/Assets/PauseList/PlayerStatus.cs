@@ -53,7 +53,6 @@ public class PlayerStatus : MonoBehaviour {
 
         P_pos = GameObject.Find("Player_Body").GetComponent<Transform>().transform;
         P_angle = GameObject.Find("Player_Body").GetComponent<Transform>().transform.eulerAngles.y;
-
     }
 
     void Update () {

@@ -9,8 +9,8 @@ public class Pose_shiko : MonoBehaviour
 
     /*ポーズ_Hの判定を行う*/
     //「H」ポーズの画像を所得
-    private Image pause_shiko;
-    private float r, g, b, alpha;
+    protected Image pause_shiko;
+    protected float r, g, b, alpha;
 
     //falseならガイド画像を表示していない、trueなら画像を
     public bool imageDisplay = false;
@@ -25,7 +25,7 @@ public class Pose_shiko : MonoBehaviour
     //成功したポーズの判定で使う
     public string Pausename = "pause_shiko";
 
-    /*現在の角度*/
+    /****現在の角度******/
     public float R_sholder;
     public float R_elbow;
     public float R_crotch;
@@ -34,35 +34,37 @@ public class Pose_shiko : MonoBehaviour
     public float L_elbow;
     public float L_crotch;
     public float L_knee;
-    /**/
+    /********************/
 
     /*それぞれの手足ごとの判定の数値の中心*/
     //右肩の判定の基本となる数字
     public float R_sholder_center;
     //Pがプラス、Mがマイナス
-    private float R_sholdeP, R_sholdeM;
+    protected float R_sholdeP, R_sholdeM;
     //右肘
     public float R_elbow_center;
-    private float R_elbowP, R_elbowM;
+    protected float R_elbowP, R_elbowM;
     //右股
     public float R_crotch_center;
-    private float R_crotchP, R_crotchM;
+    protected float R_crotchP, R_crotchM;
     //右膝
     public float R_knee_center;
-    private float R_kneeP, R_kneeM;
+    protected float R_kneeP, R_kneeM;
     //左肩
     public float L_shoulder_center;
-    private float L_shoulderP, L_shoulderM;
+    protected float L_shoulderP, L_shoulderM;
     //左肘
     public float L_elbow_center;
-    private float L_elbowP, L_elbowM;
+    protected float L_elbowP, L_elbowM;
     //左股
     public float L_crotch_center;
-    private float RsholdeP, RsholdeM;
+    protected float RsholdeP, RsholdeM;
     //左膝
     public float L_knee_center;
-    private float L_kneeP, L_kneeM;
+    protected float L_kneeP, L_kneeM;
     /************************************/
+    //ポーズが決まったか
+    public bool DecidePose_Shiko;
 
     void Start()
     {
@@ -73,6 +75,22 @@ public class Pose_shiko : MonoBehaviour
         b = pause_shiko.GetComponent<Image>().color.b;
         alpha = pause_shiko.GetComponent<Image>().color.a;
 
+        playerstatus=this.gameObject.GetComponent<PlayerStatus>();
+        ShikoPoseDisplayfalse();
+    }
+
+
+    void Update()
+    {
+        R_sholder = playerstatus.R_shoulder_Y;
+        R_elbow = playerstatus.R_elbow_Y;
+        R_crotch = playerstatus.R_crotch_Y;
+        R_knee = playerstatus.R_knee_Y;
+        L_shoulder = playerstatus.L_shoulder_Y;
+        L_elbow = playerstatus.L_elbow_Y;
+        L_crotch = playerstatus.L_crotch_Y;
+        L_knee = playerstatus.L_knee_Y;
+
         //右肩
         R_sholdeP = R_sholder + 20.0f;
         R_sholdeM = R_sholder - 20.0f;
@@ -81,45 +99,26 @@ public class Pose_shiko : MonoBehaviour
         R_elbowM = R_elbow - 20.0f;
         //右股   
         R_crotchP = R_crotch + 20.0f;
-           R_crotchM= R_crotch - 20.0f;
+        R_crotchM = R_crotch - 20.0f;
         //右膝
-        R_kneeP =R_knee + 20.0f;
-            R_kneeM= R_knee - 20.0f;
+        R_kneeP = R_knee + 20.0f;
+        R_kneeM = R_knee - 20.0f;
         //左肩
         L_shoulderP = L_shoulder + 20.0f;
-                  L_shoulderM = L_shoulder - 20.0f;
+        L_shoulderM = L_shoulder - 20.0f;
         //左肘
         L_elbowP = L_shoulder + 20.0f;
         L_elbowM = L_shoulder - 20.0f;
         //左股
-        RsholdeP
-                RsholdeM
+        L_shoulderP = L_shoulder + 20.0f;
+        L_shoulderM = L_shoulder - 20.0f;
         //左膝
+        L_kneeP = L_knee + 20.0f;
+        L_kneeM = L_knee - 20.0f;
 
-        L_kneeP
-            L_kneeM
+        pause_shiko.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
-
-        ShikoPoseDisplayfalse();
-    }
-
-
-    void Update()
-    {
-        R_sholder    = playerstatus.R_shoulder_Y;
-        R_elbow      = playerstatus.R_elbow_Y;
-        R_crotch     = playerstatus.R_crotch_Y;
-        R_knee       = playerstatus.R_knee_Y;
-        L_shoulder   = playerstatus.L_shoulder_Y;
-        L_elbow      = playerstatus.L_elbow_Y;
-        L_crotch     = playerstatus.L_crotch_Y;
-        L_knee       = playerstatus.L_knee_Y;
-
-
-
-    pause_shiko.GetComponent<Image>().color = new Color(r, g, b, alpha);
-
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 4, playerstatus.P_pos.position.z);
+        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 
         AnglesCheck();
 
@@ -134,17 +133,25 @@ public class Pose_shiko : MonoBehaviour
 
         //どれも入っていなかったら画像を表示しない
         if (R_arm_flag == false &&
-                 L_arm_flag == false &&
-                 R_leg_flag == false &&
-                 L_leg_flag == false)
+            L_arm_flag == false &&
+            R_leg_flag == false &&
+            L_leg_flag == false)
         {
             imageDisplay = false;
         }
+
+        //全部が入ったか
+        if (R_arm_flag == true &&
+            L_arm_flag == true &&
+            R_leg_flag == true &&
+            L_leg_flag == true)
+        {
+            DecidePose_Shiko = true;
+        }
     }
-    void AnglesCheck()
+        void AnglesCheck()
     {
         //右腕の判別
-
         //右肩の角度
         if (R_sholder_center >= 40 && R_sholder_center <= 80)
         {
@@ -165,10 +172,10 @@ public class Pose_shiko : MonoBehaviour
 
         //右足
         //右股の角度
-        if (R_crotch_Y >= 70 && R_crotch_Y <= 110)
+        if (R_crotch >=R_crotchM && R_crotch <= R_crotchP)
         {
             //右膝
-            if (R_knee_Y >= 70 && R_knee_Y <= 110)
+            if (R_knee>= R_kneeM && R_knee <= R_kneeP)
             {
                 R_leg_flag = true;
             }
@@ -184,12 +191,11 @@ public class Pose_shiko : MonoBehaviour
 
 
         //左側の判別
-
         //左肩の角度
-        if (L_shoulder_Y >= 280 && L_shoulder_Y <= 320)
+        if (L_shoulder_center >= 280 && L_shoulder <= 320)
         {
             //左肘
-            if (L_elbow_Y >= 90 && L_elbow_Y <= 130)
+            if (L_shoulder >= 90 && L_shoulder <= 130)
             {
                 L_arm_flag = true;
             }
@@ -205,10 +211,10 @@ public class Pose_shiko : MonoBehaviour
 
 
         //左股の角度
-        if (L_crotch_Y >= 260 && L_crotch_Y <= 280)
+        if (L_crotch >= 260 && L_crotch <= 280)
         {
             //左膝
-            if (L_knee_Y >= 260 && L_knee_Y <= 280)
+            if (L_knee >= 260 && L_knee <= 280)
             {
                 L_leg_flag = true;
             }

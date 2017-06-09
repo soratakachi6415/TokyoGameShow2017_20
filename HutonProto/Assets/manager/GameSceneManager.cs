@@ -24,9 +24,9 @@ public class GameSceneManager : MonoBehaviour
  
     void Start()
     {
-        scenemanager_ = GameObject.FindGameObjectWithTag("Scenemanager").GetComponent<Scene_manager>();
         sleepGageScript_ = GameObject.Find("ScriptController").GetComponent<SleepGageScript>();
         clock_ = GameObject.Find("Clock").GetComponent<Clock>();
+        scenemanager_ = GameObject.FindGameObjectWithTag("Scenemanager").GetComponent<Scene_manager>();       
     }
 
     void Update()
@@ -38,7 +38,6 @@ public class GameSceneManager : MonoBehaviour
         //時間まで羊が０にならなかった場合
         if (currentClocktime_ <= 0)
         {
-           
             OnSuccess();
         }
         
@@ -54,7 +53,7 @@ public class GameSceneManager : MonoBehaviour
     public void OnSuccess()
     {
         //Resultへ遷移
-        Debug.Log("成功");
+        //Debug.Log("成功");
         scenemanager_.NextScene();
     }
     
@@ -62,7 +61,7 @@ public class GameSceneManager : MonoBehaviour
     public void OnFailure()
     {
         //Titleへ遷移
-        Debug.Log("失敗");
+        //Debug.Log("失敗");
         gameSuccess = false;
     }
 }

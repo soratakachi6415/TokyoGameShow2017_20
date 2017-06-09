@@ -54,8 +54,7 @@ public class Pose_eiffelt : MonoBehaviour {
     public Transform P_pos;
     /**********************************/
 
-    //成功したポーズの判定で使う
-    public string Pausename = "Pause_eiffelt";
+    private bool DecidePose_eiffelt;
 
     void Start()
     {
@@ -86,7 +85,7 @@ public class Pose_eiffelt : MonoBehaviour {
     void Update()
     {
         pause_eiffelt.GetComponent<Image>().color = new Color(r, g, b, alpha);
-        transform.position = new Vector3(P_pos.position.x, 4, P_pos.position.z);
+        transform.position = new Vector3(P_pos.position.x, 10, P_pos.position.z);
 
 
         //各関節の現在の角度

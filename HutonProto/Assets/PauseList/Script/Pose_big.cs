@@ -57,6 +57,10 @@ public class Pose_big : MonoBehaviour
     //プレイヤーの位置
     public Transform P_pos;
     /**********************************/
+
+    //ポーズが決まったか
+    public bool DecidePose_Big;
+
     void Start()
     {
         //ポーズガイドの画像
@@ -87,7 +91,7 @@ public class Pose_big : MonoBehaviour
     {
         pause_big.GetComponent<Image>().color = new Color(r, g, b, alpha);
         
-        transform.position = new Vector3(P_pos.position.x, 4, P_pos.position.z);
+        transform.position = new Vector3(P_pos.position.x, 10, P_pos.position.z);
 
         //各関節の現在の角度
         R_shoulder_Y = R_shoulder.transform.localEulerAngles.y;
@@ -124,16 +128,8 @@ public class Pose_big : MonoBehaviour
            R_leg_flag == true &&
            L_leg_flag == true)
         {
-          
-        }
-
-        if (imageDisplayflag == true)
-        {
-            BigPoseDisplaytrue();
-        }
-        else
-        {
-            BigPoseDisplayfalse();
+            //ポーズが決まったか
+            DecidePose_Big = true;
         }
     }
     void AnglesCheck()

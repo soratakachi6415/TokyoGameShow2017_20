@@ -22,10 +22,6 @@ public class PlayerScript : MonoBehaviour
         obj.Add(GameObject.Find("Player_RightLeg2"));     //7
         obj.Add(GameObject.Find("Player_Body"));          //8
         obj.Add(GameObject.Find("Player_Head"));          //9
-
-        var rb = GetComponent<Rigidbody>();
-
-        rb.constraints = RigidbodyConstraints.FreezePositionY;
     }
 
     void Update()
@@ -37,10 +33,7 @@ public class PlayerScript : MonoBehaviour
     {
         for (int i = 0; i < obj.Count; i++) //全てのオブジェクトの座標を固定
         {
-            if (obj[i].GetComponent<Rigidbody>().constraints == RigidbodyConstraints.FreezePositionY)
-            {
-                obj[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            }
+            obj[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
 
         if (gameObject.name.ToString().Contains("Hand")) //触れたオブジェクト座標のY座標だけ固定する
@@ -49,14 +42,13 @@ public class PlayerScript : MonoBehaviour
             {
                 obj[0].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 obj[1].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-                obj[8].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY;
             }
             else if (gameObject.name.ToString().Contains("Right"))
             {
                 obj[2].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 obj[3].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-                obj[8].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY;
             }
+            obj[8].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         }
         else if (gameObject.name.ToString().Contains("Leg"))
         {
@@ -64,17 +56,16 @@ public class PlayerScript : MonoBehaviour
             {
                 obj[4].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 obj[5].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-                obj[8].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY;
             }
             else if (gameObject.name.ToString().Contains("Right"))
             {
                 obj[6].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 obj[7].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-                obj[8].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY;
             }
+            obj[8].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         }
 
-        //体か頭を触ると全身の回転とY座標を固定。
+        ////体か頭を触ると全身の回転とY座標を固定。
         if (gameObject.name.ToString().Contains("Body") || gameObject.name.ToString().Contains("Head"))
         {
             for (int i = 0; i < obj.Count; i++)
@@ -82,13 +73,6 @@ public class PlayerScript : MonoBehaviour
                 obj[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
             }
         }
-        //else 
-        //{
-        //    for (int i = 0; i < obj.Count; i++)
-        //    {
-        //        obj[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-        //    }
-        //}
     }
 
     void OnMouseUp()

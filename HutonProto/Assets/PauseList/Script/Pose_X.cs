@@ -87,7 +87,7 @@ public class Pose_X : MonoBehaviour {
     void Update()
     {
         pause_X.GetComponent<Image>().color = new Color(r, g, b, alpha);
-        transform.position = new Vector3(P_pos.position.x, 4, P_pos.position.z);
+        transform.position = new Vector3(P_pos.position.x, 10, P_pos.position.z);
 
         //各関節の現在の角度
         R_shoulder_Y    = R_shoulder.transform.localEulerAngles.y;
@@ -123,10 +123,10 @@ public class Pose_X : MonoBehaviour {
     {
         //右腕の判別
         //右肩の角度
-        if (R_shoulder_Y >= 80 && R_shoulder_Y <= 100)
+        if (R_shoulder_Y >= 115 && R_shoulder_Y <= 155)
         {
             //右肘
-            if (R_elbow_Y >= -10 && R_elbow_Y <= 10)
+            if (R_elbow_Y >= -20 && R_elbow_Y <= 20)
             {
                 R_arm_flag = true;
             }
@@ -143,10 +143,10 @@ public class Pose_X : MonoBehaviour {
 
         //右足
         //右股の角度
-        if (R_crotch_Y >= 35 && R_crotch_Y <= 55)
+        if (R_crotch_Y >= 25 && R_crotch_Y <= 65)
         {
             //右膝
-            if (R_knee_Y >= -10 && R_knee_Y <= 10)
+            if (R_knee_Y >= -20 && R_knee_Y <= 20)
             {
                 R_leg_flag = true;
             }
@@ -163,10 +163,10 @@ public class Pose_X : MonoBehaviour {
 
         //左側の判別
         //左腕の角度
-        if (L_shoulder_Y >= 260 && L_shoulder_Y <= 280)
+        if (L_shoulder_Y >= 205 && L_shoulder_Y <= 245)
         {
             //左肘
-            if (L_elbow_Y >= -10 && L_elbow_Y <= 10)
+            if (L_elbow_Y >= -20 && L_elbow_Y <= 20)
             {
                 L_arm_flag = true;
             }
@@ -182,7 +182,7 @@ public class Pose_X : MonoBehaviour {
 
 
         //左股の角度
-        if (L_crotch_Y >= 305 && L_crotch_Y <= 325)
+        if (L_crotch_Y >= 295 && L_crotch_Y <= 335)
         {
             //左膝
             if (L_knee_Y >= -10 && L_knee_Y <= 10)

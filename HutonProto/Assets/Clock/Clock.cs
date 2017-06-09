@@ -6,12 +6,8 @@ public class Clock : MonoBehaviour
 {
     //分針の画像オブジェクト
     private GameObject Minutehand;
-    //分針のオブジェクトのZ軸
-    private float LongangleZ;
     //時針の画像オブジェクト
     private GameObject Shorthand;
-    //時針のオブジェクトのZ軸
-    private float ShortanglZ;
     //タイマー
     private float timer = 0;
     //時針を動かすフラグ
@@ -31,11 +27,7 @@ public class Clock : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        //Z軸所得
-        LongangleZ = Minutehand.transform.localEulerAngles.z;
-        ShortanglZ = Shorthand.transform.localEulerAngles.z;
-
+    { 
         //カウントダウン開始
         if (ClockStart == true)
         {

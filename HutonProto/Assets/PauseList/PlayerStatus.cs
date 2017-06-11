@@ -39,7 +39,6 @@ public class PlayerStatus : MonoBehaviour {
     public Transform P_pos;
     /**********************************/
 
-
     void Start () {
         //そのうちタグ判別に切り替えたい
         R_shoulder = GameObject.Find("Player_RightHand1");

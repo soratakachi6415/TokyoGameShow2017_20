@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Pose_Happy : MonoBehaviour
 {
-    //保留
+    //0612 変更完了
+
     //プレイヤーの角度などの情報
     PlayerStatus playerstatus;
 
@@ -13,6 +14,8 @@ public class Pose_Happy : MonoBehaviour
     //「Happpy」ポーズの画像を所得
     private Image pauseHappy;
     private float r, g, b, alpha;
+    //角度の誤差の数値
+    public float anglePM;
 
     /****現在の角度******/
     protected float R_sholder;
@@ -55,6 +58,10 @@ public class Pose_Happy : MonoBehaviour
 
     //falseならガイド画像を表示していない、trueなら画像を
     public bool imageDisplay = false;
+    //ポーズが決まったか
+    public bool DecidePose_Happy = false;
+    //成功したポーズの判定で使う
+    public string Pausename = "pauseHappy";
 
     //ポーズの各腕、足がそれぞれ指定された範囲内に入っているか
     //falseが入ってない、trueが入ってる
@@ -62,17 +69,6 @@ public class Pose_Happy : MonoBehaviour
     public bool R_leg_flag = false;
     public bool L_arm_flag = false;
     public bool L_leg_flag = false;
-
-    /*プレイヤーの位置と角度を合わせる*/
-    //プレイヤーの回転角度
-    public float P_angle;
-    //プレイヤーの位置
-    public Transform P_pos;
-    /**********************************/
-    //ポーズが決まったか
-    public bool DecidePose_Happy= false;
-    //成功したポーズの判定で使う
-    public string Pausename = "pauseHappy";
 
     void Start()
     {
@@ -83,17 +79,16 @@ public class Pose_Happy : MonoBehaviour
         b = pauseHappy.GetComponent<Image>().color.b;
         alpha = pauseHappy.GetComponent<Image>().color.a;
 
-        //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
         HappyPoseDisplayfalse();
     }
 
 
     void Update()
     {
+        //ポーズの画像の情報
         pauseHappy.GetComponent<Image>().color = new Color(r, g, b, alpha);
-
-        transform.position = new Vector3(P_pos.position.x, 10, P_pos.position.z);
+        //画像をプレイヤーの上、X、Yの調整
+        transform.position = new Vector3(playerstatus.P_pos.position.x, 110, playerstatus.P_pos.position.z);
 
         //角度の獲得
         R_sholder = playerstatus.R_shoulder_Y;
@@ -105,6 +100,33 @@ public class Pose_Happy : MonoBehaviour
         L_crotch = playerstatus.L_crotch_Y;
         L_knee = playerstatus.L_knee_Y;
 
+        /*角度の判定の上下許容範囲*/
+        //右肩
+        R_sholderP = R_sholder + anglePM;
+        R_sholderM = R_sholder - anglePM;
+        //右ひじ
+        R_elbowP = R_elbow + anglePM;
+        R_elbowM = R_elbow - anglePM;
+        //右股   
+        R_crotchP = R_crotch + anglePM;
+        R_crotchM = R_crotch - anglePM;
+        //右膝
+        R_kneeP = R_knee + anglePM;
+        R_kneeM = R_knee - anglePM;
+        //左肩
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
+        //左肘
+        L_elbowP = L_shoulder + anglePM;
+        L_elbowM = L_shoulder - anglePM;
+        //左股
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
+        //左膝
+        L_kneeP = L_knee + anglePM;
+        L_kneeM = L_knee - anglePM;
+        /***************************************/
+
         AnglesCheck();
 
         //どれかが判定の範囲内に入ったら画像表示
@@ -114,6 +136,7 @@ public class Pose_Happy : MonoBehaviour
             L_leg_flag == true)
         {
             imageDisplay = true;
+            HappysPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -123,6 +146,7 @@ public class Pose_Happy : MonoBehaviour
                  L_leg_flag == false)
         {
             imageDisplay = false;
+            HappyPoseDisplayfalse();
         }
 
         if (R_arm_flag == true &&
@@ -131,11 +155,8 @@ public class Pose_Happy : MonoBehaviour
             L_leg_flag == true)
         {
             DecidePose_Happy = true;
-        }
-        else
-        {
-            DecidePose_Happy = false;
-        }
+            HappysPoseDisplaytrue();
+        }       
     }
     void AnglesCheck()
     {
@@ -150,7 +171,6 @@ public class Pose_Happy : MonoBehaviour
             }
             else
             {
-
                 R_arm_flag = false;
             }
         }
@@ -179,11 +199,11 @@ public class Pose_Happy : MonoBehaviour
         }
 
         //左側の判別
-        //左腕の角度
+        //左肩の角度
         if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
         {
             //左肘
-            if (L_elbow_center >= -20 && L_elbow_center <= 20)
+            if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
             {
                 L_arm_flag = true;
             }
@@ -197,11 +217,12 @@ public class Pose_Happy : MonoBehaviour
             L_arm_flag = false;
         }
 
+
         //左股の角度
-        if (L_crotch_center >= -20 && L_crotch_center <= 20)
+        if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
         {
             //左膝
-            if (L_knee_center >= -20 && L_knee_center <=20)
+            if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
             {
                 L_leg_flag = true;
             }

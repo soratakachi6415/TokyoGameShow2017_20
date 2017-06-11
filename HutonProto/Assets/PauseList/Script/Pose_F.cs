@@ -14,7 +14,8 @@ public class Pose_F : MonoBehaviour {
 
     //falseならガイド画像を表示していない、trueなら画像を
     public bool imageDisplay = false;
-
+    //角度の誤差の数値
+    public float anglePM;
     //ポーズの各腕、足がそれぞれ指定された範囲内に入っているか
     //falseが入ってない、trueが入ってる
     public bool R_arm_flag = false;
@@ -93,29 +94,29 @@ public class Pose_F : MonoBehaviour {
 
         /*角度の判定の上下許容範囲*/
         //右肩
-        R_sholderP = R_sholder + 20.0f;
-        R_sholderM = R_sholder - 20.0f;
+        R_sholderP = R_sholder + anglePM;
+        R_sholderM = R_sholder - anglePM;
         //右ひじ
-        R_elbowP = R_elbow + 20.0f;
-        R_elbowM = R_elbow - 20.0f;
+        R_elbowP = R_elbow + anglePM;
+        R_elbowM = R_elbow - anglePM;
         //右股   
-        R_crotchP = R_crotch + 20.0f;
-        R_crotchM = R_crotch - 20.0f;
+        R_crotchP = R_crotch + anglePM;
+        R_crotchM = R_crotch - anglePM;
         //右膝
-        R_kneeP = R_knee + 20.0f;
-        R_kneeM = R_knee - 20.0f;
+        R_kneeP = R_knee + anglePM;
+        R_kneeM = R_knee - anglePM;
         //左肩
-        L_shoulderP = L_shoulder + 20.0f;
-        L_shoulderM = L_shoulder - 20.0f;
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
         //左肘
-        L_elbowP = L_shoulder + 20.0f;
-        L_elbowM = L_shoulder - 20.0f;
+        L_elbowP = L_shoulder + anglePM;
+        L_elbowM = L_shoulder - anglePM;
         //左股
-        L_shoulderP = L_shoulder + 20.0f;
-        L_shoulderM = L_shoulder - 20.0f;
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
         //左膝
-        L_kneeP = L_knee + 20.0f;
-        L_kneeM = L_knee - 20.0f;
+        L_kneeP = L_knee + anglePM;
+        L_kneeM = L_knee - anglePM;
         /***************************************/
         pause_F.GetComponent<Image>().color = new Color(r, g, b, alpha);
 

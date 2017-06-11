@@ -7,23 +7,12 @@ public class Pose_BodyBuli : MonoBehaviour {
 
     PlayerStatus playerstatus;
 
-    /*ポーズ_Hの判定を行う*/
-    //「H」ポーズの画像を所得
-    private Image pause_bodybuli;
-    private float r, g, b, alpha;
-
-    //falseならガイド画像を表示していない、trueなら画像を
-    public bool imageDisplay = false;
-
-    //ポーズの各腕、足がそれぞれ指定された範囲内に入っているか
-    //falseが入ってない、trueが入ってる
-    public bool R_arm_flag = false;
-    public bool R_leg_flag = false;
-    public bool L_arm_flag = false;
-    public bool L_leg_flag = false;
-
-    //成功したポーズの判定で使う
-    public string Pausename = "pause_bodybuli";
+    /*ポーズ_バナナの判定を行う*/
+    //「バナナ」ポーズの画像を所得
+    protected Image pause_bodybuli;
+    protected float r, g, b, alpha;
+    //角度の誤差の数値
+    public float anglePM;
 
     /****現在の角度******/
     protected float R_sholder;
@@ -38,8 +27,8 @@ public class Pose_BodyBuli : MonoBehaviour {
 
     /*それぞれの手足ごとの判定の数値の中心*/
     //右肩の判定の基本となる数字
-    public float R_sholder_center;
     //Pがプラス、Mがマイナス
+    public float R_sholder_center;
     protected float R_sholderP, R_sholderM;
     //右肘
     public float R_elbow_center;
@@ -62,9 +51,22 @@ public class Pose_BodyBuli : MonoBehaviour {
     //左膝
     public float L_knee_center;
     protected float L_kneeP, L_kneeM;
+    //許容範囲数値
+    public float anglenumber;
     /************************************/
     //ポーズが決まったか
-    public bool DecidePose_Banana;
+    public bool DecidePose_bodybuli;
+    //falseならガイド画像を表示していない、trueなら画像を
+    public bool imageDisplay = false;
+    //成功したポーズの判定で使う
+    public string Pausename = "pause_bodybuli";
+
+    //ポーズの各腕、足がそれぞれ指定された範囲内に入っているか
+    //falseが入ってない、trueが入ってる
+    public bool R_arm_flag = false;
+    public bool R_leg_flag = false;
+    public bool L_arm_flag = false;
+    public bool L_leg_flag = false;
 
     void Start()
     {
@@ -93,33 +95,33 @@ public class Pose_BodyBuli : MonoBehaviour {
 
         /*角度の判定の上下許容範囲*/
         //右肩
-        R_sholderP = R_sholder + 20.0f;
-        R_sholderM = R_sholder - 20.0f;
+        R_sholderP = R_sholder + anglePM;
+        R_sholderM = R_sholder - anglePM;
         //右ひじ
-        R_elbowP = R_elbow + 20.0f;
-        R_elbowM = R_elbow - 20.0f;
+        R_elbowP = R_elbow + anglePM;
+        R_elbowM = R_elbow - anglePM;
         //右股   
-        R_crotchP = R_crotch + 20.0f;
-        R_crotchM = R_crotch - 20.0f;
+        R_crotchP = R_crotch + anglePM;
+        R_crotchM = R_crotch - anglePM;
         //右膝
-        R_kneeP = R_knee + 20.0f;
-        R_kneeM = R_knee - 20.0f;
+        R_kneeP = R_knee + anglePM;
+        R_kneeM = R_knee - anglePM;
         //左肩
-        L_shoulderP = L_shoulder + 20.0f;
-        L_shoulderM = L_shoulder - 20.0f;
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
         //左肘
-        L_elbowP = L_shoulder + 20.0f;
-        L_elbowM = L_shoulder - 20.0f;
+        L_elbowP = L_shoulder + anglePM;
+        L_elbowM = L_shoulder - anglePM;
         //左股
-        L_shoulderP = L_shoulder + 20.0f;
-        L_shoulderM = L_shoulder - 20.0f;
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
         //左膝
-        L_kneeP = L_knee + 20.0f;
-        L_kneeM = L_knee - 20.0f;
+        L_kneeP = L_knee + anglePM;
+        L_kneeM = L_knee - anglePM;
         /***************************************/
         pause_bodybuli.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 4, playerstatus.P_pos.position.z);
+        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z + 3.0f);
         //角度check
         AnglesCheck();
 
@@ -130,6 +132,7 @@ public class Pose_BodyBuli : MonoBehaviour {
             L_leg_flag == true)
         {
             imageDisplay = true;
+            bodybuliPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -139,6 +142,7 @@ public class Pose_BodyBuli : MonoBehaviour {
             L_leg_flag == false)
         {
             imageDisplay = false;
+            bodybuliPoseDisplayfalse();
         }
 
         //全部入ったか
@@ -147,7 +151,8 @@ public class Pose_BodyBuli : MonoBehaviour {
             R_leg_flag == true &&
             L_leg_flag == true)
         {
-            DecidePose_Banana = true;
+            DecidePose_bodybuli = true;
+            bodybuliPoseDisplaytrue();
         }
     }
     void AnglesCheck()
@@ -173,10 +178,10 @@ public class Pose_BodyBuli : MonoBehaviour {
 
         //右足
         //右股の角度
-        if (R_crotch >= R_crotchM && R_crotch <= R_crotchP)
+        if (R_crotch_center >= R_crotchM && R_crotch_center <= R_crotchP)
         {
             //右膝
-            if (R_knee >= R_kneeM && R_knee <= R_kneeP)
+            if (R_knee_center >= R_kneeM && R_knee_center <= R_kneeP)
             {
                 R_leg_flag = true;
             }
@@ -209,7 +214,6 @@ public class Pose_BodyBuli : MonoBehaviour {
             L_arm_flag = false;
         }
 
-
         //左股の角度
         if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
         {
@@ -225,7 +229,6 @@ public class Pose_BodyBuli : MonoBehaviour {
         }
         else
         {
-
             L_leg_flag = false;
         }
     }

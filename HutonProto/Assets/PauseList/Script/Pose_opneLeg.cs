@@ -11,7 +11,7 @@ public class Pose_opneLeg : MonoBehaviour
     PlayerStatus playerstatus;
     /*ポーズ_openLegの判定を行う*/
     //「openLeg」ポーズの画像を所得
-    protected Image pause_openLeg;
+    protected Image pose_openLeg;
     protected float r, g, b, alpha;
 
     //角度の誤差の数値
@@ -71,12 +71,13 @@ public class Pose_opneLeg : MonoBehaviour
     void Start()
     {
         //ポーズガイドの画像
-        pause_openLeg = gameObject.GetComponent<Image>();
-        r = pause_openLeg.GetComponent<Image>().color.r;
-        g = pause_openLeg.GetComponent<Image>().color.g;
-        b = pause_openLeg.GetComponent<Image>().color.b;
-        alpha = pause_openLeg.GetComponent<Image>().color.a;
-
+        pose_openLeg = gameObject.GetComponent<Image>();
+        r = pose_openLeg.GetComponent<Image>().color.r;
+        g = pose_openLeg.GetComponent<Image>().color.g;
+        b = pose_openLeg.GetComponent<Image>().color.b;
+        alpha = pose_openLeg.GetComponent<Image>().color.a;
+        //プレイヤーの関節の角度など
+        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
         OpneLegPoseDisplayfalse();
 }
 
@@ -84,7 +85,7 @@ public class Pose_opneLeg : MonoBehaviour
     void Update()
     {
         //ポーズの画像の情報
-        pause_openLeg.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        pose_openLeg.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
         transform.position = new Vector3(playerstatus.P_pos.position.x, 110, playerstatus.P_pos.position.z);
 

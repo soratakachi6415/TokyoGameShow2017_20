@@ -11,20 +11,20 @@ public class Pose_shiko : MonoBehaviour
     PlayerStatus playerstatus;
     /*ポーズ_shikoの判定を行う*/
     //「shiko」ポーズの画像を所得
-    protected Image pause_shiko;
+    protected Image pose_shiko;
     protected float r, g, b, alpha;
     //角度の誤差の数値
     public float anglePM;       
 
     /****現在の角度******/
-    public float R_shoulder;
-    public float R_elbow;
-    public float R_crotch;
-    public float R_knee;
-    public float L_shoulder;
-    public float L_elbow;
-    public float L_crotch;
-    public float L_knee;
+    protected float R_shoulder;
+    protected float R_elbow;
+    protected float R_crotch;
+    protected float R_knee;
+    protected float L_shoulder;
+    protected float L_elbow;
+    protected float L_crotch;
+    protected float L_knee;
     /********************/
 
     /*それぞれの手足ごとの判定の数値の中心*/
@@ -58,7 +58,7 @@ public class Pose_shiko : MonoBehaviour
     //falseならガイド画像を表示していない、trueなら画像を
     public bool imageDisplayflag = false;
     //成功したポーズの判定で使う
-    public string Pausename = "pause_shiko";
+    public string posename = "pose_shiko";
     //ポーズが決まったか
     public bool DecidePose_Shiko;
 
@@ -74,11 +74,11 @@ public class Pose_shiko : MonoBehaviour
     void Start()
     {
         //ポーズガイドの画像
-        pause_shiko = gameObject.GetComponent<Image>();
-        r = pause_shiko.GetComponent<Image>().color.r;
-        g = pause_shiko.GetComponent<Image>().color.g;
-        b = pause_shiko.GetComponent<Image>().color.b;
-        alpha = pause_shiko.GetComponent<Image>().color.a;
+        pose_shiko = gameObject.GetComponent<Image>();
+        r = pose_shiko.GetComponent<Image>().color.r;
+        g = pose_shiko.GetComponent<Image>().color.g;
+        b = pose_shiko.GetComponent<Image>().color.b;
+        alpha = pose_shiko.GetComponent<Image>().color.a;
 
         playerstatus=this.gameObject.GetComponent<PlayerStatus>();
         ShikoPoseDisplayfalse();
@@ -124,7 +124,7 @@ public class Pose_shiko : MonoBehaviour
         /***************************************/
 
         //ポーズの画像の情報
-        pause_shiko.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        pose_shiko.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
         transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 

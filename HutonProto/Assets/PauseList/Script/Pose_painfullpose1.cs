@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Pose_U : MonoBehaviour
-{
+public class Pose_painfullpose1 : MonoBehaviour {
     //0612 変更完了
 
     //プレイヤーの角度参照
     PlayerStatus playerstatus;
-    /*ポーズ_Uの判定を行う*/
-    //「U」ポーズの画像を所得
-    protected Image pose_U;
-    protected float r, g, b, alpha;
+    /*ポーズ_大の字の判定を行う*/
+    //「大」ポーズの画像を所得
+    private Image pose_painfullpose1;
+    private float r, g, b, alpha;
     //角度の誤差の数値
     public float anglePM;
 
@@ -55,13 +54,12 @@ public class Pose_U : MonoBehaviour
     protected float L_kneeP, L_kneeM;
     /************************************/
 
-
     //falseならガイド画像を表示不可能、trueなら画像を表示可能
     public bool imageDisplayflag = false;
     //成功したポーズの判定で使う
-    public string posename = "pose_U";
+    public string posename = "pose_painfullpose1";
     //ポーズが決まったか
-    public bool DecidePose_U;
+    public bool DecidePose_painfullpose1;
 
     //ポーズの各腕、足がそれぞれ指定された範囲内に入っているか
     //falseが入ってない、trueが入ってる
@@ -73,23 +71,23 @@ public class Pose_U : MonoBehaviour
     void Start()
     {
         //ポーズガイドの画像
-        pose_U = gameObject.GetComponent<Image>();
-        r = pose_U.GetComponent<Image>().color.r;
-        g = pose_U.GetComponent<Image>().color.g;
-        b = pose_U.GetComponent<Image>().color.b;
-        alpha = pose_U.GetComponent<Image>().color.a;
+        pose_painfullpose1 = gameObject.GetComponent<Image>();
+        r = pose_painfullpose1.GetComponent<Image>().color.r;
+        g = pose_painfullpose1.GetComponent<Image>().color.g;
+        b = pose_painfullpose1.GetComponent<Image>().color.b;
+        alpha = pose_painfullpose1.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
         playerstatus = this.gameObject.GetComponent<PlayerStatus>();
-        UPoseDisplayfalse();
+        painfullpose1PoseDisplayfalse();
     }
 
 
     void Update()
     {
         //ポーズの画像の情報
-        pose_U.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        pose_painfullpose1.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
+        transform.position = new Vector3(playerstatus.P_pos.position.x, 110, playerstatus.P_pos.position.z);
 
         //プレイヤーStatusから所得する
         R_sholder = playerstatus.R_shoulder_Y;
@@ -129,8 +127,6 @@ public class Pose_U : MonoBehaviour
         /***************************************/
 
         AnglesCheck();
-
-        AnglesCheck();
         //どれかが判定の範囲内に入ったら画像表示
         if (R_arm_flag == true ||
             L_arm_flag == true ||
@@ -138,6 +134,7 @@ public class Pose_U : MonoBehaviour
             L_leg_flag == true)
         {
             imageDisplayflag = true;
+            painfullpose1PoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -147,6 +144,7 @@ public class Pose_U : MonoBehaviour
                  L_leg_flag == false)
         {
             imageDisplayflag = false;
+            painfullpose1PoseDisplayfalse();
         }
 
         if (R_arm_flag == true &&
@@ -155,7 +153,8 @@ public class Pose_U : MonoBehaviour
            L_leg_flag == true)
         {
             //ポーズが決まったか
-            DecidePose_U = true;
+            DecidePose_painfullpose1 = true;
+            painfullpose1PoseDisplaytrue();
         }
     }
     void AnglesCheck()
@@ -217,7 +216,6 @@ public class Pose_U : MonoBehaviour
             L_arm_flag = false;
         }
 
-
         //左股の角度
         if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
         {
@@ -238,12 +236,12 @@ public class Pose_U : MonoBehaviour
     }
 
     //ポーズの画像を表示させる
-    public void UPoseDisplaytrue()
+    public void painfullpose1PoseDisplaytrue()
     {
         alpha = 1.0f;
     }
     //ポーズの画像を表示させない
-    public void UPoseDisplayfalse()
+    public void painfullpose1PoseDisplayfalse()
     {
         alpha = 0.0f;
     }

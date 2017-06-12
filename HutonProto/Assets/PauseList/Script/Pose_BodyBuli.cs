@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Pose_BodyBuli : MonoBehaviour {
 
+    //0612 変更完了
+
     PlayerStatus playerstatus;
 
     /*ポーズ_バナナの判定を行う*/

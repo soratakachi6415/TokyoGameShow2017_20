@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Pause_def : MonoBehaviour {
+public class pose_Default : MonoBehaviour {
     /*ポーズ_Hの判定を行う*/
     //「H」ポーズの画像を所得
-    private Image pause_def;
+    private Image pose_def;
     private float r, g, b, alpha;
 
     /****体の関節指定****/
@@ -48,16 +48,16 @@ public class Pause_def : MonoBehaviour {
     public bool L_leg_flag = false;
 
     //成功したポーズの判定で使う
-    public string Pausename = "pause_def";
+    public string posename = "pose_def";
 
     void Start()
     {
         //ポーズガイドの画像
-        pause_def = gameObject.GetComponent<Image>();
-        r = pause_def.GetComponent<Image>().color.r;
-        g = pause_def.GetComponent<Image>().color.g;
-        b = pause_def.GetComponent<Image>().color.b;
-        alpha = pause_def.GetComponent<Image>().color.a;
+        pose_def = gameObject.GetComponent<Image>();
+        r = pose_def.GetComponent<Image>().color.r;
+        g = pose_def.GetComponent<Image>().color.g;
+        b = pose_def.GetComponent<Image>().color.b;
+        alpha = pose_def.GetComponent<Image>().color.a;
 
         //そのうちタグ判別に切り替えたい
         //R_shoulder = GameObject.FindWithTag("Rightshoulder");
@@ -73,7 +73,7 @@ public class Pause_def : MonoBehaviour {
 
     void Update()
     {
-        pause_def.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        pose_def.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
         //各関節の現在の角度
         R_shoulder_Y = R_shoulder.transform.localEulerAngles.y;
@@ -106,7 +106,7 @@ public class Pause_def : MonoBehaviour {
         }
 
         //一定数以上の条件を見たしたらimageDisplayをtrueにする
-        PauseimageDisplay();
+        poseimageDisplay();
 
     }
     void AnglesCheck()
@@ -203,7 +203,7 @@ public class Pause_def : MonoBehaviour {
     }
 
     //ポーズの画像を表示させる
-    void PauseimageDisplay()
+    void poseimageDisplay()
     {
         /*一回ポーズをとった後ほかのポーズを取らないと得点にならない*/
         if (imageDisplay == true)

@@ -9,7 +9,7 @@ public class Pose_Banana : MonoBehaviour
 
     /*ポーズ_バナナの判定を行う*/
     //「バナナ」ポーズの画像を所得
-    protected Image pause_Banana;
+    protected Image pose_Banana;
     protected float r, g, b, alpha;
     //角度の誤差の数値
     public float anglePM;
@@ -66,16 +66,16 @@ public class Pose_Banana : MonoBehaviour
     public bool imageDisplay = false;
 
     //成功したポーズの判定で使う
-    public string Pausename = "pause_Banana";
+    public string posename = "pose_Banana";
 
     void Start()
     {
         //ポーズガイドの画像
-        pause_Banana = gameObject.GetComponent<Image>();
-        r = pause_Banana.GetComponent<Image>().color.r;
-        g = pause_Banana.GetComponent<Image>().color.g;
-        b = pause_Banana.GetComponent<Image>().color.b;
-        alpha = pause_Banana.GetComponent<Image>().color.a;
+        pose_Banana = gameObject.GetComponent<Image>();
+        r = pose_Banana.GetComponent<Image>().color.r;
+        g = pose_Banana.GetComponent<Image>().color.g;
+        b = pose_Banana.GetComponent<Image>().color.b;
+        alpha = pose_Banana.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
         playerstatus = this.gameObject.GetComponent<PlayerStatus>();
         BananaPoseDisplayfalse();
@@ -119,7 +119,7 @@ public class Pose_Banana : MonoBehaviour
         L_kneeP = L_knee + anglePM;
         L_kneeM = L_knee - anglePM;
         /***************************************/
-        pause_Banana.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        pose_Banana.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
         transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z + 3.0f);
         //角度check

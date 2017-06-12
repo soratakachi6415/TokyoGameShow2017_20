@@ -11,7 +11,7 @@ public class Pose_exit : MonoBehaviour
     PlayerStatus playerstatus;
     /*ポーズ_大の字の判定を行う*/
     //「大」ポーズの画像を所得
-    private Image pause_exit;
+    private Image pose_exit;
     private float r, g, b, alpha;
     //角度の誤差の数値
     public float anglePM;
@@ -60,7 +60,7 @@ public class Pose_exit : MonoBehaviour
     //ポーズが決まったか
     public bool DecidePose_exit;
     //成功したポーズの判定で使う
-    public string Pausename = "pause_exit";
+    public string posename = "pose_exit";
 
     //ポーズの各腕、足がそれぞれ指定された範囲内に入っているか
     //falseが入ってない、trueが入ってる
@@ -72,11 +72,13 @@ public class Pose_exit : MonoBehaviour
     void Start()
     {
         //ポーズガイドの画像
-        pause_exit = gameObject.GetComponent<Image>();
-        r = pause_exit.GetComponent<Image>().color.r;
-        g = pause_exit.GetComponent<Image>().color.g;
-        b = pause_exit.GetComponent<Image>().color.b;
-        alpha = pause_exit.GetComponent<Image>().color.a;
+        pose_exit = gameObject.GetComponent<Image>();
+        r = pose_exit.GetComponent<Image>().color.r;
+        g = pose_exit.GetComponent<Image>().color.g;
+        b = pose_exit.GetComponent<Image>().color.b;
+        alpha = pose_exit.GetComponent<Image>().color.a;
+        //プレイヤーの関節の角度など
+        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
 
         exitPoseDisplayfalse();
     }
@@ -85,7 +87,7 @@ public class Pose_exit : MonoBehaviour
     void Update()
     {
         //ポーズの画像の情報
-        pause_exit.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        pose_exit.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
         transform.position = new Vector3(playerstatus.P_pos.position.x, 110, playerstatus.P_pos.position.z);
 

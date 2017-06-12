@@ -11,7 +11,7 @@ public class Pose_big : MonoBehaviour
     PlayerStatus playerstatus;
     /*ポーズ_大の字の判定を行う*/
     //「大」ポーズの画像を所得
-    private Image pause_big;
+    private Image pose_big;
     private float r, g, b, alpha;
     //角度の誤差の数値
     public float anglePM;
@@ -58,7 +58,7 @@ public class Pose_big : MonoBehaviour
     //falseならガイド画像を表示不可能、trueなら画像を表示可能
     public bool imageDisplayflag = false;
     //成功したポーズの判定で使う
-    public string Pausename = "pause_big";
+    public string posename = "pose_big";
     //ポーズが決まったか
     public bool DecidePose_Big;
 
@@ -72,12 +72,13 @@ public class Pose_big : MonoBehaviour
     void Start()
     {
         //ポーズガイドの画像
-        pause_big = gameObject.GetComponent<Image>();
-        r = pause_big.GetComponent<Image>().color.r;
-        g = pause_big.GetComponent<Image>().color.g;
-        b = pause_big.GetComponent<Image>().color.b;
-        alpha = pause_big.GetComponent<Image>().color.a;
-      
+        pose_big = gameObject.GetComponent<Image>();
+        r = pose_big.GetComponent<Image>().color.r;
+        g = pose_big.GetComponent<Image>().color.g;
+        b = pose_big.GetComponent<Image>().color.b;
+        alpha = pose_big.GetComponent<Image>().color.a;
+        //プレイヤーの関節の角度など
+        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
         BigPoseDisplayfalse();
     }
   
@@ -85,7 +86,7 @@ public class Pose_big : MonoBehaviour
     void Update()
     {
         //ポーズの画像の情報
-        pause_big.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        pose_big.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
         transform.position = new Vector3(playerstatus.P_pos.position.x, 110, playerstatus.P_pos.position.z);
 

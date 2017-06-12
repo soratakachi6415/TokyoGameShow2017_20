@@ -10,7 +10,7 @@ public class Pose_Dogeza : MonoBehaviour
 
     /*ポーズ_Hの判定を行う*/
     //「H」ポーズの画像を所得
-    protected Image pause_shiko;
+    protected Image pose_shiko;
     protected float r, g, b, alpha;
 
     //falseならガイド画像を表示していない、trueなら画像を
@@ -24,7 +24,7 @@ public class Pose_Dogeza : MonoBehaviour
     protected bool L_leg_flag = false;
 
     //成功したポーズの判定で使う
-    public string Pausename = "pause_shiko";
+    public string posename = "pose_shiko";
 
     /****現在の角度******/
     protected float R_sholder;
@@ -70,11 +70,11 @@ public class Pose_Dogeza : MonoBehaviour
     void Start()
     {
         //ポーズガイドの画像
-        pause_shiko = gameObject.GetComponent<Image>();
-        r = pause_shiko.GetComponent<Image>().color.r;
-        g = pause_shiko.GetComponent<Image>().color.g;
-        b = pause_shiko.GetComponent<Image>().color.b;
-        alpha = pause_shiko.GetComponent<Image>().color.a;
+        pose_shiko = gameObject.GetComponent<Image>();
+        r = pose_shiko.GetComponent<Image>().color.r;
+        g = pose_shiko.GetComponent<Image>().color.g;
+        b = pose_shiko.GetComponent<Image>().color.b;
+        alpha = pose_shiko.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
         playerstatus = this.gameObject.GetComponent<PlayerStatus>();
         ShikoPoseDisplayfalse();
@@ -118,7 +118,7 @@ public class Pose_Dogeza : MonoBehaviour
         L_kneeP = L_knee + 20.0f;
         L_kneeM = L_knee - 20.0f;
         /***************************************/
-        pause_shiko.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        pose_shiko.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
         transform.position = new Vector3(playerstatus.P_pos.position.x, 4, playerstatus.P_pos.position.z);
         //角度check

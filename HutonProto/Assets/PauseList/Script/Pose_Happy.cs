@@ -12,7 +12,7 @@ public class Pose_Happy : MonoBehaviour
 
     /*ポーズHappyの判定を行う*/
     //「Happpy」ポーズの画像を所得
-    private Image pauseHappy;
+    private Image poseHappy;
     private float r, g, b, alpha;
     //角度の誤差の数値
     public float anglePM;
@@ -61,7 +61,7 @@ public class Pose_Happy : MonoBehaviour
     //ポーズが決まったか
     public bool DecidePose_Happy = false;
     //成功したポーズの判定で使う
-    public string Pausename = "pauseHappy";
+    public string posename = "poseHappy";
 
     //ポーズの各腕、足がそれぞれ指定された範囲内に入っているか
     //falseが入ってない、trueが入ってる
@@ -73,12 +73,13 @@ public class Pose_Happy : MonoBehaviour
     void Start()
     {
         //ポーズガイドの画像
-        pauseHappy = gameObject.GetComponent<Image>();
-        r = pauseHappy.GetComponent<Image>().color.r;
-        g = pauseHappy.GetComponent<Image>().color.g;
-        b = pauseHappy.GetComponent<Image>().color.b;
-        alpha = pauseHappy.GetComponent<Image>().color.a;
-
+        poseHappy = gameObject.GetComponent<Image>();
+        r = poseHappy.GetComponent<Image>().color.r;
+        g = poseHappy.GetComponent<Image>().color.g;
+        b = poseHappy.GetComponent<Image>().color.b;
+        alpha = poseHappy.GetComponent<Image>().color.a;
+        //プレイヤーの関節の角度など
+        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
         HappyPoseDisplayfalse();
     }
 
@@ -86,9 +87,9 @@ public class Pose_Happy : MonoBehaviour
     void Update()
     {
         //ポーズの画像の情報
-        pauseHappy.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        poseHappy.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 110, playerstatus.P_pos.position.z);
+        this.transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 
         //角度の獲得
         R_sholder = playerstatus.R_shoulder_Y;

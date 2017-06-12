@@ -9,7 +9,7 @@ public class Pose_X : MonoBehaviour {
 
     /*ポーズ_Xの判定を行う*/
     //「X」ポーズの画像を所得
-    private Image pause_X;
+    private Image pose_X;
     private float r, g, b, alpha;
     //角度の誤差の数値
     public float anglePM;
@@ -64,7 +64,7 @@ public class Pose_X : MonoBehaviour {
     public bool L_leg_flag = false;
 
     //成功したポーズの判定で使う
-    public string Pausename = "pause_X";
+    public string posename = "pose_X";
 
     /*プレイヤーの位置と角度を合わせる*/
     //プレイヤーの回転角度
@@ -76,24 +76,22 @@ public class Pose_X : MonoBehaviour {
     void Start()
     {
         //ポーズガイドの画像
-        pause_X = gameObject.GetComponent<Image>();
-        r = pause_X.GetComponent<Image>().color.r;
-        g = pause_X.GetComponent<Image>().color.g;
-        b = pause_X.GetComponent<Image>().color.b;
-        alpha = pause_X.GetComponent<Image>().color.a;
+        pose_X = gameObject.GetComponent<Image>();
+        r = pose_X.GetComponent<Image>().color.r;
+        g = pose_X.GetComponent<Image>().color.g;
+        b = pose_X.GetComponent<Image>().color.b;
+        alpha = pose_X.GetComponent<Image>().color.a;
 
-
-        P_pos = GameObject.Find("Player_Body").GetComponent<Transform>().transform;
-        P_angle = GameObject.Find("Player_Body").GetComponent<Transform>().transform.eulerAngles.y;
-
+        //プレイヤーの関節の角度など
+        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
         XPoseDisplayfalse();
     }
 
 
     void Update()
     {
-        pause_X.GetComponent<Image>().color = new Color(r, g, b, alpha);
-        transform.position = new Vector3(P_pos.position.x, 10, P_pos.position.z);
+        pose_X.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        this.transform.position = new Vector3(playerstatus.P_pos.position.x, 10,playerstatus.P_pos.position.z);
 
         //プレイヤーStatusから所得する
         R_sholder = playerstatus.R_shoulder_Y;

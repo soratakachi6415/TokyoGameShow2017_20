@@ -412,7 +412,7 @@ Prefab:
     - target: {fileID: 224861827294625418, guid: c04d107ca44dbfb499ed8e96cdae3d3d,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224861827294625418, guid: c04d107ca44dbfb499ed8e96cdae3d3d,
         type: 2}
@@ -535,7 +535,7 @@ Prefab:
     - target: {fileID: 224631931679023464, guid: 9521e569fdae5c14cbe2c811939cd037,
         type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224631931679023464, guid: 9521e569fdae5c14cbe2c811939cd037,
         type: 2}
@@ -653,7 +653,7 @@ Prefab:
     - target: {fileID: 224095217924368206, guid: 4c9afee7c1aaabb4ba0b42ab2992b0e9,
         type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 224095217924368206, guid: 4c9afee7c1aaabb4ba0b42ab2992b0e9,
         type: 2}
@@ -785,7 +785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &353481576
 RectTransform:
   m_ObjectHideFlags: 0
@@ -848,13 +848,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634166ea84ee39b4b90d1530718744b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageDisplay: 0
-  R_arm_flag: 0
-  R_leg_flag: 0
-  L_arm_flag: 0
-  L_leg_flag: 0
-  Pausename: pause_frog
-  R_sholder_center: 0
+  anglePM: 30
+  R_shoulder_center: 0
   R_elbow_center: 0
   R_crotch_center: 0
   R_knee_center: 0
@@ -862,7 +857,13 @@ MonoBehaviour:
   L_elbow_center: 0
   L_crotch_center: 0
   L_knee_center: 0
-  DecidePose_Banana: 0
+  imageDisplayflag: 0
+  posename: pose_frog
+  DecidePose_frog: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
 --- !u!114 &353481580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,7 +973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &474682701
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1035,6 +1036,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b87e7be33981824fa7a5eef2970f2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePM: 30
+  R_shoulder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  imageDisplayflag: 0
+  posename: pose_N
+  DecidePose_N: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
 --- !u!114 &474682705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1317,7 +1334,7 @@ Prefab:
     - target: {fileID: 224842377806573204, guid: 2f8b8110253a3e34fb22f7a92b66e15e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 224842377806573204, guid: 2f8b8110253a3e34fb22f7a92b66e15e,
         type: 2}
@@ -1386,6 +1403,46 @@ Prefab:
         type: 2}
       propertyPath: anglePM
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091905909955962, guid: 2f8b8110253a3e34fb22f7a92b66e15e,
+        type: 2}
+      propertyPath: R_shoulder_center
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091905909955962, guid: 2f8b8110253a3e34fb22f7a92b66e15e,
+        type: 2}
+      propertyPath: R_elbow_center
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091905909955962, guid: 2f8b8110253a3e34fb22f7a92b66e15e,
+        type: 2}
+      propertyPath: R_crotch_center
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091905909955962, guid: 2f8b8110253a3e34fb22f7a92b66e15e,
+        type: 2}
+      propertyPath: R_knee_center
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091905909955962, guid: 2f8b8110253a3e34fb22f7a92b66e15e,
+        type: 2}
+      propertyPath: L_shoulder_center
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091905909955962, guid: 2f8b8110253a3e34fb22f7a92b66e15e,
+        type: 2}
+      propertyPath: L_elbow_center
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091905909955962, guid: 2f8b8110253a3e34fb22f7a92b66e15e,
+        type: 2}
+      propertyPath: L_crotch_center
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091905909955962, guid: 2f8b8110253a3e34fb22f7a92b66e15e,
+        type: 2}
+      propertyPath: L_knee_center
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f8b8110253a3e34fb22f7a92b66e15e, type: 2}
@@ -1813,7 +1870,7 @@ Prefab:
     - target: {fileID: 224240269163979612, guid: 28a08d4b97496f34e93b83da424f4a4e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224240269163979612, guid: 28a08d4b97496f34e93b83da424f4a4e,
         type: 2}
@@ -1877,6 +1934,26 @@ Prefab:
         type: 2}
       propertyPath: anglePM
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114968124222148758, guid: 28a08d4b97496f34e93b83da424f4a4e,
+        type: 2}
+      propertyPath: R_shoulder_center
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 114968124222148758, guid: 28a08d4b97496f34e93b83da424f4a4e,
+        type: 2}
+      propertyPath: R_crotch_center
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114968124222148758, guid: 28a08d4b97496f34e93b83da424f4a4e,
+        type: 2}
+      propertyPath: L_shoulder_center
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 114968124222148758, guid: 28a08d4b97496f34e93b83da424f4a4e,
+        type: 2}
+      propertyPath: L_crotch_center
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28a08d4b97496f34e93b83da424f4a4e, type: 2}
@@ -2395,7 +2472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &937631073
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2458,6 +2535,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5742885bcd309f40a9646a529e7253a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePM: 30
+  R_shoulder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  imageDisplayflag: 0
+  posename: pose_J
+  DecidePose_J: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
 --- !u!114 &937631077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2497,7 +2590,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &976663737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2565,7 +2658,7 @@ MonoBehaviour:
   R_leg_flag: 0
   L_arm_flag: 0
   L_leg_flag: 0
-  Pausename: pause_shiko
+  anglePM: 30
   R_sholder_center: 0
   R_elbow_center: 0
   R_crotch_center: 0
@@ -2574,7 +2667,8 @@ MonoBehaviour:
   L_elbow_center: 0
   L_crotch_center: 0
   L_knee_center: 0
-  DecidePose_Banana: 0
+  DecidePose_fight: 0
+  posename: pose_fight
 --- !u!114 &976663741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3180,7 +3274,7 @@ Prefab:
     - target: {fileID: 224038865971369136, guid: 25a11537f76d83f4ba9dab18b599921c,
         type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 224038865971369136, guid: 25a11537f76d83f4ba9dab18b599921c,
         type: 2}
@@ -3317,7 +3411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1178667195
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3380,6 +3474,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c703c641c9668c641947707e5ae5ddf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePM: 30
+  R_sholder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  anglenumber: 0
+  DecidePose_Racecs: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
+  imageDisplay: 0
+  posename: pose_Racecs
 --- !u!114 &1178667199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3877,7 +3988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1326312124
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3940,6 +4051,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7289972a20f4154fbbf87e81f0fba20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePM: 30
+  R_sholder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  anglenumber: 0
+  DecidePose_spuat: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
+  imageDisplay: 0
+  posename: pose_spuat
 --- !u!114 &1326312128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3990,7 +4118,7 @@ RectTransform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1603031337}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4181,13 +4309,14 @@ GameObject:
   - component: {fileID: 1375847281}
   - component: {fileID: 1375847280}
   - component: {fileID: 1375847282}
+  - component: {fileID: 1375847283}
   m_Layer: 2
   m_Name: Pose_PainfulPose1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1375847279
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4260,6 +4389,33 @@ MonoBehaviour:
   L_knee_Y: 0
   P_angle: 0
   P_pos: {fileID: 0}
+--- !u!114 &1375847283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1375847278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d86b58eacadd434faff6d8b78156ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anglePM: 30
+  R_shoulder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  imageDisplayflag: 0
+  posename: pose_painfullpose1
+  DecidePose_painfullpose1: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
 --- !u!1 &1386452070
 GameObject:
   m_ObjectHideFlags: 0
@@ -4308,7 +4464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1396454201
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4371,13 +4527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41dfd570aa7211f4b8dceaa439bcd5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageDisplay: 0
-  R_arm_flag: 0
-  R_leg_flag: 0
-  L_arm_flag: 0
-  L_leg_flag: 0
-  Pausename: pause_Gymnastice
-  R_sholder_center: 0
+  anglePM: 30
+  R_shoulder_center: 0
   R_elbow_center: 0
   R_crotch_center: 0
   R_knee_center: 0
@@ -4385,7 +4536,13 @@ MonoBehaviour:
   L_elbow_center: 0
   L_crotch_center: 0
   L_knee_center: 0
-  DecidePose_Banana: 0
+  imageDisplayflag: 0
+  posename: pose_big
+  DecidePose_Big: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
 --- !u!114 &1396454205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4425,7 +4582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1423868062
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4488,6 +4645,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0a17d45d17a98540bdfea21ca352410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePM: 30
+  R_shoulder_center: 30
+  R_elbow_center: 190
+  R_crotch_center: 135
+  R_knee_center: 225
+  L_shoulder_center: 330
+  L_elbow_center: 170
+  L_crotch_center: 0
+  L_knee_center: 0
+  imageDisplayflag: 0
+  posename: pose_muaythai
+  DecidePose_muaythai: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
 --- !u!114 &1423868066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4539,7 +4712,7 @@ RectTransform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1603031337}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4888,7 +5061,7 @@ RectTransform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1603031337}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5374,7 +5547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1592350756
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5458,6 +5631,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebfc9b540fa7694e88e87018de476ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePM: 30
+  R_shoulder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  imageDisplayflag: 0
+  posename: pose_big
+  DecidePose_Big: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
 --- !u!1 &1603031333
 GameObject:
   m_ObjectHideFlags: 0
@@ -5543,6 +5732,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1339913887}
   - {fileID: 143232928}
   - {fileID: 1897033694}
   - {fileID: 1820738064}
@@ -5556,7 +5746,6 @@ RectTransform:
   - {fileID: 1490260909}
   - {fileID: 2102018045}
   - {fileID: 1464823434}
-  - {fileID: 1339913887}
   - {fileID: 976663737}
   - {fileID: 353481576}
   - {fileID: 1396454201}
@@ -5990,7 +6179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1645758359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6074,6 +6263,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 708002bc2e65f6b4d88ba73a09553f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePM: 30
+  R_sholder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  anglenumber: 0
+  DecidePose_yoga1: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
+  imageDisplay: 0
+  posename: pose_yoga1
 --- !u!1 &1670136845
 GameObject:
   m_ObjectHideFlags: 0
@@ -6204,7 +6410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1715852052
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6267,6 +6473,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347f9314bbe9c684dba640f26108b088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePM: 30
+  R_sholder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  anglenumber: 0
+  DecidePose_R: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
+  imageDisplay: 0
+  posename: pose_R
 --- !u!114 &1715852056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6348,7 +6571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1785038751
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6432,6 +6655,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa300775cadadd4f8620010aa968f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePM: 30
+  R_sholder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  anglenumber: 0
+  DecidePose_yoga2: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
+  imageDisplay: 0
+  posename: pose_yoga2
 --- !u!1 &1800684716
 GameObject:
   m_ObjectHideFlags: 0
@@ -6496,7 +6736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1806023114
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6559,6 +6799,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7fda0f00a2943e48b19fb75c13f4114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePM: 30
+  R_shoulder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  imageDisplayflag: 0
+  posename: pose_K
+  DecidePose_K: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
 --- !u!114 &1806023118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6625,7 +6881,7 @@ Prefab:
     - target: {fileID: 224550103912825962, guid: f80cf19042ff3104399d88934498c09e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224550103912825962, guid: f80cf19042ff3104399d88934498c09e,
         type: 2}
@@ -6743,7 +6999,7 @@ Prefab:
     - target: {fileID: 224945440620242728, guid: 24947fa2551e2224b84ea9971a57b897,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224945440620242728, guid: 24947fa2551e2224b84ea9971a57b897,
         type: 2}
@@ -6807,6 +7063,26 @@ Prefab:
         type: 2}
       propertyPath: anglePM
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114345585866479486, guid: 24947fa2551e2224b84ea9971a57b897,
+        type: 2}
+      propertyPath: R_shoulder_center
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 114345585866479486, guid: 24947fa2551e2224b84ea9971a57b897,
+        type: 2}
+      propertyPath: R_crotch_center
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114345585866479486, guid: 24947fa2551e2224b84ea9971a57b897,
+        type: 2}
+      propertyPath: L_shoulder_center
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 114345585866479486, guid: 24947fa2551e2224b84ea9971a57b897,
+        type: 2}
+      propertyPath: L_crotch_center
+      value: 330
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24947fa2551e2224b84ea9971a57b897, type: 2}
@@ -6898,7 +7174,7 @@ Prefab:
     - target: {fileID: 224705863842494920, guid: 01d95f3d82ea0a94a9944a174d49ae5e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224705863842494920, guid: 01d95f3d82ea0a94a9944a174d49ae5e,
         type: 2}
@@ -6982,13 +7258,14 @@ GameObject:
   - component: {fileID: 1928968123}
   - component: {fileID: 1928968122}
   - component: {fileID: 1928968124}
+  - component: {fileID: 1928968125}
   m_Layer: 2
   m_Name: Pose_painfullpose2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1928968121
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7061,6 +7338,33 @@ MonoBehaviour:
   L_knee_Y: 0
   P_angle: 0
   P_pos: {fileID: 0}
+--- !u!114 &1928968125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1928968120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e561b1af5e698d44eb9f2ce4235bf418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anglePM: 30
+  R_shoulder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  imageDisplayflag: 0
+  posename: pose_painfullpose2
+  DecidePose_painfullpose2: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
 --- !u!1 &1934004133
 GameObject:
   m_ObjectHideFlags: 0
@@ -7079,7 +7383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1934004134
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7142,6 +7446,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bf949be0e2c774abfb6e36b3e0b8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePM: 30
+  R_shoulder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  imageDisplayflag: 0
+  posename: pose_big
+  DecidePose_Big: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
 --- !u!114 &1934004138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7193,7 +7513,7 @@ RectTransform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1603031337}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7260,7 +7580,7 @@ MonoBehaviour:
   L_arm_flag: 0
   L_leg_flag: 0
   imageDisplay: 0
-  Pausename: pause_shiko
+  posename: pose_Banana
 --- !u!114 &1959453338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7490,7 +7810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2037463076
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7574,6 +7894,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494a9d81520771548b925a05bc8efa1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePM: 30
+  R_sholder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  anglenumber: 0
+  DecidePose_yoga3: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
+  imageDisplay: 0
+  posename: pose_yoga3
 --- !u!1 &2051272026
 GameObject:
   m_ObjectHideFlags: 0
@@ -7700,7 +8037,7 @@ RectTransform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1603031337}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7757,7 +8094,7 @@ MonoBehaviour:
   R_leg_flag: 0
   L_arm_flag: 0
   L_leg_flag: 0
-  Pausename: pause_F
+  posename: pose_F
   R_sholder_center: 180
   R_elbow_center: 90
   R_crotch_center: 0

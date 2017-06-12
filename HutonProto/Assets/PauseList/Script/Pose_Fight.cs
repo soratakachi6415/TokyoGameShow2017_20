@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Pose_Fight : MonoBehaviour {
+    //プレイヤーの角度参照
     PlayerStatus playerstatus;
 
     /*ポーズ_Hの判定を行う*/
     //「H」ポーズの画像を所得
-    private Image pause_fight;
+    private Image pose_fight;
     private float r, g, b, alpha;
 
     //falseならガイド画像を表示していない、trueなら画像を
@@ -20,9 +21,8 @@ public class Pose_Fight : MonoBehaviour {
     public bool R_leg_flag = false;
     public bool L_arm_flag = false;
     public bool L_leg_flag = false;
-
-    //成功したポーズの判定で使う
-    public string Pausename = "pause_fight";
+    //角度の誤差の数値
+    public float anglePM;
 
     /****現在の角度******/
     private float R_sholder;
@@ -63,23 +63,30 @@ public class Pose_Fight : MonoBehaviour {
     private float L_kneeP, L_kneeM;
     /************************************/
     //ポーズが決まったか
-    public bool DecidePose_Banana;
+    public bool DecidePose_fight;
 
+    //成功したポーズの判定で使う
+    public string posename = "pose_fight";
     void Start()
     {
         //ポーズガイドの画像
-        pause_fight = gameObject.GetComponent<Image>();
-        r = pause_fight.GetComponent<Image>().color.r;
-        g = pause_fight.GetComponent<Image>().color.g;
-        b = pause_fight.GetComponent<Image>().color.b;
-        alpha = pause_fight.GetComponent<Image>().color.a;
+        pose_fight = gameObject.GetComponent<Image>();
+        r = pose_fight.GetComponent<Image>().color.r;
+        g = pose_fight.GetComponent<Image>().color.g;
+        b = pose_fight.GetComponent<Image>().color.b;
+        alpha = pose_fight.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
         playerstatus = this.gameObject.GetComponent<PlayerStatus>();
         fightPoseDisplayfalse();
     }
-
     void Update()
     {
+        //ポーズの画像の情報
+        pose_fight.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        //画像をプレイヤーの上、X、Yの調整
+        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
+
+
         //角度の獲得
         R_sholder = playerstatus.R_shoulder_Y;
         R_elbow = playerstatus.R_elbow_Y;
@@ -92,31 +99,31 @@ public class Pose_Fight : MonoBehaviour {
 
         /*角度の判定の上下許容範囲*/
         //右肩
-        R_sholderP = R_sholder + 20.0f;
-        R_sholderM = R_sholder - 20.0f;
+        R_sholderP = R_sholder + anglePM;
+        R_sholderM = R_sholder - anglePM;
         //右ひじ
-        R_elbowP = R_elbow + 20.0f;
-        R_elbowM = R_elbow - 20.0f;
+        R_elbowP = R_elbow + anglePM;
+        R_elbowM = R_elbow - anglePM;
         //右股   
-        R_crotchP = R_crotch + 20.0f;
-        R_crotchM = R_crotch - 20.0f;
+        R_crotchP = R_crotch + anglePM;
+        R_crotchM = R_crotch - anglePM;
         //右膝
-        R_kneeP = R_knee + 20.0f;
-        R_kneeM = R_knee - 20.0f;
+        R_kneeP = R_knee + anglePM;
+        R_kneeM = R_knee - anglePM;
         //左肩
-        L_shoulderP = L_shoulder + 20.0f;
-        L_shoulderM = L_shoulder - 20.0f;
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
         //左肘
-        L_elbowP = L_shoulder + 20.0f;
-        L_elbowM = L_shoulder - 20.0f;
+        L_elbowP = L_shoulder + anglePM;
+        L_elbowM = L_shoulder - anglePM;
         //左股
-        L_shoulderP = L_shoulder + 20.0f;
-        L_shoulderM = L_shoulder - 20.0f;
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
         //左膝
-        L_kneeP = L_knee + 20.0f;
-        L_kneeM = L_knee - 20.0f;
+        L_kneeP = L_knee + anglePM;
+        L_kneeM = L_knee - anglePM;
         /***************************************/
-        pause_fight.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        pose_fight.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
         transform.position = new Vector3(playerstatus.P_pos.position.x, 4, playerstatus.P_pos.position.z);
         //角度check
@@ -129,6 +136,7 @@ public class Pose_Fight : MonoBehaviour {
             L_leg_flag == true)
         {
             imageDisplay = true;
+            fightPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -138,6 +146,7 @@ public class Pose_Fight : MonoBehaviour {
             L_leg_flag == false)
         {
             imageDisplay = false;
+            fightPoseDisplayfalse();
         }
 
         //全部入ったか
@@ -146,7 +155,8 @@ public class Pose_Fight : MonoBehaviour {
             R_leg_flag == true &&
             L_leg_flag == true)
         {
-            DecidePose_Banana = true;
+            DecidePose_fight = true;
+            fightPoseDisplaytrue();
         }
     }
     void AnglesCheck()

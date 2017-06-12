@@ -5,25 +5,16 @@ using UnityEngine.UI;
 
 public class Pose_Gymnastice : MonoBehaviour {
 
+    //0612 変更完了
+
+    //プレイヤーの角度参照
     PlayerStatus playerstatus;
-
-    /*ポーズ_Hの判定を行う*/
-    //「H」ポーズの画像を所得
-    protected Image pause_Gymnastice;
-    protected float r, g, b, alpha;
-
-    //falseならガイド画像を表示していない、trueなら画像を
-    public bool imageDisplay = false;
-
-    //ポーズの各腕、足がそれぞれ指定された範囲内に入っているか
-    //falseが入ってない、trueが入ってる
-    public bool R_arm_flag = false;
-    public bool R_leg_flag = false;
-    public bool L_arm_flag = false;
-    public bool L_leg_flag = false;
-
-    //成功したポーズの判定で使う
-    public string Pausename = "pause_Gymnastice";
+    /*ポーズ_大の字の判定を行う*/
+    //「大」ポーズの画像を所得
+    private Image pose_big;
+    private float r, g, b, alpha;
+    //角度の誤差の数値
+    public float anglePM;
 
     /****現在の角度******/
     protected float R_sholder;
@@ -38,8 +29,8 @@ public class Pose_Gymnastice : MonoBehaviour {
 
     /*それぞれの手足ごとの判定の数値の中心*/
     //右肩の判定の基本となる数字
-    public float R_sholder_center;
     //Pがプラス、Mがマイナス
+    public float R_shoulder_center;
     protected float R_sholderP, R_sholderM;
     //右肘
     public float R_elbow_center;
@@ -63,25 +54,43 @@ public class Pose_Gymnastice : MonoBehaviour {
     public float L_knee_center;
     protected float L_kneeP, L_kneeM;
     /************************************/
+
+    //falseならガイド画像を表示不可能、trueなら画像を表示可能
+    public bool imageDisplayflag = false;
+    //成功したポーズの判定で使う
+    public string posename = "pose_big";
     //ポーズが決まったか
-    public bool DecidePose_Banana;
+    public bool DecidePose_Big;
+
+    //ポーズの各腕、足がそれぞれ指定された範囲内に入っているか
+    //falseが入ってない、trueが入ってる
+    public bool R_arm_flag = false;
+    public bool R_leg_flag = false;
+    public bool L_arm_flag = false;
+    public bool L_leg_flag = false;
 
     void Start()
     {
         //ポーズガイドの画像
-        pause_Gymnastice = gameObject.GetComponent<Image>();
-        r = pause_Gymnastice.GetComponent<Image>().color.r;
-        g = pause_Gymnastice.GetComponent<Image>().color.g;
-        b = pause_Gymnastice.GetComponent<Image>().color.b;
-        alpha = pause_Gymnastice.GetComponent<Image>().color.a;
+        pose_big = gameObject.GetComponent<Image>();
+        r = pose_big.GetComponent<Image>().color.r;
+        g = pose_big.GetComponent<Image>().color.g;
+        b = pose_big.GetComponent<Image>().color.b;
+        alpha = pose_big.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
         playerstatus = this.gameObject.GetComponent<PlayerStatus>();
-        GymnasticePoseDisplayfalse();
+        BigPoseDisplayfalse();
     }
+
 
     void Update()
     {
-        //角度の獲得
+        //ポーズの画像の情報
+        pose_big.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        //画像をプレイヤーの上、X、Yの調整
+        transform.position = new Vector3(playerstatus.P_pos.position.x, 110, playerstatus.P_pos.position.z);
+
+        //プレイヤーStatusから所得する
         R_sholder = playerstatus.R_shoulder_Y;
         R_elbow = playerstatus.R_elbow_Y;
         R_crotch = playerstatus.R_crotch_Y;
@@ -93,68 +102,67 @@ public class Pose_Gymnastice : MonoBehaviour {
 
         /*角度の判定の上下許容範囲*/
         //右肩
-        R_sholderP = R_sholder + 20.0f;
-        R_sholderM = R_sholder - 20.0f;
+        R_sholderP = R_sholder + anglePM;
+        R_sholderM = R_sholder - anglePM;
         //右ひじ
-        R_elbowP = R_elbow + 20.0f;
-        R_elbowM = R_elbow - 20.0f;
+        R_elbowP = R_elbow + anglePM;
+        R_elbowM = R_elbow - anglePM;
         //右股   
-        R_crotchP = R_crotch + 20.0f;
-        R_crotchM = R_crotch - 20.0f;
+        R_crotchP = R_crotch + anglePM;
+        R_crotchM = R_crotch - anglePM;
         //右膝
-        R_kneeP = R_knee + 20.0f;
-        R_kneeM = R_knee - 20.0f;
+        R_kneeP = R_knee + anglePM;
+        R_kneeM = R_knee - anglePM;
         //左肩
-        L_shoulderP = L_shoulder + 20.0f;
-        L_shoulderM = L_shoulder - 20.0f;
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
         //左肘
-        L_elbowP = L_shoulder + 20.0f;
-        L_elbowM = L_shoulder - 20.0f;
+        L_elbowP = L_shoulder + anglePM;
+        L_elbowM = L_shoulder - anglePM;
         //左股
-        L_shoulderP = L_shoulder + 20.0f;
-        L_shoulderM = L_shoulder - 20.0f;
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
         //左膝
-        L_kneeP = L_knee + 20.0f;
-        L_kneeM = L_knee - 20.0f;
+        L_kneeP = L_knee + anglePM;
+        L_kneeM = L_knee - anglePM;
         /***************************************/
-        pause_Gymnastice.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 4, playerstatus.P_pos.position.z);
-        //角度check
         AnglesCheck();
-
         //どれかが判定の範囲内に入ったら画像表示
         if (R_arm_flag == true ||
             L_arm_flag == true ||
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplay = true;
+            imageDisplayflag = true;
+            BigPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
         if (R_arm_flag == false &&
-            L_arm_flag == false &&
-            R_leg_flag == false &&
-            L_leg_flag == false)
+                 L_arm_flag == false &&
+                 R_leg_flag == false &&
+                 L_leg_flag == false)
         {
-            imageDisplay = false;
+            imageDisplayflag = false;
+            BigPoseDisplayfalse();
         }
 
-        //全部入ったか
         if (R_arm_flag == true &&
-            L_arm_flag == true &&
-            R_leg_flag == true &&
-            L_leg_flag == true)
+           L_arm_flag == true &&
+           R_leg_flag == true &&
+           L_leg_flag == true)
         {
-            DecidePose_Banana = true;
+            //ポーズが決まったか
+            DecidePose_Big = true;
+            BigPoseDisplaytrue();
         }
     }
     void AnglesCheck()
     {
         //右腕の判別
         //右肩の角度
-        if (R_sholder_center >= R_sholderM && R_sholder_center <= R_sholderP)
+        if (R_shoulder_center >= R_sholderM && R_shoulder_center <= R_sholderP)
         {
             //右肘
             if (R_elbow_center >= R_elbowM && R_elbow_center <= R_elbowP)
@@ -173,10 +181,10 @@ public class Pose_Gymnastice : MonoBehaviour {
 
         //右足
         //右股の角度
-        if (R_crotch >= R_crotchM && R_crotch <= R_crotchP)
+        if (R_crotch_center >= R_crotchM && R_crotch_center <= R_crotchP)
         {
             //右膝
-            if (R_knee >= R_kneeM && R_knee <= R_kneeP)
+            if (R_knee_center >= R_kneeM && R_knee_center <= R_kneeP)
             {
                 R_leg_flag = true;
             }
@@ -190,9 +198,7 @@ public class Pose_Gymnastice : MonoBehaviour {
             R_leg_flag = false;
         }
 
-
         //左側の判別
-
         //左肩の角度
         if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
         {
@@ -210,7 +216,6 @@ public class Pose_Gymnastice : MonoBehaviour {
         {
             L_arm_flag = false;
         }
-
 
         //左股の角度
         if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
@@ -232,13 +237,12 @@ public class Pose_Gymnastice : MonoBehaviour {
     }
 
     //ポーズの画像を表示させる
-    public void GymnasticePoseDisplaytrue()
+    public void BigPoseDisplaytrue()
     {
         alpha = 1.0f;
     }
-
     //ポーズの画像を表示させない
-    public void GymnasticePoseDisplayfalse()
+    public void BigPoseDisplayfalse()
     {
         alpha = 0.0f;
     }

@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class Pose_H : MonoBehaviour
 {
     //プレイヤーの角度参照
-    PoseStatus playerstatus;
+    PlayerStatus playerstatus;
 
     /*ポーズ_Hの判定を行う*/
     //「H」ポーズの画像を所得
-    private Image pause_H;
+    private Image pose_H;
     private float r, g, b, alpha;
     //角度の誤差の数値
     public float anglePM;
@@ -69,15 +69,16 @@ public class Pose_H : MonoBehaviour
 
     void Start()
     {
-        pause_H = gameObject.GetComponent<Image>();
+        pose_H = gameObject.GetComponent<Image>();
 
         //ポーズガイドの画像
-        pause_H = gameObject.GetComponent<Image>();
-        r = pause_H.GetComponent<Image>().color.r;
-        g = pause_H.GetComponent<Image>().color.g;
-        b = pause_H.GetComponent<Image>().color.b;
-        alpha = pause_H.GetComponent<Image>().color.a;
-
+        pose_H = gameObject.GetComponent<Image>();
+        r = pose_H.GetComponent<Image>().color.r;
+        g = pose_H.GetComponent<Image>().color.g;
+        b = pose_H.GetComponent<Image>().color.b;
+        alpha = pose_H.GetComponent<Image>().color.a;
+        //プレイヤーの関節の角度など
+        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
         HPoseDisplayfalse();
     }
 
@@ -85,9 +86,9 @@ public class Pose_H : MonoBehaviour
     void Update()
     {
         //ポーズの画像の情報
-        pause_H.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        pose_H.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 110, playerstatus.P_pos.position.z);
+        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 
         //プレイヤーStatusから所得する
         R_sholder = playerstatus.R_shoulder_Y;

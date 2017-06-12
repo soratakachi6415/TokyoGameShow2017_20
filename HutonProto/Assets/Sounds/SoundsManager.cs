@@ -6,7 +6,9 @@ public class SoundsManager : MonoBehaviour {
 
     public AudioClip sheepCry;
     public AudioClip walkFloor;
-    private AudioClip audioClip;
+    public AudioClip alarm;
+    public AudioClip titleBGM;
+    public AudioClip gamePlayBGM;
 
     private AudioSource audioSource;
 
@@ -19,15 +21,30 @@ public class SoundsManager : MonoBehaviour {
 	void Update () {
 	}
 
-    //羊が消えたとき(敵エネミーに殴られたとき)
-    public void SheepCry()
+    public void SheepCry()      //羊が消えたとき(敵エネミーに殴られたとき)
     {
         audioSource.PlayOneShot(sheepCry);
     }
 
-    //敵エネミ―が再出現するとき
-    public void WalkFloor()
+    public void WalkFloor()     //敵エネミ―が再出現するとき
     {
         audioSource.PlayOneShot(walkFloor);
+    }
+
+    public void Alarm()         //制限時間終了時に目覚まし音
+    {
+        audioSource.PlayOneShot(alarm);
+    }
+
+    public void TitlePlayBGM()  //タイトルBGM
+    {
+        audioSource.PlayOneShot(titleBGM);
+        print("BGM再生");
+    }
+
+    public void GamePlayBGM()   //ゲーム中BGM
+    {
+        audioSource.PlayOneShot(gamePlayBGM);
+        print("BGM再生");
     }
 }

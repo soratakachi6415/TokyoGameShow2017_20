@@ -6,8 +6,12 @@ public class Clock : MonoBehaviour
 {
     //分針の画像オブジェクト
     private GameObject Minutehand;
+    //分針のオブジェクトのZ軸
+    private float LongangleZ;
     //時針の画像オブジェクト
     private GameObject Shorthand;
+    //時針のオブジェクトのZ軸
+    private float ShortanglZ;
     //タイマー
     private float timer = 0;
     //時針を動かすフラグ
@@ -18,16 +22,27 @@ public class Clock : MonoBehaviour
     [SerializeField]
     private bool ClockStart = false;
 
+
+
+    private SoundsManager soundsManager;
+
+
     void Start()
     {
         //Object検索
         Minutehand = GameObject.Find("Minutehand");
         Shorthand = GameObject.Find("Shorthand");
+        soundsManager = GameObject.Find("SoundController").GetComponent<SoundsManager>();
+        ClockStart = false;
     }
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        //Z軸所得
+        LongangleZ = Minutehand.transform.localEulerAngles.z;
+        ShortanglZ = Shorthand.transform.localEulerAngles.z;
+
         //カウントダウン開始
         if (ClockStart == true)
         {
@@ -50,6 +65,17 @@ public class Clock : MonoBehaviour
                 Shorthand.transform.eulerAngles += new Vector3(0f, 0f, -30.0f);
                 longflag = false;
             }
+
+            //制限時間終了時
+            if (hour == 0 && timer == 0)
+            {
+                GameObject.Find("SoundController").GetComponent<SoundsManager>().Alarm();
+            }
+        }
+        else if (!ClockStart)
+        {
+            soundsManager.GamePlayBGM();
+            ClockStart = true;
         }
     }
 

@@ -57,8 +57,6 @@ public class EnemyAction : MonoBehaviour {
     private int [] Reappear;
     #endregion
 
-
-
     void Start () {
         //確認用
         topPos = topEnemy.transform.position;
@@ -74,7 +72,7 @@ public class EnemyAction : MonoBehaviour {
         Cnt[0] = Cnt[1] = 0;
 
         Reappear = new int[2];
-        Reappear[0] = Reappear[1] = 0; 
+        Reappear[0] = Reappear[1] = 0;
 
         Parent_handleg1 = new List<GameObject>();  //手足のリスト
         Parent_handleg2 = new List<GameObject>();
@@ -100,8 +98,8 @@ public class EnemyAction : MonoBehaviour {
         Parent_handleg2.Add(GameObject.Find("Enemy2_RightLeg2"));     //7
         #endregion
 
-        m_rand_rotate_min = 0.2f;
-        m_rand_rotate_max = 0.3f;
+        m_rand_rotate_min = 0.0556f;
+        m_rand_rotate_max = 0.1667f;
         SetParts_up();
         SetParts_down();
     }
@@ -116,7 +114,7 @@ public class EnemyAction : MonoBehaviour {
 
         //上のエネミー行動
         #region
-        if (t[0] * 4 < 1f)
+        if (t[0] < 1f)
         {
             actionFlag_up = true;
             m_rand_parts.GetComponent<MeshRenderer>().material.color = Color.blue;  //debug
@@ -129,14 +127,14 @@ public class EnemyAction : MonoBehaviour {
             m_rand_parts.GetComponent<MeshRenderer>().material.color = Color.yellow;  //debug
         }
 
-        t[0] += Time.deltaTime * 0.05f;
+        t[0] += Time.deltaTime * 0.1f;
         #endregion
 
         //下のエネミー行動
         #region
-        if(t[1] * 4 < 1f)
+        if(t[1] < 1f)
         {
-            if (prevParts == null && t[0] * 4< 1f) return;  //初回のみ上エネミ―の行動が終了するまでreturn
+            if (prevParts == null && t[0]< 1f) return;  //初回のみ上エネミ―の行動が終了するまでreturn
 
             m_rand_parts2.GetComponent<MeshRenderer>().material.color = Color.blue;  //debug
             actionFlag_down = true;
@@ -149,10 +147,11 @@ public class EnemyAction : MonoBehaviour {
             m_rand_parts2.GetComponent<MeshRenderer>().material.color = Color.yellow;  //debug
         }
 
-        t[1] += Time.deltaTime * 0.05f;
+        t[1] += Time.deltaTime * 0.1f;
         #endregion
 
-        //クールタイム経過で初期化処理
+        //クールタイム経過で初期化処理。再行動時には3回動くまで連続で初期化。
+        #region
         if ((coolTime < Cnt[0] || Reappear[0] > 0) && !actionFlag_up)
         {
            t[0] = 0;
@@ -167,7 +166,8 @@ public class EnemyAction : MonoBehaviour {
             Cnt[1] = 0;
             if (Reappear[1] > 0) Reappear[1]--;
         }
-	}
+        #endregion
+    }
 
     private void SetParts_up()  //複数のパーツから1つを選抜し、ランダムで角度を決める
     {
@@ -187,18 +187,16 @@ public class EnemyAction : MonoBehaviour {
         }
 
         //ランダムで回転角度決定
-        m_rand_rotate_range = new Quaternion(m_rand_parts.transform.rotation.x, Random.Range(m_rand_rotate_min, m_rand_rotate_max),
-                            m_rand_parts.transform.rotation.z, 0);
+        m_rand_rotate_range = new Quaternion(0, Random.Range(m_rand_rotate_min, m_rand_rotate_max),0, 0);
 
         if ((int)Random.Range(0, 2) == 0)
         {
-            m_rand_euler = Quaternion.Euler(0, m_rand_parts.transform.rotation.y - m_rand_rotate_range.y, 0);
+            m_rand_euler.y = m_rand_parts.transform.rotation.y - m_rand_rotate_range.y;
         }
         else
         {
-            m_rand_euler = Quaternion.Euler(0, m_rand_parts.transform.rotation.y + m_rand_rotate_range.y, 0);
+            m_rand_euler.y = m_rand_parts.transform.rotation.y + m_rand_rotate_range.y;
         }
-
     }
 
     private void SetParts_down() //上下エネミー両対応のコードは時間がかかるので普通にメソッド分け。時間に余裕あれば修正
@@ -219,32 +217,15 @@ public class EnemyAction : MonoBehaviour {
         }
 
         //ランダムで角度決定
-        m_rand_rotate_range = new Quaternion(m_rand_parts2.transform.rotation.x, Random.Range(m_rand_rotate_min, m_rand_rotate_max),
-                            m_rand_parts2.transform.rotation.z, 0);
+        m_rand_rotate_range = new Quaternion(0, Random.Range(m_rand_rotate_min, m_rand_rotate_max),0, 0);
 
-        //体の左側と右側で角度調整
-        if (m_rand_parts2.ToString().Contains("Left"))
+        if ((int)Random.Range(0, 2) == 0)
         {
-            //ランダムで回転方向を決める
-            if (Random.Range(0, 2) == 0)
-            {
-                m_rand_euler2 = Quaternion.Euler(0, 180 - m_rand_rotate_range.y, 0);
-            }
-            else
-            {
-                m_rand_euler2 = Quaternion.Euler(0, -(180 - m_rand_rotate_range.y), 0);
-            }
+            m_rand_euler2.y = m_rand_parts2.transform.rotation.y - m_rand_rotate_range.y;
         }
-        else if (m_rand_parts2.ToString().Contains("Right"))
+        else
         {
-            if ((int)Random.Range(0, 2) == 0)
-            {
-                m_rand_euler2 = Quaternion.Euler(0, m_rand_rotate_range.y, 0);
-            }
-            else
-            {
-                m_rand_euler2 = Quaternion.Euler(0, -(m_rand_rotate_range.y), 0);
-            }
+            m_rand_euler2.y = m_rand_parts2.transform.rotation.y + m_rand_rotate_range.y;
         }
     }
 
@@ -278,16 +259,16 @@ public class EnemyAction : MonoBehaviour {
         if(obj.name == "Model_enemyTest") //上エネミ―
         {
             ReAppear_top(obj);
-            Reappear[0] = 3;
+            Reappear[0] = 3;  //再出現後の行動回数
         }
         else if(obj.name == "Model_enemy2Test") //下エネミー
         {
             ReAppear_bottom(obj);
-            Reappear[1] = 3;
+            Reappear[1] = 3;  //再出現後の行動回数
         }
     }
 
-    private void ReAppear_top(GameObject obj)　////再出現時の回転と座標
+    private void ReAppear_top(GameObject obj)　//再出現時の回転と座標
     {
         switch (reAppStatus)
         {

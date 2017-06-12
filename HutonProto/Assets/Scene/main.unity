@@ -176,7 +176,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4886420038062630, guid: 33d37dcc6e24bad48af69cff2af352f0, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4886420038062630, guid: 33d37dcc6e24bad48af69cff2af352f0, type: 2}
       propertyPath: m_LocalScale.x
@@ -481,6 +481,26 @@ Prefab:
       propertyPath: anglePM
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 114449688779222064, guid: c04d107ca44dbfb499ed8e96cdae3d3d,
+        type: 2}
+      propertyPath: R_shoulder_center
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114449688779222064, guid: c04d107ca44dbfb499ed8e96cdae3d3d,
+        type: 2}
+      propertyPath: R_crotch_center
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114449688779222064, guid: c04d107ca44dbfb499ed8e96cdae3d3d,
+        type: 2}
+      propertyPath: L_shoulder_center
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 114449688779222064, guid: c04d107ca44dbfb499ed8e96cdae3d3d,
+        type: 2}
+      propertyPath: L_crotch_center
+      value: 270
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114403715409397320, guid: c04d107ca44dbfb499ed8e96cdae3d3d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c04d107ca44dbfb499ed8e96cdae3d3d, type: 2}
@@ -599,6 +619,26 @@ Prefab:
         type: 2}
       propertyPath: anglePM
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114838924317046868, guid: 9521e569fdae5c14cbe2c811939cd037,
+        type: 2}
+      propertyPath: R_shoulder_center
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114838924317046868, guid: 9521e569fdae5c14cbe2c811939cd037,
+        type: 2}
+      propertyPath: R_crotch_center
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114838924317046868, guid: 9521e569fdae5c14cbe2c811939cd037,
+        type: 2}
+      propertyPath: L_shoulder_center
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 114838924317046868, guid: 9521e569fdae5c14cbe2c811939cd037,
+        type: 2}
+      propertyPath: L_crotch_center
+      value: 315
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9521e569fdae5c14cbe2c811939cd037, type: 2}
@@ -733,6 +773,46 @@ Prefab:
       propertyPath: anglePM
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 114406427045542416, guid: 4c9afee7c1aaabb4ba0b42ab2992b0e9,
+        type: 2}
+      propertyPath: R_shoulder_center
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406427045542416, guid: 4c9afee7c1aaabb4ba0b42ab2992b0e9,
+        type: 2}
+      propertyPath: R_elbow_center
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406427045542416, guid: 4c9afee7c1aaabb4ba0b42ab2992b0e9,
+        type: 2}
+      propertyPath: R_crotch_center
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406427045542416, guid: 4c9afee7c1aaabb4ba0b42ab2992b0e9,
+        type: 2}
+      propertyPath: R_knee_center
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406427045542416, guid: 4c9afee7c1aaabb4ba0b42ab2992b0e9,
+        type: 2}
+      propertyPath: L_shoulder_center
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406427045542416, guid: 4c9afee7c1aaabb4ba0b42ab2992b0e9,
+        type: 2}
+      propertyPath: L_elbow_center
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406427045542416, guid: 4c9afee7c1aaabb4ba0b42ab2992b0e9,
+        type: 2}
+      propertyPath: L_crotch_center
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406427045542416, guid: 4c9afee7c1aaabb4ba0b42ab2992b0e9,
+        type: 2}
+      propertyPath: L_knee_center
+      value: 225
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c9afee7c1aaabb4ba0b42ab2992b0e9, type: 2}
   m_IsPrefabParent: 0
@@ -849,14 +929,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_shoulder_center: 0
-  R_elbow_center: 0
-  R_crotch_center: 0
-  R_knee_center: 0
-  L_shoulder_center: 0
-  L_elbow_center: 0
-  L_crotch_center: 0
-  L_knee_center: 0
+  R_shoulder_center: 70
+  R_elbow_center: 160
+  R_crotch_center: 145
+  R_knee_center: 250
+  L_shoulder_center: 290
+  L_elbow_center: 200
+  L_crotch_center: 215
+  L_knee_center: 110
   imageDisplayflag: 0
   posename: pose_frog
   DecidePose_frog: 0
@@ -1037,13 +1117,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_shoulder_center: 0
+  R_shoulder_center: 45
   R_elbow_center: 0
-  R_crotch_center: 0
+  R_crotch_center: 225
   R_knee_center: 0
-  L_shoulder_center: 0
+  L_shoulder_center: 45
   L_elbow_center: 0
-  L_crotch_center: 0
+  L_crotch_center: 225
   L_knee_center: 0
   imageDisplayflag: 0
   posename: pose_N
@@ -1274,7 +1354,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4214690300434324, guid: 973d72e025880a24f82eae1d9865fae7, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 82983655355983148, guid: 973d72e025880a24f82eae1d9865fae7,
         type: 2}
@@ -1286,9 +1366,274 @@ Prefab:
       propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114311291094318034, guid: 973d72e025880a24f82eae1d9865fae7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114311291094318034, guid: 973d72e025880a24f82eae1d9865fae7,
+        type: 2}
+      propertyPath: alarm
+      value: 
+      objectReference: {fileID: 8300000, guid: 060dc2b12d3ee62459cd6305754185f0, type: 3}
+    - target: {fileID: 114311291094318034, guid: 973d72e025880a24f82eae1d9865fae7,
+        type: 2}
+      propertyPath: gamePlayBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: b9d28cf36045b92468900f7de1cfd6b5, type: 3}
+    - target: {fileID: 114311291094318034, guid: 973d72e025880a24f82eae1d9865fae7,
+        type: 2}
+      propertyPath: titleBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: cdd4cc19f12118c48904a11b23681e2d, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 973d72e025880a24f82eae1d9865fae7, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &510110130 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1159353476466866, guid: 973d72e025880a24f82eae1d9865fae7,
+    type: 2}
+  m_PrefabInternal: {fileID: 510110129}
+--- !u!82 &510110131
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 510110130}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 060dc2b12d3ee62459cd6305754185f0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &510110136
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 510110130}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b9d28cf36045b92468900f7de1cfd6b5, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &510110137
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 510110130}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cdd4cc19f12118c48904a11b23681e2d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &538540616
 Prefab:
   m_ObjectHideFlags: 0
@@ -1725,7 +2070,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &694438747
 GameObject:
@@ -2284,7 +2629,7 @@ Prefab:
     - target: {fileID: 114593045610981072, guid: a44d18d9f61c1884c8317b518b3fd365,
         type: 2}
       propertyPath: hour
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a44d18d9f61c1884c8317b518b3fd365, type: 2}
@@ -2536,14 +2881,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_shoulder_center: 0
+  R_shoulder_center: 180
   R_elbow_center: 0
-  R_crotch_center: 0
-  R_knee_center: 0
-  L_shoulder_center: 0
+  R_crotch_center: 30
+  R_knee_center: 20
+  L_shoulder_center: 180
   L_elbow_center: 0
-  L_crotch_center: 0
-  L_knee_center: 0
+  L_crotch_center: 30
+  L_knee_center: 20
   imageDisplayflag: 0
   posename: pose_J
   DecidePose_J: 0
@@ -2659,14 +3004,14 @@ MonoBehaviour:
   L_arm_flag: 0
   L_leg_flag: 0
   anglePM: 30
-  R_sholder_center: 0
-  R_elbow_center: 0
-  R_crotch_center: 0
-  R_knee_center: 0
-  L_shoulder_center: 0
-  L_elbow_center: 0
-  L_crotch_center: 0
-  L_knee_center: 0
+  R_sholder_center: 45
+  R_elbow_center: 260
+  R_crotch_center: 90
+  R_knee_center: 270
+  L_shoulder_center: 340
+  L_elbow_center: 95
+  L_crotch_center: 270
+  L_knee_center: 90
   DecidePose_fight: 0
   posename: pose_fight
 --- !u!114 &976663741
@@ -3055,7 +3400,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4533331773589190, guid: 81215a525f0a91c4783d8975931163e2, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 81215a525f0a91c4783d8975931163e2, type: 2}
@@ -3343,6 +3688,26 @@ Prefab:
       propertyPath: anglePM
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 114802119036738824, guid: 25a11537f76d83f4ba9dab18b599921c,
+        type: 2}
+      propertyPath: R_sholder_center
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 114802119036738824, guid: 25a11537f76d83f4ba9dab18b599921c,
+        type: 2}
+      propertyPath: R_crotch_center
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114802119036738824, guid: 25a11537f76d83f4ba9dab18b599921c,
+        type: 2}
+      propertyPath: L_shoulder_center
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 114802119036738824, guid: 25a11537f76d83f4ba9dab18b599921c,
+        type: 2}
+      propertyPath: L_crotch_center
+      value: 315
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25a11537f76d83f4ba9dab18b599921c, type: 2}
   m_IsPrefabParent: 0
@@ -3475,15 +3840,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_sholder_center: 0
-  R_elbow_center: 0
+  R_sholder_center: 45
+  R_elbow_center: 45
   R_crotch_center: 0
   R_knee_center: 0
-  L_shoulder_center: 0
-  L_elbow_center: 0
-  L_crotch_center: 0
-  L_knee_center: 0
-  anglenumber: 0
+  L_shoulder_center: 290
+  L_elbow_center: 80
+  L_crotch_center: 5
+  L_knee_center: 315
   DecidePose_Racecs: 0
   R_arm_flag: 0
   R_leg_flag: 0
@@ -4052,15 +4416,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_sholder_center: 0
-  R_elbow_center: 0
-  R_crotch_center: 0
-  R_knee_center: 0
-  L_shoulder_center: 0
-  L_elbow_center: 0
-  L_crotch_center: 0
-  L_knee_center: 0
-  anglenumber: 0
+  R_sholder_center: 20
+  R_elbow_center: 270
+  R_crotch_center: 145
+  R_knee_center: 250
+  L_shoulder_center: 355
+  L_elbow_center: 165
+  L_crotch_center: 215
+  L_knee_center: 110
   DecidePose_spuat: 0
   R_arm_flag: 0
   R_leg_flag: 0
@@ -4100,6 +4463,8 @@ GameObject:
   - component: {fileID: 1339913889}
   - component: {fileID: 1339913888}
   - component: {fileID: 1339913890}
+  - component: {fileID: 1339913891}
+  - component: {fileID: 1339913892}
   m_Layer: 2
   m_Name: Pose_Defolt
   m_TagString: Untagged
@@ -4179,6 +4544,45 @@ MonoBehaviour:
   L_knee_Y: 0
   P_angle: 0
   P_pos: {fileID: 0}
+--- !u!114 &1339913891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1339913886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab494b4cdc2e28443a365058baefbc40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anglePM: 0
+  R_sholder_center: 0
+  R_elbow_center: 0
+  R_crotch_center: 0
+  R_knee_center: 0
+  L_shoulder_center: 0
+  L_elbow_center: 0
+  L_crotch_center: 0
+  L_knee_center: 0
+  anglenumber: 0
+  DecidePose_defo: 0
+  R_arm_flag: 0
+  R_leg_flag: 0
+  L_arm_flag: 0
+  L_leg_flag: 0
+  imageDisplay: 0
+  posename: pose_defo
+--- !u!114 &1339913892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1339913886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef693c2900331c849a59dc4adc0eca24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1342565993
 Prefab:
   m_ObjectHideFlags: 0
@@ -4401,14 +4805,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_shoulder_center: 0
-  R_elbow_center: 0
+  R_shoulder_center: 20
+  R_elbow_center: 270
   R_crotch_center: 0
   R_knee_center: 0
-  L_shoulder_center: 0
-  L_elbow_center: 0
-  L_crotch_center: 0
-  L_knee_center: 0
+  L_shoulder_center: 355
+  L_elbow_center: 165
+  L_crotch_center: 5
+  L_knee_center: 315
   imageDisplayflag: 0
   posename: pose_painfullpose1
   DecidePose_painfullpose1: 0
@@ -4416,36 +4820,6 @@ MonoBehaviour:
   R_leg_flag: 0
   L_arm_flag: 0
   L_leg_flag: 0
---- !u!1 &1386452070
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1386452071}
-  m_Layer: 0
-  m_Name: Test1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1386452071
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1386452070}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12, y: 1.29, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children:
-  - {fileID: 1670136850}
-  - {fileID: 1640915363}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396454200
 GameObject:
   m_ObjectHideFlags: 0
@@ -4528,17 +4902,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_shoulder_center: 0
-  R_elbow_center: 0
+  R_shoulder_center: 180
+  R_elbow_center: 30
   R_crotch_center: 0
   R_knee_center: 0
-  L_shoulder_center: 0
-  L_elbow_center: 0
-  L_crotch_center: 0
+  L_shoulder_center: 330
+  L_elbow_center: 65
+  L_crotch_center: 315
   L_knee_center: 0
   imageDisplayflag: 0
   posename: pose_big
-  DecidePose_Big: 0
+  DecidePose_gymnastice: 0
   R_arm_flag: 0
   R_leg_flag: 0
   L_arm_flag: 0
@@ -4764,15 +5138,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_sholder_center: 0
-  R_elbow_center: 0
-  R_crotch_center: 0
-  R_knee_center: 0
-  L_shoulder_center: 0
-  L_elbow_center: 0
-  L_crotch_center: 0
-  L_knee_center: 0
-  anglenumber: 0
+  R_sholder_center: 45
+  R_elbow_center: 260
+  R_crotch_center: 30
+  R_knee_center: 330
+  L_shoulder_center: 340
+  L_elbow_center: 95
+  L_crotch_center: 30
+  L_knee_center: 330
   DecidePose_bodybuli: 0
   imageDisplay: 0
   Pausename: pause_bodybuli
@@ -5119,13 +5492,13 @@ MonoBehaviour:
   L_arm_flag: 0
   L_leg_flag: 0
   Pausename: pause_zenkutu
-  R_sholder_center: 0
+  R_sholder_center: 270
   R_elbow_center: 0
-  R_crotch_center: 0
+  R_crotch_center: 225
   R_knee_center: 0
-  L_shoulder_center: 0
+  L_shoulder_center: 270
   L_elbow_center: 0
-  L_crotch_center: 0
+  L_crotch_center: 225
   L_knee_center: 0
   DecidePose_Zenkutu: 0
 --- !u!114 &1490260913
@@ -5182,7 +5555,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1510567037
 MonoBehaviour:
@@ -5221,7 +5594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObj: {fileID: 1487974656}
-  lightUpTime_sec: 20
+  lightUpTime_sec: 100
 --- !u!114 &1510567040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5522,7 +5895,7 @@ RectTransform:
   - {fileID: 1349033476}
   - {fileID: 803294001}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5642,7 +6015,7 @@ MonoBehaviour:
   L_knee_center: 0
   imageDisplayflag: 0
   posename: pose_big
-  DecidePose_Big: 0
+  DecidePose_sumou: 0
   R_arm_flag: 0
   R_leg_flag: 0
   L_arm_flag: 0
@@ -5764,7 +6137,7 @@ RectTransform:
   - {fileID: 1785038751}
   - {fileID: 2037463076}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6049,118 +6422,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c812976dfd38545856e4e3808d3688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1640915362
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1640915363}
-  - component: {fileID: 1640915368}
-  - component: {fileID: 1640915367}
-  - component: {fileID: 1640915366}
-  - component: {fileID: 1640915365}
-  - component: {fileID: 1640915364}
-  m_Layer: 0
-  m_Name: Enemy4
-  m_TagString: Enemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1640915363
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1640915362}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 0.2, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1386452071}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1640915364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1640915362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aa4775d3b3d6ce48ae21f7a5a205e48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  range: 10
---- !u!54 &1640915365
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1640915362}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.5
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!23 &1640915366
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1640915362}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!65 &1640915367
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1640915362}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1640915368
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1640915362}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1645758358
 GameObject:
   m_ObjectHideFlags: 0
@@ -6264,15 +6525,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_sholder_center: 0
-  R_elbow_center: 0
-  R_crotch_center: 0
-  R_knee_center: 0
-  L_shoulder_center: 0
-  L_elbow_center: 0
-  L_crotch_center: 0
-  L_knee_center: 0
-  anglenumber: 0
+  R_sholder_center: 180
+  R_elbow_center: 100
+  R_crotch_center: 315
+  R_knee_center: 225
+  L_shoulder_center: 80
+  L_elbow_center: 210
+  L_crotch_center: 270
+  L_knee_center: 250
+  anglenumber: 30
   DecidePose_yoga1: 0
   R_arm_flag: 0
   R_leg_flag: 0
@@ -6280,118 +6541,6 @@ MonoBehaviour:
   L_leg_flag: 0
   imageDisplay: 0
   posename: pose_yoga1
---- !u!1 &1670136845
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1670136850}
-  - component: {fileID: 1670136849}
-  - component: {fileID: 1670136848}
-  - component: {fileID: 1670136847}
-  - component: {fileID: 1670136851}
-  - component: {fileID: 1670136852}
-  m_Layer: 0
-  m_Name: Enemy1
-  m_TagString: Enemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!23 &1670136847
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1670136845}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!65 &1670136848
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1670136845}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1670136849
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1670136845}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1670136850
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1670136845}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 0.2, z: 3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1386452071}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1670136851
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1670136845}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.5
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!114 &1670136852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1670136845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aa4775d3b3d6ce48ae21f7a5a205e48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 12
-  range: 8
 --- !u!1 &1715852051
 GameObject:
   m_ObjectHideFlags: 0
@@ -6474,13 +6623,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_sholder_center: 0
-  R_elbow_center: 0
+  R_sholder_center: 180
+  R_elbow_center: 45
   R_crotch_center: 0
   R_knee_center: 0
-  L_shoulder_center: 0
-  L_elbow_center: 0
-  L_crotch_center: 0
+  L_shoulder_center: 225
+  L_elbow_center: 285
+  L_crotch_center: 315
   L_knee_center: 0
   anglenumber: 0
   DecidePose_R: 0
@@ -6548,7 +6697,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4427753578901954, guid: 3b9a5328f7d710f46849da3bbb88e8e5, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b9a5328f7d710f46849da3bbb88e8e5, type: 2}
@@ -6656,13 +6805,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_sholder_center: 0
+  R_sholder_center: 190
   R_elbow_center: 0
   R_crotch_center: 0
   R_knee_center: 0
-  L_shoulder_center: 0
+  L_shoulder_center: 170
   L_elbow_center: 0
-  L_crotch_center: 0
+  L_crotch_center: 315
   L_knee_center: 0
   anglenumber: 0
   DecidePose_yoga2: 0
@@ -6716,7 +6865,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1806023113
 GameObject:
@@ -6800,13 +6949,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_shoulder_center: 0
+  R_shoulder_center: 180
   R_elbow_center: 0
   R_crotch_center: 0
   R_knee_center: 0
-  L_shoulder_center: 0
+  L_shoulder_center: 225
   L_elbow_center: 0
-  L_crotch_center: 0
+  L_crotch_center: 315
   L_knee_center: 0
   imageDisplayflag: 0
   posename: pose_K
@@ -6945,6 +7094,36 @@ Prefab:
         type: 2}
       propertyPath: anglePM
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114768874039827736, guid: f80cf19042ff3104399d88934498c09e,
+        type: 2}
+      propertyPath: R_shoulder_center
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114768874039827736, guid: f80cf19042ff3104399d88934498c09e,
+        type: 2}
+      propertyPath: R_elbow_center
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114768874039827736, guid: f80cf19042ff3104399d88934498c09e,
+        type: 2}
+      propertyPath: R_crotch_center
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114768874039827736, guid: f80cf19042ff3104399d88934498c09e,
+        type: 2}
+      propertyPath: L_shoulder_center
+      value: 290
+      objectReference: {fileID: 0}
+    - target: {fileID: 114768874039827736, guid: f80cf19042ff3104399d88934498c09e,
+        type: 2}
+      propertyPath: L_elbow_center
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 114768874039827736, guid: f80cf19042ff3104399d88934498c09e,
+        type: 2}
+      propertyPath: L_crotch_center
+      value: 270
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f80cf19042ff3104399d88934498c09e, type: 2}
@@ -7127,7 +7306,7 @@ Transform:
   - {fileID: 1206753612}
   - {fileID: 1318490073}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &1921084524
 Prefab:
@@ -7238,6 +7417,31 @@ Prefab:
         type: 2}
       propertyPath: anglePM
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114120631605835766, guid: 01d95f3d82ea0a94a9944a174d49ae5e,
+        type: 2}
+      propertyPath: R_sholder_center
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114120631605835766, guid: 01d95f3d82ea0a94a9944a174d49ae5e,
+        type: 2}
+      propertyPath: R_elbow_center
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 114120631605835766, guid: 01d95f3d82ea0a94a9944a174d49ae5e,
+        type: 2}
+      propertyPath: R_crotch_center
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 114120631605835766, guid: 01d95f3d82ea0a94a9944a174d49ae5e,
+        type: 2}
+      propertyPath: R_knee_center
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 114120631605835766, guid: 01d95f3d82ea0a94a9944a174d49ae5e,
+        type: 2}
+      propertyPath: L_shoulder_center
+      value: 195
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01d95f3d82ea0a94a9944a174d49ae5e, type: 2}
@@ -7350,14 +7554,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_shoulder_center: 0
-  R_elbow_center: 0
+  R_shoulder_center: 180
+  R_elbow_center: 90
   R_crotch_center: 0
   R_knee_center: 0
-  L_shoulder_center: 0
+  L_shoulder_center: 270
   L_elbow_center: 0
-  L_crotch_center: 0
-  L_knee_center: 0
+  L_crotch_center: 5
+  L_knee_center: 315
   imageDisplayflag: 0
   posename: pose_painfullpose2
   DecidePose_painfullpose2: 0
@@ -7457,7 +7661,7 @@ MonoBehaviour:
   L_knee_center: 0
   imageDisplayflag: 0
   posename: pose_big
-  DecidePose_Big: 0
+  DecidePose_Hawk: 0
   R_arm_flag: 0
   R_leg_flag: 0
   L_arm_flag: 0
@@ -7895,13 +8099,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anglePM: 30
-  R_sholder_center: 0
+  R_sholder_center: 45
   R_elbow_center: 0
-  R_crotch_center: 0
+  R_crotch_center: 135
   R_knee_center: 0
-  L_shoulder_center: 0
+  L_shoulder_center: 315
   L_elbow_center: 0
-  L_crotch_center: 0
+  L_crotch_center: 225
   L_knee_center: 0
   anglenumber: 0
   DecidePose_yoga3: 0
@@ -8000,7 +8204,7 @@ RectTransform:
   - {fileID: 1564766653}
   - {fileID: 1519837433}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

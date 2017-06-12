@@ -51,8 +51,6 @@ public class Pose_Race : MonoBehaviour {
     //左膝
     public float L_knee_center;
     protected float L_kneeP, L_kneeM;
-    //許容範囲数値
-    public float anglenumber;
     /************************************/
     //ポーズが決まったか
     public bool DecidePose_Racecs;

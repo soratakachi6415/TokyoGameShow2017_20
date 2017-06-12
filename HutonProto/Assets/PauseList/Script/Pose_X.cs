@@ -66,13 +66,6 @@ public class Pose_X : MonoBehaviour {
     //成功したポーズの判定で使う
     public string posename = "pose_X";
 
-    /*プレイヤーの位置と角度を合わせる*/
-    //プレイヤーの回転角度
-    public float P_angle;
-    //プレイヤーの位置
-    public Transform P_pos;
-    /**********************************/
-
     void Start()
     {
         //ポーズガイドの画像

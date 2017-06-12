@@ -4,87 +4,124 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class pose_Default : MonoBehaviour {
-    /*ポーズ_Hの判定を行う*/
-    //「H」ポーズの画像を所得
-    private Image pose_def;
-    private float r, g, b, alpha;
+    PlayerStatus playerstatus;
 
-    /****体の関節指定****/
-    //右肩の角度を所得する
-    public GameObject R_shoulder;
-    private float R_shoulder_Y;
-    //右肘の角度を所得する
-    public GameObject R_elbow;
-    private float R_elbow_Y;
-    //右股の角度を所得する
-    public GameObject R_crotch;
-    private float R_crotch_Y;
-    //右膝の角度を所得する
-    public GameObject R_knee;
-    private float R_knee_Y;
-    //左肩の角度を所得する
-    public GameObject L_shoulder;
-    private float L_shoulder_Y;
-    //左肘の角度を所得する
-    public GameObject L_elbow;
-    private float L_elbow_Y;
-    //左股の角度を所得する
-    public GameObject L_crotch;
-    private float L_crotch_Y;
-    //左膝の角度を所得する
-    public GameObject L_knee;
-    private float L_knee_Y;
+    /*ポーズ_バナナの判定を行う*/
+    //「バナナ」ポーズの画像を所得
+    protected Image pose_defo;
+    protected float r, g, b, alpha;
+    //角度の誤差の数値
+    public float anglePM;
+
+    /****現在の角度******/
+    protected float R_sholder;
+    protected float R_elbow;
+    protected float R_crotch;
+    protected float R_knee;
+    protected float L_shoulder;
+    protected float L_elbow;
+    protected float L_crotch;
+    protected float L_knee;
     /********************/
 
-
-    //falseならガイド画像を表示していない、trueなら画像を
-    public bool imageDisplay = false;
-
+    /*それぞれの手足ごとの判定の数値の中心*/
+    //右肩の判定の基本となる数字
+    //Pがプラス、Mがマイナス
+    public float R_sholder_center;
+    protected float R_sholderP, R_sholderM;
+    //右肘
+    public float R_elbow_center;
+    protected float R_elbowP, R_elbowM;
+    //右股
+    public float R_crotch_center;
+    protected float R_crotchP, R_crotchM;
+    //右膝
+    public float R_knee_center;
+    protected float R_kneeP, R_kneeM;
+    //左肩
+    public float L_shoulder_center;
+    protected float L_shoulderP, L_shoulderM;
+    //左肘
+    public float L_elbow_center;
+    protected float L_elbowP, L_elbowM;
+    //左股
+    public float L_crotch_center;
+    protected float L_crotch_P, L_crotch_M;
+    //左膝
+    public float L_knee_center;
+    protected float L_kneeP, L_kneeM;
+    //許容範囲数値
+    public float anglenumber;
+    /************************************/
+    //ポーズが決まったか
+    public bool DecidePose_defo;
     //ポーズの各腕、足がそれぞれ指定された範囲内に入っているか
     //falseが入ってない、trueが入ってる
     public bool R_arm_flag = false;
     public bool R_leg_flag = false;
     public bool L_arm_flag = false;
     public bool L_leg_flag = false;
+    //falseならガイド画像を表示していない、trueなら画像を
+    public bool imageDisplay = false;
 
     //成功したポーズの判定で使う
-    public string posename = "pose_def";
+    public string posename = "pose_defo";
 
     void Start()
     {
         //ポーズガイドの画像
-        pose_def = gameObject.GetComponent<Image>();
-        r = pose_def.GetComponent<Image>().color.r;
-        g = pose_def.GetComponent<Image>().color.g;
-        b = pose_def.GetComponent<Image>().color.b;
-        alpha = pose_def.GetComponent<Image>().color.a;
-
-        //そのうちタグ判別に切り替えたい
-        //R_shoulder = GameObject.FindWithTag("Rightshoulder");
-        //R_elbow = GameObject.FindWithTag("Rightelbow");
-        //R_crotch = GameObject.FindWithTag("Rightcrotch");
-        //R_knee = GameObject.FindWithTag("Rightknee");
-        //L_shoulder = GameObject.FindWithTag("Leftshoulder");
-        //L_elbow = GameObject.FindWithTag("Leftelbow");
-        //L_crotch = GameObject.FindWithTag("Leftcrotch");
-        //L_knee = GameObject.FindWithTag("Leftknee");
+        pose_defo = gameObject.GetComponent<Image>();
+        r = pose_defo.GetComponent<Image>().color.r;
+        g = pose_defo.GetComponent<Image>().color.g;
+        b = pose_defo.GetComponent<Image>().color.b;
+        alpha = pose_defo.GetComponent<Image>().color.a;
+        //プレイヤーの関節の角度など
+        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        defoPoseDisplayfalse();
     }
-
 
     void Update()
     {
-        pose_def.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        //角度の獲得
+        R_sholder = playerstatus.R_shoulder_Y;
+        R_elbow = playerstatus.R_elbow_Y;
+        R_crotch = playerstatus.R_crotch_Y;
+        R_knee = playerstatus.R_knee_Y;
+        L_shoulder = playerstatus.L_shoulder_Y;
+        L_elbow = playerstatus.L_elbow_Y;
+        L_crotch = playerstatus.L_crotch_Y;
+        L_knee = playerstatus.L_knee_Y;
 
-        //各関節の現在の角度
-        R_shoulder_Y = R_shoulder.transform.localEulerAngles.y;
-        R_elbow_Y = R_elbow.transform.localEulerAngles.y;
-        R_crotch_Y = R_crotch.transform.localEulerAngles.y;
-        R_knee_Y = R_knee.transform.localEulerAngles.y;
-        L_shoulder_Y = L_shoulder.transform.localEulerAngles.y;
-        L_elbow_Y = L_elbow.transform.localEulerAngles.y;
-        L_crotch_Y = L_crotch.transform.localEulerAngles.y;
-        L_knee_Y = L_knee.transform.localEulerAngles.y;
+        /*角度の判定の上下許容範囲*/
+        //右肩
+        R_sholderP = R_sholder + anglePM;
+        R_sholderM = R_sholder - anglePM;
+        //右ひじ
+        R_elbowP = R_elbow + anglePM;
+        R_elbowM = R_elbow - anglePM;
+        //右股   
+        R_crotchP = R_crotch + anglePM;
+        R_crotchM = R_crotch - anglePM;
+        //右膝
+        R_kneeP = R_knee + anglePM;
+        R_kneeM = R_knee - anglePM;
+        //左肩
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
+        //左肘
+        L_elbowP = L_shoulder + anglePM;
+        L_elbowM = L_shoulder - anglePM;
+        //左股
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
+        //左膝
+        L_kneeP = L_knee + anglePM;
+        L_kneeM = L_knee - anglePM;
+        /***************************************/
+        pose_defo.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
+        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z + 3.0f);
+        //角度check
         AnglesCheck();
 
         //どれかが判定の範囲内に入ったら画像表示
@@ -94,126 +131,118 @@ public class pose_Default : MonoBehaviour {
             L_leg_flag == true)
         {
             imageDisplay = true;
+            defoPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
         if (R_arm_flag == false &&
-                 L_arm_flag == false &&
-                 R_leg_flag == false &&
-                 L_leg_flag == false)
+            L_arm_flag == false &&
+            R_leg_flag == false &&
+            L_leg_flag == false)
         {
             imageDisplay = false;
+            defoPoseDisplayfalse();
         }
 
-        //一定数以上の条件を見たしたらimageDisplayをtrueにする
-        poseimageDisplay();
-
+        //全部入ったか
+        if (R_arm_flag == true &&
+            L_arm_flag == true &&
+            R_leg_flag == true &&
+            L_leg_flag == true)
+        {
+            DecidePose_defo = true;
+            defoPoseDisplaytrue();
+        }
     }
     void AnglesCheck()
     {
         //右腕の判別
-
         //右肩の角度
-        if (R_shoulder_Y >= -10 && R_shoulder_Y <= 10)
+        if (R_sholder_center >= R_sholderM && R_sholder_center <= R_sholderP)
         {
             //右肘
-            if (R_elbow_Y >= -10 && R_elbow_Y <= 10)
+            if (R_elbow_center >= R_elbowM && R_elbow_center <= R_elbowP)
             {
                 R_arm_flag = true;
             }
             else
             {
-                Debug.Log("右肘が駄目");
-
                 R_arm_flag = false;
             }
         }
         else
         {
-            Debug.Log("右肩がダメ");
             R_arm_flag = false;
         }
 
-
         //右足
-
         //右股の角度
-        if (R_crotch_Y <= 280 && R_crotch_Y >= 260)
+        if (R_crotch_center >= R_crotchM && R_crotch_center <= R_crotchP)
         {
             //右膝
-            if (R_knee_Y >= -10 && R_knee_Y <= 10)
+            if (R_knee_center >= R_kneeM && R_knee_center <= R_kneeP)
             {
                 R_leg_flag = true;
             }
             else
             {
-                Debug.Log("右膝が駄目");
                 R_leg_flag = false;
             }
         }
         else
         {
-            Debug.Log("右股が駄目");
             R_leg_flag = false;
         }
 
-
         //左側の判別
-
-        //左腕の角度
-        if (L_shoulder_Y <= 280 && L_shoulder_Y >= 260)
+        //左肩の角度
+        if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
         {
             //左肘
-            if (L_elbow_Y >= -10 && L_elbow_Y <= 10)
+            if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
             {
                 L_arm_flag = true;
             }
             else
             {
-                Debug.Log("左肘が駄目");
                 L_arm_flag = false;
             }
         }
         else
         {
-            Debug.Log("左肩が駄目");
             L_arm_flag = false;
         }
 
 
         //左股の角度
-        if (L_crotch_Y >= 80 && L_crotch_Y <= 100)
+        if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
         {
             //左膝
-            if (L_knee_Y >= -10 && L_knee_Y <= 10)
+            if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
             {
                 L_leg_flag = true;
             }
             else
             {
-                Debug.Log("左膝が駄目");
                 L_leg_flag = false;
             }
         }
         else
         {
-            Debug.Log("左股が駄目");
+
             L_leg_flag = false;
         }
     }
 
     //ポーズの画像を表示させる
-    void poseimageDisplay()
+    public void defoPoseDisplaytrue()
     {
-        /*一回ポーズをとった後ほかのポーズを取らないと得点にならない*/
-        if (imageDisplay == true)
-        {
-            alpha = 1.0f;
-        }
+        alpha = 1.0f;
+    }
 
-        if (imageDisplay == false)
-        {
-            alpha = 0.0f;
-        }
+    //ポーズの画像を表示させない
+    public void defoPoseDisplayfalse()
+    {
+        alpha = 0.0f;
     }
 }

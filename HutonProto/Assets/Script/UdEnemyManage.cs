@@ -39,11 +39,11 @@ public class UdEnemyManage : MonoBehaviour {
             //効果音再生
             if (topCnt == 1) GameObject.Find("SoundController").GetComponent<SoundsManager>().WalkFloor();
 
-            if (topCnt > 2 && topCnt < 120)//起きるアニメーション　*現時点では指定座標に瞬間移動
+            if (topCnt > 2 && topCnt < 180)//起きるアニメーション　*現時点では指定座標に瞬間移動
             {
                 topEnemy.transform.position = new Vector3(upE.x, upE.y, upE.z * 3);       
             }
-            else if(topCnt >= 120)
+            else if(topCnt >= 180)
             {
                 GameObject.Find("ScriptController").GetComponent<EnemyAction>().ReAppear(topEnemy);
                 topEnemyhit = 0;
@@ -57,11 +57,11 @@ public class UdEnemyManage : MonoBehaviour {
             //効果音再生
             if (downCnt == 1) GameObject.Find("SoundController").GetComponent<SoundsManager>().WalkFloor();
 
-            if (downCnt > 2 && downCnt < 120)
+            if (downCnt > 2 && downCnt < 180)
             {
                 bottomEnemy.transform.position = new Vector3(downE.x, downE.y, downE.z * 3);
             }
-            else if (downCnt >= 120)
+            else if (downCnt >= 180)
             {
                 GameObject.Find("ScriptController").GetComponent<EnemyAction>().ReAppear(bottomEnemy);
                 downEnemeyHit = 0;

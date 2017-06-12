@@ -11,7 +11,7 @@ public class Pose_Gymnastice : MonoBehaviour {
     PlayerStatus playerstatus;
     /*ポーズ_大の字の判定を行う*/
     //「大」ポーズの画像を所得
-    private Image pose_big;
+    private Image pose_gymnastice;
     private float r, g, b, alpha;
     //角度の誤差の数値
     public float anglePM;
@@ -58,9 +58,9 @@ public class Pose_Gymnastice : MonoBehaviour {
     //falseならガイド画像を表示不可能、trueなら画像を表示可能
     public bool imageDisplayflag = false;
     //成功したポーズの判定で使う
-    public string posename = "pose_big";
+    public string posename = "pose_gymnastice";
     //ポーズが決まったか
-    public bool DecidePose_Big;
+    public bool DecidePose_gymnastice;
 
     //ポーズの各腕、足がそれぞれ指定された範囲内に入っているか
     //falseが入ってない、trueが入ってる
@@ -72,21 +72,21 @@ public class Pose_Gymnastice : MonoBehaviour {
     void Start()
     {
         //ポーズガイドの画像
-        pose_big = gameObject.GetComponent<Image>();
-        r = pose_big.GetComponent<Image>().color.r;
-        g = pose_big.GetComponent<Image>().color.g;
-        b = pose_big.GetComponent<Image>().color.b;
-        alpha = pose_big.GetComponent<Image>().color.a;
+        pose_gymnastice = gameObject.GetComponent<Image>();
+        r = pose_gymnastice.GetComponent<Image>().color.r;
+        g = pose_gymnastice.GetComponent<Image>().color.g;
+        b = pose_gymnastice.GetComponent<Image>().color.b;
+        alpha = pose_gymnastice.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
         playerstatus = this.gameObject.GetComponent<PlayerStatus>();
-        BigPoseDisplayfalse();
+        gymnasticePoseDisplayfalse();
     }
 
 
     void Update()
     {
         //ポーズの画像の情報
-        pose_big.GetComponent<Image>().color = new Color(r, g, b, alpha);
+        pose_gymnastice.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
         transform.position = new Vector3(playerstatus.P_pos.position.x, 110, playerstatus.P_pos.position.z);
 
@@ -135,7 +135,7 @@ public class Pose_Gymnastice : MonoBehaviour {
             L_leg_flag == true)
         {
             imageDisplayflag = true;
-            BigPoseDisplaytrue();
+            gymnasticePoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -145,7 +145,7 @@ public class Pose_Gymnastice : MonoBehaviour {
                  L_leg_flag == false)
         {
             imageDisplayflag = false;
-            BigPoseDisplayfalse();
+            gymnasticePoseDisplayfalse();
         }
 
         if (R_arm_flag == true &&
@@ -154,8 +154,8 @@ public class Pose_Gymnastice : MonoBehaviour {
            L_leg_flag == true)
         {
             //ポーズが決まったか
-            DecidePose_Big = true;
-            BigPoseDisplaytrue();
+            DecidePose_gymnastice = true;
+            gymnasticePoseDisplaytrue();
         }
     }
     void AnglesCheck()
@@ -237,12 +237,12 @@ public class Pose_Gymnastice : MonoBehaviour {
     }
 
     //ポーズの画像を表示させる
-    public void BigPoseDisplaytrue()
+    public void gymnasticePoseDisplaytrue()
     {
         alpha = 1.0f;
     }
     //ポーズの画像を表示させない
-    public void BigPoseDisplayfalse()
+    public void gymnasticePoseDisplayfalse()
     {
         alpha = 0.0f;
     }

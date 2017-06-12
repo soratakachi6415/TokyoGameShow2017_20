@@ -18,6 +18,8 @@ public class GameSceneManager : MonoBehaviour
     public int currentClocktime_;
     //しっぱい判定で使うポイント
     public int currentsheepnum_;
+    //アラームが鳴り続ける時間
+    private AudioClip alarmtime_;
 
     //ゲーム結果が失敗してないならtrue,失敗したらfalse
     public bool gameSuccess=true;
@@ -26,7 +28,8 @@ public class GameSceneManager : MonoBehaviour
     {
         sleepGageScript_ = GameObject.Find("ScriptController").GetComponent<SleepGageScript>();
         clock_ = GameObject.Find("Clock").GetComponent<Clock>();
-        scenemanager_ = GameObject.FindGameObjectWithTag("Scenemanager").GetComponent<Scene_manager>();       
+        scenemanager_ = GameObject.FindGameObjectWithTag("Scenemanager").GetComponent<Scene_manager>();
+        alarmtime_ = GameObject.Find("SoundController").GetComponent<SoundsManager>().alarm;
     }
 
     void Update()
@@ -54,7 +57,9 @@ public class GameSceneManager : MonoBehaviour
     {
         //Resultへ遷移
         //Debug.Log("成功");
-        scenemanager_.NextScene();
+
+        //アラームが鳴り終わったらシーン遷移
+        if(alarmtime_.length < 0)scenemanager_.NextScene();
     }
     
     //失敗した場合

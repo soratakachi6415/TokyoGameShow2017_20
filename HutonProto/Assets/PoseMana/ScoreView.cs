@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreView : MonoBehaviour
 {
+    public PoseManager _posemanager;
 
     public Sprite[] _numimage;
     public List<int> number = new List<int>();
@@ -14,6 +15,8 @@ public class ScoreView : MonoBehaviour
 
     void Start()
     {
+        _posemanager = GameObject.FindGameObjectWithTag("Posemanager").GetComponent<PoseManager>();
+
        _score = GameObject.Find("ScoreImage").GetComponent<Image>();
         r = _score.GetComponent<Image>().color.r;
         g = _score.GetComponent<Image>().color.g;
@@ -25,6 +28,18 @@ public class ScoreView : MonoBehaviour
     {
         _score.GetComponent<Image>().color = new Color(r, g, b, alpha);
         alpha = 0;
+
+        if(_posemanager._Pose == PoseManager.PoseState.None)
+        {
+            var objs = GameObject.FindGameObjectsWithTag("Score");
+            foreach (var obj in objs)
+            {
+                if (0 <= obj.name.LastIndexOf("Clone"))
+                {
+                    Destroy(obj);
+                }
+            }
+        }
     }
 
     public void View(int score)

@@ -23,7 +23,7 @@ public class GameSceneManager : MonoBehaviour
 
     //ゲーム結果が失敗してないならtrue,失敗したらfalse
     public bool gameSuccess=true;
- 
+
     void Start()
     {
         sleepGageScript_ = GameObject.Find("ScriptController").GetComponent<SleepGageScript>();
@@ -47,7 +47,6 @@ public class GameSceneManager : MonoBehaviour
         //０になった場合
         if (currentsheepnum_<=0)
         {
-          
             OnFailure();           
         }
     }
@@ -59,7 +58,10 @@ public class GameSceneManager : MonoBehaviour
         //Debug.Log("成功");
 
         //アラームが鳴り終わったらシーン遷移
-        if(alarmtime_.length < 0)scenemanager_.NextScene();
+        if (alarmtime_.length < 0)
+        {
+            scenemanager_.NextScene();
+        }
     }
     
     //失敗した場合

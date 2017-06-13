@@ -22,8 +22,7 @@ public class Clock : MonoBehaviour
     [SerializeField]
     private bool ClockStart = false;
 
-
-
+    //サウンド
     private SoundsManager soundsManager;
 
 
@@ -32,7 +31,7 @@ public class Clock : MonoBehaviour
         //Object検索
         Minutehand = GameObject.Find("Minutehand");
         Shorthand = GameObject.Find("Shorthand");
-        soundsManager = GameObject.Find("SoundController").GetComponent<SoundsManager>();
+        soundsManager = GameObject.FindGameObjectWithTag("SoundsManager").GetComponent<SoundsManager>();
         ClockStart = false;
     }
 
@@ -69,7 +68,7 @@ public class Clock : MonoBehaviour
             //制限時間終了時
             if (hour == 0 && timer == 0)
             {
-                GameObject.Find("SoundController").GetComponent<SoundsManager>().Alarm();
+                soundsManager.Alarm();
             }
         }
         else if (!ClockStart)

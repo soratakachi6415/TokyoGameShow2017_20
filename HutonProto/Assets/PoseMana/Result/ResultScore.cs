@@ -19,8 +19,15 @@ public class ResultScore : MonoBehaviour {
         g = _score.GetComponent<Image>().color.g;
         b = _score.GetComponent<Image>().color.b;
         alpha = _score.GetComponent<Image>().color.a;
-
-        TotalView(ScoreManager._totalscore);
+        
+        if(ScoreManager._totalscore == 0)
+        {
+            TotalView(0);
+        }
+        if(ScoreManager._totalscore >= 1)
+        {
+            TotalView(ScoreManager._totalscore);
+        }
 	}
     
     // Update is called once per frame

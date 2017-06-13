@@ -9,6 +9,8 @@ public class SoundsManager : MonoBehaviour {
     public AudioClip alarm;
     public AudioClip titleBGM;
     public AudioClip gamePlayBGM;
+    public AudioClip popUp;
+    public AudioClip bellSweep;
 
     private AudioSource audioSource;
 
@@ -39,12 +41,20 @@ public class SoundsManager : MonoBehaviour {
     public void TitlePlayBGM()  //タイトルBGM
     {
         audioSource.PlayOneShot(titleBGM);
-        print("BGM再生");
     }
 
     public void GamePlayBGM()   //ゲーム中BGM
     {
         audioSource.PlayOneShot(gamePlayBGM);
-        print("BGM再生");
+    }
+
+    public void PopUp()       //ポップアップ音
+    {
+        audioSource.PlayOneShot(popUp);
+    }
+
+    public void BellSweep()   //ベル上昇音
+    {
+        audioSource.PlayOneShot(bellSweep);
     }
 }

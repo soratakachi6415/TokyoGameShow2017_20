@@ -108,7 +108,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -134,15 +134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Pose: 0
   _PoseCanvas: {fileID: 0}
-  _openLeg: {fileID: 0}
-  _shiko: {fileID: 0}
-  _eiffelt: {fileID: 0}
-  _alphaH: {fileID: 0}
-  _alphaU: {fileID: 0}
-  _alphaX: {fileID: 0}
-  _exit: {fileID: 0}
-  _big: {fileID: 0}
-  _happy: {fileID: 0}
   _view: {fileID: 0}
   _scoreCount: 0
   _ScoreWhole: 0

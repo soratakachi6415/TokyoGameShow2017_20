@@ -13,8 +13,8 @@ public class PoseManager : MonoBehaviour
         Pose_of_Turbulent_hawk, // 荒ぶる鷹のポーズ
         Muay_thai, // ムエタイ
         Open_leg, // 開脚
-        Chico, // 四股
-        The_Eiffel_Tower, // エッフェル塔
+        Shico, // 四股
+        Eiffel_Tower, // エッフェル塔
         Banana, // バナナ
         AlphaF, // アルファベットF
         AlphaH, // アルファベットH
@@ -35,23 +35,15 @@ public class PoseManager : MonoBehaviour
         Sophomoric_2, // 厨二2
         Conveni, // しゃがみ
         Yell, // 気合
-        Bend_forward, // 前屈
-        Sprawled, // 大の字
+        Zenkutu, // 前屈
+        Big, // 大の字
         Race_walking, // 競歩
-        Joy, // 喜び
+        Happy, // 喜び
         Deformed // デフォルメ
     }
     [SerializeField, Tooltip("現在のポーズ")]
     public PoseState _Pose;
-
-    /****ポーズオブジェクトの取得****/
-    // ポーズオブジェクトを取得するためにCanvasを取得する
-    public Canvas _PoseCanvas;
-
-    /*スコアオブジェクトの取得*/
-    private Canvas _View;
-    public ScoreView _view;
-    public bool _scoreCount;
+    
     [SerializeField, Tooltip("全身でポーズをとれてるか")]
     public bool _ScoreWhole;
     [SerializeField, Tooltip("上半身でポーズをとれてるか")]
@@ -59,50 +51,26 @@ public class PoseManager : MonoBehaviour
     [SerializeField, Tooltip("下半身でポーズをとれてるか")]
     public bool _ScoreLower;
 
-    private AudioSource _audioSource;
-
     // Use this for initialization
     void Start()
     {
         _scenemanager = GameObject.FindGameObjectWithTag("Scenemanager").GetComponent<Scene_manager>();
-
-
+        
         // 初期ポーズは指定なし
         _Pose = PoseState.None;
-
-        // スコア
-        if (GameObject.Find("ScoreCanvas") != null)
-        { 
-            _View = GameObject.Find("ScoreCanvas").GetComponent<Canvas>();
-        _view = _View.GetComponent<ScoreView>();
-    }
-        _scoreCount = false;
+        
         _ScoreWhole = false;
         _ScoreUpper = false;
         _ScoreLower = false;
-
-        _audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_scenemanager.Scene_state == Scene_manager.Scenestate.GameScene)
-        {
-            // ポーズのオブジェクトを取得する
-            if(GameObject.Find("Pose_canvas") != null)
-            _PoseCanvas = GameObject.Find("Pose_canvas").GetComponent<Canvas>();
-        }
         StatePose();
     }
 
-    public void Additional_score(int Value)
-    {
-        ScoreManager._score = Value;
-        ScoreManager._totalscore += Value;
-        _view.View(ScoreManager._score);
-        _audioSource.PlayOneShot(_audioSource.clip);
-    }
 
     void StatePose()
     {
@@ -112,516 +80,515 @@ public class PoseManager : MonoBehaviour
                 _ScoreWhole = false;
                 _ScoreUpper = false;
                 _ScoreLower = false;
-                _scoreCount = false;
                 break;
             case PoseState.Pose_of_Turbulent_hawk:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(3000);
+                    State_Hawk.Additional_score(3000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(40);
+                    State_Hawk.Additional_score(40);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(25);
+                    State_Hawk.Additional_score(25);
                 }
                 break;
             case PoseState.Muay_thai:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(2000);
+                    State_Muaythai.Additional_score(2000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(30);
+                    State_Muaythai.Additional_score(30);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(25);
+                    State_Muaythai.Additional_score(25);
                 }
                 break;
             case PoseState.Open_leg:
                 if (_ScoreWhole == true)
                 {
-                    Additional_score(2500);
                     _Pose = PoseState.None;
+                    State_openLeg.Additional_score(2500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(35);
+                    State_openLeg.Additional_score(35);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(50);
+                    State_openLeg.Additional_score(50);
                 }
                 break;
-            case PoseState.Chico:
+            case PoseState.Shico:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(3000);
+                    State_Shiko.Additional_score(3000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(60);
+                    State_Shiko.Additional_score(60);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(40);
+                    State_Shiko.Additional_score(40);
                 }
                 break;
-            case PoseState.The_Eiffel_Tower:
+            case PoseState.Eiffel_Tower:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(1500);
+                    State_Eiffelt.Additional_score(1500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(35);
+                    State_Eiffelt.Additional_score(35);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(40);
+                    State_Eiffelt.Additional_score(40);
                 }
                 break;
             case PoseState.Banana:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(1500);
+                    State_Banana.Additional_score(1500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(20);
+                    State_Banana.Additional_score(20);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(25);
+                    State_Banana.Additional_score(25);
                 }
                 break;
             case PoseState.AlphaF:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(3000);
+                    State_F.Additional_score(3000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(45);
+                    State_F.Additional_score(45);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(45);
+                    State_F.Additional_score(45);
                 }
                 break;
             case PoseState.AlphaH:
                 if (_ScoreWhole == true)
                 {
-                    Additional_score(2500);
                     _Pose = PoseState.None;
+                    State_H.Additional_score(2500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(50);
+                    State_H.Additional_score(50);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(50);
+                    State_H.Additional_score(50);
                 }
                 break;
             case PoseState.AlphaJ:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(2000);
+                    State_J.Additional_score(2000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(35);
+                    State_J.Additional_score(35);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(25);
+                    State_J.Additional_score(25);
                 }
                 break;
             case PoseState.AlphaK:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(2500);
+                    State_K.Additional_score(2500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(40);
+                    State_K.Additional_score(40);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(40);
+                    State_K.Additional_score(40);
                 }
                 break;
             case PoseState.AlphaN:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(4000);
+                    State_N.Additional_score(4000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(60);
+                    State_N.Additional_score(60);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(60);
+                    State_N.Additional_score(60);
                 }
                 break;
             case PoseState.AlphaR:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(3500);
+                    State_R.Additional_score(3500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(40);
+                    State_R.Additional_score(40);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(40);
+                    State_R.Additional_score(40);
                 }
                 break;
             case PoseState.AlphaU:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(3500);
+                    State_U.Additional_score(3500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(70);
+                    State_U.Additional_score(70);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(70);
+                    State_U.Additional_score(70);
                 }
                 break;
             case PoseState.AlphaX:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(2000);
+                    State_X.Additional_score(2000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(40);
+                    State_X.Additional_score(40);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(40);
+                    State_X.Additional_score(40);
                 }
                 break;
             case PoseState.Yoga_1:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(5000);
+                    State_Yoga1.Additional_score(5000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(20);
+                    State_Yoga1.Additional_score(20);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(15);
+                    State_Yoga1.Additional_score(15);
                 }
                 break;
             case PoseState.Yoga_2:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(1000);
+                    State_Yoga2.Additional_score(1000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(35);
+                    State_Yoga2.Additional_score(35);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(40);
+                    State_Yoga2.Additional_score(40);
                 }
                 break;
             case PoseState.Yoga_3:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(8500);
+                    State_Yoga3.Additional_score(8500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(85);
+                    State_Yoga3.Additional_score(85);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(85);
+                    State_Yoga3.Additional_score(85);
                 }
                 break;
             case PoseState.Bodybuilding:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(1500);
+                    State_BodyBuli.Additional_score(1500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(20);
+                    State_BodyBuli.Additional_score(20);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(10);
+                    State_BodyBuli.Additional_score(10);
                 }
                 break;
             case PoseState.Frog:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(2500);
+                    State_Frog.Additional_score(2500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(50);
+                    State_Frog.Additional_score(50);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(50);
+                    State_Frog.Additional_score(50);
                 }
                 break;
             case PoseState.Gymnastics:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(2000);
+                    State_Gymnastice.Additional_score(2000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(45);
+                    State_Gymnastice.Additional_score(45);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(45);
+                    State_Gymnastice.Additional_score(45);
                 }
                 break;
             case PoseState.Exit:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(3000);
+                    State_Exit.Additional_score(3000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(45);
+                    State_Exit.Additional_score(45);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(45);
+                    State_Exit.Additional_score(45);
                 }
                 break;
             case PoseState.Sophomoric_1:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(2000);
+                    State_Painfull.Additional_score(2000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(30);
+                    State_Painfull.Additional_score(30);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(20);
+                    State_Painfull.Additional_score(20);
                 }
                 break;
             case PoseState.Sophomoric_2:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(2500);
+                    State_Painfull1.Additional_score(2500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(45);
+                    State_Painfull1.Additional_score(45);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(20);
+                    State_Painfull1.Additional_score(20);
                 }
                 break;
             case PoseState.Conveni:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(3500);
+                    State_spuat.Additional_score(3500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(30);
+                    State_spuat.Additional_score(30);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(50);
+                    State_spuat.Additional_score(50);
                 }
                 break;
             case PoseState.Yell:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(2000);
+                    State_Fight.Additional_score(2000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(20);
+                    State_Fight.Additional_score(20);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(40);
+                    State_Fight.Additional_score(40);
                 }
                 break;
-            case PoseState.Bend_forward:
+            case PoseState.Zenkutu:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(5000);
+                    State_Zenkutu.Additional_score(5000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(70);
+                    State_Zenkutu.Additional_score(70);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(60);
+                    State_Zenkutu.Additional_score(60);
                 }
                 break;
-            case PoseState.Sprawled:
+            case PoseState.Big:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(2500);
+                    State_Big.Additional_score(2500);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(50);
+                    State_Big.Additional_score(50);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(40);
+                    State_Big.Additional_score(40);
                 }
                 break;
             case PoseState.Race_walking:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(3000);
+                    State_Race.Additional_score(3000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(45);
+                    State_Race.Additional_score(45);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(20);
+                    State_Race.Additional_score(20);
                 }
                 break;
-            case PoseState.Joy:
+            case PoseState.Happy:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(2000);
+                    State_Happy.Additional_score(2000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(55);
+                    State_Happy.Additional_score(55);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(25);
+                    State_Happy.Additional_score(25);
                 }
                 break;
             case PoseState.Deformed:
                 if (_ScoreWhole == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(1000);
+                    State_Def.Additional_score(1000);
                 }
                 else if (_ScoreUpper == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(1);
+                    State_Def.Additional_score(1);
                 }
                 else if (_ScoreLower == true)
                 {
                     _Pose = PoseState.None;
-                    Additional_score(1);
+                    State_Def.Additional_score(1);
                 }
                 break;
         }

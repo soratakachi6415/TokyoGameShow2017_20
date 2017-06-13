@@ -15,6 +15,7 @@ TagManager:
   - Tutorial
   - PoseManager
   - Posemanager
+  - SoundsManager
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,9 @@ public class SleepGageScript : MonoBehaviour {
     private int healCnt;　　//快眠ゲージが回復し始める時間
     private int Cnt;
     private float a_color;
-    private bool hit;　　
+    private bool hit;
+
+    private SoundsManager soundsManager;
 
 	// Use this for initialization
 	void Start () {
@@ -24,9 +26,10 @@ public class SleepGageScript : MonoBehaviour {
         Cnt = 0;
         a_color = 1;
         hit = false;
-
-
+        
         _origin = new GameObject[10];
+
+        soundsManager = GameObject.FindGameObjectWithTag("SoundsManager").GetComponent<SoundsManager>();
 
         //快眠ゲージの数
         for (int i = 1;i < sleepPoint;i++)
@@ -76,7 +79,7 @@ public class SleepGageScript : MonoBehaviour {
             drawImage();
             hit = true;
             //羊の鳴き声
-            if (soundPlay) GameObject.Find("SoundController").GetComponent<SoundsManager>().SheepCry();
+            if (soundPlay) soundsManager.SheepCry();
         }
     }
 

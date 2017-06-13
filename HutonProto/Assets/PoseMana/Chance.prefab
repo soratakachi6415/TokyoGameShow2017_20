@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 224845874124862036}
   - component: {fileID: 222276674688102996}
   - component: {fileID: 114621116832147016}
-  - component: {fileID: 114623760489541494}
   m_Layer: 5
   m_Name: Chance
   m_TagString: Untagged
@@ -56,26 +55,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114623760489541494
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707360775855508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d0119f080258d942856673cf366d319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Chance: {fileID: 0}
-  r: 0
-  g: 0
-  b: 0
-  alpha: 0
-  _DisplayChance: 0
-  _foTime: 0
-  _fiTime: 0
-  _fadeTime: 0
 --- !u!222 &222276674688102996
 CanvasRenderer:
   m_ObjectHideFlags: 1

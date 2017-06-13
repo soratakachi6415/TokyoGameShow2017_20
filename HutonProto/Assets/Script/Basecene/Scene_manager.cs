@@ -37,8 +37,6 @@ public class Scene_manager : MonoBehaviour
     [SerializeField]
     private bool loadingnow = false;
     //
-    
-
     //フェードの値
     private float fade_alpha;
 
@@ -56,6 +54,11 @@ public class Scene_manager : MonoBehaviour
         //フェードのα数値
         fade_alpha = fademane.a;
 
+        if (Input.GetKey(KeyCode.N))
+        {
+            NextScene();
+        }
+
         //タイトルシーン
         if (Scene_state == Scenestate.TitleScene)
         {
@@ -70,11 +73,12 @@ public class Scene_manager : MonoBehaviour
         {
             Gamescene();
         }
-        //リザルトシーンシーン
+        //リザルトシーン
         else if (Scene_state == Scenestate.ResultScene)
         {
             Resurt();
         }
+
     }
     void BaseScene()
     {
@@ -133,11 +137,14 @@ public class Scene_manager : MonoBehaviour
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(Game));
         }
         fademane.fadeout();
+
+       
+
         loadingnow = false;
     }
 
     //リザルトシーン
-    void Resurt()
+    public void Resurt()
     {
         //同じ名前のシーンがあるか
         if (!ContainsScene(Result))
@@ -165,9 +172,12 @@ public class Scene_manager : MonoBehaviour
             if (Scene_state == Scenestate.TitleScene)
             {
                 fademane.fadein();
-                //シーンのアンロード
-                SceneManager.UnloadSceneAsync(Title);
 
+                if (ContainsScene(Title))
+                {
+                    //シーンのアンロード
+                    SceneManager.UnloadSceneAsync(Title);
+                }
                 //シーンステートをゲームシーン変更
                 Scene_state = Scenestate.LevelSelect;
             }
@@ -176,19 +186,28 @@ public class Scene_manager : MonoBehaviour
             else if (Scene_state == Scenestate.LevelSelect)
             {
                 fademane.fadein();
-                //シーンのアンロード
-                SceneManager.UnloadSceneAsync(LevelSelect);
+
+                //シーンがあれば
+                if (ContainsScene(LevelSelect))
+                {
+                    //シーンのアンロード
+                    SceneManager.UnloadSceneAsync(LevelSelect);
+                }
 
                 //シーンステートをゲームシーン変更
                 Scene_state = Scenestate.GameScene;
             }
 
             //ゲームシーンステートからリザルトシーンステートへ
-            else if (Scene_state == Scenestate.GameScene)
+           else if (Scene_state == Scenestate.GameScene)
             {
                 fademane.fadein();
-                //シーンのアンロード
-                SceneManager.UnloadSceneAsync(Game);
+                //シーンがあれば
+                if (ContainsScene(Game))
+                {
+                    //シーンのアンロード
+                    SceneManager.UnloadSceneAsync(Game);
+                }
 
                 //シーンステートをResultシーンの変更
                 Scene_state = Scenestate.ResultScene;

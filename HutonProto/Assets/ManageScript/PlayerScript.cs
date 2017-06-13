@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
     List<GameObject> obj = new List<GameObject>();
+    private SleepGageScript sleepGauge;
     private bool hit;
 
     void Start()
     {
         hit = false;
+
+        sleepGauge = GameObject.Find("ScriptController").GetComponent<SleepGageScript>();
 
         obj.Add(GameObject.Find("Player_LeftHand1"));     //0
         obj.Add(GameObject.Find("Player_LeftHand2"));     //1
@@ -101,10 +104,10 @@ public class PlayerScript : MonoBehaviour
             if (!hit)
             {
                 //敵と衝突時にカメラ揺れ *仕様にはない
-                Camera.main.gameObject.GetComponent<ShakeTest>().Shake();
+                //Camera.main.gameObject.GetComponent<ShakeTest>().Shake();
 
-                //衝突時"Z"を減らす
-                GameObject.Find("ScriptController").GetComponent<SleepGageScript>().hitEnemy(true);
+                //衝突時快眠ポイントを減らす
+                sleepGauge.hitEnemy(true);
             }
             gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
             hit = true;

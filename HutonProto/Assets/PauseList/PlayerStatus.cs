@@ -39,6 +39,9 @@ public class PlayerStatus : MonoBehaviour {
     public Transform P_pos;
     /**********************************/
 
+    //角度の誤差の数値
+    public float anglePM;
+
     void Start () {
         //そのうちタグ判別に切り替えたい
         R_shoulder = GameObject.Find("Player_RightHand1");

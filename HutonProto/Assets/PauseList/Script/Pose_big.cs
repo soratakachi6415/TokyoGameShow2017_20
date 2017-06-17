@@ -14,7 +14,7 @@ public class Pose_big : MonoBehaviour
     private Image pose_big;
     private float r, g, b, alpha;
     //角度の誤差の数値
-    public float anglePM;
+    private float anglePM;
 
     /****現在の角度******/
     protected float R_sholder;
@@ -78,7 +78,8 @@ public class Pose_big : MonoBehaviour
         b = pose_big.GetComponent<Image>().color.b;
         alpha = pose_big.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         BigPoseDisplayfalse();
     }
   

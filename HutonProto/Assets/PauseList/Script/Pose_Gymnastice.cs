@@ -78,7 +78,8 @@ public class Pose_Gymnastice : MonoBehaviour {
         b = pose_gymnastice.GetComponent<Image>().color.b;
         alpha = pose_gymnastice.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         gymnasticePoseDisplayfalse();
     }
 

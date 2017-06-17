@@ -77,7 +77,8 @@ public class Pose_Hawk : MonoBehaviour {
         b = pose_Hawk.GetComponent<Image>().color.b;
         alpha = pose_Hawk.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         HawkPoseDisplayfalse();
     }
 

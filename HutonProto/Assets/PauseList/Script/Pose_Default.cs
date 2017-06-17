@@ -11,7 +11,7 @@ public class pose_Default : MonoBehaviour {
     protected Image pose_defo;
     protected float r, g, b, alpha;
     //角度の誤差の数値
-    public float anglePM;
+    private float anglePM;
 
     /****現在の角度******/
     protected float R_sholder;
@@ -75,8 +75,8 @@ public class pose_Default : MonoBehaviour {
         g = pose_defo.GetComponent<Image>().color.g;
         b = pose_defo.GetComponent<Image>().color.b;
         alpha = pose_defo.GetComponent<Image>().color.a;
-        //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         defoPoseDisplayfalse();
     }
 

@@ -77,7 +77,8 @@ public class Pose_yoga1 : MonoBehaviour {
         b = pose_yoga1.GetComponent<Image>().color.b;
         alpha = pose_yoga1.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         yoga1PoseDisplayfalse();
     }
 

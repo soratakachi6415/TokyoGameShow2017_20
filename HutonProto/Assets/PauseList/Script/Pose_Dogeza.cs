@@ -12,7 +12,8 @@ public class Pose_Dogeza : MonoBehaviour
     //「H」ポーズの画像を所得
     protected Image pose_shiko;
     protected float r, g, b, alpha;
-
+    //角度の誤差の数値
+    private float anglePM;
     //falseならガイド画像を表示していない、trueなら画像を
     public bool imageDisplay = false;
 
@@ -76,7 +77,8 @@ public class Pose_Dogeza : MonoBehaviour
         b = pose_shiko.GetComponent<Image>().color.b;
         alpha = pose_shiko.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+         anglePM= playerstatus.anglePM;
         ShikoPoseDisplayfalse();
     }
 

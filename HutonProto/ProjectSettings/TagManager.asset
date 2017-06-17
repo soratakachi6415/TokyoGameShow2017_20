@@ -16,6 +16,9 @@ TagManager:
   - PoseManager
   - Posemanager
   - SoundsManager
+  - LevalSelect
+  - LevelSelectUI
+  - PlayerStatus
   layers:
   - Default
   - TransparentFX

@@ -78,7 +78,8 @@ public class Pose_N: MonoBehaviour {
         b = pose_N.GetComponent<Image>().color.b;
         alpha = pose_N.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         NPoseDisplayfalse();
     }
 

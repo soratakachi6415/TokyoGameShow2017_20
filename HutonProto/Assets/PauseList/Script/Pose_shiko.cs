@@ -79,8 +79,9 @@ public class Pose_shiko : MonoBehaviour
         g = pose_shiko.GetComponent<Image>().color.g;
         b = pose_shiko.GetComponent<Image>().color.b;
         alpha = pose_shiko.GetComponent<Image>().color.a;
-
-        playerstatus=this.gameObject.GetComponent<PlayerStatus>();
+        //プレイヤーの関節の角度など
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         ShikoPoseDisplayfalse();
     }
 

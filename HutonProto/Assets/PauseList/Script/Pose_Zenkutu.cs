@@ -77,7 +77,8 @@ public class Pose_Zenkutu : MonoBehaviour {
         b = pause_zenkutu.GetComponent<Image>().color.b;
         alpha = pause_zenkutu.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         zenkutuPoseDisplayfalse();
     }
 

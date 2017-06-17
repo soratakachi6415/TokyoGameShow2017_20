@@ -5,52 +5,59 @@ using UnityEngine.SceneManagement;
 
 public class LevelselectManager : MonoBehaviour
 {
-    //レベル選択か操作説明中か
-
-    public enum LevelselectState
-    {
-        LevelSelect,
-        Tutorial
-    }
-    public LevelselectState Levelselect_state;
-
-
     public GameObject Tutorial;
     public GameObject LevelSelect;
 
     public Scene_manager scenemanager_;
 
+    //ゲームの難易度
+    public enum GameLevel
+    {
+        Easy,
+        Normal,
+        Hard
+    }
+    public GameLevel gameLevel;
+
     // Use this for initialization
     void Start()
     {
         Tutorial = GameObject.FindGameObjectWithTag("Tutorial");
-        LevelSelect = GameObject.Find("LevelSelectUI");
-        Levelselect_state = LevelselectState.LevelSelect;
-        //Tutorial.SetActive(false);
+        LevelSelect = GameObject.FindGameObjectWithTag("LevelSelectUI");
         scenemanager_ = GameObject.FindGameObjectWithTag("Scenemanager").GetComponent<Scene_manager>();
-
+        gameLevel = GameLevel.Easy;
+        Startstate();
     }
 
     // Update is called once per frame
     void Update()
     {
+       
     }
 
-    public void onLevelSelect()
+    public void Startstate()
     {
-        Tutorial.SetActive(false);
         LevelSelect.SetActive(true);
-    }
-    //ボタンで選択するほう
-    public void onTutorialStatet()
-    {
-        Levelselect_state = LevelselectState.Tutorial;
+        Tutorial.GetComponent<Canvas>().enabled=false;
     }
 
-    public void TutorialStatet()
+    public void LevelEasy()
     {
         LevelSelect.SetActive(false);
-        Tutorial.SetActive(true);
+        Tutorial.GetComponent<Canvas>().enabled = true;
+        gameLevel = GameLevel.Easy;
+    }
+    public void LevelNormal()
+    {
+        LevelSelect.SetActive(false);
+        Tutorial.GetComponent<Canvas>().enabled = true;
+        gameLevel = GameLevel.Normal;
+    }
+    public void LeveleHard()
+    {
+        LevelSelect.SetActive(false);
+        Tutorial.GetComponent<Canvas>().enabled = true;
+        gameLevel = GameLevel.Hard;
     }
 
     public void BackTitle()

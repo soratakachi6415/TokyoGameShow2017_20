@@ -22,7 +22,7 @@ public class Pose_Fight : MonoBehaviour {
     public bool L_arm_flag = false;
     public bool L_leg_flag = false;
     //角度の誤差の数値
-    public float anglePM;
+    private float anglePM;
 
     /****現在の角度******/
     private float R_sholder;
@@ -76,7 +76,8 @@ public class Pose_Fight : MonoBehaviour {
         b = pose_fight.GetComponent<Image>().color.b;
         alpha = pose_fight.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         fightPoseDisplayfalse();
     }
     void Update()

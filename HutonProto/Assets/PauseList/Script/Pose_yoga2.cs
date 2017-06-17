@@ -11,7 +11,7 @@ public class Pose_yoga2 : MonoBehaviour {
     protected Image pose_yoga2;
     protected float r, g, b, alpha;
     //角度の誤差の数値
-    public float anglePM;
+    private float anglePM;
 
     /****現在の角度******/
     protected float R_sholder;
@@ -76,7 +76,8 @@ public class Pose_yoga2 : MonoBehaviour {
         b = pose_yoga2.GetComponent<Image>().color.b;
         alpha = pose_yoga2.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         yoga2PoseDisplayfalse();
     }
 

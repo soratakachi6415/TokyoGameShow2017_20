@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Pose_eiffelt : MonoBehaviour
 {
-    //0612 変更完了
 
     //プレイヤーの角度参照
     PlayerStatus playerstatus;
@@ -76,7 +75,8 @@ public class Pose_eiffelt : MonoBehaviour
         b = pose_eiffelt.GetComponent<Image>().color.b;
         alpha = pose_eiffelt.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         eiffelPoseDisplayfalse();
     }
 

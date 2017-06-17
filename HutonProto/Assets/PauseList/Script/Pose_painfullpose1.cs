@@ -77,7 +77,8 @@ public class Pose_painfullpose1 : MonoBehaviour {
         b = pose_painfullpose1.GetComponent<Image>().color.b;
         alpha = pose_painfullpose1.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         painfullpose1PoseDisplayfalse();
     }
 

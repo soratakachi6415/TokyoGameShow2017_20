@@ -75,8 +75,10 @@ public class Pose_spuat : MonoBehaviour {
         b = pose_spuat.GetComponent<Image>().color.b;
         alpha = pose_spuat.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
-        playerstatus = this.gameObject.GetComponent<PlayerStatus>();
+        playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        anglePM = playerstatus.anglePM;
         spuatPoseDisplayfalse();
+      
     }
 
     void Update()

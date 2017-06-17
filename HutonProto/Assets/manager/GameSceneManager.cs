@@ -23,6 +23,8 @@ public class GameSceneManager : MonoBehaviour
 
     //ゲーム結果が失敗してないならtrue,失敗したらfalse
     public bool gameSuccess=true;
+    //アラームがなってる時間
+    public float alarmtime;
 
     void Start()
     {
@@ -37,7 +39,6 @@ public class GameSceneManager : MonoBehaviour
         currentClocktime_ = clock_.hour;
         currentsheepnum_ = sleepGageScript_.sleepPoint;
 
-
         //時間まで羊が０にならなかった場合
         if (currentClocktime_ <= 0)
         {
@@ -49,6 +50,18 @@ public class GameSceneManager : MonoBehaviour
         {
             OnFailure();           
         }
+
+        //音が鳴り終わったらシーン遷移
+        if (alarmtime <= 0)
+        {
+            Scenenext();
+        }
+    }
+
+    //成功した場合のシーン遷移
+    public void Scenenext()
+    {
+        scenemanager_.NextScene();
     }
 
     //成功した場合
@@ -58,10 +71,7 @@ public class GameSceneManager : MonoBehaviour
         //Debug.Log("成功");
 
         //アラームが鳴り終わったらシーン遷移
-        if (alarmtime_.length < 0)
-        {
-            scenemanager_.NextScene();
-        }
+        alarmtime -= 1.0f * Time.deltaTime;       
     }
     
     //失敗した場合

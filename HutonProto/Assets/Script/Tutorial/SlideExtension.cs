@@ -17,6 +17,8 @@ public class SlideExtension : MonoBehaviour
 	[Range(0.0f, 60.0f)]
 	float scrollSpeed;
 
+	int prevTouchCount;
+
 	int target;
 	public int TargetNum
 	{
@@ -25,6 +27,22 @@ public class SlideExtension : MonoBehaviour
 			return target;
 		}
 	}
+
+    public bool isScrollStart
+    {
+        get
+        {
+            return target == 0;
+        }
+    }
+
+    public bool isScrollEnd
+    {
+        get
+        {
+            return target == splitValue - 1;
+        }
+    }
 
 	float targetValue;
 
@@ -70,12 +88,15 @@ public class SlideExtension : MonoBehaviour
 			CheckDistance();
 		}
 #else
-		if (Input.touchCount == 0)
+		if (Input.touchCount == 0 &&
+		    Input.touchCount != prevTouchCount)
 		{
 			CheckDistance();
 		}
 #endif
-    }
+
+		prevTouchCount = Input.touchCount;
+	}
 
 	void CheckDistance()
 	{
@@ -108,8 +129,9 @@ public class SlideExtension : MonoBehaviour
 	{
 		scroll.value = Mathf.Lerp(scroll.value, targetValue, scrollSpeed*Time.deltaTime);
 
-		if (Mathf.Abs(scroll.value - targetValue) < 0.01f)
+		if (Mathf.Abs(scroll.value - targetValue) < 0.001f)
 		{
+			scroll.value = targetValue;
 			isScrolls = false;
 		}
 	}

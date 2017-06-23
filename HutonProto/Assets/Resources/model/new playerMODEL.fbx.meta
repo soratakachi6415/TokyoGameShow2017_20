@@ -398,6 +398,86 @@ ModelImporter:
     100780: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.010"
     100782: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.011"
     100784: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.012"
+    100786: Camera
+    100788: foot_L_end_end
+    100790: foot_L_end_end 1
+    100792: foot_L_end_end 10
+    100794: foot_L_end_end 11
+    100796: foot_L_end_end 12
+    100798: foot_L_end_end 2
+    100800: foot_L_end_end 3
+    100802: foot_L_end_end 4
+    100804: foot_L_end_end 5
+    100806: foot_L_end_end 6
+    100808: foot_L_end_end 7
+    100810: foot_L_end_end 8
+    100812: foot_L_end_end 9
+    100814: foot_R_end_end
+    100816: foot_R_end_end 1
+    100818: foot_R_end_end 10
+    100820: foot_R_end_end 11
+    100822: foot_R_end_end 12
+    100824: foot_R_end_end 2
+    100826: foot_R_end_end 3
+    100828: foot_R_end_end 4
+    100830: foot_R_end_end 5
+    100832: foot_R_end_end 6
+    100834: foot_R_end_end 7
+    100836: foot_R_end_end 8
+    100838: foot_R_end_end 9
+    100840: hand_L_end_end
+    100842: hand_L_end_end 1
+    100844: hand_L_end_end 10
+    100846: hand_L_end_end 11
+    100848: hand_L_end_end 12
+    100850: hand_L_end_end 2
+    100852: hand_L_end_end 3
+    100854: hand_L_end_end 4
+    100856: hand_L_end_end 5
+    100858: hand_L_end_end 6
+    100860: hand_L_end_end 7
+    100862: hand_L_end_end 8
+    100864: hand_L_end_end 9
+    100866: hand_R_end_end
+    100868: hand_R_end_end 1
+    100870: hand_R_end_end 10
+    100872: hand_R_end_end 11
+    100874: hand_R_end_end 12
+    100876: hand_R_end_end 2
+    100878: hand_R_end_end 3
+    100880: hand_R_end_end 4
+    100882: hand_R_end_end 5
+    100884: hand_R_end_end 6
+    100886: hand_R_end_end 7
+    100888: hand_R_end_end 8
+    100890: hand_R_end_end 9
+    100892: head_end_end
+    100894: head_end_end 1
+    100896: head_end_end 10
+    100898: head_end_end 11
+    100900: head_end_end 12
+    100902: head_end_end 2
+    100904: head_end_end 3
+    100906: head_end_end 4
+    100908: head_end_end 5
+    100910: head_end_end 6
+    100912: head_end_end 7
+    100914: head_end_end 8
+    100916: head_end_end 9
+    100918: Lamp
+    100920: spine.001_end_end
+    100922: spine.001_end_end 1
+    100924: spine.001_end_end 10
+    100926: spine.001_end_end 11
+    100928: spine.001_end_end 12
+    100930: spine.001_end_end 2
+    100932: spine.001_end_end 3
+    100934: spine.001_end_end 4
+    100936: spine.001_end_end 5
+    100938: spine.001_end_end 6
+    100940: spine.001_end_end 7
+    100942: spine.001_end_end 8
+    100944: spine.001_end_end 9
     400000: foot_L
     400002: foot_L 1
     400004: foot_L 10
@@ -791,6 +871,86 @@ ModelImporter:
     400780: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.010"
     400782: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.011"
     400784: "\u30A2\u30FC\u30DE\u30C1\u30E5\u30A2.012"
+    400786: Camera
+    400788: foot_L_end_end
+    400790: foot_L_end_end 1
+    400792: foot_L_end_end 10
+    400794: foot_L_end_end 11
+    400796: foot_L_end_end 12
+    400798: foot_L_end_end 2
+    400800: foot_L_end_end 3
+    400802: foot_L_end_end 4
+    400804: foot_L_end_end 5
+    400806: foot_L_end_end 6
+    400808: foot_L_end_end 7
+    400810: foot_L_end_end 8
+    400812: foot_L_end_end 9
+    400814: foot_R_end_end
+    400816: foot_R_end_end 1
+    400818: foot_R_end_end 10
+    400820: foot_R_end_end 11
+    400822: foot_R_end_end 12
+    400824: foot_R_end_end 2
+    400826: foot_R_end_end 3
+    400828: foot_R_end_end 4
+    400830: foot_R_end_end 5
+    400832: foot_R_end_end 6
+    400834: foot_R_end_end 7
+    400836: foot_R_end_end 8
+    400838: foot_R_end_end 9
+    400840: hand_L_end_end
+    400842: hand_L_end_end 1
+    400844: hand_L_end_end 10
+    400846: hand_L_end_end 11
+    400848: hand_L_end_end 12
+    400850: hand_L_end_end 2
+    400852: hand_L_end_end 3
+    400854: hand_L_end_end 4
+    400856: hand_L_end_end 5
+    400858: hand_L_end_end 6
+    400860: hand_L_end_end 7
+    400862: hand_L_end_end 8
+    400864: hand_L_end_end 9
+    400866: hand_R_end_end
+    400868: hand_R_end_end 1
+    400870: hand_R_end_end 10
+    400872: hand_R_end_end 11
+    400874: hand_R_end_end 12
+    400876: hand_R_end_end 2
+    400878: hand_R_end_end 3
+    400880: hand_R_end_end 4
+    400882: hand_R_end_end 5
+    400884: hand_R_end_end 6
+    400886: hand_R_end_end 7
+    400888: hand_R_end_end 8
+    400890: hand_R_end_end 9
+    400892: head_end_end
+    400894: head_end_end 1
+    400896: head_end_end 10
+    400898: head_end_end 11
+    400900: head_end_end 12
+    400902: head_end_end 2
+    400904: head_end_end 3
+    400906: head_end_end 4
+    400908: head_end_end 5
+    400910: head_end_end 6
+    400912: head_end_end 7
+    400914: head_end_end 8
+    400916: head_end_end 9
+    400918: Lamp
+    400920: spine.001_end_end
+    400922: spine.001_end_end 1
+    400924: spine.001_end_end 10
+    400926: spine.001_end_end 11
+    400928: spine.001_end_end 12
+    400930: spine.001_end_end 2
+    400932: spine.001_end_end 3
+    400934: spine.001_end_end 4
+    400936: spine.001_end_end 5
+    400938: spine.001_end_end 6
+    400940: spine.001_end_end 7
+    400942: spine.001_end_end 8
+    400944: spine.001_end_end 9
     4300000: head
     4300002: rightupper leg
     4300004: spine1

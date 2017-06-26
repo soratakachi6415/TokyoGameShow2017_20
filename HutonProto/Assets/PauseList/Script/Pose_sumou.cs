@@ -134,8 +134,7 @@ public class Pose_sumou : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplayflag = true;
-            sumouPoseDisplaytrue();
+            imageDisplayflag = true;            
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -144,8 +143,7 @@ public class Pose_sumou : MonoBehaviour {
                  R_leg_flag == false &&
                  L_leg_flag == false)
         {
-            imageDisplayflag = false;
-            sumouPoseDisplayfalse();
+            imageDisplayflag = false;          
         }
 
         if (R_arm_flag == true &&
@@ -154,8 +152,7 @@ public class Pose_sumou : MonoBehaviour {
            L_leg_flag == true)
         {
             //ポーズが決まったか
-            DecidePose_sumou = true;
-            sumouPoseDisplaytrue();
+            DecidePose_sumou = true;        
         }
     }
     void AnglesCheck()

@@ -132,7 +132,6 @@ public class Pose_F : MonoBehaviour {
             L_leg_flag == true)
         {
             imageDisplay = true;
-            FPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -142,7 +141,6 @@ public class Pose_F : MonoBehaviour {
             L_leg_flag == false)
         {
             imageDisplay = false;
-            FPoseDisplayfalse();
         }
 
         //全部入ったか
@@ -152,7 +150,6 @@ public class Pose_F : MonoBehaviour {
             L_leg_flag == true)
         {
             DecidePose_Banana = true;
-            FPoseDisplaytrue();
         }
     }
     void AnglesCheck()

@@ -4,12 +4,34 @@ using UnityEngine;
 
 public class PoseDisplaymanager : MonoBehaviour {
 
-	// Use this for initialization
+    //ポーズの表示を制限する
+
+        //ポーズごとのフラグ
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+        //public bool Pose_
+
 	void Start () {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}

@@ -134,7 +134,6 @@ public class Pose_Banana : MonoBehaviour
             L_leg_flag == true)
         {
             imageDisplay = true;
-            BananaPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -144,7 +143,6 @@ public class Pose_Banana : MonoBehaviour
             L_leg_flag == false)
         {
             imageDisplay = false;
-            BananaPoseDisplayfalse();
         }
 
         //全部入ったか
@@ -154,7 +152,6 @@ public class Pose_Banana : MonoBehaviour
             L_leg_flag == true)
         {
             DecidePose_Banana = true;
-            BananaPoseDisplaytrue();
         }
     }
     void AnglesCheck()

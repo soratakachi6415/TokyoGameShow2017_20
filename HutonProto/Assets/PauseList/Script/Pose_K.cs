@@ -134,8 +134,7 @@ public class Pose_K : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplayflag = true;
-            KPoseDisplaytrue();
+            imageDisplayflag = true;           
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -144,8 +143,7 @@ public class Pose_K : MonoBehaviour {
                  R_leg_flag == false &&
                  L_leg_flag == false)
         {
-            imageDisplayflag = false;
-            KPoseDisplayfalse();
+            imageDisplayflag = false;          
         }
 
         if (R_arm_flag == true &&
@@ -154,8 +152,7 @@ public class Pose_K : MonoBehaviour {
            L_leg_flag == true)
         {
             //ポーズが決まったか
-            DecidePose_K = true;
-            KPoseDisplaytrue();
+            DecidePose_K = true;          
         }
     }
     void AnglesCheck()

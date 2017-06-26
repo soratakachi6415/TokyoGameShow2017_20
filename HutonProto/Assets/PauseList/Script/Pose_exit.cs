@@ -136,7 +136,6 @@ public class Pose_exit : MonoBehaviour
             L_leg_flag == true)
         {
             imageDisplayflag = true;
-            exitPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -146,7 +145,6 @@ public class Pose_exit : MonoBehaviour
                  L_leg_flag == false)
         {
             imageDisplayflag = false;
-            exitPoseDisplayfalse();
         }
 
         if (R_arm_flag == true &&
@@ -156,7 +154,6 @@ public class Pose_exit : MonoBehaviour
         {
             //ポーズが決まったか
             DecidePose_exit = true;
-            exitPoseDisplaytrue();
         }
     }
     void AnglesCheck()

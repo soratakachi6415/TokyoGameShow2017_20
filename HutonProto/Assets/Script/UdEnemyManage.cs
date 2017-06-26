@@ -16,6 +16,8 @@ public class UdEnemyManage : MonoBehaviour {
     public GameObject topEnemy;
     public GameObject bottomEnemy;
 
+    private SoundsManager soundsManager;
+
     //確認用
     private Vector3 upE;
     private Vector3 downE;
@@ -25,6 +27,8 @@ public class UdEnemyManage : MonoBehaviour {
         //確認用
         upE = topEnemy.transform.position;
         downE = bottomEnemy.transform.position;
+
+        soundsManager = GameObject.FindGameObjectWithTag("SoundsManager").GetComponent<SoundsManager>();
 
         topEnemyhit = 0;
         downEnemeyHit = 0;
@@ -37,7 +41,7 @@ public class UdEnemyManage : MonoBehaviour {
 		if(topEnemyhit > 2)
         {
             //効果音再生
-            if (topCnt == 1) GameObject.Find("SoundController").GetComponent<SoundsManager>().WalkFloor();
+            if (topCnt == 1) soundsManager.WalkFloor();
 
             if (topCnt > 2 && topCnt < 180)//起きるアニメーション　*現時点では指定座標に瞬間移動
             {
@@ -55,7 +59,7 @@ public class UdEnemyManage : MonoBehaviour {
         if(downEnemeyHit > 1)
         {
             //効果音再生
-            if (downCnt == 1) GameObject.Find("SoundController").GetComponent<SoundsManager>().WalkFloor();
+            if (downCnt == 1) soundsManager.WalkFloor();
 
             if (downCnt > 2 && downCnt < 180)
             {

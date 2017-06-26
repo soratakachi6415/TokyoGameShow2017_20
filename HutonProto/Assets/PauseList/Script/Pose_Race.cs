@@ -130,8 +130,7 @@ public class Pose_Race : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplay = true;
-            RacecsPoseDisplaytrue();
+            imageDisplay = true;           
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -140,8 +139,7 @@ public class Pose_Race : MonoBehaviour {
             R_leg_flag == false &&
             L_leg_flag == false)
         {
-            imageDisplay = false;
-            RacecsPoseDisplayfalse();
+            imageDisplay = false;         
         }
 
         //全部入ったか
@@ -150,8 +148,7 @@ public class Pose_Race : MonoBehaviour {
             R_leg_flag == true &&
             L_leg_flag == true)
         {
-            DecidePose_Racecs = true;
-            RacecsPoseDisplaytrue();
+            DecidePose_Racecs = true;           
         }
     }
     void AnglesCheck()

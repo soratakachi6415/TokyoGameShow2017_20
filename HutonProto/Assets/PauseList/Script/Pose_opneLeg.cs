@@ -135,8 +135,7 @@ public class Pose_opneLeg : MonoBehaviour
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplayflag = true;
-            OpneLegPoseDisplaytrue();
+            imageDisplayflag = true;           
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -145,8 +144,7 @@ public class Pose_opneLeg : MonoBehaviour
                  R_leg_flag == false &&
                  L_leg_flag == false)
         {
-            imageDisplayflag = false;
-            OpneLegPoseDisplayfalse();
+            imageDisplayflag = false;            
         }
         //poseが決まった判定
         if (R_arm_flag == true &&
@@ -154,8 +152,7 @@ public class Pose_opneLeg : MonoBehaviour
             R_leg_flag == true &&
             L_leg_flag == true)
         {
-            DecidePose_opneLeg = true;
-            OpneLegPoseDisplaytrue();
+            DecidePose_opneLeg = true;            
         }
     }
     void AnglesCheck()

@@ -25,13 +25,24 @@ public class GameSceneManager : MonoBehaviour
     public bool gameSuccess=true;
     //アラームがなってる時間
     public float alarmtime;
+    
+
+    //ゲーム開始前かゲーム中かゲーム終了してるか
+    public enum Gamestatus
+    {
+        Play_bfor,
+        Play_now,
+        Play_after
+    }
+    public Gamestatus Gamestatus_;
 
     void Start()
     {
-        sleepGageScript_ = GameObject.Find("ScriptController").GetComponent<SleepGageScript>();
-        clock_ = GameObject.Find("Clock").GetComponent<Clock>();
-        scenemanager_ = GameObject.FindGameObjectWithTag("Scenemanager").GetComponent<Scene_manager>();
-        alarmtime_ = GameObject.Find("SoundController").GetComponent<SoundsManager>().alarm;
+        sleepGageScript_= GameObject.Find("ScriptController").GetComponent<SleepGageScript>();
+        clock_          = GameObject.Find("Clock").GetComponent<Clock>();
+        scenemanager_   = GameObject.FindGameObjectWithTag("Scenemanager").GetComponent<Scene_manager>();
+        alarmtime_      = GameObject.Find("SoundController").GetComponent<SoundsManager>().alarm;
+        Gamestatus_ = Gamestatus.Play_bfor;
     }
 
     void Update()
@@ -42,12 +53,14 @@ public class GameSceneManager : MonoBehaviour
         //時間まで羊が０にならなかった場合
         if (currentClocktime_ <= 0)
         {
+            Gamestatus_ = Gamestatus.Play_after;
             OnSuccess();
         }
         
         //０になった場合
         if (currentsheepnum_<=0)
         {
+            Gamestatus_ = Gamestatus.Play_after;
             OnFailure();           
         }
 
@@ -68,8 +81,6 @@ public class GameSceneManager : MonoBehaviour
     public void OnSuccess()
     {
         //Resultへ遷移
-        //Debug.Log("成功");
-
         //アラームが鳴り終わったらシーン遷移
         alarmtime -= 1.0f * Time.deltaTime;       
     }
@@ -77,8 +88,13 @@ public class GameSceneManager : MonoBehaviour
     //失敗した場合
     public void OnFailure()
     {
-        //Titleへ遷移
-        //Debug.Log("失敗");
+        //Titleへ遷移      
         gameSuccess = false;
+    }
+    //ゲーム開始
+    public void GameStart()
+    {
+        Gamestatus_ = Gamestatus.Play_now;
+        clock_.clockStart();
     }
 }

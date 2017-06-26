@@ -131,8 +131,7 @@ public class Pose_R : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplay = true;
-            RPoseDisplaytrue();
+            imageDisplay = true;         
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -141,8 +140,7 @@ public class Pose_R : MonoBehaviour {
             R_leg_flag == false &&
             L_leg_flag == false)
         {
-            imageDisplay = false;
-            RPoseDisplayfalse();
+            imageDisplay = false;            
         }
 
         //全部入ったか
@@ -151,8 +149,7 @@ public class Pose_R : MonoBehaviour {
             R_leg_flag == true &&
             L_leg_flag == true)
         {
-            DecidePose_R = true;
-            RPoseDisplaytrue();
+            DecidePose_R = true;           
         }
     }
     void AnglesCheck()

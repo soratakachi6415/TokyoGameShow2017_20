@@ -135,8 +135,7 @@ public class Pose_J : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplayflag = true;
-            JPoseDisplaytrue();
+            imageDisplayflag = true;            
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -145,8 +144,7 @@ public class Pose_J : MonoBehaviour {
                  R_leg_flag == false &&
                  L_leg_flag == false)
         {
-            imageDisplayflag = false;
-            JPoseDisplayfalse();
+            imageDisplayflag = false;        
         }
 
         if (R_arm_flag == true &&
@@ -155,8 +153,7 @@ public class Pose_J : MonoBehaviour {
            L_leg_flag == true)
         {
             //ポーズが決まったか
-            DecidePose_J = true;
-            JPoseDisplaytrue();
+            DecidePose_J = true;          
         }
     }
     void AnglesCheck()

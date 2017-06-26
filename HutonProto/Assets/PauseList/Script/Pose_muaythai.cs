@@ -136,8 +136,7 @@ public class Pose_muaythai : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplayflag = true;
-            muaythaiPoseDisplaytrue();
+            imageDisplayflag = true;         
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -146,8 +145,7 @@ public class Pose_muaythai : MonoBehaviour {
                  R_leg_flag == false &&
                  L_leg_flag == false)
         {
-            imageDisplayflag = false;
-            muaythaiPoseDisplayfalse();
+            imageDisplayflag = false;            
         }
 
         if (R_arm_flag == true &&
@@ -156,8 +154,7 @@ public class Pose_muaythai : MonoBehaviour {
            L_leg_flag == true)
         {
             //ポーズが決まったか
-            DecidePose_muaythai = true;
-            muaythaiPoseDisplaytrue();
+            DecidePose_muaythai = true;            
         }
     }
     void AnglesCheck()

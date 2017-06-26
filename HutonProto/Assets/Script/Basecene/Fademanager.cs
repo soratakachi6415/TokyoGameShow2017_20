@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Fademanager : MonoBehaviour
 {
     /*フェードの管理*/
-    //テキスト
+    //イメージ
     public Image fadeimage;
     //カラーR,G,B
     private float r, g, b;

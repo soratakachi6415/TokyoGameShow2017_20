@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -16,8 +17,24 @@ public class ScoreManager : MonoBehaviour
         _totalscore = 0;
     }
 
+    public void Start()
+    {
+        SceneManager.sceneLoaded += OnLoadScene;
+    }
+
+    private void OnLoadScene(Scene arg0, LoadSceneMode arg1)
+    {
+        if (arg0.name == "Title")
+        {
+            _score = 0;
+            _totalscore = 0;
+        }
+    }
+
     //Update is called once per frame
     void Update()
     {
     }
+
+
 }

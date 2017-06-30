@@ -37,7 +37,7 @@ public class Clock : MonoBehaviour
         soundsManager = GameObject.FindGameObjectWithTag("SoundsManager").GetComponent<SoundsManager>();
         ClockStart = false;
         clockimage = GameObject.Find("clockBG").GetComponent<Image>();
-        //通常時255,255,255,1 点滅時255,50,0,1
+        //時計の版
         clockColor_r = clockimage.GetComponent<Image>().color.r;
         clockColor_g = clockimage.GetComponent<Image>().color.g;
         clockColor_b = clockimage.GetComponent<Image>().color.b;
@@ -62,18 +62,12 @@ public class Clock : MonoBehaviour
             if (timer >= 20)
             {
                 timer = 0;
-                longflag = true;
                 hour--;
             }
             //分針     
             Minutehand.transform.eulerAngles += new Vector3(0f, 0f, -1.0f) * Time.deltaTime * 18;
-
             //時針
-            if (longflag == true)
-            {
-                Shorthand.transform.eulerAngles += new Vector3(0f, 0f, -30.0f);
-                longflag = false;
-            }
+            Shorthand.transform.eulerAngles += new Vector3(0f, 0f, -1.5f) * Time.deltaTime * 1;
 
             //制限時間終了時
             if (hour == 0 && timer == 0)

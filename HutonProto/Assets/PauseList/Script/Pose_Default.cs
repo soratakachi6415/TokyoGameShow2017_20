@@ -131,7 +131,6 @@ public class pose_Default : MonoBehaviour {
             L_leg_flag == true)
         {
             imageDisplay = true;
-            defoPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -141,7 +140,6 @@ public class pose_Default : MonoBehaviour {
             L_leg_flag == false)
         {
             imageDisplay = false;
-            defoPoseDisplayfalse();
         }
 
         //全部入ったか
@@ -151,7 +149,6 @@ public class pose_Default : MonoBehaviour {
             L_leg_flag == true)
         {
             DecidePose_defo = true;
-            defoPoseDisplaytrue();
         }
     }
     void AnglesCheck()

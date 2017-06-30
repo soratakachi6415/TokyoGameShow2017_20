@@ -136,8 +136,7 @@ public class Pose_Fight : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplay = true;
-            fightPoseDisplaytrue();
+            imageDisplay = true;           
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -147,7 +146,6 @@ public class Pose_Fight : MonoBehaviour {
             L_leg_flag == false)
         {
             imageDisplay = false;
-            fightPoseDisplayfalse();
         }
 
         //全部入ったか
@@ -157,7 +155,6 @@ public class Pose_Fight : MonoBehaviour {
             L_leg_flag == true)
         {
             DecidePose_fight = true;
-            fightPoseDisplaytrue();
         }
     }
     void AnglesCheck()

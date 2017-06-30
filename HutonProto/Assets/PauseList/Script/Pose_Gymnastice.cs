@@ -135,8 +135,7 @@ public class Pose_Gymnastice : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplayflag = true;
-            gymnasticePoseDisplaytrue();
+            imageDisplayflag = true;         
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -145,8 +144,7 @@ public class Pose_Gymnastice : MonoBehaviour {
                  R_leg_flag == false &&
                  L_leg_flag == false)
         {
-            imageDisplayflag = false;
-            gymnasticePoseDisplayfalse();
+            imageDisplayflag = false;           
         }
 
         if (R_arm_flag == true &&
@@ -155,8 +153,7 @@ public class Pose_Gymnastice : MonoBehaviour {
            L_leg_flag == true)
         {
             //ポーズが決まったか
-            DecidePose_gymnastice = true;
-            gymnasticePoseDisplaytrue();
+            DecidePose_gymnastice = true;           
         }
     }
     void AnglesCheck()

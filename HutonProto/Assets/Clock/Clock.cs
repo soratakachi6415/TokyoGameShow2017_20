@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Clock : MonoBehaviour
 {
@@ -13,18 +14,20 @@ public class Clock : MonoBehaviour
     //時針のオブジェクトのZ軸
     private float ShortanglZ;
     //タイマー
-    private float timer = 0;
+    public float timer = 0;
     //時針を動かすフラグ
     private bool longflag = false;
     //残り時間のカウンター
     public int hour = 6;
     //時計開始のフラグtrueで開始
     [SerializeField]
-    private bool ClockStart = false;
-
+    public bool ClockStart = false;
     //サウンド
     private SoundsManager soundsManager;
-
+    //時計版の色変更
+    private Image clockimage;
+    private float clockColor_r, clockColor_g, clockColor_b, clockColor_a;
+    private float colorChange;
 
     void Start()
     {
@@ -33,14 +36,21 @@ public class Clock : MonoBehaviour
         Shorthand = GameObject.Find("Shorthand");
         soundsManager = GameObject.FindGameObjectWithTag("SoundsManager").GetComponent<SoundsManager>();
         ClockStart = false;
+        clockimage = GameObject.Find("clockBG").GetComponent<Image>();
+        //通常時255,255,255,1 点滅時255,50,0,1
+        clockColor_r = clockimage.GetComponent<Image>().color.r;
+        clockColor_g = clockimage.GetComponent<Image>().color.g;
+        clockColor_b = clockimage.GetComponent<Image>().color.b;
+        clockColor_a= clockimage.GetComponent<Image>().color.a;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //Z軸所得
         LongangleZ = Minutehand.transform.localEulerAngles.z;
         ShortanglZ = Shorthand.transform.localEulerAngles.z;
+        //時計盤の色取得
+        clockimage.GetComponent<Image>().color = new Color(clockColor_r, clockColor_g, clockColor_b,clockColor_a);
 
         //カウントダウン開始
         if (ClockStart == true)
@@ -69,6 +79,29 @@ public class Clock : MonoBehaviour
             if (hour == 0 && timer == 0)
             {
                 soundsManager.Alarm();
+            }
+
+            //点滅時の色変更
+            //1秒ごとの判別式
+            colorChange = (int)timer % 2;
+
+            //残り時間が1時間を切ったら点滅開始
+            if (hour <= 1)
+            {
+                if (colorChange == 0)
+                {
+                    clockColor_r = 1.0f;
+                    clockColor_g = 0.19f;
+                    clockColor_b = 0f;
+                    clockColor_a = 1f;
+                }
+                else
+                {
+                    clockColor_r = 1f;
+                    clockColor_g = 1f;
+                    clockColor_b = 1f;
+                    clockColor_a = 1f;
+                }
             }
         }
         else if (!ClockStart)

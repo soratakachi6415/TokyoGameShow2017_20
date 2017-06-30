@@ -132,8 +132,7 @@ public class Pose_Zenkutu : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplay = true;
-            zenkutuPoseDisplaytrue();
+            imageDisplay = true;           
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -142,8 +141,7 @@ public class Pose_Zenkutu : MonoBehaviour {
             R_leg_flag == false &&
             L_leg_flag == false)
         {
-            imageDisplay = false;
-            zenkutuPoseDisplayfalse();
+            imageDisplay = false;          
         }
 
         //全部入ったか
@@ -152,8 +150,7 @@ public class Pose_Zenkutu : MonoBehaviour {
             R_leg_flag == true &&
             L_leg_flag == true)
         {
-            DecidePose_Zenkutu = true;
-            zenkutuPoseDisplaytrue();
+            DecidePose_Zenkutu = true;           
         }
     }
     void AnglesCheck()

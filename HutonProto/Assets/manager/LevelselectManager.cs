@@ -32,34 +32,44 @@ public class LevelselectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        //Tutorial = GameObject.Find("Canvas").transform.FindChild("Scroll View").gameObject;
     }
 
     public void Startstate()
     {
-        LevelSelect.SetActive(true);
-        Tutorial.GetComponent<Canvas>().enabled=false;
+        onLevelSelect();     
     }
 
     public void LevelEasy()
     {
-        LevelSelect.SetActive(false);
-        Tutorial.GetComponent<Canvas>().enabled = true;
+        onTutorial();
         gameLevel = GameLevel.Easy;
     }
     public void LevelNormal()
     {
-        LevelSelect.SetActive(false);
-        Tutorial.GetComponent<Canvas>().enabled = true;
+        onTutorial();
         gameLevel = GameLevel.Normal;
     }
     public void LeveleHard()
     {
-        LevelSelect.SetActive(false);
-        Tutorial.GetComponent<Canvas>().enabled = true;
+        onTutorial();
         gameLevel = GameLevel.Hard;
     }
+    public void onLevelSelect()
+    {
+        //Debug.Log("レベルセレクト表示");
+        LevelSelect.SetActive(true);
+       // Debug.Log("チュートリアル非表示");
+        Tutorial.SetActive(false);
+    }
 
+    public void onTutorial()
+    {
+      //  Debug.Log("レベルセレクト非表示");
+        LevelSelect.SetActive(false);
+      //  Debug.Log("チュートリアル表示");
+        Tutorial.SetActive(true);
+    }
     public void BackTitle()
     {
         scenemanager_.Scene_state = Scene_manager.Scenestate.TitleScene;

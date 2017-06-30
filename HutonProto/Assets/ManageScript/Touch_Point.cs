@@ -9,6 +9,7 @@ public class Touch_Point : MonoBehaviour
     private Vector3 touch_Offset;
     private float Cnt;
     private float lifeCnt; //タッチし続けてライフが減少する時間
+    private SleepGageScript sleepGauge;
     //
 
     private Vector3 m_Offset;
@@ -19,6 +20,7 @@ public class Touch_Point : MonoBehaviour
 
     void Start()
     {
+        sleepGauge = GameObject.Find("ScriptController").GetComponent<SleepGageScript>();
         lifeCnt = 3;　　//3秒
         Cnt = 0;
     }
@@ -97,7 +99,7 @@ public class Touch_Point : MonoBehaviour
         //動かし続けるとライフが一つ減る
         if (lifeCnt <= Cnt)
         {
-            GameObject.Find("ScriptController").GetComponent<SleepGageScript>().hitEnemy(false);
+            sleepGauge.hitEnemy(false);
             Cnt = 0;
         }
         Cnt+=Time.deltaTime;

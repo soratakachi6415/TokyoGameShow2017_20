@@ -132,8 +132,7 @@ public class Pose_BodyBuli : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplay = true;
-            bodybuliPoseDisplaytrue();
+            imageDisplay = true;           
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -143,7 +142,6 @@ public class Pose_BodyBuli : MonoBehaviour {
             L_leg_flag == false)
         {
             imageDisplay = false;
-            bodybuliPoseDisplayfalse();
         }
 
         //全部入ったか
@@ -153,7 +151,6 @@ public class Pose_BodyBuli : MonoBehaviour {
             L_leg_flag == true)
         {
             DecidePose_bodybuli = true;
-            bodybuliPoseDisplaytrue();
         }
     }
     void AnglesCheck()

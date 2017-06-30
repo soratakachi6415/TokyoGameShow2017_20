@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Scene_manager : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class Scene_manager : MonoBehaviour
 
     //現在のシーンの所得
     public string currentscene;
-
     /*********Sceneの名前***********/
     //シーンを追加した場合ここに追加する。
     public enum Scenestate
@@ -30,30 +30,66 @@ public class Scene_manager : MonoBehaviour
     string Game = "main";
     string Result = "Result";
 
-    //フェードしてくれるスクリプト
-    private Fademanager fademane;
-
+    /*フェードの管理*/
     //trueがロード中,falseがロード中じゃない
-    [SerializeField]
     private bool loadingnow = false;
-    //
-    //フェードの値
-    private float fade_alpha;
+    //イメージ
+    public Image fadeimage;
+    //カラーR,G,B
+    private float color_r, color_g, color_b;
+    //フェードのa値
+    public float color_a;
+    //フェードの状態
+    public enum Fade_status
+    {
+        FADE_IN,
+        FADE_OUT
+    }
+    public Fade_status fade_status;
+    /***************/
 
     void Start()
     {
         BaseScene();
-        //オブジェクト検索
-        fademane = GameObject.Find("fadeImage").GetComponent<Fademanager>();
+        //参照先：アタッチしたオブジェクトのテキストを所得する
+        fadeimage = GameObject.Find("fadeImage").GetComponent<Image>();
+        //色の所得
+        color_r = fadeimage.GetComponent<Image>().color.r;
+        color_g = fadeimage.GetComponent<Image>().color.g;
+        color_b = fadeimage.GetComponent<Image>().color.b;
+        color_a = fadeimage.GetComponent<Image>().color.a;
+        fade_status = Fade_status.FADE_OUT;
     }
 
     void Update()
     {
+        //現在どのシーンか
         currentscene = SceneManager.GetActiveScene().name;
-
         //フェードのα数値
-        fade_alpha = fademane.a;
+        //色の更新
+        fadeimage.GetComponent<Image>().color = new Color(color_r, color_g, color_b, color_a);
+        /*透明度が０～１の間になるように制限*/
+        if (color_a < 0)
+        {
+            color_a = 0;
+        }
+        else if (color_a > 1.0f)
+        {
+            color_a = 1.0f;
+        }
 
+        //フェードアウト開始
+        if (fade_status == Fade_status.FADE_OUT)
+        {
+            color_a -= 0.03f;
+        }
+        //フェードイン開始
+        if (fade_status == Fade_status.FADE_IN)
+        {
+            color_a += 0.03f;
+        }
+
+        ////シーンの読み込み
         //タイトルシーン
         if (Scene_state == Scenestate.TitleScene)
         {
@@ -71,9 +107,10 @@ public class Scene_manager : MonoBehaviour
         //リザルトシーン
         else if (Scene_state == Scenestate.ResultScene)
         {
-            Resurt();
+            ResultScene();
         }
 
+        //キーボードでのシーンジャンプ
 #if UNITY_EDITOR
         //Titleへ移行
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -95,14 +132,14 @@ public class Scene_manager : MonoBehaviour
         {
             Scene_state = Scenestate.ResultScene;
         }
-
-
 #endif
-
     }
     void BaseScene()
     {
+        //シーンの状態をタイトルシーンに変更
         Scene_state = Scenestate.TitleScene;
+        //タイトルシーン呼び出し
+       // TitleScene();
     }
 
     //タイトルシーン
@@ -118,27 +155,9 @@ public class Scene_manager : MonoBehaviour
         //シーンのアクティブ化
         if (SceneActive(Title))
         {
+            //Debug.Log("アクティブ");
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(Title));
         }
-#if UNITY_EDITOR
-        //レベルシーンがあれば
-        if (ContainsScene(LevelSelect))
-        {
-            SceneManager.UnloadSceneAsync(LevelSelect);
-        }
-        //シーンがあれば
-        if (ContainsScene(Game))
-        {
-            //シーンのアンロード
-            SceneManager.UnloadSceneAsync(Game);
-        }
-        //リザルトシーンのアンロード
-        if (ContainsScene(Result))
-        {
-            SceneManager.UnloadSceneAsync(Result);
-        }
-#endif
-
         loadingnow = false;
     }
     //レベルセレクトシーン
@@ -156,26 +175,6 @@ public class Scene_manager : MonoBehaviour
         {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(LevelSelect));
         }
-#if UNITY_EDITOR
-        //タイトルシーンのアンロード
-        if (ContainsScene(Title))
-        {
-            SceneManager.UnloadSceneAsync(Title);
-        }
-        //シーンがあれば
-        if (ContainsScene(Game))
-        {
-            //シーンのアンロード
-            SceneManager.UnloadSceneAsync(Game);
-        }
-        //リザルトシーンのアンロード
-        if (ContainsScene(Result))
-        {
-            SceneManager.UnloadSceneAsync(Result);
-        }
-#endif
-
-        fademane.fadeout();
         loadingnow = false;
     }
 
@@ -194,31 +193,11 @@ public class Scene_manager : MonoBehaviour
         {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(Game));
         }
-        fademane.fadeout();
-
-#if UNITY_EDITOR
-        //タイトルシーンのアンロード
-        if (ContainsScene(Title))
-        {
-            SceneManager.UnloadSceneAsync(Title);
-        }
-        //レベルシーンがあれば
-        if (ContainsScene(LevelSelect))
-        {
-            SceneManager.UnloadSceneAsync(LevelSelect);
-        }
-        //リザルトシーンのアンロード
-        if (ContainsScene(Result))
-        {
-            SceneManager.UnloadSceneAsync(Result);
-        }
-#endif
-
         loadingnow = false;
     }
 
     //リザルトシーン
-    public void Resurt()
+    public void ResultScene()
     {
         //同じ名前のシーンがあるか
         if (!ContainsScene(Result))
@@ -232,26 +211,6 @@ public class Scene_manager : MonoBehaviour
         {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(Result));
         }
-
-#if UNITY_EDITOR
-        //タイトルシーンのアンロード
-        if (ContainsScene(Title))
-        {
-            SceneManager.UnloadSceneAsync(Title);
-        }
-        //レベルシーンがあれば
-        if (ContainsScene(LevelSelect))
-        {
-            SceneManager.UnloadSceneAsync(LevelSelect);
-        }
-        //シーンがあれば
-        if (ContainsScene(Game))
-        {
-            //シーンのアンロード
-            SceneManager.UnloadSceneAsync(Game);
-        }
-#endif
-        fademane.fadeout();
         loadingnow = false;
     }
 
@@ -260,42 +219,41 @@ public class Scene_manager : MonoBehaviour
     {
         if (loadingnow == false)
         {
+            //ローディング開始
             loadingnow = true;
+
+
             //タイトルシーンステートからゲームシーンステートへ
             if (Scene_state == Scenestate.TitleScene)
             {
-                fademane.fadein();
-
                 //タイトルシーンのアンロード
                 if (ContainsScene(Title))
-                {                   
+                {
                     SceneManager.UnloadSceneAsync(Title);
-                }              
+                }
 
                 //シーンステートをゲームシーン変更
                 Scene_state = Scenestate.LevelSelect;
+                //LevelSelectScene();
             }
 
             //レベルセレクトシーンからゲームシーンステートへ
             else if (Scene_state == Scenestate.LevelSelect)
             {
-                fademane.fadein();
-
                 //シーンのアンロード
                 if (ContainsScene(LevelSelect))
-                {                   
+                {
                     SceneManager.UnloadSceneAsync(LevelSelect);
-                }               
+                }
 
                 //シーンステートをゲームシーン変更
                 Scene_state = Scenestate.GameScene;
+               // Gamescene();
             }
 
             //ゲームシーンステートからリザルトシーンステートへ
-           else if (Scene_state == Scenestate.GameScene)
+            else if (Scene_state == Scenestate.GameScene)
             {
-                fademane.fadein();
-                          
                 //シーンがあれば
                 if (ContainsScene(Game))
                 {
@@ -303,16 +261,126 @@ public class Scene_manager : MonoBehaviour
                     SceneManager.UnloadSceneAsync(Game);
                 }
 
-                //シーンステートをResultシーンの変更
+                //シーンステートをリザルトシーンに変更
                 Scene_state = Scenestate.ResultScene;
+                //ResultScene();
             }
 
             //リザルトシーンステートからタイトルシーンステートへ
             else if (Scene_state == Scenestate.ResultScene)
-            {               
+            {
                 //追加ではなく読み込みし直しをしてスコア等の初期化
                 SceneManager.LoadScene("BaseScene");
             }
+        }
+    }
+
+    //フェードイン開始
+    public void fadein()
+    {
+        fade_status = Fade_status.FADE_IN;
+    }
+    //フェードアウト開始
+    public void fadeout()
+    {
+        fade_status = Fade_status.FADE_OUT;
+    }
+
+    private void SceneDelete()
+    {
+        //自身以外のシーンを削除する保険
+
+        if (Scene_state == Scenestate.TitleScene)
+        {
+            //レベルシーンがあれば
+            if (ContainsScene(LevelSelect))
+            {
+                SceneManager.UnloadSceneAsync(LevelSelect);
+            }
+            //シーンがあれば
+            if (ContainsScene(Game))
+            {
+                //シーンのアンロード
+                SceneManager.UnloadSceneAsync(Game);
+            }
+            //ゲームシーンがあれば
+            if (ContainsScene(Game))
+            {
+                //シーンのアンロード
+                SceneManager.UnloadSceneAsync(Game);
+            }
+
+            //リザルトシーンのアンロード
+            if (ContainsScene(Result))
+            {
+                SceneManager.UnloadSceneAsync(Result);
+            }
+        }
+        else if (Scene_state == Scenestate.LevelSelect)
+        {
+#if UNITY_EDITOR
+            //タイトルシーンがあれば
+            if (ContainsScene(Title))
+            {
+                SceneManager.UnloadSceneAsync(Title);
+            }
+#endif
+            //ゲームシーンがあれば
+            if (ContainsScene(Game))
+            {
+                //シーンのアンロード
+                SceneManager.UnloadSceneAsync(Game);
+            }
+
+            //リザルトシーンのアンロード
+            if (ContainsScene(Result))
+            {
+                SceneManager.UnloadSceneAsync(Result);
+            }
+        }
+        else if (Scene_state == Scenestate.GameScene)
+        {
+            //タイトルシーンがあれば
+            if (ContainsScene(Title))
+            {
+                SceneManager.UnloadSceneAsync(Title);
+            }
+#if UNITY_EDITOR
+            //レベルシーンがあれば
+            if (ContainsScene(LevelSelect))
+            {
+                SceneManager.UnloadSceneAsync(LevelSelect);
+            }
+            
+            #endif
+            
+            //リザルトシーンのアンロード
+            if (ContainsScene(Result))
+            {
+                SceneManager.UnloadSceneAsync(Result);
+            }
+        }
+        else if (Scene_state == Scenestate.ResultScene)
+        {
+            //タイトルシーンがあれば
+            if (ContainsScene(Title))
+            {
+                SceneManager.UnloadSceneAsync(Title);
+            }
+
+            if (ContainsScene(LevelSelect))
+            {
+                SceneManager.UnloadSceneAsync(LevelSelect);
+            }
+
+#if UNITY_EDITOR
+            //シーンがあれば
+            if (ContainsScene(Game))
+            {
+                //シーンのアンロード
+                SceneManager.UnloadSceneAsync(Game);
+            }
+#endif
         }
     }
 

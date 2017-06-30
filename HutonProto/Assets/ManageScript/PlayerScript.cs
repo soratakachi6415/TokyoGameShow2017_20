@@ -15,16 +15,32 @@ public class PlayerScript : MonoBehaviour
 
         sleepGauge = GameObject.Find("ScriptController").GetComponent<SleepGageScript>();
 
-        obj.Add(GameObject.Find("Player_LeftHand1"));     //0
-        obj.Add(GameObject.Find("Player_LeftHand2"));     //1
-        obj.Add(GameObject.Find("Player_RightHand1"));    //2
-        obj.Add(GameObject.Find("Player_RightHand2"));    //3
-        obj.Add(GameObject.Find("Player_LeftLeg1"));      //4
-        obj.Add(GameObject.Find("Player_LeftLeg2"));      //5
-        obj.Add(GameObject.Find("Player_RightLeg1"));     //6
-        obj.Add(GameObject.Find("Player_RightLeg2"));     //7
-        obj.Add(GameObject.Find("Player_Body"));          //8
-        obj.Add(GameObject.Find("Player_Head"));          //9
+        /*旧モデルプレイヤー*/
+        //obj.Add(GameObject.Find("Player_LeftHand1"));     //0
+        //obj.Add(GameObject.Find("Player_LeftHand2"));     //1
+        //obj.Add(GameObject.Find("Player_RightHand1"));    //2
+        //obj.Add(GameObject.Find("Player_RightHand2"));    //3
+        //obj.Add(GameObject.Find("Player_LeftLeg1"));      //4
+        //obj.Add(GameObject.Find("Player_LeftLeg2"));      //5
+        //obj.Add(GameObject.Find("Player_RightLeg1"));     //6
+        //obj.Add(GameObject.Find("Player_RightLeg2"));     //7
+        //obj.Add(GameObject.Find("Player_Body"));          //8
+        //obj.Add(GameObject.Find("Player_Head"));          //9
+
+        /*新プレイヤーモデル*/
+        obj.Add(GameObject.Find("mixamorig:LeftUpLeg"));    //0
+        obj.Add(GameObject.Find("mixamorig:LeftLeg"));      //1
+        obj.Add(GameObject.Find("mixamorig:RightUpLeg"));   //2
+        obj.Add(GameObject.Find("mixamorig:RightLeg"));     //3
+        obj.Add(GameObject.Find("mixamorig:LeftForeArm"));  //4
+        obj.Add(GameObject.Find("mixamorig:LeftArm"));      //5
+        obj.Add(GameObject.Find("mixamorig:RightForeArm")); //6
+        obj.Add(GameObject.Find("mixamorig:RightArm"));     //7
+        obj.Add(GameObject.Find("mixamorig:Spine"));        //8
+        obj.Add(GameObject.Find("mixamorig:Head"));         //9
+        obj.Add(GameObject.Find("mixamorig:Spine1"));       //10
+        obj.Add(GameObject.Find("mixamorig:Spine2"));       //11
+        
     }
 
     void Update()
@@ -34,12 +50,12 @@ public class PlayerScript : MonoBehaviour
 
     void OnMouseDown()
     {
-        for (int i = 0; i < obj.Count; i++) //全てのオブジェクトの座標を固定
+        for(int i = 0;i < obj.Count; i++) 
         {
             obj[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
 
-        if (gameObject.name.ToString().Contains("Hand")) //触れたオブジェクト座標のY座標だけ固定する
+        if (gameObject.name.ToString().Contains("Leg")) //触れたオブジェクト座標のY座標だけ固定する
         {
             if (gameObject.name.ToString().Contains("Left"))
             {
@@ -51,9 +67,8 @@ public class PlayerScript : MonoBehaviour
                 obj[2].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 obj[3].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             }
-            obj[8].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         }
-        else if (gameObject.name.ToString().Contains("Leg"))
+        else if (gameObject.name.ToString().Contains("Arm"))
         {
             if (gameObject.name.ToString().Contains("Left"))
             {
@@ -65,11 +80,15 @@ public class PlayerScript : MonoBehaviour
                 obj[6].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 obj[7].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             }
-            obj[8].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         }
+        //ボディとヘッドを固定
+        obj[8].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+        obj[9].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+        obj[10].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+        obj[11].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
 
-        ////体か頭を触ると全身の回転とY座標を固定。
-        if (gameObject.name.ToString().Contains("Body") || gameObject.name.ToString().Contains("Head"))
+        //体か頭を触ると全身の回転とY座標を固定。
+        if (gameObject.name.ToString().Contains("Spine") || gameObject.name.ToString().Contains("Head"))
         {
             for (int i = 0; i < obj.Count; i++)
             {
@@ -80,6 +99,7 @@ public class PlayerScript : MonoBehaviour
 
     void OnMouseUp()
     {
+        //オブジェクトを離すとY固定のみへ
         for (int i = 0; i < obj.Count; i++)
         {
             if (obj[i].GetComponent<Rigidbody>().constraints == RigidbodyConstraints.FreezeRotation 
@@ -103,20 +123,15 @@ public class PlayerScript : MonoBehaviour
         {
             if (!hit)
             {
-                //敵と衝突時にカメラ揺れ *仕様にはない
-                //Camera.main.gameObject.GetComponent<ShakeTest>().Shake();
-
                 //衝突時快眠ポイントを減らす
                 sleepGauge.hitEnemy(true);
             }
-            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
             hit = true;
         }
     }
 
     void OnCollisionExit(Collision other)
     {
-        gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
         hit = false;
     }
 }

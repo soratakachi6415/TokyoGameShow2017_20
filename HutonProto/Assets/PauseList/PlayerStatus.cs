@@ -6,37 +6,46 @@ public class PlayerStatus : MonoBehaviour {
 
     /****体の関節指定****/
     //右肩の角度を所得する
+    [SerializeField]
     private GameObject R_shoulder;
     public float R_shoulder_Y;
     //右肘の角度を所得する
+    [SerializeField]
     private GameObject R_elbow;
     public float R_elbow_Y;
     //右股の角度を所得する
+    [SerializeField]
     private GameObject R_crotch;
     public float R_crotch_Y;
     //右膝の角度を所得する
+    [SerializeField]
     private GameObject R_knee;
     public float R_knee_Y;
     //左肩の角度を所得する
+    [SerializeField]
     private GameObject L_shoulder;
     public float L_shoulder_Y;
     //左肘の角度を所得する
+    [SerializeField]
     private GameObject L_elbow;
     public float L_elbow_Y;
     //左股の角度を所得する
+    [SerializeField]
     private GameObject L_crotch;
     public float L_crotch_Y;
     //左膝の角度を所得する
+    [SerializeField]
     private GameObject L_knee;
     public float L_knee_Y;
     /********************/
 
 
     /*プレイヤーの位置と角度を合わせる*/
-    //プレイヤーの回転角度
-    public float P_angle;
     //プレイヤーの位置
     public Transform P_pos;
+    //プレイヤーの回転角度
+    public float P_angle;
+   
     /**********************************/
 
     //角度の誤差の数値
@@ -55,6 +64,19 @@ public class PlayerStatus : MonoBehaviour {
 
         P_pos = GameObject.Find("Player_Body").GetComponent<Transform>().transform;
         P_angle = GameObject.Find("Player_Body").GetComponent<Transform>().transform.eulerAngles.y;
+
+
+        //R_shoulder = GameObject.Find("Player_RightHand1");
+        //R_elbow = GameObject.Find("Player_RightHand2");
+        //R_crotch = GameObject.Find("Player_RightLeg1");
+        //R_knee = GameObject.Find("Player_RightLeg2");
+        //L_shoulder = GameObject.Find("Player_LeftHand1");
+        //L_elbow = GameObject.Find("Player_LeftHand2");
+        //L_crotch = GameObject.Find("Player_LeftLeg1");
+        //L_knee = GameObject.Find("Player_LeftLeg2");
+
+        //P_pos = GameObject.Find("new playerMODEL").GetComponent<Transform>().transform;
+        //P_angle = P_pos.GetComponent<Transform>().transform.eulerAngles.y;
     }
 
     void Update () {

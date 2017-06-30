@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Pose_X : MonoBehaviour {
+public class Pose_X : MonoBehaviour
+{
     // 06/12変更完了
     PlayerStatus playerstatus;
 
@@ -65,6 +66,8 @@ public class Pose_X : MonoBehaviour {
 
     //成功したポーズの判定で使う
     public string posename = "pose_X";
+    //
+    public bool DecidePose_U = false;
 
     void Start()
     {
@@ -84,7 +87,7 @@ public class Pose_X : MonoBehaviour {
     void Update()
     {
         pose_X.GetComponent<Image>().color = new Color(r, g, b, alpha);
-        this.transform.position = new Vector3(playerstatus.P_pos.position.x, 10,playerstatus.P_pos.position.z);
+        this.transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 
         //プレイヤーStatusから所得する
         R_sholder = playerstatus.R_shoulder_Y;
@@ -143,6 +146,15 @@ public class Pose_X : MonoBehaviour {
         {
             imageDisplay = false;
         }
+
+        if (R_arm_flag == true &&
+          L_arm_flag == true &&
+          R_leg_flag == true &&
+          L_leg_flag == true)
+        {
+            DecidePose_U = true;
+        }
+
     }
     void AnglesCheck()
     {

@@ -131,8 +131,7 @@ public class Pose_spuat : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplay = true;
-            spuatPoseDisplaytrue();
+            imageDisplay = true;          
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -141,8 +140,7 @@ public class Pose_spuat : MonoBehaviour {
             R_leg_flag == false &&
             L_leg_flag == false)
         {
-            imageDisplay = false;
-            spuatPoseDisplayfalse();
+            imageDisplay = false;           
         }
 
         //全部入ったか
@@ -151,8 +149,7 @@ public class Pose_spuat : MonoBehaviour {
             R_leg_flag == true &&
             L_leg_flag == true)
         {
-            DecidePose_spuat = true;
-            spuatPoseDisplaytrue();
+            DecidePose_spuat = true;          
         }
     }
     void AnglesCheck()

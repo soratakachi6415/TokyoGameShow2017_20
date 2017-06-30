@@ -136,7 +136,6 @@ public class Pose_big : MonoBehaviour
             L_leg_flag == true)
         {
             imageDisplayflag = true;
-            BigPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -146,7 +145,6 @@ public class Pose_big : MonoBehaviour
                  L_leg_flag == false)
         {
             imageDisplayflag = false;
-            BigPoseDisplayfalse();
         }
 
         if (R_arm_flag == true &&
@@ -156,7 +154,6 @@ public class Pose_big : MonoBehaviour
         {
             //ポーズが決まったか
             DecidePose_Big = true;
-            BigPoseDisplaytrue();
         }
     }
     void AnglesCheck()

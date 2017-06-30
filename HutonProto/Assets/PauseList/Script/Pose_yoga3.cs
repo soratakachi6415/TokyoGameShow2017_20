@@ -132,8 +132,7 @@ public class Pose_yoga3 : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplay = true;
-            yoga3PoseDisplaytrue();
+            imageDisplay = true;           
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -142,8 +141,7 @@ public class Pose_yoga3 : MonoBehaviour {
             R_leg_flag == false &&
             L_leg_flag == false)
         {
-            imageDisplay = false;
-            yoga3PoseDisplayfalse();
+            imageDisplay = false;            
         }
 
         //全部入ったか
@@ -152,8 +150,7 @@ public class Pose_yoga3 : MonoBehaviour {
             R_leg_flag == true &&
             L_leg_flag == true)
         {
-            DecidePose_yoga3 = true;
-            yoga3PoseDisplaytrue();
+            DecidePose_yoga3 = true;          
         }
     }
     void AnglesCheck()

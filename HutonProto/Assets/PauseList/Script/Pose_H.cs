@@ -139,16 +139,15 @@ public class Pose_H : MonoBehaviour
             L_leg_flag == true)
         {
             imageDisplay = true;
-            HPoseDisplaytrue();
         }
+           
         //どれも入ってない場合
         if (R_arm_flag == false &&
                  L_arm_flag == false &&
                  R_leg_flag == false &&
                  L_leg_flag == false)
         {
-            imageDisplay = false;
-            HPoseDisplayfalse();
+            imageDisplay = false;           
         }
 
         //全部入った場合

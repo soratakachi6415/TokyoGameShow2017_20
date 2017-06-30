@@ -137,8 +137,7 @@ public class Pose_Happy : MonoBehaviour
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplay = true;
-            HappysPoseDisplaytrue();
+            imageDisplay = true;            
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -147,8 +146,7 @@ public class Pose_Happy : MonoBehaviour
                  R_leg_flag == false &&
                  L_leg_flag == false)
         {
-            imageDisplay = false;
-            HappyPoseDisplayfalse();
+            imageDisplay = false;            
         }
 
         if (R_arm_flag == true &&
@@ -156,8 +154,7 @@ public class Pose_Happy : MonoBehaviour
             R_leg_flag == true &&
             L_leg_flag == true)
         {
-            DecidePose_Happy = true;
-            HappysPoseDisplaytrue();
+            DecidePose_Happy = true;            
         }       
     }
     void AnglesCheck()

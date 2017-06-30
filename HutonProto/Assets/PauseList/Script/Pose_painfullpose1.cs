@@ -134,8 +134,7 @@ public class Pose_painfullpose1 : MonoBehaviour {
             R_leg_flag == true ||
             L_leg_flag == true)
         {
-            imageDisplayflag = true;
-            painfullpose1PoseDisplaytrue();
+            imageDisplayflag = true;            
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -144,8 +143,7 @@ public class Pose_painfullpose1 : MonoBehaviour {
                  R_leg_flag == false &&
                  L_leg_flag == false)
         {
-            imageDisplayflag = false;
-            painfullpose1PoseDisplayfalse();
+            imageDisplayflag = false;           
         }
 
         if (R_arm_flag == true &&
@@ -154,8 +152,7 @@ public class Pose_painfullpose1 : MonoBehaviour {
            L_leg_flag == true)
         {
             //ポーズが決まったか
-            DecidePose_painfullpose1 = true;
-            painfullpose1PoseDisplaytrue();
+            DecidePose_painfullpose1 = true;            
         }
     }
     void AnglesCheck()

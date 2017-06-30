@@ -17,6 +17,7 @@ public class LoadObject : MonoBehaviour
     {
         if (arg0.name == "Title")
         {
+            SceneManager.sceneLoaded -= SceneLoaded;
             Destroy(gameObject);
         }
     }

@@ -33,61 +33,16 @@ public class Scene_manager : MonoBehaviour
     /*フェードの管理*/
     //trueがロード中,falseがロード中じゃない
     private bool loadingnow = false;
-    //イメージ
-    public Image fadeimage;
-    //カラーR,G,B
-    private float color_r, color_g, color_b;
-    //フェードのa値
-    public float color_a;
-    //フェードの状態
-    public enum Fade_status
-    {
-        FADE_IN,
-        FADE_OUT
-    }
-    public Fade_status fade_status;
-    /***************/
 
     void Start()
     {
         BaseScene();
-        //参照先：アタッチしたオブジェクトのテキストを所得する
-        fadeimage = GameObject.Find("fadeImage").GetComponent<Image>();
-        //色の所得
-        color_r = fadeimage.GetComponent<Image>().color.r;
-        color_g = fadeimage.GetComponent<Image>().color.g;
-        color_b = fadeimage.GetComponent<Image>().color.b;
-        color_a = fadeimage.GetComponent<Image>().color.a;
-        fade_status = Fade_status.FADE_OUT;
     }
 
     void Update()
     {
         //現在どのシーンか
         currentscene = SceneManager.GetActiveScene().name;
-        //フェードのα数値
-        //色の更新
-        fadeimage.GetComponent<Image>().color = new Color(color_r, color_g, color_b, color_a);
-        /*透明度が０～１の間になるように制限*/
-        if (color_a < 0)
-        {
-            color_a = 0;
-        }
-        else if (color_a > 1.0f)
-        {
-            color_a = 1.0f;
-        }
-
-        //フェードアウト開始
-        if (fade_status == Fade_status.FADE_OUT)
-        {
-            color_a -= 0.03f;
-        }
-        //フェードイン開始
-        if (fade_status == Fade_status.FADE_IN)
-        {
-            color_a += 0.03f;
-        }
 
         ////シーンの読み込み
         //タイトルシーン
@@ -273,17 +228,6 @@ public class Scene_manager : MonoBehaviour
                 SceneManager.LoadScene("BaseScene");
             }
         }
-    }
-
-    //フェードイン開始
-    public void fadein()
-    {
-        fade_status = Fade_status.FADE_IN;
-    }
-    //フェードアウト開始
-    public void fadeout()
-    {
-        fade_status = Fade_status.FADE_OUT;
     }
 
     private void SceneDelete()

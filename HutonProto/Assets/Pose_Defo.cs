@@ -78,11 +78,12 @@ public class Pose_Defo : MonoBehaviour {
         //プレイヤーの関節の角度など
         playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
         anglePM = playerstatus.anglePM;
-        defoPoseDisplayfalse();
+       
     }
 
     void Update()
     {
+        defoPoseDisplayfalse();
         //角度の獲得
         R_sholder = playerstatus.R_shoulder_Y;
         R_elbow = playerstatus.R_elbow_Y;

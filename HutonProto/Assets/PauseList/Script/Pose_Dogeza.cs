@@ -15,7 +15,7 @@ public class Pose_Dogeza : MonoBehaviour
     //角度の誤差の数値
     private float anglePM;
     //falseならガイド画像を表示していない、trueなら画像を
-    public bool imageDisplay = false;
+    private bool imageDisplay = false;
 
     //ポーズの各腕、足がそれぞれ指定された範囲内に入っているか
     //falseが入ってない、trueが入ってる
@@ -123,16 +123,19 @@ public class Pose_Dogeza : MonoBehaviour
         pose_shiko.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
         transform.position = new Vector3(playerstatus.P_pos.position.x, 4, playerstatus.P_pos.position.z);
-        //角度check
-        AnglesCheck();
 
-        //どれかが判定の範囲内に入ったら画像表示
-        if (R_arm_flag == true ||
-            L_arm_flag == true ||
-            R_leg_flag == true ||
-            L_leg_flag == true)
+        //腕を基準にした場合の判定
+        ArmflagCheck();
+        //足を基準にした場合の判定
+        FootflagCheck();
+        if (imageDisplay == false)
         {
-            imageDisplay = true;
+            ShikoPoseDisplayfalse();
+        }
+
+        if (imageDisplay == true)
+        {
+            ShikoPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -153,84 +156,83 @@ public class Pose_Dogeza : MonoBehaviour
             DecidePose_Banana = true;
         }
     }
-    void AnglesCheck()
+
+    void ArmflagCheck()
     {
-        //右腕の判別
-        //右肩の角度
-        if (R_sholder_center >= R_sholderM && R_sholder_center <= R_sholderP)
+        //右腕が範囲内にあるとき
+        if (R_arm_flag == true)
         {
-            //右肘
-            if (R_elbow_center >= R_elbowM && R_elbow_center <= R_elbowP)
+            //右足が範囲内にあるとき
+            if (R_leg_flag == true)
             {
-                R_arm_flag = true;
+                imageDisplay = true;
             }
-            else
+            //左足が範囲内にあるとき
+            else if (L_leg_flag == true)
             {
-                R_arm_flag = false;
+                imageDisplay = true;
             }
-        }
-        else
-        {
-            R_arm_flag = false;
-        }
-
-        //右足
-        //右股の角度
-        if (R_crotch >= R_crotchM && R_crotch <= R_crotchP)
-        {
-            //右膝
-            if (R_knee >= R_kneeM && R_knee <= R_kneeP)
+            else if (L_leg_flag == false || R_leg_flag == false)
             {
-                R_leg_flag = true;
-            }
-            else
-            {
-                R_leg_flag = false;
+                imageDisplay = false;
             }
         }
-        else
+        //左腕が範囲内にあるとき
+        else if (L_arm_flag == true)
         {
-            R_leg_flag = false;
-        }
-
-
-        //左側の判別
-
-        //左肩の角度
-        if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
-        {
-            //左肘
-            if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
+            //右足が範囲内にあるとき
+            if (R_leg_flag == true)
             {
-                L_arm_flag = true;
+                imageDisplay = true;
             }
-            else
+            //左足が範囲内にあるとき
+            else if (L_leg_flag == true)
             {
-                L_arm_flag = false;
+                imageDisplay = true;
+            }
+            else if (L_leg_flag == false || R_leg_flag == false)
+            {
+                imageDisplay = false;
             }
         }
-        else
+    }
+    void FootflagCheck()
+    {
+        //右足が範囲内にあるとき
+        if (R_leg_flag == true)
         {
-            L_arm_flag = false;
-        }
-
-
-        //左股の角度
-        if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
-        {
-            //左膝
-            if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+            //右腕が範囲内にあるとき
+            if (R_arm_flag == true)
             {
-                L_leg_flag = true;
+                imageDisplay = true;
             }
-            else
+            //左腕が範囲内にあるとき
+            else if (L_arm_flag == true)
             {
-                L_leg_flag = false;
+                imageDisplay = true;
+            }
+            else if (L_arm_flag == false || R_arm_flag == false)
+            {
+                imageDisplay = false;
             }
         }
-        else
+        //左腕が範囲内にあるとき
+        else if (L_leg_flag == true)
         {
-            L_leg_flag = false;
+            //右足が範囲内にあるとき
+            if (R_arm_flag == true)
+            {
+                imageDisplay = true;
+            }
+            //左足が範囲内にあるとき
+            else if (L_arm_flag == true)
+            {
+                imageDisplay = true;
+            }
+            else if (L_arm_flag == false || R_arm_flag == false)
+            {
+                imageDisplay = false;
+            }
         }
     }
 

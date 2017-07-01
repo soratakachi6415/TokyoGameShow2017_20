@@ -13,14 +13,15 @@ public class Fademanager : MonoBehaviour
     //α値
     public float a;
     //Fadeの遷移状態の確認用
-    public string Fadestatus;
+    private string Fadestatus;
     public enum Fade_status
     {
         FADE_IN,
         FADE_OUT
     }
-    public Fade_status fade_image = Fade_status.FADE_OUT;
+    public Fade_status fade_image = Fade_status.FADE_IN;
 
+    public string curentscene_;
     void Start()
     {
         //参照先：アタッチしたオブジェクトのテキストを所得する
@@ -29,10 +30,13 @@ public class Fademanager : MonoBehaviour
         r = fadeimage.GetComponent<Image>().color.r;
         g = fadeimage.GetComponent<Image>().color.g;
         b = fadeimage.GetComponent<Image>().color.b;
-        a = fadeimage.GetComponent<Image>().color.a;
+        //a = 1.0f;
+        fade_image = Fade_status.FADE_OUT;
+
     }
     void Update()
     {
+        curentscene_ =GameObject.Find("SceneManager").GetComponent<Scene_manager>().currentscene;
         //現在の状態確認
         Fadestatus = System.Enum.GetName(typeof(Fade_status), fade_image);
         //色の更新
@@ -57,7 +61,13 @@ public class Fademanager : MonoBehaviour
         {
             a += 0.03f;
         }
+
+        if (curentscene_ == "Title")
+        {
+            fade_image = Fade_status.FADE_OUT;
+        }
     }
+
     //フェードイン開始
     public void fadein()
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using UnityEngine.SceneManagement;
 
 public class RayPointTouch : MonoBehaviour
 {
@@ -11,10 +11,11 @@ public class RayPointTouch : MonoBehaviour
     void Awake()
     {
         dragObjDic = new Dictionary<int, Transform>();
+        SceneManager.sceneLoaded += SceneLoaded;
     }
 
-	// Update is called once per frame
-	void Update()
+    // Update is called once per frame
+    void Update()
 	{
 #if UNITY_EDITOR
 
@@ -109,5 +110,10 @@ public class RayPointTouch : MonoBehaviour
     {
         //登録を削除
         dragObjDic.Remove(id);
+    }
+
+    private void SceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        dragObjDic.Clear();
     }
 }

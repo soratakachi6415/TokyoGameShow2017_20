@@ -47,7 +47,8 @@ public class SlideExtension : MonoBehaviour
 	float targetValue;
 
 	Scrollbar scroll;
-	bool isScrolls = false;
+	bool isScrolls     = false;
+    bool isEnableFrame = false;
 
 	void OnValidate()
 	{
@@ -98,7 +99,23 @@ public class SlideExtension : MonoBehaviour
 		prevTouchCount = Input.touchCount;
 	}
 
-	void CheckDistance()
+    private void LateUpdate()
+    {
+        if (!isEnableFrame) return;
+
+        target = 0;
+        targetValue = 0.0f;
+        scroll.value = 0.0f;
+
+        isEnableFrame = false;
+    }
+
+    private void OnEnable()
+    {
+        isEnableFrame = true;
+    }
+
+    void CheckDistance()
 	{
 		float dis = scroll.value - targetValue;
 		if (Mathf.Abs(dis) >= distance)

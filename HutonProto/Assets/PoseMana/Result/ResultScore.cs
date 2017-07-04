@@ -8,22 +8,9 @@ public class ResultScore : MonoBehaviour {
     public Sprite[] _numimage;
     public List<int> number = new List<int>();
 
-    private Image _score;
-    private float r, g, b, alpha;
-
     public bool _on = false;
     // Use this for initialization
     void Start () {
-        _score = GameObject.Find("ScoreImage").GetComponent<Image>();
-        r = _score.GetComponent<Image>().color.r;
-        g = _score.GetComponent<Image>().color.g;
-        b = _score.GetComponent<Image>().color.b;
-        alpha = _score.GetComponent<Image>().color.a;
-        
-        if(ScoreManager._totalscore == 0)
-        {
-            TotalView(0);
-        }
         if(ScoreManager._totalscore >= 1)
         {
             TotalView(ScoreManager._totalscore);
@@ -46,11 +33,11 @@ public class ResultScore : MonoBehaviour {
             number.Add(score);
         }
 
-        GameObject.Find("ScoreImage").GetComponent<Image>().sprite = _numimage[number[0]];
+        GameObject.Find("ResultScoreImage").GetComponent<Image>().sprite = _numimage[number[0]];
         for (int i = 0; i < number.Count; i++)
         {
             // 複製 
-            RectTransform scoreimage = (RectTransform)Instantiate(GameObject.Find("ScoreImage")).transform; scoreimage.SetParent(this.transform, false);
+            RectTransform scoreimage = (RectTransform)Instantiate(GameObject.Find("ResultScoreImage")).transform; scoreimage.SetParent(this.transform, false);
             scoreimage.localPosition = new Vector3(
                 scoreimage.localPosition.x - scoreimage.sizeDelta.x * i,
                 scoreimage.localPosition.y,

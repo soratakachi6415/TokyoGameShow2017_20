@@ -5,37 +5,37 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour {
 
     /****体の関節指定****/
-    //右肩の角度を所得する
-    [SerializeField]
+    //右肩の角度を所得する    
     private GameObject R_shoulder;
+    [SerializeField]
     public float R_shoulder_Y;
-    //右肘の角度を所得する
-    [SerializeField]
+    //右肘の角度を所得する   
     private GameObject R_elbow;
+    [SerializeField]
     public float R_elbow_Y;
-    //右股の角度を所得する
-    [SerializeField]
+    //右股の角度を所得する    
     private GameObject R_crotch;
+    [SerializeField]
     public float R_crotch_Y;
-    //右膝の角度を所得する
-    [SerializeField]
+    //右膝の角度を所得する   
     private GameObject R_knee;
+    [SerializeField]
     public float R_knee_Y;
-    //左肩の角度を所得する
-    [SerializeField]
+    //左肩の角度を所得する   
     private GameObject L_shoulder;
+    [SerializeField]
     public float L_shoulder_Y;
-    //左肘の角度を所得する
-    [SerializeField]
+    //左肘の角度を所得する   
     private GameObject L_elbow;
+    [SerializeField]
     public float L_elbow_Y;
-    //左股の角度を所得する
-    [SerializeField]
+    //左股の角度を所得する    
     private GameObject L_crotch;
-    public float L_crotch_Y;
-    //左膝の角度を所得する
     [SerializeField]
+    public float L_crotch_Y;
+    //左膝の角度を所得する    
     private GameObject L_knee;
+    [SerializeField]
     public float L_knee_Y;
     /********************/
 

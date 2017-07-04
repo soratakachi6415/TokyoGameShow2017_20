@@ -29,7 +29,12 @@ public class ScoreView : MonoBehaviour
         _score.GetComponent<Image>().color = new Color(r, g, b, alpha);
         alpha = 0;
 
-        if(_posemanager._Pose == PoseManager.PoseState.None)
+        
+    }
+
+    public void View(int score)
+    {
+        if (_posemanager._Pose == PoseManager.PoseState.None)
         {
             var objs = GameObject.FindGameObjectsWithTag("Score");
             foreach (var obj in objs)
@@ -38,18 +43,6 @@ public class ScoreView : MonoBehaviour
                 {
                     Destroy(obj);
                 }
-            }
-        }
-    }
-
-    public void View(int score)
-    {
-        var objs = GameObject.FindGameObjectsWithTag("Score");
-        foreach (var obj in objs)
-        {
-            if (0 <= obj.name.LastIndexOf("Clone"))
-            {
-                Destroy(obj);
             }
         }
 

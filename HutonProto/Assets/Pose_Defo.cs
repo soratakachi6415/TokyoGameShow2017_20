@@ -14,7 +14,7 @@ public class Pose_Defo : MonoBehaviour {
     public float anglePM;
 
     /****現在の角度******/
-    protected float R_sholder;
+    protected float R_shoulder;
     protected float R_elbow;
     protected float R_crotch;
     protected float R_knee;
@@ -27,8 +27,8 @@ public class Pose_Defo : MonoBehaviour {
     /*それぞれの手足ごとの判定の数値の中心*/
     //右肩の判定の基本となる数字
     //Pがプラス、Mがマイナス
-    public float R_sholder_center;
-    protected float R_sholderP, R_sholderM;
+    public float R_shoulder_center;
+    protected float R_shoulderP, R_shoulderM;
     //右肘
     public float R_elbow_center;
     protected float R_elbowP, R_elbowM;
@@ -85,7 +85,7 @@ public class Pose_Defo : MonoBehaviour {
     {
         defoPoseDisplayfalse();
         //角度の獲得
-        R_sholder = playerstatus.R_shoulder_Y;
+        R_shoulder = playerstatus.R_shoulder_Y;
         R_elbow = playerstatus.R_elbow_Y;
         R_crotch = playerstatus.R_crotch_Y;
         R_knee = playerstatus.R_knee_Y;
@@ -96,8 +96,8 @@ public class Pose_Defo : MonoBehaviour {
 
         /*角度の判定の上下許容範囲*/
         //右肩
-        R_sholderP = R_sholder + anglePM;
-        R_sholderM = R_sholder - anglePM;
+        R_shoulderP = R_shoulder + anglePM;
+        R_shoulderM = R_shoulder - anglePM;
         //右ひじ
         R_elbowP = R_elbow + anglePM;
         R_elbowM = R_elbow - anglePM;
@@ -160,7 +160,7 @@ public class Pose_Defo : MonoBehaviour {
     {
         //右腕の判別
         //右肩の角度
-        if (R_sholder_center >= R_sholderM && R_sholder_center <= R_sholderP)
+        if (R_shoulder_center >= R_shoulderM && R_shoulder_center <= R_shoulderP)
         {
             //右肘
             if (R_elbow_center >= R_elbowM && R_elbow_center <= R_elbowP)

@@ -163,6 +163,84 @@ public class Pose_frog : MonoBehaviour {
             DecidePose_frog = true;         
         }
     }
+
+    void AnglesCheck()
+    {
+        //右腕の判別
+        //右肩の角度
+        if (R_shoulder_center >= R_sholderM && R_shoulder_center <= R_sholderP)
+        {
+            //右肘
+            if (R_elbow_center >= R_elbowM && R_elbow_center <= R_elbowP)
+            {
+                R_arm_flag = true;
+            }
+            else
+            {
+                R_arm_flag = false;
+            }
+        }
+        else
+        {
+            R_arm_flag = false;
+        }
+
+        //右足
+        //右股の角度
+        if (R_crotch_center >= R_crotchM && R_crotch_center <= R_crotchP)
+        {
+            //右膝
+            if (R_knee_center >= R_kneeM && R_knee_center <= R_kneeP)
+            {
+                R_leg_flag = true;
+            }
+            else
+            {
+                R_leg_flag = false;
+            }
+        }
+        else
+        {
+            R_leg_flag = false;
+        }
+
+        //左側の判別
+        //左肩の角度
+        if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
+        {
+            //左肘
+            if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
+            {
+                L_arm_flag = true;
+            }
+            else
+            {
+                L_arm_flag = false;
+            }
+        }
+        else
+        {
+            L_arm_flag = false;
+        }
+
+        //左股の角度
+        if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+        {
+            //左膝
+            if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+            {
+                L_leg_flag = true;
+            }
+            else
+            {
+                L_leg_flag = false;
+            }
+        }
+        else
+        {
+            L_leg_flag = false;
+        }
+    }
     void ArmflagCheck()
     {
         //右腕が範囲内にあるとき

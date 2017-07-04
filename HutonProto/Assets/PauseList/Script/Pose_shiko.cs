@@ -49,7 +49,7 @@ public class Pose_shiko : MonoBehaviour
     protected float L_elbowP, L_elbowM;
     //左股
     public float L_crotch_center;
-    protected float RsholdeP, RsholdeM;
+    protected float L_crotch_P, L_crotch_M;
     //左膝
     public float L_knee_center;
     protected float L_kneeP, L_kneeM;
@@ -128,6 +128,8 @@ public class Pose_shiko : MonoBehaviour
         pose_shiko.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
         transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
+        //
+        AnglesCheck();
         //腕を基準にした場合の判定
         ArmflagCheck();
         //足を基準にした場合の判定
@@ -159,6 +161,87 @@ public class Pose_shiko : MonoBehaviour
             DecidePose_Shiko = true;          
         }
     }
+
+    void AnglesCheck()
+    {
+        //右腕の判別
+        //右肩の角度
+        if (R_shoulder_center >= R_shoulderM && R_shoulder_center <= R_shoulderP)
+        {
+            //右肘
+            if (R_elbow_center >= R_elbowM && R_elbow_center <= R_elbowP)
+            {
+                R_arm_flag = true;
+            }
+            else
+            {
+                R_arm_flag = false;
+            }
+        }
+        else
+        {
+            R_arm_flag = false;
+        }
+
+        //右足
+        //右股の角度
+        if (R_crotch_center >= R_crotchM && R_crotch_center <= R_crotchP)
+        {
+            //右膝
+            if (R_knee_center >= R_kneeM && R_knee_center <= R_kneeP)
+            {
+                R_leg_flag = true;
+            }
+            else
+            {
+                R_leg_flag = false;
+            }
+        }
+        else
+        {
+            R_leg_flag = false;
+        }
+
+        //左側の判別
+        //左肩の角度
+        if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
+        {
+            //左肘
+            if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
+            {
+                L_arm_flag = true;
+            }
+            else
+            {
+                L_arm_flag = false;
+            }
+        }
+        else
+        {
+            L_arm_flag = false;
+        }
+
+
+        //左股の角度
+        if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+        {
+            //左膝
+            if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+            {
+                L_leg_flag = true;
+            }
+            else
+            {
+                L_leg_flag = false;
+            }
+        }
+        else
+        {
+
+            L_leg_flag = false;
+        }
+    }
+
     void FootflagCheck()
     {
         //右腕が範囲内にあるとき

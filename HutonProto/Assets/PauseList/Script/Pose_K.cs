@@ -16,7 +16,7 @@ public class Pose_K : MonoBehaviour {
     private float anglePM;
 
     /****現在の角度******/
-    protected float R_sholder;
+    protected float R_shoulder;
     protected float R_elbow;
     protected float R_crotch;
     protected float R_knee;
@@ -30,7 +30,7 @@ public class Pose_K : MonoBehaviour {
     //右肩の判定の基本となる数字
     //Pがプラス、Mがマイナス
     public float R_shoulder_center;
-    protected float R_sholderP, R_sholderM;
+    protected float R_shoulderP, R_shoulderM;
     //右肘
     public float R_elbow_center;
     protected float R_elbowP, R_elbowM;
@@ -91,7 +91,7 @@ public class Pose_K : MonoBehaviour {
         transform.position = new Vector3(playerstatus.P_pos.position.x, 110, playerstatus.P_pos.position.z);
 
         //プレイヤーStatusから所得する
-        R_sholder = playerstatus.R_shoulder_Y;
+        R_shoulder = playerstatus.R_shoulder_Y;
         R_elbow = playerstatus.R_elbow_Y;
         R_crotch = playerstatus.R_crotch_Y;
         R_knee = playerstatus.R_knee_Y;
@@ -102,8 +102,8 @@ public class Pose_K : MonoBehaviour {
 
         /*角度の判定の上下許容範囲*/
         //右肩
-        R_sholderP = R_sholder + anglePM;
-        R_sholderM = R_sholder - anglePM;
+        R_shoulderP = R_shoulder + anglePM;
+        R_shoulderM = R_shoulder - anglePM;
         //右ひじ
         R_elbowP = R_elbow + anglePM;
         R_elbowM = R_elbow - anglePM;
@@ -127,6 +127,7 @@ public class Pose_K : MonoBehaviour {
         L_kneeM = L_knee - anglePM;
         /***************************************/
 
+        AnglesCheck();
         //腕を基準にした場合の判定
         ArmflagCheck();
         //足を基準にした場合の判定
@@ -158,6 +159,86 @@ public class Pose_K : MonoBehaviour {
         {
             //ポーズが決まったか
             DecidePose_K = true;          
+        }
+    }
+
+    void AnglesCheck()
+    {
+        //右腕の判別
+        //右肩の角度
+        if (R_shoulder_center >= R_shoulderM && R_shoulder_center <= R_shoulderP)
+        {
+            //右肘
+            if (R_elbow_center >= R_elbowM && R_elbow_center <= R_elbowP)
+            {
+                R_arm_flag = true;
+            }
+            else
+            {
+                R_arm_flag = false;
+            }
+        }
+        else
+        {
+            R_arm_flag = false;
+        }
+
+        //右足
+        //右股の角度
+        if (R_crotch_center >= R_crotchM && R_crotch_center <= R_crotchP)
+        {
+            //右膝
+            if (R_knee_center >= R_kneeM && R_knee_center <= R_kneeP)
+            {
+                R_leg_flag = true;
+            }
+            else
+            {
+                R_leg_flag = false;
+            }
+        }
+        else
+        {
+            R_leg_flag = false;
+        }
+
+        //左側の判別
+        //左肩の角度
+        if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
+        {
+            //左肘
+            if (L_shoulder_center >= L_shoulderM && L_shoulder_center <= L_shoulderP)
+            {
+                L_arm_flag = true;
+            }
+            else
+            {
+                L_arm_flag = false;
+            }
+        }
+        else
+        {
+            L_arm_flag = false;
+        }
+
+
+        //左股の角度
+        if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+        {
+            //左膝
+            if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+            {
+                L_leg_flag = true;
+            }
+            else
+            {
+                L_leg_flag = false;
+            }
+        }
+        else
+        {
+
+            L_leg_flag = false;
         }
     }
     void ArmflagCheck()

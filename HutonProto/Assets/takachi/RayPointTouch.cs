@@ -86,6 +86,8 @@ public class RayPointTouch : MonoBehaviour
 
     void DragMove(int id, Vector3 position)
     {
+        if (!dragObjDic.ContainsKey(id)) return;
+
         Transform dragObject = dragObjDic[id];
 
         //何も見つからなかった -> null

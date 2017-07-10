@@ -64,30 +64,6 @@ public class Scene_manager : MonoBehaviour
         {
             ResultScene();
         }
-
-        //キーボードでのシーンジャンプ
-#if UNITY_EDITOR
-        //Titleへ移行
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Scene_state = Scenestate.TitleScene;
-        }
-        //レベルセレクトへ移行
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Scene_state = Scenestate.LevelSelect;
-        }
-        //ゲームメインへ移行
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Scene_state = Scenestate.GameScene;
-        }
-        //リザルトへ移行
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Scene_state = Scenestate.ResultScene;
-        }
-#endif
     }
     void BaseScene()
     {

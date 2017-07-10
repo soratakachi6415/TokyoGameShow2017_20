@@ -60,7 +60,7 @@ public class Pose_Dogeza : MonoBehaviour
     protected float L_elbowP, L_elbowM;
     //左股
     public float L_crotch_center;
-    protected float L_crotch_P, L_crotch_M;
+    protected float L_crotchP, L_crotchM;
     //左膝
     public float L_knee_center;
     protected float L_kneeP, L_kneeM;
@@ -108,21 +108,21 @@ public class Pose_Dogeza : MonoBehaviour
         R_kneeP = R_knee + 20.0f;
         R_kneeM = R_knee - 20.0f;
         //左肩
-        L_shoulderP = L_shoulder + 20.0f;
-        L_shoulderM = L_shoulder - 20.0f;
+        L_shoulderP = L_shoulder + anglePM;
+        L_shoulderM = L_shoulder - anglePM;
         //左肘
-        L_elbowP = L_shoulder + 20.0f;
-        L_elbowM = L_shoulder - 20.0f;
+        L_elbowP = L_elbow + anglePM;
+        L_elbowM = L_elbow - anglePM;
         //左股
-        L_shoulderP = L_shoulder + 20.0f;
-        L_shoulderM = L_shoulder - 20.0f;
+        L_crotchP = L_crotch + anglePM;
+        L_crotchM = L_crotch - anglePM;
         //左膝
-        L_kneeP = L_knee + 20.0f;
-        L_kneeM = L_knee - 20.0f;
+        L_kneeP = L_knee + anglePM;
+        L_kneeM = L_knee - anglePM;
         /***************************************/
         pose_shiko.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 4, playerstatus.P_pos.position.z);
+        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 
         AnglesCheck();
         //腕を基準にした場合の判定
@@ -219,10 +219,10 @@ public class Pose_Dogeza : MonoBehaviour
 
 
         //左股の角度
-        if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+        if (L_crotch_center >= L_crotchM && L_crotch_center <= L_crotchP)
         {
             //左膝
-            if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+            if (L_crotch_center >= L_crotchM && L_crotch_center <= L_crotchP)
             {
                 L_leg_flag = true;
             }

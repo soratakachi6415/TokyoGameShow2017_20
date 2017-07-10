@@ -41,30 +41,30 @@ public class Pose_Zenkutu : MonoBehaviour
 
     /*それぞれの手足ごとの判定の数値の中心*/
     //右肩の判定の基本となる数字
-    public float R_shoulder_center = 0;
+    public float R_shoulder_center;
     //Pがプラス、Mがマイナス
-    protected float R_shoulderP = 0, R_shoulderM = 0;
+    protected float R_shoulderP, R_shoulderM;
     //右肘
-    public float R_elbow_center = 0;
-    protected float R_elbowP, R_elbowM = 0;
+    public float R_elbow_center;
+    protected float R_elbowP, R_elbowM;
     //右股
-    public float R_crotch_center = 0;
-    protected float R_crotchP = 0, R_crotchM = 0;
+    public float R_crotch_center;
+    protected float R_crotchP, R_crotchM;
     //右膝
     public float R_knee_center;
-    protected float R_kneeP = 0, R_kneeM = 0;
+    protected float R_kneeP, R_kneeM;
     //左肩
-    public float L_shoulder_center = 0;
-    protected float L_shoulderP = 0, L_shoulderM = 0;
+    public float L_shoulder_center;
+    protected float L_shoulderP, L_shoulderM;
     //左肘
-    public float L_elbow_center = 0;
-    protected float L_elbowP = 0, L_elbowM = 0;
+    public float L_elbow_center;
+    protected float L_elbowP, L_elbowM;
     //左股
-    public float L_crotch_center = 0;
-    protected float L_crotch_P = 0, L_crotch_M = 0;
+    public float L_crotch_center;
+    protected float L_crotchP, L_crotchM;
     //左膝
-    public float L_knee_center = 0;
-    protected float L_kneeP = 0, L_kneeM = 0;
+    public float L_knee_center;
+    protected float L_kneeP, L_kneeM;
     /************************************/
     //ポーズが決まったか
     public bool DecidePose_Zenkutu;
@@ -112,18 +112,18 @@ public class Pose_Zenkutu : MonoBehaviour
         L_shoulderP = L_shoulder + anglePM;
         L_shoulderM = L_shoulder - anglePM;
         //左肘
-        L_elbowP = L_shoulder + anglePM;
-        L_elbowM = L_shoulder - anglePM;
+        L_elbowP = L_elbow + anglePM;
+        L_elbowM = L_elbow - anglePM;
         //左股
-        L_shoulderP = L_shoulder + anglePM;
-        L_shoulderM = L_shoulder - anglePM;
+        L_crotchP = L_crotch + anglePM;
+        L_crotchM = L_crotch - anglePM;
         //左膝
         L_kneeP = L_knee + anglePM;
         L_kneeM = L_knee - anglePM;
         /***************************************/
         pause_zenkutu.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 4, playerstatus.P_pos.position.z);
+        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
         //角度check
         AnglesCheck();
         //腕を基準にした場合の判定
@@ -219,10 +219,10 @@ public class Pose_Zenkutu : MonoBehaviour
 
 
         //左股の角度
-        if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+        if (L_crotch_center >= L_crotchM && L_crotch_center <= L_crotchP)
         {
             //左膝
-            if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+            if (L_crotch_center >= L_crotchM && L_crotch_center <= L_crotchP)
             {
                 L_leg_flag = true;
             }
@@ -233,10 +233,11 @@ public class Pose_Zenkutu : MonoBehaviour
         }
         else
         {
-
             L_leg_flag = false;
         }
+
     }
+
     void ArmflagCheck()
     {
         //右腕が範囲内にあるとき

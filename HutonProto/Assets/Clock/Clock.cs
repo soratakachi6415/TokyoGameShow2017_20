@@ -15,8 +15,6 @@ public class Clock : MonoBehaviour
     private float ShortanglZ;
     //タイマー
     public float timer = 0;
-    //時針を動かすフラグ
-    private bool longflag = false;
     //残り時間のカウンター
     public int hour = 6;
     //時計開始のフラグtrueで開始

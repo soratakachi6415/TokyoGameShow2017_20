@@ -48,7 +48,7 @@ public class Pose_painfullpose1 : MonoBehaviour {
     protected float L_elbowP, L_elbowM;
     //左股
     public float L_crotch_center;
-    protected float L_crotch_P, L_crotch_M;
+    protected float L_crotchP, L_crotchM;
     //左膝
     public float L_knee_center;
     protected float L_kneeP, L_kneeM;
@@ -88,7 +88,7 @@ public class Pose_painfullpose1 : MonoBehaviour {
         //ポーズの画像の情報
         pose_painfullpose1.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 110, playerstatus.P_pos.position.z);
+        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 
         //プレイヤーStatusから所得する
         R_shoulder = playerstatus.R_shoulder_Y;
@@ -117,11 +117,11 @@ public class Pose_painfullpose1 : MonoBehaviour {
         L_shoulderP = L_shoulder + anglePM;
         L_shoulderM = L_shoulder - anglePM;
         //左肘
-        L_elbowP = L_shoulder + anglePM;
-        L_elbowM = L_shoulder - anglePM;
+        L_elbowP = L_elbow + anglePM;
+        L_elbowM = L_elbow - anglePM;
         //左股
-        L_shoulderP = L_shoulder + anglePM;
-        L_shoulderM = L_shoulder - anglePM;
+        L_crotchP = L_crotch + anglePM;
+        L_crotchM = L_crotch - anglePM;
         //左膝
         L_kneeP = L_knee + anglePM;
         L_kneeM = L_knee - anglePM;
@@ -223,10 +223,10 @@ public class Pose_painfullpose1 : MonoBehaviour {
 
 
         //左股の角度
-        if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+        if (L_crotch_center >= L_crotchM && L_crotch_center <= L_crotchP)
         {
             //左膝
-            if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+            if (L_crotch_center >= L_crotchM && L_crotch_center <= L_crotchP)
             {
                 L_leg_flag = true;
             }

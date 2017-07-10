@@ -25,48 +25,40 @@ public class Pose_Fight : MonoBehaviour {
     private float anglePM;
 
     /****現在の角度******/
-    //private float R_sholder;
-    //private float R_elbow;
-    //private float R_crotch;
-    //private float R_knee;
-    //private float L_shoulder;
-    //private float L_elbow;
-    //private float L_crotch;
-    //private float L_knee;
+    private float R_shoulder;
+    private float R_elbow;
+    private float R_crotch;
+    private float R_knee;
+    private float L_shoulder;
+    private float L_elbow;
+    private float L_crotch;
+    private float L_knee;
     /********************/
 
     /*それぞれの手足ごとの判定の数値の中心*/
     //右肩の判定の基本となる数字
-    public float R_shoulder;
     public float R_shoulder_center;   
     //Pがプラス、Mがマイナス
     private float R_shoulderP, R_shoulderM;
-    //右肘
-    public float R_elbow;
+    //右肘  
     public float R_elbow_center;
     private float R_elbowP, R_elbowM;
-    //右股
-    public float R_crotch;
+    //右股    
     public float R_crotch_center;
     private float R_crotchP, R_crotchM;
-    //右膝    
-    public float R_knee;
+    //右膝       
     public float R_knee_center;
     private float R_kneeP, R_kneeM;
-    //左肩
-    public float L_shoulder;
+    //左肩    
     public float L_shoulder_center;
     private float L_shoulderP, L_shoulderM;
-    //左肘
-    public float L_elbow;
+    //左肘   
     public float L_elbow_center;
     private float L_elbowP, L_elbowM;
-    //左股
-    public float L_crotch;
+    //左股   
     public float L_crotch_center;
-    private float L_crotch_P, L_crotch_M;
-    //左膝
-    public float L_knee;
+    private float L_crotchP, L_crotchM;
+    //左膝   
     public float L_knee_center;
     private float L_kneeP, L_kneeM;
     /************************************/
@@ -122,11 +114,11 @@ public class Pose_Fight : MonoBehaviour {
         L_shoulderP = L_shoulder + anglePM;
         L_shoulderM = L_shoulder - anglePM;
         //左肘
-        L_elbowP = L_shoulder + anglePM;
-        L_elbowM = L_shoulder - anglePM;
+        L_elbowP = L_elbow + anglePM;
+        L_elbowM = L_elbow - anglePM;
         //左股
-        L_shoulderP = L_shoulder + anglePM;
-        L_shoulderM = L_shoulder - anglePM;
+        L_crotchP = L_crotch + anglePM;
+        L_crotchM = L_crotch - anglePM;
         //左膝
         L_kneeP = L_knee + anglePM;
         L_kneeM = L_knee - anglePM;
@@ -231,10 +223,10 @@ public class Pose_Fight : MonoBehaviour {
         }
 
         //左股の角度
-        if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+        if (L_crotch_center >= L_crotchM && L_crotch_center <= L_crotchP)
         {
             //左膝
-            if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
+            if (L_crotch_center >= L_crotchM && L_crotch_center <= L_crotchP)
             {
                 L_leg_flag = true;
             }

@@ -27,6 +27,8 @@ public class Clock : MonoBehaviour
     private float clockColor_r, clockColor_g, clockColor_b, clockColor_a;
     private float colorChange;
 
+    public Image finishImage;
+
     void Start()
     {
         //Object検索
@@ -71,6 +73,7 @@ public class Clock : MonoBehaviour
             if (hour == 0 && timer == 0)
             {
                 soundsManager.Alarm();
+                finishImage.enabled = true;
             }
 
             //点滅時の色変更

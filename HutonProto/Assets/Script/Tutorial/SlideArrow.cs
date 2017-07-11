@@ -32,11 +32,11 @@ public class SlideArrow : MonoBehaviour
         //あらかじめ処理する関数を決定する
         if (hideFlag == HideFlag.Start)
         {
-            checkHide = () => { return !slide.isScrollStart; };
+            checkHide = () => { return !slide.isStartPage; };
         }
         else
         {
-            checkHide = () => { return !slide.isScrollEnd;   };
+            checkHide = () => { return !slide.isEndPage;   };
         }
     }
 

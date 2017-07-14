@@ -257,7 +257,7 @@ public class Pose_Happy : MonoBehaviour
             {
                 imageDisplay = true;
             }
-            else if (L_leg_flag == false || R_leg_flag == false)
+            else 
             {
                 imageDisplay = false;
             }
@@ -275,7 +275,7 @@ public class Pose_Happy : MonoBehaviour
             {
                 imageDisplay = true;
             }
-            else if (L_leg_flag == false || R_leg_flag == false)
+            else 
             {
                 imageDisplay = false;
             }
@@ -296,7 +296,7 @@ public class Pose_Happy : MonoBehaviour
             {
                 imageDisplay = true;
             }
-            else if (L_arm_flag == false || R_arm_flag == false)
+            else 
             {
                 imageDisplay = false;
             }
@@ -314,7 +314,7 @@ public class Pose_Happy : MonoBehaviour
             {
                 imageDisplay = true;
             }
-            else if (L_arm_flag == false || R_arm_flag == false)
+            else 
             {
                 imageDisplay = false;
             }

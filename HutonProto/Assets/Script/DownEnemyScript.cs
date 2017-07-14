@@ -22,7 +22,7 @@ public class DownEnemyScript : MonoBehaviour
     {
         if (other.collider.tag == "Player" && !getUp_upEnemy)
         {
-            GameObject.Find("ScriptController").GetComponent<UdEnemyManage>().downHit();
+            GameObject.Find("ScriptController").GetComponent<EnemyManager>().downHit();
         }
     }
 }

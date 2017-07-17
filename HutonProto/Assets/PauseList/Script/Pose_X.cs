@@ -67,7 +67,7 @@ public class Pose_X : MonoBehaviour
     //成功したポーズの判定で使う
     public string posename = "pose_X";
     //
-    public bool DecidePose_U = false;
+    public bool DecidePose_X = false;
 
     void Start()
     {
@@ -155,7 +155,7 @@ public class Pose_X : MonoBehaviour
           R_leg_flag == true &&
           L_leg_flag == true)
         {
-            DecidePose_U = true;
+            DecidePose_X = true;
         }
 
     }

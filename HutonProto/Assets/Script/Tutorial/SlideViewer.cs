@@ -3,44 +3,41 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary> 現在のスライダーの値を可視化するコンポーネントです </summary>
 public class SlideViewer : MonoBehaviour
 {
-	[SerializeField]
-	Image[] images;
+    [SerializeField, Tooltip("画像コンポーネント")]
+    Image[]        images;
 
-	[SerializeField]
-	Color activeColor;
+    [SerializeField, Tooltip("有効時の色")]
+    Color          activeColor;
 
-	[SerializeField]
-	Color deactiveColor;
+    [SerializeField, Tooltip("無効時の色")]
+    Color          deactiveColor;
 
-	[SerializeField]
-	SlideExtension slide;
+    [SerializeField, Tooltip("参照するSlideExtensionコンポーネント")]
+    SlideExtension slide;
 
-	int index;
-
-    void Awake()
-    {
-
-    }
+    int            index;  //現在有効な画像
 
     void Start()
     {
-		index = slide.TargetNum;
-		foreach (Image image in images)
-		{
-			image.color = deactiveColor;
-		}
-		images[index].color = activeColor;
+        index = slide.currentPage;
+        foreach (Image image in images)
+        {
+            image.color = deactiveColor;
+        }
+        images[index].color = activeColor;
     }
 
     void Update()
     {
-		if (index == slide.TargetNum) return;
+        if (index == slide.currentPage) { return; }
 
-		images[index          ].color = deactiveColor;
-		images[slide.TargetNum].color = activeColor;
+        //アクティブの切り替え
+        images[index            ].color = deactiveColor;
+        images[slide.currentPage].color = activeColor;
 
-		index = slide.TargetNum;
+        index = slide.currentPage;
     }
 }

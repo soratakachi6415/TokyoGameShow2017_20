@@ -5,44 +5,47 @@ using UnityEngine.UI;
 
 public class ScoreView : MonoBehaviour
 {
-    public PoseManager _posemanager;
+    public PoseManager _pose_manager;
+
+    public GameObject _lSholder;
+    public GameObject _rcrotch;
 
     public Sprite[] _numimage;
     public List<int> number = new List<int>();
-    
-    private Image _score;
-    private float r, g, b, alpha;
+
+    public static bool _clear;
 
     void Start()
     {
-        _posemanager = GameObject.FindGameObjectWithTag("Posemanager").GetComponent<PoseManager>();
+        _pose_manager = GameObject.FindGameObjectWithTag("Posemanager").GetComponent<PoseManager>();
 
-       _score = GameObject.Find("ScoreImage").GetComponent<Image>();
-        r = _score.GetComponent<Image>().color.r;
-        g = _score.GetComponent<Image>().color.g;
-        b = _score.GetComponent<Image>().color.b;
-        alpha = _score.GetComponent<Image>().color.a;
+        // ここの取得は後で変更
+        _lSholder = GameObject.Find("Player_LeftHand1");
+        _rcrotch = GameObject.Find("Player_RightLeg1");
     }
 
     void Update()
     {
-        _score.GetComponent<Image>().color = new Color(r, g, b, alpha);
-        alpha = 0;
-
         
     }
 
     public void View(int score)
     {
-        if (_posemanager._Pose == PoseManager.PoseState.None)
+        var objs = GameObject.FindGameObjectsWithTag("Score");
+        foreach (var obj in objs)
         {
-            var objs = GameObject.FindGameObjectsWithTag("Score");
-            foreach (var obj in objs)
+            if (0 <= obj.name.LastIndexOf("Clone"))
             {
-                if (0 <= obj.name.LastIndexOf("Clone"))
-                {
-                    Destroy(obj);
-                }
+                Destroy(obj);
+            }
+        }
+
+        var objes = GameObject.FindGameObjectsWithTag("Point");
+        foreach (var obj in objes)
+        {
+            if (0 <= obj.name.LastIndexOf("Clone"))
+            {
+                Destroy(obj);
             }
         }
 
@@ -64,10 +67,18 @@ public class ScoreView : MonoBehaviour
             RectTransform scoreimage = (RectTransform)Instantiate(prefab).transform;
             scoreimage.SetParent(this.transform, false);
             scoreimage.localPosition = new Vector3(
-                scoreimage.localPosition.x - scoreimage.localScale.x - 5 * i,
+                scoreimage.localPosition.x - 5* i,
                 scoreimage.localPosition.y,
                 scoreimage.localPosition.z);
             scoreimage.GetComponent<Image>().sprite = _numimage[number[i]];
         }
+        GameObject point = (GameObject)Resources.Load("Prefab/Point");
+        RectTransform pointimage = (RectTransform)Instantiate(point).transform;
+        pointimage.SetParent(this.transform, false);
+        pointimage.localPosition = new Vector3(
+            pointimage.localPosition.x,
+            pointimage.localPosition.y,
+            pointimage.localPosition.z);
+
     }
 }

@@ -7,41 +7,52 @@ public class Fademanager : MonoBehaviour
 {
     /*フェードの管理*/
     //イメージ
+    public GameObject fadeimage_obj;
     public Image fadeimage;
-    //カラーR,G,B
-    private float r, g, b;
     //α値
     public float a;
     //Fadeの遷移状態の確認用
     private string Fadestatus;
+    //フェードイメージが存在しているか確認用
+    private bool fadeimagecheck = false;
+    //タップの入力
+    public bool tapflag=false;
+
     public enum Fade_status
     {
         FADE_IN,
-        FADE_OUT
+        FADE_OUT,
+        FADE_IDLE
     }
     public Fade_status fade_image = Fade_status.FADE_IN;
 
     public string curentscene_;
-    void Start()
-    {
-        //参照先：アタッチしたオブジェクトのテキストを所得する
-        fadeimage = gameObject.GetComponent<Image>();
-        //色の所得
-        r = fadeimage.GetComponent<Image>().color.r;
-        g = fadeimage.GetComponent<Image>().color.g;
-        b = fadeimage.GetComponent<Image>().color.b;
-        //a = 1.0f;
-        fade_image = Fade_status.FADE_OUT;
+    //public bool  
 
+    void Start()
+    {       
     }
     void Update()
     {
-        curentscene_ =GameObject.Find("SceneManager").GetComponent<Scene_manager>().currentscene;
+        //現在のシーン確認
+        curentscene_ = GameObject.Find("SceneManager").GetComponent<Scene_manager>().currentscene;
         //現在の状態確認
         Fadestatus = System.Enum.GetName(typeof(Fade_status), fade_image);
-        //色の更新
-        fadeimage.GetComponent<Image>().color = new Color(r, g, b, a);
-        /*透明度が０～１の間になるように制限*/
+        /*フェードイメージがある場合の処理*/
+        if (GameObject.FindGameObjectWithTag("fadeImage") != null)
+        {
+            fadeimagecheck = true;
+            fadeimage_obj = GameObject.FindGameObjectWithTag("fadeImage");
+            fadeimage = fadeimage_obj.GetComponent<Image>();
+            //色の更新
+            fadeimage.GetComponent<Image>().color = new Color(0, 0, 0, a);
+        }
+        else
+        {
+            fadeimagecheck = false;
+        }
+      
+        /*imageの透明度が０～１の間になるように制限*/
         if (a < 0)
         {
             a = 0;
@@ -51,31 +62,67 @@ public class Fademanager : MonoBehaviour
             a = 1.0f;
         }
 
+        /*フェードイン、アウト開始*/
         //フェードアウト開始
         if (fade_image == Fade_status.FADE_OUT)
         {
-            a -= 0.03f;
+            a -= 0.02f;
         }
         //フェードイン開始
         else if (fade_image == Fade_status.FADE_IN)
         {
-            a += 0.03f;
+            a += 0.02f;
         }
-
+        
+        
+            /*アルファが０以下ならイメージオブジェクトのセットアクティブをファルスにする*/
+            if (a <= 0.0f && fade_image == Fade_status.FADE_OUT)
+            {
+                FadeimageOffAwake();
+                fade_image = Fade_status.FADE_IDLE;
+            }
+        
         if (curentscene_ == "Title")
         {
-            fade_image = Fade_status.FADE_OUT;
+            fadeout();
         }
     }
 
-    //フェードイン開始
+    /*フェードの状態の変更*/
+    //フェードの状態をフェードインに変える
     public void fadein()
     {
         fade_image = Fade_status.FADE_IN;
     }
-    //フェードアウト開始
+    //フェードの状態をフェードアウトに変える
     public void fadeout()
     {
         fade_image = Fade_status.FADE_OUT;
+    }
+
+    /*フェードイメージのアウェイクのon,off*/
+    public void FadeimageOnAwake()
+    {
+        fadeimage_obj.SetActive(true);
+    }
+    public void FadeimageOffAwake()
+    {
+        fadeimage_obj.SetActive(false);
+    }
+
+    /*フェード開始*/
+    //フェードイン開始
+    public void fadeinStart()
+    {
+        //セットアクティブをtrueにする。
+        FadeimageOnAwake();
+        //フェードの状態をフェードインに変える
+        fadein();       
+    }
+    //フェードアウト開始
+    public void fadeoutStart()
+    {
+        //フェードの状態をフェードアウトに変える
+        fadeout();
     }
 }

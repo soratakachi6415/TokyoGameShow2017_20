@@ -19,6 +19,11 @@ TagManager:
   - LevalSelect
   - LevelSelectUI
   - PlayerStatus
+  - fadeImage
+  - GameData
+  - Point
+  - Enemy_Bottom_mixamorig:Hips
+  - Enemy_Top_mixamorig:Hips
   layers:
   - Default
   - TransparentFX
@@ -30,7 +35,7 @@ TagManager:
   - 
   - Enemy
   - Player
-  - 
+  - Bottun
   - 
   - 
   - 

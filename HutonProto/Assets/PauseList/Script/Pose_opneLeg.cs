@@ -134,12 +134,12 @@ public class Pose_opneLeg : MonoBehaviour
 
         if (imageDisplay == false)
         {
-            OpneLegPoseDisplayfalse();
+          OpneLegPoseDisplayfalse();
         }
 
         if (imageDisplay == true)
         {
-            OpneLegPoseDisplaytrue();
+          OpneLegPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない

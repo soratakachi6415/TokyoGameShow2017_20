@@ -67,8 +67,10 @@ public class Pose_big : MonoBehaviour
     public bool R_arm_flag = false;
     public bool R_leg_flag = false;
     public bool L_arm_flag = false;
-    public bool L_leg_flag = false;   
+    public bool L_leg_flag = false;
 
+    //trueなら管理クラスで/falseならこのスクリプトでポーズの表示する
+    private bool Displayswitch;
     void Start()
     {
         //ポーズガイドの画像
@@ -82,7 +84,7 @@ public class Pose_big : MonoBehaviour
         anglePM = playerstatus.anglePM;
         BigPoseDisplayfalse();
     }
-  
+
 
     void Update()
     {
@@ -134,16 +136,21 @@ public class Pose_big : MonoBehaviour
         //足を基準にした場合の判定
         FootflagCheck();
 
-        if (imageDisplay == false)
+        Displayswitch = GameObject.Find("PoseDisplaymanager").GetComponent<PoseDisplaymanager>().Displayfswitch;
+        //Displayswitchがfalseならそれぞれのスクリプトでポーズを表示する
+        //trueならPoseDiplayManagerで管理する
+        if (Displayswitch == false)
         {
-            BigPoseDisplayfalse();
-        }
+            if (imageDisplay == false)
+            {
+                //BigPoseDisplayfalse();
+            }
 
-        if (imageDisplay == true)
-        {
-            BigPoseDisplaytrue();
+            if (imageDisplay == true)
+            {
+                //BigPoseDisplaytrue();
+            }
         }
-
         //どれも入っていなかったら画像を表示しない
         if (R_arm_flag == false &&
                  L_arm_flag == false &&
@@ -153,14 +160,16 @@ public class Pose_big : MonoBehaviour
             imageDisplay = false;
         }
 
+
         if (R_arm_flag == true &&
-           L_arm_flag == true &&
-           R_leg_flag == true &&
-           L_leg_flag == true)
+        L_arm_flag == true &&
+        R_leg_flag == true &&
+        L_leg_flag == true)
         {
             //ポーズが決まったか
             DecidePose_Big = true;
         }
+
     }
 
     void AnglesCheck()
@@ -258,7 +267,7 @@ public class Pose_big : MonoBehaviour
             {
                 imageDisplay = true;
             }
-            else 
+            else
             {
                 imageDisplay = false;
             }
@@ -276,7 +285,7 @@ public class Pose_big : MonoBehaviour
             {
                 imageDisplay = true;
             }
-            else 
+            else
             {
                 imageDisplay = false;
             }
@@ -297,7 +306,7 @@ public class Pose_big : MonoBehaviour
             {
                 imageDisplay = true;
             }
-            else 
+            else
             {
                 imageDisplay = false;
             }
@@ -315,7 +324,7 @@ public class Pose_big : MonoBehaviour
             {
                 imageDisplay = true;
             }
-            else 
+            else
             {
                 imageDisplay = false;
             }

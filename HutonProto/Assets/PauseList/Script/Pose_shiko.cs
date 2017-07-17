@@ -131,13 +131,14 @@ public class Pose_shiko : MonoBehaviour
         FootflagCheck();
         if (imageDisplay == false)
         {
-            ShikoPoseDisplayfalse();
+          ShikoPoseDisplayfalse();
         }
 
         if (imageDisplay == true)
         {
-            ShikoPoseDisplaytrue();
+          ShikoPoseDisplaytrue();
         }
+
         //どれも入っていなかったら画像を表示しない
         if (R_arm_flag == false &&
                  L_arm_flag == false &&
@@ -146,15 +147,14 @@ public class Pose_shiko : MonoBehaviour
         {
             imageDisplay = false;            
         }
-
         if (R_arm_flag == true &&
-           L_arm_flag == true &&
-           R_leg_flag == true &&
-           L_leg_flag == true)
+                   L_arm_flag == true &&
+                   R_leg_flag == true &&
+                   L_leg_flag == true)
         {
-            //ポーズが決まったか
-            DecidePose_Shiko = true;          
+            DecidePose_Shiko= true;            
         }
+
     }
 
     void AnglesCheck()

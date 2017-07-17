@@ -153,7 +153,6 @@ public class Scene_manager : MonoBehaviour
             //ローディング開始
             loadingnow = true;
 
-
             //タイトルシーンステートからゲームシーンステートへ
             if (Scene_state == Scenestate.TitleScene)
             {
@@ -200,6 +199,7 @@ public class Scene_manager : MonoBehaviour
             //リザルトシーンステートからタイトルシーンステートへ
             else if (Scene_state == Scenestate.ResultScene)
             {
+                Debug.Log("タイトルのシーンへ");
                 //追加ではなく読み込みし直しをしてスコア等の初期化
                 SceneManager.LoadScene("BaseScene");
             }

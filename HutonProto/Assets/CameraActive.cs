@@ -8,15 +8,15 @@ public class CameraActive : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        this.gameObject.SetActive(false);
+       // this.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		if (GetComponent<Scene_manager>().currentscene == "Result")
-        {
-            this.gameObject.SetActive(true);
-        }
+		//if (GetComponent<Scene_manager>().currentscene == "Result")
+  //      {
+  //          //this.gameObject.SetActive(true);
+  //      }
 	}
 }

@@ -133,12 +133,12 @@ public class Pose_U : MonoBehaviour
         FootflagCheck();
         if (imageDisplay == false)
         {
-            UPoseDisplayfalse();
+           // UPoseDisplayfalse();
         }
 
         if (imageDisplay == true)
         {
-            UPoseDisplaytrue();
+           // UPoseDisplaytrue();
         }
         //どれも入っていなかったら画像を表示しない
         if (R_arm_flag == false &&

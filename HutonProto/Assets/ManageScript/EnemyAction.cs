@@ -81,11 +81,12 @@ public class EnemyAction : MonoBehaviour {
     void Start () {
         enemyManager = GetComponent<EnemyManager>();
 
-        topEnemy = GameObject.Find("Enemy_Top_mixamorig:Hips");
-        bottomEnemy = GameObject.Find("Enemy_Bottom_mixamorig:Hips");
+        topEnemy = GameObject.FindGameObjectWithTag("Enemy_Top_mixamorig:Hips");
+        
+          bottomEnemy = GameObject.FindGameObjectWithTag("Enemy_Bottom_mixamorig:");
 
-        //敵の初期ポジションを格納
-        topPos = topEnemy.transform.position;
+         //敵の初期ポジションを格納
+         topPos = topEnemy.transform.position;
         bottomPos = bottomEnemy.transform.position;
         //敵共有クールタイム
         initCoolT = 0;

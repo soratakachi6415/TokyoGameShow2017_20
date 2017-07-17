@@ -8,8 +8,8 @@ public class Pose_K : MonoBehaviour {
 
     //プレイヤーの角度参照
     PlayerStatus playerstatus;
-    /*ポーズ_大の字の判定を行う*/
-    //「大」ポーズの画像を所得
+    /*ポーズ_Kの字の判定を行う*/
+    //「K」ポーズの画像を所得
     private Image pose_K;
     private float r, g, b, alpha;
     //角度の誤差の数値
@@ -135,12 +135,12 @@ public class Pose_K : MonoBehaviour {
 
         if (imageDisplay == false)
         {
-            KPoseDisplayfalse();
+            //KPoseDisplayfalse();
         }
 
         if (imageDisplay == true)
         {
-            KPoseDisplaytrue();
+            //KPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない

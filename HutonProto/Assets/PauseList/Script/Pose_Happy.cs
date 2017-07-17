@@ -137,12 +137,11 @@ public class Pose_Happy : MonoBehaviour
 
         if (imageDisplay == false)
         {
-            HappyPoseDisplayfalse();
+           //HappyPoseDisplayfalse();
         }
-
-        if (imageDisplay == true)
+        else
         {
-            HappysPoseDisplaytrue();
+            //HappysPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -151,7 +150,7 @@ public class Pose_Happy : MonoBehaviour
                  R_leg_flag == false &&
                  L_leg_flag == false)
         {
-            imageDisplay = false;            
+           // imageDisplay = false;            
         }
 
         if (R_arm_flag == true &&

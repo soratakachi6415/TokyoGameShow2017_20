@@ -4,27 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 public class State_Race : MonoBehaviour {
 
-    public PoseManager _posemanager;
+    public PoseManager _pose_manager;
 
     /****ポーズオブジェクトの取得****/
     // 開脚のオブジェクトを取得
-    private Image _Race;
-    public Pose_Race _race;
+    public Pose_Race _pose_race;
 
-    public bool _chance = false;
+    /**** チャンスに使うパラメータの取得****/
+    private bool _pose_upper = false;
+    private bool _pose_lower = false;
     public Image _Chance;
     private float r, g, b, alpha;
 
-    public float _fadetime;
-    private float _fotime;
-    private float _fitime;
-
+    public GameObject _rShoulder;
+    public GameObject _lCrotch;
+    
     // Use this for initialization
     void Start()
     {
-        _posemanager = GameObject.FindGameObjectWithTag("Posemanager").GetComponent<PoseManager>();
-        _Race = GameObject.Find("Pose_Race").GetComponent<Image>();
-        _race = _Race.GetComponent<Pose_Race>();
+        _pose_manager = GameObject.FindGameObjectWithTag("Posemanager").GetComponent<PoseManager>();
+        _pose_race = GameObject.Find("Pose_Race").GetComponent<Pose_Race>();
 
         _Chance = GameObject.Find("Chance").GetComponent<Image>();
         r = _Chance.GetComponent<Image>().color.r;
@@ -32,56 +31,128 @@ public class State_Race : MonoBehaviour {
         b = _Chance.GetComponent<Image>().color.b;
         alpha = _Chance.GetComponent<Image>().color.a;
 
-        _fadetime = 1.5f;
-        _fotime = 0.0f;
-        _fitime = _fadetime;
+        _rShoulder = GameObject.Find("Player_RightHand1");
+        _lCrotch = GameObject.Find("Player_LeftLeg1");
     }
 
     // Update is called once per frame
     void Update()
     {
         _Chance.GetComponent<Image>().color = new Color(r, g, b, alpha);
-        if (_race.L_arm_flag == true ||
-            _race.R_arm_flag == true ||
-            _race.L_leg_flag == true ||
-            _race.R_leg_flag == true)
-        {
-            _chance = true;
-            ChanceDisPlayTrue();
-        }
-        else
-        {
-            _chance = false;
-            ChanceDisPlayFalse();
-        }
+        CheckChance();
         FlagCheck();
+    }
+
+    public void CheckChance()
+    {
+        /***関節が2つ以上当てはまったとき表示***/
+        if (_pose_race.R_arm_flag == true)
+        {
+            _pose_upper = true;
+            if (_pose_race.L_arm_flag == true)
+            {
+                ChanceDisplayTrue();
+            }
+            else if (_pose_race.R_leg_flag == true)
+            {
+                ChanceDisplayTrue();
+            }
+            else if (_pose_race.L_leg_flag == true)
+            {
+                ChanceDisplayTrue();
+            }
+            else
+            {
+                ChanceDisplayFalse();
+            }
+        }
+        if (_pose_race.L_arm_flag == true)
+        {
+            _pose_upper = true;
+            if (_pose_race.R_arm_flag == true)
+            {
+                ChanceDisplayTrue();
+            }
+            else if (_pose_race.R_leg_flag == true)
+            {
+                ChanceDisplayTrue();
+            }
+            else if (_pose_race.L_leg_flag == true)
+            {
+                ChanceDisplayTrue();
+            }
+            else
+            {
+                ChanceDisplayFalse();
+            }
+        }
+        if (_pose_race.R_leg_flag == true)
+        {
+            _pose_lower = true;
+            if (_pose_race.L_leg_flag == true)
+            {
+                ChanceDisplayTrue();
+            }
+            else if (_pose_race.R_arm_flag == true)
+            {
+                ChanceDisplayTrue();
+            }
+            else if (_pose_race.L_arm_flag == true)
+            {
+                ChanceDisplayTrue();
+            }
+            else
+            {
+                ChanceDisplayFalse();
+            }
+        }
+        if (_pose_race.L_leg_flag == true)
+        {
+            _pose_lower = true;
+            if (_pose_race.R_leg_flag == true)
+            {
+                ChanceDisplayTrue();
+            }
+            else if (_pose_race.R_arm_flag == true)
+            {
+                ChanceDisplayTrue();
+            }
+            else if (_pose_race.L_arm_flag == true)
+            {
+                ChanceDisplayTrue();
+            }
+            else
+            {
+                ChanceDisplayFalse();
+            }
+        }
     }
     public void FlagCheck()
     {
-        if ((_race.R_arm_flag == true &&
-            _race.L_arm_flag == true) ||
-            (_race.R_leg_flag == true &&
-            _race.L_leg_flag == true))
+        if ((_pose_race.R_arm_flag == true &&
+            _pose_race.L_arm_flag == true) ||
+            (_pose_race.R_leg_flag == true &&
+            _pose_race.L_leg_flag == true))
         {
-            _posemanager._Pose = PoseManager.PoseState.Race_walking;
+            _pose_manager.Change_state(PoseManager.PoseState.Race_walking);
         }
         /*上半身、下半身のポーズが是のとき、全身でのポーズのフラグを是に*/
-        if (_posemanager._ScoreUpper == true &&
-            _posemanager._ScoreLower == true)
+        if (_pose_manager._ScoreUpper == true &&
+            _pose_manager._ScoreLower == true)
         {
-            _posemanager._ScoreWhole = true;
+            _pose_manager._ScoreWhole = true;
         }
         /* 両腕の判定が是のとき、上半身ポーズのフラグを是に*/
-        if (_race.R_arm_flag == true &&
-            _race.L_arm_flag == true)
+        if (_pose_race.R_arm_flag == true &&
+            _pose_race.L_arm_flag == true)
         {
-            _posemanager._ScoreUpper = true;
+            _pose_manager._ScoreUpper = true;
         }
         /*両足の判定は是のとき、下半身ポーズのフラグを是に*/
-        if (_race.R_leg_flag == true &&
-            _race.L_leg_flag == true)
+        if (_pose_race.R_leg_flag == true &&
+            _pose_race.L_leg_flag == true)
         {
-            _posemanager._ScoreLower = true;
+            _pose_manager._ScoreLower = true;
         }
     }
     public static void Additional_score(int Value)
@@ -95,25 +166,26 @@ public class State_Race : MonoBehaviour {
         _view.View(ScoreManager._score);
         _audio.PlayOneShot(_audio.clip);
     }
-    public void ChanceDisPlayTrue()
+    public void ChanceDisplayTrue()
     {
+        /***チャンスの表示位置を決める***/
+        // 右上腕の座標を取得する
+        if (_pose_upper == true)
+        {
+            Vector3 pos = _rShoulder.transform.position;
+            _Chance.transform.position = new Vector3(pos.x, pos.y + 5.0f, pos.z - 2.0f);
+        }
+        // 左太ももの座標を取得する
+        if (_pose_lower == true)
+        {
+            Vector3 pos = _lCrotch.transform.position;
+            _Chance.transform.position = new Vector3(pos.x, pos.y + 5.0f, pos.z + 2.0f);
+        }
         alpha = 1.0f;
-        //_fitime = _fadetime; // 初期化
-        //_fotime += Time.deltaTime; // 時間更新(徐々に増やす
-        //float alpha = _fotime / _fadetime; // 徐々に1に近づける
-        //var color = _Chance.color; // 取得したImageのcolorを取得
-        //color.a = alpha; // カラーのアルファ値を徐々に増やす
-        //_Chance.color = color; // 取得したImageに適応させる
     }
 
-    public void ChanceDisPlayFalse()
+    public void ChanceDisplayFalse()
     {
         alpha = 0.0f;
-        //_fotime = 0; // 初期化
-        //_fitime -= Time.deltaTime; // 時間更新(徐々に減らす
-        //float alpha = _fitime / _fadetime; // 徐々に0に近づける
-        //var color = _Chance.color; // 取得したImageのcolorを取得
-        //color.a = alpha; // カラーのアルファ値を徐々に減らす
-        //_Chance.color = color; // 取得したImageに適応させる
     }
 }

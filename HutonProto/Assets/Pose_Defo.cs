@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Pose_Defo : MonoBehaviour {
+
     PlayerStatus playerstatus;
 
     /*ポーズ_バナナの判定を行う*/
@@ -66,7 +67,8 @@ public class Pose_Defo : MonoBehaviour {
 
     //成功したポーズの判定で使う
     public string posename = "pose_defo";
-
+    //trueなら管理クラスで/falseならこのスクリプトでポーズの表示する
+    private bool Displayswitch;
     void Start()
     {
         //ポーズガイドの画像
@@ -77,8 +79,7 @@ public class Pose_Defo : MonoBehaviour {
         alpha = pose_defo.GetComponent<Image>().color.a;
         //プレイヤーの関節の角度など
         playerstatus = GameObject.FindGameObjectWithTag("PlayerStatus").GetComponent<PlayerStatus>();
-        anglePM = playerstatus.anglePM;
-       
+        anglePM = playerstatus.anglePM;       
     }
 
     void Update()
@@ -122,9 +123,29 @@ public class Pose_Defo : MonoBehaviour {
         /***************************************/
         pose_defo.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z + 3.0f);
+
+        Displayswitch = GameObject.Find("PoseDisplaymanager").GetComponent<PoseDisplaymanager>().Displayfswitch;
+        //Displayswitchがfalseならそれぞれのスクリプトでポーズを表示する
+        //trueならPoseDiplayManagerで管理する
+        if (Displayswitch == false)
+        {
+            if (imageDisplay == false)
+            {
+                defoPoseDisplayfalse();
+            }
+
+            if (imageDisplay == true)
+            {
+                defoPoseDisplaytrue();
+            }
+        }
+
         //角度check
         AnglesCheck();
+        //腕を基準にした場合の判定
+        ArmflagCheck();
+        //足を基準にした場合の判定
+        FootflagCheck();
 
         //どれかが判定の範囲内に入ったら画像表示
         if (R_arm_flag == true ||
@@ -133,7 +154,7 @@ public class Pose_Defo : MonoBehaviour {
             L_leg_flag == true)
         {
             imageDisplay = true;
-            defoPoseDisplaytrue();
+            //defoPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -143,7 +164,7 @@ public class Pose_Defo : MonoBehaviour {
             L_leg_flag == false)
         {
             imageDisplay = false;
-            defoPoseDisplayfalse();
+           // defoPoseDisplayfalse();
         }
 
         //全部入ったか
@@ -153,7 +174,7 @@ public class Pose_Defo : MonoBehaviour {
             L_leg_flag == true)
         {
             DecidePose_defo = true;
-            defoPoseDisplaytrue();
+            //defoPoseDisplaytrue();
         }
     }
     void AnglesCheck()
@@ -215,7 +236,6 @@ public class Pose_Defo : MonoBehaviour {
             L_arm_flag = false;
         }
 
-
         //左股の角度
         if (L_crotch_center >= L_crotch_M && L_crotch_center <= L_crotch_P)
         {
@@ -231,8 +251,86 @@ public class Pose_Defo : MonoBehaviour {
         }
         else
         {
-
             L_leg_flag = false;
+        }
+    }
+
+    void ArmflagCheck()
+    {
+        //右腕が範囲内にあるとき
+        if (R_arm_flag == true)
+        {
+            //右足が範囲内にあるとき
+            if (R_leg_flag == true)
+            {
+                imageDisplay = true;
+            }
+            //左足が範囲内にあるとき
+            else if (L_leg_flag == true)
+            {
+                imageDisplay = true;
+            }
+            else
+            {
+                imageDisplay = false;
+            }
+        }
+        //左腕が範囲内にあるとき
+        else if (L_arm_flag == true)
+        {
+            //右足が範囲内にあるとき
+            if (R_leg_flag == true)
+            {
+                imageDisplay = true;
+            }
+            //左足が範囲内にあるとき
+            else if (L_leg_flag == true)
+            {
+                imageDisplay = true;
+            }
+            else
+            {
+                imageDisplay = false;
+            }
+        }
+    }
+    void FootflagCheck()
+    {
+        //右足が範囲内にあるとき
+        if (R_leg_flag == true)
+        {
+            //右腕が範囲内にあるとき
+            if (R_arm_flag == true)
+            {
+                imageDisplay = true;
+            }
+            //左腕が範囲内にあるとき
+            else if (L_arm_flag == true)
+            {
+                imageDisplay = true;
+            }
+            else
+            {
+                imageDisplay = false;
+            }
+        }
+        //左腕が範囲内にあるとき
+        else if (L_leg_flag == true)
+        {
+            //右足が範囲内にあるとき
+            if (R_arm_flag == true)
+            {
+                imageDisplay = true;
+            }
+            //左足が範囲内にあるとき
+            else if (L_arm_flag == true)
+            {
+                imageDisplay = true;
+            }
+            else
+            {
+                imageDisplay = false;
+            }
         }
     }
 

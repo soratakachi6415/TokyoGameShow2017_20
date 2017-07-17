@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(PlayerScript))]
 public class Touch_Point : MonoBehaviour
 {
     //
@@ -10,6 +12,7 @@ public class Touch_Point : MonoBehaviour
     private float Cnt;
     private float lifeCnt; //タッチし続けてライフが減少する時間
     private SleepGageScript sleepGauge;
+    private PlayerScript player;
     //
 
     private Vector3 m_Offset;
@@ -21,6 +24,7 @@ public class Touch_Point : MonoBehaviour
     void Start()
     {
         sleepGauge = GameObject.Find("ScriptController").GetComponent<SleepGageScript>();
+        player = GetComponent<PlayerScript>();
         lifeCnt = 3;　　//3秒
         Cnt = 0;
     }
@@ -94,15 +98,20 @@ public class Touch_Point : MonoBehaviour
 
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + m_Offset;
 
-        transform.position = currentPosition;
-
-        //動かし続けるとライフが一つ減る
-        if (lifeCnt <= Cnt)
+        if (!player.touchCancel)
         {
-            sleepGauge.hitEnemy(false);
-            Cnt = 0;
+            transform.position = currentPosition;
+            /*腕と足の第二部位の制御が難しいので第二部位だけはSlerpでpositionを移動させる*/
+            //transform.position = Vector3.Slerp(transform.position,currentPosition,);
+
+            //動かし続けるとライフが一つ減る
+            if (lifeCnt <= Cnt)
+            {
+                sleepGauge.hitEnemy(false);
+                Cnt = 0;
+            }
+            Cnt += Time.deltaTime;
         }
-        Cnt+=Time.deltaTime;
     }
 
     public static TouchInfo GetTouch(int n)
@@ -207,13 +216,6 @@ public class Touch_Point : MonoBehaviour
         //            Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + touch_Offset;
 
         //            transform.position = currentPosition;
-
-        //            if (lifeCnt <= Cnt)
-        //            {
-        //                GameObject.Find("ScriptController").GetComponent<SleepGageScript>().hitEnemy();
-        //                Cnt = 0;
-        //            }
-        //            Cnt++;
         //        }
         //    }
         //}

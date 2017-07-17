@@ -64,7 +64,8 @@ public class Pose_eiffelt : MonoBehaviour
     public bool L_leg_flag = false;
 
     public bool DecidePose_eiffelt;
-
+    //trueなら管理クラスで/falseならこのスクリプトでポーズの表示する
+    private bool Displayswitch;
     void Start()
     {
         //ポーズガイドの画像
@@ -129,14 +130,21 @@ public class Pose_eiffelt : MonoBehaviour
         ArmflagCheck();
         //足を基準にした場合の判定
         FootflagCheck();
-        if (imageDisplay == false)
-        {
-            eiffelPoseDisplayfalse();
-        }
 
-        if (imageDisplay == true)
+        Displayswitch = GameObject.Find("PoseDisplaymanager").GetComponent<PoseDisplaymanager>().Displayfswitch;
+        //Displayswitchがfalseならそれぞれのスクリプトでポーズを表示する
+        //trueならPoseDiplayManagerで管理する
+        if (Displayswitch == false)
         {
-            eiffelPoseDisplaytrue();
+            if (imageDisplay == false)
+            {
+               // eiffelPoseDisplayfalse();
+            }
+
+            if (imageDisplay == true)
+            {
+                //eiffelPoseDisplaytrue();
+            }
         }
 
         //どれも入っていなかったら画像を表示しない

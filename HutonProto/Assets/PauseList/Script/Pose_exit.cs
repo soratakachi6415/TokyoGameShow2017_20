@@ -69,6 +69,8 @@ public class Pose_exit : MonoBehaviour
     public bool L_arm_flag = false;
     public bool L_leg_flag = false;
 
+    //trueなら管理クラスで/falseならこのスクリプトでポーズの表示する
+    private bool Displayswitch;
     void Start()
     {
         //ポーズガイドの画像
@@ -134,16 +136,21 @@ public class Pose_exit : MonoBehaviour
         //足を基準にした場合の判定
         FootflagCheck();
 
-        if (imageDisplay == false)
+        Displayswitch = GameObject.Find("PoseDisplaymanager").GetComponent<PoseDisplaymanager>().Displayfswitch;
+        //Displayswitchがfalseならそれぞれのスクリプトでポーズを表示する
+        //trueならPoseDiplayManagerで管理する
+        if (Displayswitch == false)
         {
-            exitPoseDisplayfalse();
-        }
+            if (imageDisplay == false)
+            {
+               // exitPoseDisplayfalse();
+            }
 
-        if (imageDisplay == true)
-        {
-            exitPoseDisplaytrue();
+            if (imageDisplay == true)
+            {
+               // exitPoseDisplaytrue();
+            }
         }
-
         //どれも入っていなかったら画像を表示しない
         if (R_arm_flag == false &&
                  L_arm_flag == false &&
@@ -158,9 +165,9 @@ public class Pose_exit : MonoBehaviour
            R_leg_flag == true &&
            L_leg_flag == true)
         {
-            //ポーズが決まったか
-            DecidePose_exit = true;
+            DecidePose_exit = true;            
         }
+
     }
 
     void AnglesCheck()

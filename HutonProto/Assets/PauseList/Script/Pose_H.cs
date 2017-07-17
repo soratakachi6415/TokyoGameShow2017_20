@@ -16,14 +16,14 @@ public class Pose_H : MonoBehaviour
     //角度の誤差の数値
     private float anglePM;
     /****現在の角度******/
-    protected float R_shoulder;
-    protected float R_elbow;
-    protected float R_crotch;
-    protected float R_knee;
-    protected float L_shoulder;
-    protected float L_elbow;
-    protected float L_crotch;
-    protected float L_knee;
+    public float R_shoulder;
+    public float R_elbow;
+    public float R_crotch;
+    public float R_knee;
+    public float L_shoulder;
+    public float L_elbow;
+    public float L_crotch;
+    public float L_knee;
     /********************/
 
     /*それぞれの手足ごとの判定の数値の中心*/
@@ -65,7 +65,8 @@ public class Pose_H : MonoBehaviour
 
     //ポーズが決まったか
     public bool DecidePose_H;
-
+    //trueなら管理クラスで/falseならこのスクリプトでポーズの表示する
+    private bool Displayswitch;
 
     void Start()
     {
@@ -131,16 +132,22 @@ public class Pose_H : MonoBehaviour
         ArmflagCheck();
         //足を基準にした場合の判定
         FootflagCheck();
-
-        if (imageDisplay == false)
+        Displayswitch = GameObject.Find("PoseDisplaymanager").GetComponent<PoseDisplaymanager>().Displayfswitch;
+        //Displayswitchがfalseならそれぞれのスクリプトでポーズを表示する
+        //trueならPoseDiplayManagerで管理する
+        if (Displayswitch == false)
         {
-            HPoseDisplayfalse();
-        }
+            if (imageDisplay == false)
+            {
+              HPoseDisplayfalse();
+            }
 
-        if (imageDisplay == true)
-        {
-            HPoseDisplaytrue();
+            if (imageDisplay == true)
+            {
+              HPoseDisplaytrue();
+            }
         }
+       
 
         //どれも入ってない場合
         if (R_arm_flag == false &&
@@ -151,13 +158,12 @@ public class Pose_H : MonoBehaviour
             imageDisplay = false;           
         }
 
-        //全部入った場合
         if (R_arm_flag == true &&
-            L_arm_flag == true &&
-            R_leg_flag == true &&
-            L_leg_flag == true)
+           L_arm_flag == true &&
+           R_leg_flag == true &&
+           L_leg_flag == true)
         {
-            HPoseDisplaytrue();
+            DecidePose_H = true;            
         }
         /************************/
 

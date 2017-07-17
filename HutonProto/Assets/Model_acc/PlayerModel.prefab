@@ -190,8 +190,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4728857324862428}
-  - component: {fileID: 114436687847998376}
-  - component: {fileID: 114365302310138504}
   m_Layer: 9
   m_Name: Player_mixamorig:LeftHand
   m_TagString: Player
@@ -371,8 +369,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4345395443901748}
-  - component: {fileID: 114555310882788092}
-  - component: {fileID: 114571542856854516}
   m_Layer: 9
   m_Name: Player_mixamorig:RightHandIndex1
   m_TagString: Player
@@ -447,8 +443,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4260682851049202}
-  - component: {fileID: 114160595176524938}
-  - component: {fileID: 114919780538041602}
   m_Layer: 9
   m_Name: Player_mixamorig:LeftHandIndex1
   m_TagString: Player
@@ -579,8 +573,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4094090166451726}
-  - component: {fileID: 114538160599858636}
-  - component: {fileID: 114385312899196176}
   m_Layer: 9
   m_Name: Player_mixamorig:LeftHandIndex2
   m_TagString: Player
@@ -632,8 +624,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4048216559810554}
-  - component: {fileID: 114468747586641268}
-  - component: {fileID: 114176145071624644}
   m_Layer: 9
   m_Name: Player_mixamorig:LeftHandIndex4
   m_TagString: Player
@@ -726,8 +716,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4049514871998020}
-  - component: {fileID: 114404811076294186}
-  - component: {fileID: 114219146615602794}
   m_Layer: 9
   m_Name: Player_mixamorig:RightHandIndex2
   m_TagString: Player
@@ -743,8 +731,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4501440719097054}
-  - component: {fileID: 114504696578480558}
-  - component: {fileID: 114702902121785918}
   m_Layer: 9
   m_Name: Player_mixamorig:RightHandIndex3
   m_TagString: Player
@@ -778,8 +764,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4199036697957326}
-  - component: {fileID: 114419523384151520}
-  - component: {fileID: 114264153423163372}
   m_Layer: 9
   m_Name: Player_mixamorig:RightHand
   m_TagString: Player
@@ -856,8 +840,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4085979687922518}
-  - component: {fileID: 114004545938442994}
-  - component: {fileID: 114070091010675476}
   m_Layer: 9
   m_Name: Player_mixamorig:RightHandIndex4
   m_TagString: Player
@@ -891,8 +873,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4568262009279774}
-  - component: {fileID: 114305325748781128}
-  - component: {fileID: 114185763162304704}
   m_Layer: 9
   m_Name: Player_mixamorig:LeftHandIndex3
   m_TagString: Player
@@ -2409,18 +2389,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114004545938442994
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887631755404864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7656f22b8c52a4ec099d03a6933a8f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: []
 --- !u!114 &114009530127088018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2492,25 +2460,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: []
---- !u!114 &114070091010675476
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887631755404864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replayGroup: 0
-  recording: 0
-  recordStartTime: 0
-  recordCount: 0
-  replaying: 0
-  replayStartTime: 0
-  replayCount: 0
-  duration: 0
 --- !u!114 &114076013807784704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2642,18 +2591,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: []
---- !u!114 &114160595176524938
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1369093928722116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7656f22b8c52a4ec099d03a6933a8f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: []
 --- !u!114 &114164838581946042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2697,25 +2634,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: []
---- !u!114 &114176145071624644
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1685522368965086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replayGroup: 0
-  recording: 0
-  recordStartTime: 0
-  recordCount: 0
-  replaying: 0
-  replayStartTime: 0
-  replayCount: 0
-  duration: 0
 --- !u!114 &114176540754583354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2733,25 +2651,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1119540157470364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replayGroup: 0
-  recording: 0
-  recordStartTime: 0
-  recordCount: 0
-  replaying: 0
-  replayStartTime: 0
-  replayCount: 0
-  duration: 0
---- !u!114 &114185763162304704
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1903506855853982}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
@@ -2794,25 +2693,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1810300095716304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replayGroup: 0
-  recording: 0
-  recordStartTime: 0
-  recordCount: 0
-  replaying: 0
-  replayStartTime: 0
-  replayCount: 0
-  duration: 0
---- !u!114 &114219146615602794
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1763209910518668}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
@@ -2939,25 +2819,6 @@ MonoBehaviour:
   replayStartTime: 0
   replayCount: 0
   duration: 0
---- !u!114 &114264153423163372
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1825642543706932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replayGroup: 0
-  recording: 0
-  recordStartTime: 0
-  recordCount: 0
-  replaying: 0
-  replayStartTime: 0
-  replayCount: 0
-  duration: 0
 --- !u!114 &114303069168490048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2983,18 +2844,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1278752386165056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7656f22b8c52a4ec099d03a6933a8f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: []
---- !u!114 &114305325748781128
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1903506855853982}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7656f22b8c52a4ec099d03a6933a8f22, type: 3}
@@ -3082,25 +2931,6 @@ MonoBehaviour:
   replayStartTime: 0
   replayCount: 0
   duration: 0
---- !u!114 &114365302310138504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1137500382439420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replayGroup: 0
-  recording: 0
-  recordStartTime: 0
-  recordCount: 0
-  replaying: 0
-  replayStartTime: 0
-  replayCount: 0
-  duration: 0
 --- !u!114 &114370537253411186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3113,25 +2943,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: []
---- !u!114 &114385312899196176
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1645802861170794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replayGroup: 0
-  recording: 0
-  recordStartTime: 0
-  recordCount: 0
-  replaying: 0
-  replayStartTime: 0
-  replayCount: 0
-  duration: 0
 --- !u!114 &114395030221259786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3143,18 +2954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712f980e10876354681cc977d223eb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114404811076294186
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1763209910518668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7656f22b8c52a4ec099d03a6933a8f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: []
 --- !u!114 &114416676092532506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3198,18 +2997,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: []
---- !u!114 &114419523384151520
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1825642543706932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7656f22b8c52a4ec099d03a6933a8f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: []
 --- !u!114 &114422887975332408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3241,18 +3028,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674827370367676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7656f22b8c52a4ec099d03a6933a8f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: []
---- !u!114 &114436687847998376
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1137500382439420}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7656f22b8c52a4ec099d03a6933a8f22, type: 3}
@@ -3321,18 +3096,6 @@ MonoBehaviour:
   replayStartTime: 0
   replayCount: 0
   duration: 0
---- !u!114 &114468747586641268
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1685522368965086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7656f22b8c52a4ec099d03a6933a8f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: []
 --- !u!114 &114472393100022636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3445,18 +3208,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   is_activeArmLeg: 0
   touchCancel: 0
---- !u!114 &114504696578480558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1796164443043976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7656f22b8c52a4ec099d03a6933a8f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: []
 --- !u!114 &114512907266573604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3468,18 +3219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382dc63812f7c0b4390104068759eb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114538160599858636
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1645802861170794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7656f22b8c52a4ec099d03a6933a8f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: []
 --- !u!114 &114539961159033956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3511,37 +3250,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1455009731329388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replayGroup: 0
-  recording: 0
-  recordStartTime: 0
-  recordCount: 0
-  replaying: 0
-  replayStartTime: 0
-  replayCount: 0
-  duration: 0
---- !u!114 &114555310882788092
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1279723513194554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7656f22b8c52a4ec099d03a6933a8f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: []
---- !u!114 &114571542856854516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1279723513194554}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
@@ -3760,25 +3468,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: []
---- !u!114 &114702902121785918
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1796164443043976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replayGroup: 0
-  recording: 0
-  recordStartTime: 0
-  recordCount: 0
-  replaying: 0
-  replayStartTime: 0
-  replayCount: 0
-  duration: 0
 --- !u!114 &114709726361987090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4172,25 +3861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382dc63812f7c0b4390104068759eb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114919780538041602
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1369093928722116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209548a41670a459f985b08a85de68d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replayGroup: 0
-  recording: 0
-  recordStartTime: 0
-  recordCount: 0
-  replaying: 0
-  replayStartTime: 0
-  replayCount: 0
-  duration: 0
 --- !u!114 &114920385247389078
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -42,6 +42,10 @@ public class SlideArrow : MonoBehaviour
 
     void LateUpdate()
     {
-        image.enabled = checkHide();
+        bool enabled = checkHide();
+        if (image.enabled != enabled)
+        {
+            image.enabled = enabled;
+        }
     }
 }

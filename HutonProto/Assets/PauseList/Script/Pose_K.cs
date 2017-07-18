@@ -135,12 +135,12 @@ public class Pose_K : MonoBehaviour {
 
         if (imageDisplay == false)
         {
-            //KPoseDisplayfalse();
+            KPoseDisplayfalse();
         }
 
         if (imageDisplay == true)
         {
-            //KPoseDisplaytrue();
+            KPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない

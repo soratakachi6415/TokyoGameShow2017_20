@@ -139,18 +139,17 @@ public class Pose_big : MonoBehaviour
         Displayswitch = GameObject.Find("PoseDisplaymanager").GetComponent<PoseDisplaymanager>().Displayfswitch;
         //Displayswitchがfalseならそれぞれのスクリプトでポーズを表示する
         //trueならPoseDiplayManagerで管理する
-        if (Displayswitch == false)
-        {
+        
+        
             if (imageDisplay == false)
             {
-                //BigPoseDisplayfalse();
+                BigPoseDisplayfalse();
             }
-
-            if (imageDisplay == true)
+            else if (imageDisplay == true)
             {
-                //BigPoseDisplaytrue();
+                BigPoseDisplaytrue();
             }
-        }
+        
         //どれも入っていなかったら画像を表示しない
         if (R_arm_flag == false &&
                  L_arm_flag == false &&
@@ -162,9 +161,9 @@ public class Pose_big : MonoBehaviour
 
 
         if (R_arm_flag == true &&
-        L_arm_flag == true &&
-        R_leg_flag == true &&
-        L_leg_flag == true)
+            L_arm_flag == true &&
+            R_leg_flag == true &&
+            L_leg_flag == true)
         {
             //ポーズが決まったか
             DecidePose_Big = true;

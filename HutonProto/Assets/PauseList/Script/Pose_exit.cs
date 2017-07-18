@@ -137,20 +137,17 @@ public class Pose_exit : MonoBehaviour
         FootflagCheck();
 
         Displayswitch = GameObject.Find("PoseDisplaymanager").GetComponent<PoseDisplaymanager>().Displayfswitch;
-        //Displayswitchがfalseならそれぞれのスクリプトでポーズを表示する
-        //trueならPoseDiplayManagerで管理する
-        if (Displayswitch == false)
-        {
+       
             if (imageDisplay == false)
             {
-               // exitPoseDisplayfalse();
+                exitPoseDisplayfalse();
             }
 
             if (imageDisplay == true)
             {
-               // exitPoseDisplaytrue();
+                exitPoseDisplaytrue();
             }
-        }
+        
         //どれも入っていなかったら画像を表示しない
         if (R_arm_flag == false &&
                  L_arm_flag == false &&

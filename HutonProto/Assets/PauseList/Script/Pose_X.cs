@@ -133,12 +133,12 @@ public class Pose_X : MonoBehaviour
 
         if (imageDisplay == false)
         {
-            //XPoseDisplayfalse();
+            XPoseDisplayfalse();
         }
 
         if (imageDisplay == true)
         {
-            //XPoseDisplaytrue();
+            XPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない

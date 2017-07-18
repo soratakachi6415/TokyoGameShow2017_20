@@ -16,14 +16,14 @@ public class Pose_H : MonoBehaviour
     //角度の誤差の数値
     private float anglePM;
     /****現在の角度******/
-    public float R_shoulder;
-    public float R_elbow;
-    public float R_crotch;
-    public float R_knee;
-    public float L_shoulder;
-    public float L_elbow;
-    public float L_crotch;
-    public float L_knee;
+    private float R_shoulder;
+    private float R_elbow;
+    private float R_crotch;
+    private float R_knee;
+    private float L_shoulder;
+    private float L_elbow;
+    private float L_crotch;
+    private float L_knee;
     /********************/
 
     /*それぞれの手足ごとの判定の数値の中心*/
@@ -127,26 +127,22 @@ public class Pose_H : MonoBehaviour
         L_kneeM = L_knee - anglePM;
         /***************************************/
 
-
+        AnglesCheck();
         //腕を基準にした場合の判定
         ArmflagCheck();
         //足を基準にした場合の判定
         FootflagCheck();
-        Displayswitch = GameObject.Find("PoseDisplaymanager").GetComponent<PoseDisplaymanager>().Displayfswitch;
-        //Displayswitchがfalseならそれぞれのスクリプトでポーズを表示する
-        //trueならPoseDiplayManagerで管理する
-        if (Displayswitch == false)
-        {
+
             if (imageDisplay == false)
             {
               HPoseDisplayfalse();
             }
 
-            if (imageDisplay == true)
+            else if (imageDisplay == true)
             {
               HPoseDisplaytrue();
             }
-        }
+        
        
 
         //どれも入ってない場合

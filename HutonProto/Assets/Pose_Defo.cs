@@ -9,7 +9,7 @@ public class Pose_Defo : MonoBehaviour {
 
     /*ポーズ_バナナの判定を行う*/
     //「バナナ」ポーズの画像を所得
-    protected Image pose_defo;
+    public Image pose_defo;
     protected float r, g, b, alpha;
     //角度の誤差の数値
     public float anglePM;
@@ -125,20 +125,18 @@ public class Pose_Defo : MonoBehaviour {
 
 
         Displayswitch = GameObject.Find("PoseDisplaymanager").GetComponent<PoseDisplaymanager>().Displayfswitch;
-        //Displayswitchがfalseならそれぞれのスクリプトでポーズを表示する
-        //trueならPoseDiplayManagerで管理する
-        if (Displayswitch == false)
-        {
+
             if (imageDisplay == false)
             {
                 defoPoseDisplayfalse();
             }
 
-            if (imageDisplay == true)
+            if(imageDisplay==true)
             {
+            Debug.Log("aaaa");
                 defoPoseDisplaytrue();
             }
-        }
+        
 
         //角度check
         AnglesCheck();
@@ -146,16 +144,6 @@ public class Pose_Defo : MonoBehaviour {
         ArmflagCheck();
         //足を基準にした場合の判定
         FootflagCheck();
-
-        //どれかが判定の範囲内に入ったら画像表示
-        if (R_arm_flag == true ||
-            L_arm_flag == true ||
-            R_leg_flag == true ||
-            L_leg_flag == true)
-        {
-            imageDisplay = true;
-            //defoPoseDisplaytrue();
-        }
 
         //どれも入っていなかったら画像を表示しない
         if (R_arm_flag == false &&
@@ -270,7 +258,7 @@ public class Pose_Defo : MonoBehaviour {
             {
                 imageDisplay = true;
             }
-            else
+            else if (R_leg_flag == false && L_leg_flag == false)
             {
                 imageDisplay = false;
             }
@@ -288,12 +276,13 @@ public class Pose_Defo : MonoBehaviour {
             {
                 imageDisplay = true;
             }
-            else
+            else if (R_leg_flag == false && L_leg_flag == false)
             {
                 imageDisplay = false;
             }
         }
     }
+
     void FootflagCheck()
     {
         //右足が範囲内にあるとき
@@ -309,7 +298,7 @@ public class Pose_Defo : MonoBehaviour {
             {
                 imageDisplay = true;
             }
-            else
+            else if (R_arm_flag == false && L_arm_flag == false)
             {
                 imageDisplay = false;
             }
@@ -327,7 +316,7 @@ public class Pose_Defo : MonoBehaviour {
             {
                 imageDisplay = true;
             }
-            else
+            else if (R_arm_flag == false && L_arm_flag == false)
             {
                 imageDisplay = false;
             }

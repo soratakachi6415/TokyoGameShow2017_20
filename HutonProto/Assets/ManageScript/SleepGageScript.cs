@@ -7,6 +7,7 @@ public class SleepGageScript : MonoBehaviour {
     
     public GameObject sleepImage;
     private GameObject[] _origin;
+    public bool NoDamage; 
 
     public int sleepPoint; 　//快眠ゲージのポイント数
 
@@ -26,6 +27,7 @@ public class SleepGageScript : MonoBehaviour {
         Cnt = 0;
         a_color = 1;
         hit = false;
+        NoDamage = false;
         
         _origin = new GameObject[10];
 
@@ -66,7 +68,6 @@ public class SleepGageScript : MonoBehaviour {
         {
             _origin[i].GetComponent<Image>().color = new Color(255, 255, 255, a_color);
         }
-        
         healSleepPoint();
     }
 
@@ -75,7 +76,7 @@ public class SleepGageScript : MonoBehaviour {
     {
         if (sleepPoint > 0 && !hit)
         {
-            sleepPoint--;
+            if(!NoDamage)sleepPoint--;
             drawImage();
             hit = true;
             //羊の鳴き声
@@ -88,7 +89,7 @@ public class SleepGageScript : MonoBehaviour {
     {
         if (sleepPoint < 10 && sleepImage != null)
         {
-            if (healCnt >= 50)
+            if (healCnt >= 600)
             {
                 sleepPoint++;
                 drawImage();

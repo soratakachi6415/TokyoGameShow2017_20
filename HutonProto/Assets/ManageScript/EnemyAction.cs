@@ -12,19 +12,22 @@ enum ReAppearState  //再出現時の行動パターン
 }
 
 public class EnemyAction : MonoBehaviour {
-    /*難易度変動時に使われるpublic変数(ここから)*/
+    /*難易度変動時に使われる変数(ここから)*/
     //移動にかかる時間のランダム範囲(秒) 
-    public float moveSpeed_sec_Min;
-    public float moveSpeed_sec_Max;
+    private float moveSpeed_sec_Min;
+    private float moveSpeed_sec_Max;
 
     //クールタイムランダム範囲
-    public float coolTime_Min;
-    public float coolTime_Max;
+    private float coolTime_Min;
+    private float coolTime_Max;
 
 　　//エネミーの角度(0 ～ 360°)
-    public float m_rand_rotate_Min; //ランダム最小角度
-    public float m_rand_rotate_Max; //ランダム最大角度
-    /*難易度変動時に使われるpublic変数(ここまで)*/
+    private float m_rand_rotate_Min; //ランダム最小角度
+    private float m_rand_rotate_Max; //ランダム最大角度
+    /*難易度変動時に使われる変数(ここまで)*/
+
+    //難易度変動時の移動時間を割る数値
+    private float level; 
 
     //フィールド
     #region
@@ -34,25 +37,25 @@ public class EnemyAction : MonoBehaviour {
     private float[] Cnt; //内部カウント    
     
     //０～１の間で使用
-    private float[] t; //上エネミーアクティブタイム
+    private float[] t; //エネミーアクティブタイム
 
     //パーツ関連
-    private List<GameObject> Parent_handleg1;  //上エネミー手足のパーツ
-    private List<GameObject> Parent_handleg2;  //下エネミー手足のパーツ
+    private List<GameObject> Parent_handleg_top;  //上エネミー手足のパーツ
+    private List<GameObject> Parent_handleg_bottom;  //下エネミー手足のパーツ
 
-    private GameObject prevParts; //上エネミーランダム選抜一個前のパーツ
-    private GameObject prevParts2; //下エネミーランダム選抜一個前のパーツ
+    private GameObject prevPart_top; //上エネミーランダム選抜一個前のパーツ
+    private GameObject prevPart_bottom; //下エネミーランダム選抜一個前のパーツ
 
-    private GameObject m_rand_parts; //ランダムパーツ格納1
-    private GameObject m_rand_parts2; //ランダムパーツ格納2
+    private GameObject m_rand_parts_top; //ランダムパーツ格納1
+    private GameObject m_rand_parts_bottom; //ランダムパーツ格納2
 
     //ランダム角度関連
     private float m_rotate_min;
     private float m_rotate_max;
 
     //クォータニオン型角度関連
-    private Quaternion m_rand_euler;
-    private Quaternion m_rand_euler2;
+    private Quaternion m_rand_euler_top;
+    private Quaternion m_rand_euler_bottom;
 
     private Quaternion m_rand_rotate_range;　//回転角度範囲
 
@@ -79,14 +82,15 @@ public class EnemyAction : MonoBehaviour {
     #endregion
 
     void Start () {
+        //難易度設定
+        ChangeLevel();
         enemyManager = GetComponent<EnemyManager>();
 
-        topEnemy = GameObject.FindGameObjectWithTag("Enemy_Top_mixamorig:Hips");
-        
-          bottomEnemy = GameObject.FindGameObjectWithTag("Enemy_Bottom_mixamorig:");
+        topEnemy = GameObject.Find("Enemy_Top_mixamorig:Hips");
+        bottomEnemy = GameObject.Find("Enemy_Bottom_mixamorig:Hips");
 
-         //敵の初期ポジションを格納
-         topPos = topEnemy.transform.position;
+        //敵の初期ポジションを格納
+        topPos = topEnemy.transform.position;
         bottomPos = bottomEnemy.transform.position;
         //敵共有クールタイム
         initCoolT = 0;
@@ -102,34 +106,34 @@ public class EnemyAction : MonoBehaviour {
         Reappear = new int[2];
         Reappear[0] = Reappear[1] = 0;
 
-        Parent_handleg1 = new List<GameObject>();  //手足のリスト
-        Parent_handleg2 = new List<GameObject>();
+        Parent_handleg_top = new List<GameObject>();  //手足のリスト
+        Parent_handleg_bottom = new List<GameObject>();
 
         //パーツの追加
         #region
-        Parent_handleg1.Add(GameObject.Find("Enemy_Top_mixamorig:LeftArm"));     //0
-        Parent_handleg1.Add(GameObject.Find("Enemy_Top_mixamorig:LeftForeArm")); //1
-        Parent_handleg1.Add(GameObject.Find("Enemy_Top_mixamorig:RightArm"));    //2
-        Parent_handleg1.Add(GameObject.Find("Enemy_Top_mixamorig:RightForeArm"));//3
-        Parent_handleg1.Add(GameObject.Find("Enemy_Top_mixamorig:LeftUpLeg"));   //4
-        Parent_handleg1.Add(GameObject.Find("Enemy_Top_mixamorig:LeftLeg"));     //5
-        Parent_handleg1.Add(GameObject.Find("Enemy_Top_mixamorig:RightUpLeg"));  //6
-        Parent_handleg1.Add(GameObject.Find("Enemy_Top_mixamorig:RightLeg"));    //7
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftArm"));     //0
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftForeArm")); //1
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightArm"));    //2
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightForeArm"));//3
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftUpLeg"));   //4
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftLeg"));     //5
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightUpLeg"));  //6
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightLeg"));    //7
 
-        Parent_handleg2.Add(GameObject.Find("Enemy_Bottom_mixamorig:LeftArm"));     //0
-        Parent_handleg2.Add(GameObject.Find("Enemy_Bottom_mixamorig:LeftForeArm")); //1
-        Parent_handleg2.Add(GameObject.Find("Enemy_Bottom_mixamorig:RightArm"));    //2
-        Parent_handleg2.Add(GameObject.Find("Enemy_Bottom_mixamorig:RightForeArm"));//3
-        Parent_handleg2.Add(GameObject.Find("Enemy_Bottom_mixamorig:LeftUpLeg"));   //4
-        Parent_handleg2.Add(GameObject.Find("Enemy_Bottom_mixamorig:LeftLeg"));     //5
-        Parent_handleg2.Add(GameObject.Find("Enemy_Bottom_mixamorig:RightUpLeg"));  //6
-        Parent_handleg2.Add(GameObject.Find("Enemy_Bottom_mixamorig:RightLeg"));    //7
+        Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:LeftArm"));     //0
+        Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:LeftForeArm")); //1
+        Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:RightArm"));    //2
+        Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:RightForeArm"));//3
+        Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:LeftUpLeg"));   //4
+        Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:LeftLeg"));     //5
+        Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:RightUpLeg"));  //6
+        Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:RightLeg"));    //7
         #endregion
 
         m_rotate_min = m_rand_rotate_Min / 360;  //ランダム最小角度
         m_rotate_max = m_rand_rotate_Max / 360;  //ランダム最大角度
-        //難易度設定
-        ChangeLevel();
+
+        t[1] -= 0.4f;
     }
 
     // Update is called once per frame
@@ -148,42 +152,33 @@ public class EnemyAction : MonoBehaviour {
 
         //上のエネミー行動
         #region
-        if (t[0] < 1f)
+        if (t[0] < 0.8f)
         {
+            //上エネミ―行動フラグ
             actionFlag_top = true;
-            m_rand_euler = new Quaternion(m_rand_parts.transform.rotation.x, m_rand_euler.y,
-                                          m_rand_parts.transform.rotation.z, m_rand_parts.transform.rotation.w);
-            m_rand_parts.transform.rotation = Quaternion.Slerp(m_rand_parts.transform.rotation, m_rand_euler, t[0]);
-            MovingEnemy(m_rand_parts);
+            m_rand_euler_top = new Quaternion(m_rand_parts_top.transform.rotation.x, m_rand_euler_top.y,
+                                          m_rand_parts_top.transform.rotation.z, m_rand_parts_top.transform.rotation.w);
+            m_rand_parts_top.transform.rotation = Quaternion.Slerp(m_rand_parts_top.transform.rotation, m_rand_euler_top, t[0]);
         }
-        else 
-        {
-            actionFlag_top = false;
-        }
+        else actionFlag_top = false;
 
         t[0] += moveSpeed_sec_Top;
         #endregion
 
         //下のエネミー行動
         #region
-        if(t[1] < 1f)
+        if(t[1] > 0.0f && t[1] < 0.8f)
         {
-            if (prevParts == null && t[0]< 1f) return;  //初回のみ上エネミ―の行動が終了するまでreturn
-
             actionFlag_bottom = true;
-            m_rand_euler2 = new Quaternion(m_rand_parts2.transform.rotation.x, m_rand_euler2.y,
-                                           m_rand_parts2.transform.rotation.z, m_rand_parts2.transform.rotation.w);
-            m_rand_parts2.transform.rotation = Quaternion.Slerp(m_rand_parts2.transform.rotation, m_rand_euler2, t[1]);
-            MovingEnemy(m_rand_parts2);
+            m_rand_euler_bottom = new Quaternion(m_rand_parts_bottom.transform.rotation.x, m_rand_euler_bottom.y,
+                                           m_rand_parts_bottom.transform.rotation.z, m_rand_parts_bottom.transform.rotation.w);
+            m_rand_parts_bottom.transform.rotation = Quaternion.Slerp(m_rand_parts_bottom.transform.rotation, m_rand_euler_bottom, t[1]);
         }
-        else 
-        {
-            actionFlag_bottom = false;
-        }
+        else actionFlag_bottom = false;
 
         t[1] += moveSpeed_sec_Bottom;
         #endregion
-
+ 
         //クールタイム経過で初期化処理。再行動時には3回動くまで連続で初期化。
         #region
         if ((coolTime_Top < Cnt[0] || Reappear[0] > 0) && !actionFlag_top)
@@ -205,32 +200,43 @@ public class EnemyAction : MonoBehaviour {
     //難易度に応じて敵のステータスが変動
     private void ChangeLevel()
     {
-        string s = "hard";
-        switch(s)
+        switch(GameObject.Find("GameDate").GetComponent<GameData>().GameLevel)
         {
-            case "easy":
-                moveSpeed_sec_Min = 9.0f;
-                moveSpeed_sec_Max = 10.0f;
-                coolTime_Min = 15.0f;
-                coolTime_Max = 20.0f;
-                m_rand_rotate_Min = 15.0f;
-                m_rand_rotate_Max = 20.0f;
-                break;
-            case "normal":
-                moveSpeed_sec_Min = 7.0f;
-                moveSpeed_sec_Max = 10.0f;
-                coolTime_Min = 10.0f;
-                coolTime_Max = 20.0f;
-                m_rand_rotate_Min = 15.0f;
-                m_rand_rotate_Max = 20.0f;
-                break;
-            case "hard":
+            case "Easy":
                 moveSpeed_sec_Min = 5.0f;
-                moveSpeed_sec_Max = 10.0f;
+                moveSpeed_sec_Max = 7.0f;
+                coolTime_Min = 12.0f;
+                coolTime_Max = 15.0f;
+                m_rand_rotate_Min = 37.0f;
+                m_rand_rotate_Max = 50.0f;
+                level = 180;
+                break;
+            case "Normal":
+                moveSpeed_sec_Min = 4.0f;
+                moveSpeed_sec_Max = 5.0f;
                 coolTime_Min = 5.0f;
-                coolTime_Max = 20.0f;
-                m_rand_rotate_Min = 15.0f;
-                m_rand_rotate_Max = 20.0f;
+                coolTime_Max = 10.0f;
+                m_rand_rotate_Min = 37.0f;
+                m_rand_rotate_Max = 50.0f;
+                level = 120;
+                break;
+            case "Hard":
+                moveSpeed_sec_Min = 1.0f;
+                moveSpeed_sec_Max = 2.0f;
+                coolTime_Min = 2.0f;
+                coolTime_Max = 3.0f;
+                m_rand_rotate_Min = 37.0f;
+                m_rand_rotate_Max = 50.0f;
+                level = 60;
+                break;
+            default:
+                moveSpeed_sec_Min = 1.0f;
+                moveSpeed_sec_Max = 2.0f;
+                coolTime_Min = 2.0f;
+                coolTime_Max = 3.0f;
+                m_rand_rotate_Min = 37.0f;
+                m_rand_rotate_Max = 50.0f;
+                level = 60;
                 break;
         }
     }
@@ -241,16 +247,16 @@ public class EnemyAction : MonoBehaviour {
         coolTime_Top = Random.Range(coolTime_Min, coolTime_Max);
 
         //移動時間を決める 
-        moveSpeed_sec_Top = (1 / Random.Range(moveSpeed_sec_Min, moveSpeed_sec_Max)) / 60;
+        moveSpeed_sec_Top = (1 / Random.Range(moveSpeed_sec_Min, moveSpeed_sec_Max)) / level;
 
         //現在のパーツがNULLじゃなければ格納
-        if (m_rand_parts != null)
+        if (m_rand_parts_top != null)
         {
-            prevParts = m_rand_parts;
+            prevPart_top = m_rand_parts_top;
         }
 
         //前パーツと被らないまでループ処理
-        while (prevParts == m_rand_parts)
+        while (prevPart_top == m_rand_parts_top)
         {
             ActivateParts_Top();
         }
@@ -259,14 +265,20 @@ public class EnemyAction : MonoBehaviour {
         m_rand_rotate_range = new Quaternion(0, Random.Range(m_rotate_min, m_rotate_max),0, 0);
 
         //基本ランダムで回転方向を決定
-        //プレイヤーの状態次第でも回転方向が決定する
-        if ((int)Random.Range(0, 2) == 0)
+        //****メモ****
+        //+は画面上で左回転。-は画面上で右回転
+        if ((m_rand_parts_top.GetComponent<HingeJoint>().limits.min / 360) + 0.2f > m_rand_rotate_range.y)
         {
-            m_rand_euler.y = m_rand_parts.transform.rotation.y - m_rand_rotate_range.y;
+            m_rand_euler_top.y = m_rand_parts_top.transform.rotation.y - m_rand_rotate_range.y;
+        }
+        else if ((m_rand_parts_top.GetComponent<HingeJoint>().limits.max / 360) - 0.2f < m_rand_rotate_range.y)
+        {
+            m_rand_euler_top.y = m_rand_parts_top.transform.rotation.y + m_rand_rotate_range.y;
         }
         else
         {
-            m_rand_euler.y = m_rand_parts.transform.rotation.y + m_rand_rotate_range.y;
+            if ((int)Random.Range(0, 2) == 0) m_rand_euler_top.y = m_rand_parts_top.transform.rotation.y + m_rand_rotate_range.y;
+            else m_rand_euler_top.y = m_rand_parts_top.transform.rotation.y - m_rand_rotate_range.y;
         }
     }
     //[下エネミー]上エネミ―と同じソースコード。今後変更が無ければひとまとめに。
@@ -276,16 +288,16 @@ public class EnemyAction : MonoBehaviour {
         coolTime_Bottom = Random.Range(coolTime_Min, coolTime_Max);
         
         //移動時間を決める 
-        moveSpeed_sec_Bottom = (1 / Random.Range(moveSpeed_sec_Min, moveSpeed_sec_Max)) / 60;
+        moveSpeed_sec_Bottom = (1 / Random.Range(moveSpeed_sec_Min, moveSpeed_sec_Max)) / level;
 
         //現在のパーツがNULLじゃなければ格納
-        if (m_rand_parts2 != null)
+        if (m_rand_parts_bottom != null)
         {
-            prevParts2 = m_rand_parts2;
+            prevPart_bottom = m_rand_parts_bottom;
         }
 
         //前パーツと被らないまでループ処理
-        while (prevParts == m_rand_parts2)
+        while (prevPart_bottom == m_rand_parts_bottom)
         {
             ActivateParts_Bottom();
         }
@@ -293,170 +305,168 @@ public class EnemyAction : MonoBehaviour {
         //ランダムで角度決定
         m_rand_rotate_range = new Quaternion(0, Random.Range(m_rotate_min, m_rotate_max),0, 0);
 
-        if ((int)Random.Range(0, 2) == 0)
-        {
-            m_rand_euler2.y = m_rand_parts2.transform.rotation.y - m_rand_rotate_range.y;
-        }
-        else
-        {
-            m_rand_euler2.y = m_rand_parts2.transform.rotation.y + m_rand_rotate_range.y;
-        }
+        //基本ランダムで回転方向を決定
+        //****メモ****
+        //+はMax,画面上で左回転。-はMin,画面上で右回転
+        //if ((m_rand_parts_bottom.GetComponent<HingeJoint>().limits.min / 360) + 0.2f > m_rand_rotate_range.y)
+        //{
+        //   m_rand_euler_bottom.y = m_rand_parts_bottom.transform.rotation.y - m_rand_rotate_range.y;
+        //}
+        //else if ((m_rand_parts_bottom.GetComponent<HingeJoint>().limits.max / 360) - 0.2f < m_rand_rotate_range.y)
+        //{
+        //   m_rand_euler_bottom.y = m_rand_parts_bottom.transform.rotation.y + m_rand_rotate_range.y;
+        //}
+        //else
+        //{
+            if((int)Random.Range(0,2) == 0) m_rand_euler_bottom.y = m_rand_parts_bottom.transform.rotation.y + m_rand_rotate_range.y;
+            else m_rand_euler_bottom.y = m_rand_parts_bottom.transform.rotation.y - m_rand_rotate_range.y;
+        //}
     }
     //上エネミーの関節可動分岐
     private void ActivateParts_Top()
     {
-        if(enemyManager == null)
-        {
-            m_rand_parts = Parent_handleg1[Random.Range(0, 8)];
-            return;
-        }
-        switch (enemyManager.IsAvoid())
-        {
-            //プレイヤーが画面端(左)
-            case "left":
-                switch (enemyManager.IsRotation_Top)
-                {
-                    case Rotation_Top.None:
-                        //腕のみ
-                        m_rand_parts = Parent_handleg1[Random.Range(0, 4)];
-                        break;
-                    case Rotation_Top.Rotation90:
-                        //左腕、左脚のみ
-                        while (m_rand_parts == (Parent_handleg1[2] || Parent_handleg1[3]))
-                        {
-                            m_rand_parts = Parent_handleg1[Random.Range(0, 6)];
-                        }
-                        break;
-                    case Rotation_Top.Rotation180:
-                        //脚のみ
-                        m_rand_parts = Parent_handleg1[Random.Range(4, 8)];
-                        break;
-                    case Rotation_Top.Rotation270:
-                        //右腕、右脚のみ
-                        while (m_rand_parts == (Parent_handleg1[4] || Parent_handleg1[5]))
-                        {
-                            m_rand_parts = Parent_handleg1[Random.Range(2, 8)];
-                        }
-                        break;
-                }
-                break;
-            //プレイヤーが画面端(右)
-            case "right":
-                switch (enemyManager.IsRotation_Top)
-                {
-                    case Rotation_Top.None:
-                        //脚のみ
-                        m_rand_parts = Parent_handleg1[Random.Range(4, 8)];
-                        break;
-                    case Rotation_Top.Rotation90:
-                        //左腕、左脚のみ
-                        while (m_rand_parts == (Parent_handleg1[2] || Parent_handleg1[3]))
-                        {
-                            m_rand_parts = Parent_handleg1[Random.Range(0, 6)];
-                        }
-                        break;
-                    case Rotation_Top.Rotation180:
-                        //腕のみ
-                        m_rand_parts = Parent_handleg1[Random.Range(0, 4)];
-                        break;
-                    case Rotation_Top.Rotation270:
-                        //右腕、右脚のみ
-                        while (m_rand_parts == (Parent_handleg1[4] || Parent_handleg1[5]))
-                        {
-                            m_rand_parts = Parent_handleg1[Random.Range(2, 8)];
-                        }
-                        break;
-                }
-                break;
+        m_rand_parts_top = Parent_handleg_top[Random.Range(0, 8)];
+        ////エラー回避
+        //if(enemyManager == null)
+        //{
+        //    m_rand_parts_top = Parent_handleg_top[Random.Range(0, 8)];
+        //    return;
+        //}
+        ////プレイヤーの状態に応じてランダムで選抜される可動パーツが分かれる
+        //switch (enemyManager.IsAvoid())
+        //{
+        //    //プレイヤーが画面端(左)
+        //    case "left":
+        //        switch (enemyManager.IsRotation_Top)
+        //        {
+        //            case Rotation_Top.None:
+        //                //腕のみ
+        //                m_rand_parts_top = Parent_handleg_top[Random.Range(0, 4)];
+        //                break;
+        //            case Rotation_Top.Rotation90:
+        //                //左腕、左脚のみ
+        //                while (m_rand_parts_top == (Parent_handleg_top[2] || Parent_handleg_top[3]))
+        //                {
+        //                    m_rand_parts_top = Parent_handleg_top[Random.Range(0, 6)];
+        //                }
+        //                break;
+        //            case Rotation_Top.Rotation180:
+        //                //脚のみ
+        //                m_rand_parts_top = Parent_handleg_top[Random.Range(4, 8)];
+        //                break;
+        //            case Rotation_Top.Rotation270:
+        //                //右腕、右脚のみ
+        //                while (m_rand_parts_top == (Parent_handleg_top[4] || Parent_handleg_top[5]))
+        //                {
+        //                    m_rand_parts_top = Parent_handleg_top[Random.Range(2, 8)];
+        //                }
+        //                break;
+        //        }
+        //        break;
+        //    //プレイヤーが画面端(右)
+        //    case "right":
+        //        switch (enemyManager.IsRotation_Top)
+        //        {
+        //            case Rotation_Top.None:
+        //                //脚のみ
+        //                m_rand_parts_top = Parent_handleg_top[Random.Range(4, 8)];
+        //                break;
+        //            case Rotation_Top.Rotation90:
+        //                //左腕、左脚のみ
+        //                while (m_rand_parts_top == (Parent_handleg_top[2] || Parent_handleg_top[3]))
+        //                {
+        //                    m_rand_parts_top = Parent_handleg_top[Random.Range(0, 6)];
+        //                }
+        //                break;
+        //            case Rotation_Top.Rotation180:
+        //                //腕のみ
+        //                m_rand_parts_top = Parent_handleg_top[Random.Range(0, 4)];
+        //                break;
+        //            case Rotation_Top.Rotation270:
+        //                //右腕、右脚のみ
+        //                while (m_rand_parts_top == (Parent_handleg_top[4] || Parent_handleg_top[5]))
+        //                {
+        //                    m_rand_parts_top = Parent_handleg_top[Random.Range(2, 8)];
+        //                }
+        //                break;
+        //        }
+        //        break;
 
-            //条件に引っかからなかったらランダム対象を全パーツに
-            default:
-                m_rand_parts = Parent_handleg1[Random.Range(0, 8)];
-                break;
-        }
+        //    //条件に引っかからなかったらランダム対象を全パーツに
+        //    default:
+        //        m_rand_parts_top = Parent_handleg_top[Random.Range(0, 8)];
+        //        break;
+        //}
     }
     //下エネミーの関節可動分岐
     /*上エネミ―と同じソースコード。今後変更が無ければひとまとめに*/
     private void ActivateParts_Bottom()
     {
-        switch(enemyManager.IsAvoid())
-        {
-            //プレイヤーが画面端(左)
-            case "left":
-                switch (enemyManager.IsRotation_Bottom)
-                {
-                    case Rotation_Bottom.None:
-                        //腕のみ
-                        m_rand_parts2 = Parent_handleg2[Random.Range(0, 4)];
-                        break;
-                    case Rotation_Bottom.Rotation90:
-                        //左腕、左脚のみ
-                        while (m_rand_parts2 == (Parent_handleg2[2] || Parent_handleg2[3]))
-                        {
-                            m_rand_parts2 = Parent_handleg2[Random.Range(0, 6)];
-                        }
-                        break;
-                    case Rotation_Bottom.Rotation180:
-                        //脚のみ
-                        m_rand_parts2 = Parent_handleg2[Random.Range(4, 8)];
-                        break;
-                    case Rotation_Bottom.Rotation270:
-                        //右腕、右脚のみ
-                        while (m_rand_parts2 == (Parent_handleg2[4] || Parent_handleg2[5]))
-                        {
-                            m_rand_parts2 = Parent_handleg2[Random.Range(2, 8)];
-                        }
-                        break;
-                }
-                break;
-            //プレイヤーが画面端(右)
-            case "right":
-                switch (enemyManager.IsRotation_Bottom)
-                {
-                    case Rotation_Bottom.None:
-                        //脚のみ
-                        m_rand_parts2 = Parent_handleg2[Random.Range(4, 8)];
-                        break;
-                    case Rotation_Bottom.Rotation90:
-                        //左腕、左脚のみ
-                        while (m_rand_parts2 == (Parent_handleg2[2] || Parent_handleg2[3]))
-                        {
-                            m_rand_parts2 = Parent_handleg2[Random.Range(0, 6)];
-                        }
-                        break;
-                    case Rotation_Bottom.Rotation180:
-                        //腕のみ
-                        m_rand_parts2 = Parent_handleg2[Random.Range(0, 4)];
-                        break;
-                    case Rotation_Bottom.Rotation270:
-                        //右腕、右脚のみ
-                        while (m_rand_parts2 == (Parent_handleg2[4] || Parent_handleg2[5]))
-                        {
-                            m_rand_parts2 = Parent_handleg2[Random.Range(2, 8)];
-                        }
-                        break;
-                }
-                break;
+        m_rand_parts_bottom = Parent_handleg_bottom[Random.Range(0, 8)];
+        //switch (enemyManager.IsAvoid())
+        //{
+        //    //プレイヤーが画面端(左)
+        //    case "left":
+        //        switch (enemyManager.IsRotation_Bottom)
+        //        {
+        //            case Rotation_Bottom.None:
+        //                //腕のみ
+        //                m_rand_parts_bottom = Parent_handleg_bottom[Random.Range(0, 4)];
+        //                break;
+        //            case Rotation_Bottom.Rotation90:
+        //                //左腕、左脚のみ
+        //                while (m_rand_parts_bottom == (Parent_handleg_bottom[2] || Parent_handleg_bottom[3]))
+        //                {
+        //                    m_rand_parts_bottom = Parent_handleg_bottom[Random.Range(0, 6)];
+        //                }
+        //                break;
+        //            case Rotation_Bottom.Rotation180:
+        //                //脚のみ
+        //                m_rand_parts_bottom = Parent_handleg_bottom[Random.Range(4, 8)];
+        //                break;
+        //            case Rotation_Bottom.Rotation270:
+        //                //右腕、右脚のみ
+        //                while (m_rand_parts_bottom == (Parent_handleg_bottom[4] || Parent_handleg_bottom[5]))
+        //                {
+        //                    m_rand_parts_bottom = Parent_handleg_bottom[Random.Range(2, 8)];
+        //                }
+        //                break;
+        //        }
+        //        break;
+        //    //プレイヤーが画面端(右)
+        //    case "right":
+        //        switch (enemyManager.IsRotation_Bottom)
+        //        {
+        //            case Rotation_Bottom.None:
+        //                //脚のみ
+        //                m_rand_parts_bottom = Parent_handleg_bottom[Random.Range(4, 8)];
+        //                break;
+        //            case Rotation_Bottom.Rotation90:
+        //                //左腕、左脚のみ
+        //                while (m_rand_parts_bottom == (Parent_handleg_bottom[2] || Parent_handleg_bottom[3]))
+        //                {
+        //                    m_rand_parts_bottom = Parent_handleg_bottom[Random.Range(0, 6)];
+        //                }
+        //                break;
+        //            case Rotation_Bottom.Rotation180:
+        //                //腕のみ
+        //                m_rand_parts_bottom = Parent_handleg_bottom[Random.Range(0, 4)];
+        //                break;
+        //            case Rotation_Bottom.Rotation270:
+        //                //右腕、右脚のみ
+        //                while (m_rand_parts_bottom == (Parent_handleg_bottom[4] || Parent_handleg_bottom[5]))
+        //                {
+        //                    m_rand_parts_bottom = Parent_handleg_bottom[Random.Range(2, 8)];
+        //                }
+        //                break;
+        //        }
+        //        break;
 
-            //条件に引っかからなかったらランダム対象を全パーツに
-            default:
-                m_rand_parts2 = Parent_handleg2[Random.Range(0, 8)];
-                break;
-        }
-    }
-
-    /*(未完)敵が関節をフル回転させてもプレイヤーに届かない場合
-    敵が関節を動かしながら、関節が可動してプレイヤーに届
-    く距離までにじり寄ってくる*/
-    private void MovingEnemy(GameObject gObj)
-    {
-        //簡易的な条件判定と仮の動き
-        if(enemyManager.IsAway() == "top" || enemyManager.IsAway() == "bottom")
-        {
-            Vector3 direction = enemyManager.GetPlayer.transform.position - gObj.transform.position;
-            direction.Normalize();
-            gObj.transform.position += direction * 0.06f;
-        }
+        //    //条件に引っかからなかったらランダム対象を全パーツに
+        //    default:
+        //        m_rand_parts_bottom = Parent_handleg_bottom[Random.Range(0, 8)];
+        //        break;
+        //}
     }
     //再出現時の行動判別
     public void ReAppear(GameObject obj) 

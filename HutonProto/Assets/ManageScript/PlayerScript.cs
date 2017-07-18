@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour
     private SleepGageScript sleepGauge;
     //敵と衝突したか
     private bool hit;
-    //****難易度変動時に体と手足が連動して動くか？****
+    //難易度変動時に体と手足が連動して動くか？
     public bool is_activeArmLeg;
     //速度制限の有効時間
     private float checkTime;
@@ -23,35 +23,22 @@ public class PlayerScript : MonoBehaviour
     {
         hit = false;
         sleepGauge = GameObject.Find("ScriptController").GetComponent<SleepGageScript>();
-
-        /*旧モデルプレイヤー*/
-        //obj.Add(GameObject.Find("Player_LeftHand1"));     //0
-        //obj.Add(GameObject.Find("Player_LeftHand2"));     //1
-        //obj.Add(GameObject.Find("Player_RightHand1"));    //2
-        //obj.Add(GameObject.Find("Player_RightHand2"));    //3
-        //obj.Add(GameObject.Find("Player_LeftLeg1"));      //4
-        //obj.Add(GameObject.Find("Player_LeftLeg2"));      //5
-        //obj.Add(GameObject.Find("Player_RightLeg1"));     //6
-        //obj.Add(GameObject.Find("Player_RightLeg2"));     //7
-        //obj.Add(GameObject.Find("Player_Body"));          //8
-        //obj.Add(GameObject.Find("Player_Head"));          //9
-
         /*新プレイヤーモデル*/
-        obj.Add(GameObject.Find("mixamorig:LeftUpLeg"));    //0
-        obj.Add(GameObject.Find("mixamorig:LeftLeg"));      //1
-        obj.Add(GameObject.Find("mixamorig:RightUpLeg"));   //2
-        obj.Add(GameObject.Find("mixamorig:RightLeg"));     //3
-        obj.Add(GameObject.Find("mixamorig:LeftForeArm"));  //4
-        obj.Add(GameObject.Find("mixamorig:LeftArm"));      //5
-        obj.Add(GameObject.Find("mixamorig:RightForeArm")); //6
-        obj.Add(GameObject.Find("mixamorig:RightArm"));     //7
-        obj.Add(GameObject.Find("mixamorig:Spine"));        //8
-        obj.Add(GameObject.Find("mixamorig:Head"));         //9
-        obj.Add(GameObject.Find("mixamorig:Spine1"));       //10
-        obj.Add(GameObject.Find("mixamorig:Spine2"));       //11
-        obj.Add(GameObject.Find("mixamorig:Hips"));         //12
-        obj.Add(GameObject.Find("mixamorig:LeftShoulder")); //13
-        obj.Add(GameObject.Find("mixamorig:RightShoulder")); //14
+        obj.Add(GameObject.Find("Player_mixamorig:LeftUpLeg"));     //0
+        obj.Add(GameObject.Find("Player_mixamorig:LeftLeg"));       //1
+        obj.Add(GameObject.Find("Player_mixamorig:RightUpLeg"));    //2
+        obj.Add(GameObject.Find("Player_mixamorig:RightLeg"));      //3
+        obj.Add(GameObject.Find("Player_mixamorig:LeftForeArm"));   //4
+        obj.Add(GameObject.Find("Player_mixamorig:LeftArm"));       //5
+        obj.Add(GameObject.Find("Player_mixamorig:RightForeArm"));  //6
+        obj.Add(GameObject.Find("Player_mixamorig:RightArm"));      //7
+        obj.Add(GameObject.Find("Player_mixamorig:Spine"));         //8
+        obj.Add(GameObject.Find("Player_mixamorig:Head"));          //9
+        obj.Add(GameObject.Find("Player_mixamorig:Spine1"));        //10
+        obj.Add(GameObject.Find("Player_mixamorig:Spine2"));        //11
+        obj.Add(GameObject.Find("Player_mixamorig:Hips"));          //12
+        obj.Add(GameObject.Find("Player_mixamorig:LeftShoulder"));  //13
+        obj.Add(GameObject.Find("Player_mixamorig:RightShoulder")); //14
     }
 
     void OnMouseDown()
@@ -65,12 +52,12 @@ public class PlayerScript : MonoBehaviour
         {
             if (gameObject.name.ToString().Contains("Left"))
             {
-                obj[0].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+                if(gameObject.name.ToString().Contains("Up")) obj[0].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 obj[1].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             }
             else if (gameObject.name.ToString().Contains("Right"))
             {
-                obj[2].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+                if (gameObject.name.ToString().Contains("Up")) obj[2].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 obj[3].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             }
         }
@@ -89,12 +76,15 @@ public class PlayerScript : MonoBehaviour
         }
         else if (gameObject.name.ToString().Contains("Spine") || gameObject.name.ToString().Contains("Head"))
         {//体か頭を触ると全身の回転とY座標を固定。
+            //ボディを触るとコネクトボディをくっつける
+            obj[0].GetComponent<HingeJoint>().connectedBody = obj[12].GetComponent<Rigidbody>();
+            obj[2].GetComponent<HingeJoint>().connectedBody = obj[12].GetComponent<Rigidbody>();
+            obj[5].GetComponent<HingeJoint>().connectedBody = obj[13].GetComponent<Rigidbody>();
+            obj[7].GetComponent<HingeJoint>().connectedBody = obj[14].GetComponent<Rigidbody>();
+            obj[8].GetComponent<HingeJoint>().connectedBody = obj[12].GetComponent<Rigidbody>();
             for (int i = 0; i < obj.Count; i++)
             {
-                if (!is_activeArmLeg)
-                    obj[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
-                else if (is_activeArmLeg)
-                    obj[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+                obj[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
             }
         }
 
@@ -123,6 +113,12 @@ public class PlayerScript : MonoBehaviour
 
     void OnMouseUp()
     {
+        //特定のジョイントのコネクトボディを剥がす
+        obj[0].GetComponent<HingeJoint>().connectedBody = null;
+        obj[2].GetComponent<HingeJoint>().connectedBody = null;
+        obj[5].GetComponent<HingeJoint>().connectedBody = null;
+        obj[7].GetComponent<HingeJoint>().connectedBody = null;
+        obj[8].GetComponent<HingeJoint>().connectedBody = null;
         //オブジェクトを離すと全てのオブジェクトをY座標固定のみへ
         for (int i = 0; i < obj.Count; i++)
         {
@@ -135,15 +131,9 @@ public class PlayerScript : MonoBehaviour
         }
         obj[12].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
     }
-
-    void OnMouseExit()
-    {
-        touchCancel = false;
-    }
-
     void Update()
     {
-         
+
     }
 
     /*プレイヤーの移動速度を確認し、速度超過で移動を制限
@@ -190,7 +180,7 @@ public class PlayerScript : MonoBehaviour
         /*このプログラムは難易度ハードの時に
         「体を動かすと手足も動くプログラム」
         の妨害になる可能性あり↓*/
-        //constraintsがY座標固定になっているパーツを抽出
+        //constraintsがY座標固定になっているパーツを2つ抽出
         for (int ii = 0;ii < obj.Count; ii++)
         {
             if (obj[ii].GetComponent<Rigidbody>().constraints == RigidbodyConstraints.FreezePositionY)
@@ -204,15 +194,15 @@ public class PlayerScript : MonoBehaviour
         //抽出した2パーツの距離を判定
         if (obj[i].name.ToString().Contains("Leg") && obj[j].name.ToString().Contains("Leg"))
         {//脚
-            if (Vector3.Distance(obj[i].transform.position, obj[j].transform.position) >= 12.0f)
+            if (Vector3.Distance(obj[i].transform.position, obj[j].transform.position) >= 18.0f)
             {//指定距離離れていたらタッチ解除
-                //Debug.Log("脚の関節間距離が許容範囲を超えました。" + obj[i].transform.position + " " +obj[j].transform.position);
+                //Debug.Log("脚の関節間距離が許容範囲を超えました。" +  obj[i].name + obj[i].transform.position + " " + obj[j] + obj[j].transform.position);
                 touchCancel = true;
             }
         }
         else if(obj[i].name.ToString().Contains("Arm") && obj[j].name.ToString().Contains("Arm"))
         {//腕
-            if (Vector3.Distance(obj[i].transform.position, obj[j].transform.position) >= 8.0f)
+            if (Vector3.Distance(obj[i].transform.position, obj[j].transform.position) >= 10.0f)
             {//指定距離離れていたらタッチ解除
                 //Debug.Log("腕の関節間距離が許容範囲を超えました");
                 touchCancel = true;
@@ -253,12 +243,12 @@ public class PlayerScript : MonoBehaviour
         }
 
         /*腕と肩付近の距離を判定*/
-        if (Vector3.Distance(obj[m[0]].transform.position, obj[13].transform.position) >= 5.0f)
+        if (Vector3.Distance(obj[7].transform.position, obj[14].transform.position) >= 8.0f)
         {//指定距離離れていたらタッチ解除
             //Debug.Log("右腕と右肩の関節間距離が許容範囲を超えました");
             touchCancel = true;
         }
-        else if (Vector3.Distance(obj[m[1]].transform.position, obj[14].transform.position) >= 5.0f)
+        else if (Vector3.Distance(obj[5].transform.position, obj[13].transform.position) >= 8.0f)
         {//指定距離離れていたらタッチ解除
             //Debug.Log("左腕と左肩の関節間距離が許容範囲を超えました");
             touchCancel = true;

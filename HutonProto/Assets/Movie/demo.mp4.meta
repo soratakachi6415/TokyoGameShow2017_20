@@ -7,16 +7,16 @@ VideoClipImporter:
   useLegacyImporter: 0
   quality: 0.5
   isColorLinear: 0
-  originalWidth: 1984
-  originalHeight: 1200
+  originalWidth: 856
+  originalHeight: 480
   frameRange: 0
   startFrame: -1
   endFrame: -1
-  frameCount: 503
-  frameRate: 50
+  frameCount: 603
+  frameRate: 60
   colorSpace: 0
   deinterlace: 1
-  sourceFileSize: 1053395
+  sourceFileSize: 8257911
   encodeAlpha: 0
   sourceHasAlpha: 0
   flipVertical: 0
@@ -28,31 +28,49 @@ VideoClipImporter:
     0:
       enableTranscoding: 1
       codec: 0
-      resizeFormat: 2
+      resizeFormat: 0
       aspectRatio: 5
       customWidth: 1984
       customHeight: 1200
       bitrateMode: 2
       spatialQuality: 2
-  output:
-    format: 1
-    settings:
+    1:
+      enableTranscoding: 1
+      codec: 1
+      resizeFormat: 0
+      aspectRatio: 5
+      customWidth: 1984
+      customHeight: 1200
+      bitrateMode: 2
+      spatialQuality: 2
+    7:
       enableTranscoding: 1
       codec: 0
       resizeFormat: 2
       aspectRatio: 5
       customWidth: 1984
       customHeight: 1200
+      bitrateMode: 0
+      spatialQuality: 0
+  output:
+    format: 1
+    settings:
+      enableTranscoding: 1
+      codec: 1
+      resizeFormat: 0
+      aspectRatio: 5
+      customWidth: 1984
+      customHeight: 1200
       bitrateMode: 2
       spatialQuality: 2
-    encodedWidth: 992
-    encodedHeight: 600
+    encodedWidth: 856
+    encodedHeight: 480
     encodedStartFrame: 0
-    encodedEndFrame: 500
+    encodedEndFrame: 601
     streamedResource:
       source: library/metadata/fc/fc3ca12ae502a3f43852dde83482668b.resource
       offset: 0
-      size: 1082149
+      size: 1998453
   userData: 
   assetBundleName: 
   assetBundleVariant: 

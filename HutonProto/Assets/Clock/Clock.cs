@@ -28,6 +28,7 @@ public class Clock : MonoBehaviour
     private float colorChange;
 
     public Image finishImage;
+    public Animator animator;
 
     void Start()
     {
@@ -42,6 +43,9 @@ public class Clock : MonoBehaviour
         clockColor_g = clockimage.GetComponent<Image>().color.g;
         clockColor_b = clockimage.GetComponent<Image>().color.b;
         clockColor_a= clockimage.GetComponent<Image>().color.a;
+
+        //finishImage = GetComponent<Image>();
+        //animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -74,6 +78,7 @@ public class Clock : MonoBehaviour
             {
                 soundsManager.Alarm();
                 finishImage.enabled = true;
+                animator.enabled = true;
             }
 
             //点滅時の色変更

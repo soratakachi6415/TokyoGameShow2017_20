@@ -153,7 +153,7 @@ public class SlideExtension : MonoBehaviour
         if (!isEnableFrame) { return; }
 
         target = 0;
-        targetValue = 0.0f;
+        targetValue  = 0.0f;
         scroll.value = 0.0f;
 
         isEnableFrame = false;
@@ -210,12 +210,14 @@ public class SlideExtension : MonoBehaviour
     /// <summary> スクロールします </summary>
     private void Scroll()
     {
-        scroll.value = Mathf.Lerp(scroll.value, targetValue, scrollSpeed*Time.deltaTime);
+        float scrollValue;
+        scrollValue = Mathf.Lerp(scroll.value, targetValue, scrollSpeed*Time.deltaTime);
 
-        if (Mathf.Abs(scroll.value - targetValue) < 0.001f)
+        if (Mathf.Abs(scrollValue - targetValue) < 0.001f)
         {
-            scroll.value = targetValue;
+            scrollValue = targetValue;
             isScrolls = false;
         }
+        scroll.value = scrollValue;
     }
 }

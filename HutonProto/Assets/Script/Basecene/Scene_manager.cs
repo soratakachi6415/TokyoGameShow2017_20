@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Scene_manager : MonoBehaviour
 {
     /*シーン遷移の管理*/
-    // 2017/5/09 最終編集佐伯 
+    // 2017/5/09 最終編集佐伯
 
     //現在のシーンの所得
     public string currentscene;
@@ -23,12 +23,12 @@ public class Scene_manager : MonoBehaviour
     public Scenestate Scene_state;
     /******************************/
 
-    //変数
+    //変数 (これは定数のはずなのでconstが望ましい)
     //string Base = "BaseScene";
-    string Title = "Title";
-    string LevelSelect = "LevelSelect";
-    string Game = "main";
-    string Result = "Result";
+    const string Title       = "Title";
+    const string LevelSelect = "LevelSelect";
+    const string Game        = "main";
+    const string Result      = "Result";
 
     /*フェードの管理*/
     //trueがロード中,falseがロード中じゃない
@@ -50,7 +50,7 @@ public class Scene_manager : MonoBehaviour
         {
             TitleScene();
         }
-        if (Scene_state == Scenestate.LevelSelect)
+        else if (Scene_state == Scenestate.LevelSelect)
         {
             LevelSelectScene();
         }
@@ -271,9 +271,9 @@ public class Scene_manager : MonoBehaviour
             {
                 SceneManager.UnloadSceneAsync(LevelSelect);
             }
-            
+
             #endif
-            
+
             //リザルトシーンのアンロード
             if (ContainsScene(Result))
             {

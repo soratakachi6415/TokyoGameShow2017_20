@@ -71,6 +71,10 @@ public class Pose_big : MonoBehaviour
 
     //trueなら管理クラスで/falseならこのスクリプトでポーズの表示する
     private bool Displayswitch;
+
+    //ポーズの決めた数を数えるフラグ
+    public bool pose_countflag = false;
+    public int pose_count = 0;
     void Start()
     {
         //ポーズガイドの画像
@@ -91,7 +95,7 @@ public class Pose_big : MonoBehaviour
         //ポーズの画像の情報
         pose_big.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
+        //transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 
         //プレイヤーStatusから所得する
         R_shoulder = playerstatus.R_shoulder_Y;
@@ -143,11 +147,12 @@ public class Pose_big : MonoBehaviour
         
             if (imageDisplay == false)
             {
-                BigPoseDisplayfalse();
+                //BigPoseDisplayfalse();
             }
+
             else if (imageDisplay == true)
             {
-                BigPoseDisplaytrue();
+               // BigPoseDisplaytrue();
             }
         
         //どれも入っていなかったら画像を表示しない
@@ -167,6 +172,24 @@ public class Pose_big : MonoBehaviour
         {
             //ポーズが決まったか
             DecidePose_Big = true;
+        }
+
+        if (R_arm_flag == false ||
+            L_arm_flag == false ||
+            R_leg_flag == false ||
+            L_leg_flag == false)
+        {
+            DecidePose_Big = false;
+            pose_countflag = false;
+        }
+
+        if (pose_countflag == false)
+        {
+            if (DecidePose_Big == true)
+            {
+                pose_count++;
+                pose_countflag = true;
+            }
         }
 
     }

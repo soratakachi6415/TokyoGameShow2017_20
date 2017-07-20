@@ -79,14 +79,13 @@ public class EnemyManager : MonoBehaviour {
 
         soundsManager = GameObject.FindGameObjectWithTag("SoundsManager").GetComponent<SoundsManager>();
         #endregion
-        player = GameObject.Find("Player_mixamorig:Hips");
-        sleepGauge = GameObject.FindGameObjectWithTag("GameController").GetComponent<SleepGageScript>();
+        sleepGauge = GetComponent<SleepGageScript>();
     }
 
     void Update()
     {
-        IsGetUpEnemyTop();
-        IsGetUpEnemyBottom();
+        //IsGetUpEnemyTop();
+        //IsGetUpEnemyBottom();
     }
     //上エネミーの回転情報
     public Rotation_Top IsRotation_Top
@@ -100,12 +99,6 @@ public class EnemyManager : MonoBehaviour {
         get { return rotation_bottom; }
         set { rotation_bottom = value; }
     }
-    //プレイヤー情報
-    public GameObject GetPlayer
-    {
-        get { return player; }
-    }
-
     //プレイヤーの状態:画面端にいるかを確認
     public string IsAvoid()
     {
@@ -171,7 +164,9 @@ public class EnemyManager : MonoBehaviour {
             }
             else if (topCnt >= 180)
             {
-                GameObject.Find("ScriptController").GetComponent<EnemyAction>().ReAppear(enemy_Top);
+                GetComponent<EnemyAction>().ConnectedBody(enemy_Top, false);
+                GetComponent<EnemyAction>().ReAppear(enemy_Top);
+                enemy_Top.transform.position = upE;
                 topEnemyhit = 0;
                 topCoolT = 0;
                 topCnt = 0;
@@ -193,7 +188,9 @@ public class EnemyManager : MonoBehaviour {
             }
             else if (downCnt >= 180)
             {
-                GameObject.Find("ScriptController").GetComponent<EnemyAction>().ReAppear(enemy_Bottom);
+                GetComponent<EnemyAction>().ConnectedBody(enemy_Bottom, false);
+                GetComponent<EnemyAction>().ReAppear(enemy_Bottom);
+                enemy_Bottom.transform.position = downE;
                 downEnemeyHit = 0;
                 bottomCoolT = 0;
                 downCnt = 0;
@@ -202,17 +199,19 @@ public class EnemyManager : MonoBehaviour {
         }
         bottomCoolT += Time.deltaTime;
     }
-    public void upHit() //上エネミ―と衝突時カウントアップ
+    //上エネミ―と衝突時カウントアップ
+    public void upHit() 
     {
-        if (topCoolT > 0.5f && !(GameObject.Find("ScriptController").GetComponent<EnemyAction>().actionFlag_top))
+        if (topCoolT > 0.5f && !(GetComponent<EnemyAction>().actionFlag_top))
         {
             topCoolT = 0;
             topEnemyhit++;
         }
     }
-    public void downHit() //下エネミーと衝突時カウントアップ
+    //下エネミーと衝突時カウントアップ
+    public void downHit() 
     {
-        if (bottomCoolT > 0.5f && !(GameObject.Find("ScriptController").GetComponent<EnemyAction>().actionFlag_bottom))
+        if (bottomCoolT > 0.5f && !(GetComponent<EnemyAction>().actionFlag_bottom))
         {
             bottomCoolT = 0;
             downEnemeyHit++;

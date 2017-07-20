@@ -88,7 +88,7 @@ public class Pose_Hawk : MonoBehaviour {
         //ポーズの画像の情報
         pose_Hawk.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
+        //transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 
         //プレイヤーStatusから所得する
         R_shoulder = playerstatus.R_shoulder_Y;
@@ -127,6 +127,7 @@ public class Pose_Hawk : MonoBehaviour {
         L_kneeM = L_knee - anglePM;
         /***************************************/
 
+        AnglesCheck();
         //腕を基準にした場合の判定
         ArmflagCheck();
         //足を基準にした場合の判定

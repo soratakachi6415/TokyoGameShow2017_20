@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 137265192090831010}
   m_Layer: 0
   m_Name: "shoulder_\u5186"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 137107507325277286}
   m_Layer: 0
   m_Name: "knee_\u5186.003"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 137402098070801198}
   m_Layer: 0
   m_Name: "foot_\u7ACB\u65B9\u4F53.001"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 137535401863595032}
   m_Layer: 0
   m_Name: "hand_\u7ACB\u65B9\u4F53"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 137882090795315832}
   m_Layer: 0
   m_Name: "spine1_\u5186\u67F1"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 137903612585418842}
   m_Layer: 0
   m_Name: "Hip_joint_\u5186.001"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 137664680557504354}
   m_Layer: 0
   m_Name: "elbow_\u5186.004"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 137716784322259232}
   m_Layer: 0
   m_Name: "wrist_\u5186.006"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -369,13 +369,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4297540218234526}
   - component: {fileID: 95013092833588750}
+  - component: {fileID: 114299762180318330}
   m_Layer: 0
   m_Name: MODEL1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1339016957415140
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +388,7 @@ GameObject:
   - component: {fileID: 137074879262104400}
   m_Layer: 0
   m_Name: "lower_arms_\u5186.005"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -438,7 +439,7 @@ GameObject:
   - component: {fileID: 137960103753098366}
   m_Layer: 0
   m_Name: "UpBody_\u5E73\u9762"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -454,7 +455,7 @@ GameObject:
   - component: {fileID: 137872377453096418}
   m_Layer: 0
   m_Name: "lower_leg_\u5186\u67F1.002"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -490,7 +491,7 @@ GameObject:
   - component: {fileID: 137905864112143518}
   m_Layer: 0
   m_Name: "head_\u5186\u67F1.003"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -523,7 +524,7 @@ GameObject:
   - component: {fileID: 137945838859117542}
   m_Layer: 0
   m_Name: "upper_arms_\u5186.002"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539,7 +540,7 @@ GameObject:
   - component: {fileID: 137656349971867724}
   m_Layer: 0
   m_Name: "upper_leg_\u5186\u67F1.001"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -650,7 +651,7 @@ GameObject:
   - component: {fileID: 137742595979073048}
   m_Layer: 0
   m_Name: "ankle_\u5186.008"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -771,7 +772,7 @@ GameObject:
   - component: {fileID: 137803132029150580}
   m_Layer: 0
   m_Name: "spine_\u5186.007"
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1102,7 +1103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1312919902186198}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 42, y: 2, z: 4}
+  m_LocalPosition: {x: 9.5, y: 3, z: 3}
   m_LocalScale: {x: 250, y: 250, z: 250}
   m_Children:
   - {fileID: 4769644730695464}
@@ -2120,7 +2121,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0057036052, y: -0.004009696, z: 0.00070613186}
+  m_ConnectedAnchor: {x: -0.0057036057, y: -0.0040097074, z: 0.00070613186}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -2322,6 +2323,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7836a0d934536c84c979ff5518ccbcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_activeArmLeg: 0
+  touchCancel: 0
 --- !u!114 &114061137235809852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2333,6 +2336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7836a0d934536c84c979ff5518ccbcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_activeArmLeg: 0
+  touchCancel: 0
 --- !u!114 &114061565489955598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2344,6 +2349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7836a0d934536c84c979ff5518ccbcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_activeArmLeg: 0
+  touchCancel: 0
 --- !u!114 &114127588096304142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2355,6 +2362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7836a0d934536c84c979ff5518ccbcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_activeArmLeg: 0
+  touchCancel: 0
 --- !u!114 &114150582385594084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2366,6 +2375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7836a0d934536c84c979ff5518ccbcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_activeArmLeg: 0
+  touchCancel: 0
 --- !u!114 &114153808300988682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2410,6 +2421,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7836a0d934536c84c979ff5518ccbcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_activeArmLeg: 0
+  touchCancel: 0
 --- !u!114 &114252490708572640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2419,6 +2432,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7836a0d934536c84c979ff5518ccbcad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  is_activeArmLeg: 0
+  touchCancel: 0
+--- !u!114 &114299762180318330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1312919902186198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712f980e10876354681cc977d223eb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114324097483309434
@@ -2432,6 +2458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7836a0d934536c84c979ff5518ccbcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_activeArmLeg: 0
+  touchCancel: 0
 --- !u!114 &114433534181033370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2487,6 +2515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7836a0d934536c84c979ff5518ccbcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_activeArmLeg: 0
+  touchCancel: 0
 --- !u!114 &114576910441327972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2498,6 +2528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7836a0d934536c84c979ff5518ccbcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_activeArmLeg: 0
+  touchCancel: 0
 --- !u!114 &114588510388359456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2509,6 +2541,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7836a0d934536c84c979ff5518ccbcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_activeArmLeg: 0
+  touchCancel: 0
 --- !u!114 &114652266194980134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2542,6 +2576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7836a0d934536c84c979ff5518ccbcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_activeArmLeg: 0
+  touchCancel: 0
 --- !u!114 &114810897324462188
 MonoBehaviour:
   m_ObjectHideFlags: 1

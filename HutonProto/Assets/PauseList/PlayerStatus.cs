@@ -2,31 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatus : MonoBehaviour {
+public class PlayerStatus : MonoBehaviour
+{
 
     /****体の関節指定****/
     //右肩の角度を所得する    
-    public GameObject R_shoulder;
+    private GameObject R_shoulder;
     [SerializeField]
     public float R_shoulder_Y;
     //右肘の角度を所得する   
-    public GameObject R_elbow;
+    private GameObject R_elbow;
     [SerializeField]
     public float R_elbow_Y;
     //右股の角度を所得する    
-    public GameObject R_crotch;
+    private GameObject R_crotch;
     [SerializeField]
     public float R_crotch_Y;
     //右膝の角度を所得する   
-    public GameObject R_knee;
+    private GameObject R_knee;
     [SerializeField]
     public float R_knee_Y;
     //左肩の角度を所得する   
-    public GameObject L_shoulder;
+    private GameObject L_shoulder;
     [SerializeField]
     public float L_shoulder_Y;
     //左肘の角度を所得する   
-    public GameObject L_elbow;
+    private GameObject L_elbow;
     [SerializeField]
     public float L_elbow_Y;
     //左股の角度を所得する    
@@ -34,7 +35,7 @@ public class PlayerStatus : MonoBehaviour {
     [SerializeField]
     public float L_crotch_Y;
     //左膝の角度を所得する    
-    public GameObject L_knee;
+    private GameObject L_knee;
     [SerializeField]
     public float L_knee_Y;
     /********************/
@@ -45,13 +46,14 @@ public class PlayerStatus : MonoBehaviour {
     public Transform P_pos;
     //プレイヤーの回転角度
     public float P_angle;
-   
+    public Vector3 Playerpos;
     /**********************************/
 
     //角度の誤差の数値
     public float anglePM;
 
-    void Start () {
+    void Start()
+    {
         //そのうちタグ判別に切り替えたい
         //R_shoulder = GameObject.Find("Player_RightHand1");
         //R_elbow = GameObject.Find("Player_RightHand2");
@@ -75,20 +77,22 @@ public class PlayerStatus : MonoBehaviour {
         L_crotch = GameObject.Find("Player_mixamorig:LeftUpLeg");
         L_knee = GameObject.Find("Player_mixamorig:LeftLeg");
 
-        P_pos = GameObject.Find("PlayerModel").GetComponent<Transform>().transform;
+        P_pos = GameObject.Find("Player_mixamorig:Hips").GetComponent<Transform>().transform;
+        Playerpos = P_pos.transform.position;
         P_angle = P_pos.GetComponent<Transform>().transform.eulerAngles.y;
     }
 
-    void Update () {
+    void Update()
+    {
 
         //各関節の現在の角度
-        R_shoulder_Y    = R_shoulder.transform.localEulerAngles.z+90.0f;
-        R_elbow_Y       = R_elbow.transform.localEulerAngles.z;
-        R_crotch_Y      = R_crotch.transform.localEulerAngles.z;
-        R_knee_Y        = R_knee.transform.localEulerAngles.z;
-        L_shoulder_Y    = L_shoulder.transform.localEulerAngles.z+270.0f;
-        L_elbow_Y       = L_elbow.transform.localEulerAngles.z;
-        L_crotch_Y      = L_crotch.transform.localEulerAngles.z ;
-        L_knee_Y        = L_knee.transform.localEulerAngles.z;
+        R_shoulder_Y = R_shoulder.transform .localEulerAngles.x;
+        R_elbow_Y = R_elbow.transform       .localEulerAngles.x;
+        R_crotch_Y = R_crotch.transform     .localEulerAngles.z;
+        R_knee_Y = R_knee.transform         .localEulerAngles.z;
+        L_shoulder_Y = L_shoulder.transform .localEulerAngles.x;
+        L_elbow_Y = L_elbow.transform       .localEulerAngles.x;
+        L_crotch_Y = L_crotch.transform     .localEulerAngles.z;
+        L_knee_Y = L_knee.transform         .localEulerAngles.z;
     }
 }

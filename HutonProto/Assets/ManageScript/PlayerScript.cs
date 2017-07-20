@@ -66,12 +66,12 @@ public class PlayerScript : MonoBehaviour
             if (gameObject.name.ToString().Contains("Left"))
             {
                 obj[4].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-                obj[5].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+                if(!gameObject.name.ToString().Contains("Fore"))obj[5].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             }
             else if (gameObject.name.ToString().Contains("Right"))
             {
                 obj[6].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-                obj[7].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+                if (!gameObject.name.ToString().Contains("Fore")) obj[7].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             }
         }
         else if (gameObject.name.ToString().Contains("Spine") || gameObject.name.ToString().Contains("Head"))
@@ -200,13 +200,15 @@ public class PlayerScript : MonoBehaviour
                 touchCancel = true;
             }
         }
-        else if(obj[i].name.ToString().Contains("Arm") && obj[j].name.ToString().Contains("Arm"))
-        {//腕
-            if (Vector3.Distance(obj[i].transform.position, obj[j].transform.position) >= 10.0f)
-            {//指定距離離れていたらタッチ解除
-                //Debug.Log("腕の関節間距離が許容範囲を超えました");
-                touchCancel = true;
-            }
+        if (Vector3.Distance(obj[4].transform.position, obj[5].transform.position) >= 11.0f)
+        {//指定距離離れていたらタッチ解除
+         //Debug.Log("腕の関節間距離が許容範囲を超えました");
+            touchCancel = true;
+        }
+        if (Vector3.Distance(obj[6].transform.position, obj[7].transform.position) >= 11.0f)
+        {//指定距離離れていたらタッチ解除
+         //Debug.Log("腕の関節間距離が許容範囲を超えました");
+            touchCancel = true;
         }
 
 

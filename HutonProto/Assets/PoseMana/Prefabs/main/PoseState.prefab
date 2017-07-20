@@ -1,0 +1,221 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1786586645050886}
+  m_IsPrefabParent: 1
+--- !u!1 &1786586645050886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4155647054886696}
+  - component: {fileID: 114052571672614800}
+  - component: {fileID: 114266893953610626}
+  - component: {fileID: 114213608057653184}
+  - component: {fileID: 114767173414284888}
+  - component: {fileID: 114484842529117852}
+  - component: {fileID: 114856836562410440}
+  - component: {fileID: 114898772511562148}
+  - component: {fileID: 114221187448306586}
+  - component: {fileID: 114891914617294338}
+  - component: {fileID: 114357525026410580}
+  m_Layer: 0
+  m_Name: PoseState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4155647054886696
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786586645050886}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 855.177, y: 636.98615, z: -2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114052571672614800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786586645050886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71049b5d5e8f9ac4fa92cfc445cc3229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pose_manager: {fileID: 0}
+  _pose_x: {fileID: 0}
+  _rogo_x: {fileID: 0}
+  _Chance: {fileID: 0}
+  _rShoulder: {fileID: 0}
+  _lCrotch: {fileID: 0}
+--- !u!114 &114213608057653184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786586645050886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7ca891d9e7a5840bc255b082b6b48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pose_manager: {fileID: 0}
+  _pose_openleg: {fileID: 0}
+  _rogo_kaikyaku: {fileID: 0}
+  _Chance: {fileID: 0}
+  _rShoulder: {fileID: 0}
+  _lCrotch: {fileID: 0}
+--- !u!114 &114221187448306586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786586645050886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc00e223feee9fe438e91aa913ea0fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pose_manager: {fileID: 0}
+  _pose_defo: {fileID: 0}
+  _rogo_defo: {fileID: 0}
+  _Chance: {fileID: 0}
+  _rShoulder: {fileID: 0}
+  _lCrotch: {fileID: 0}
+--- !u!114 &114266893953610626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786586645050886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a68a1afaad28ce84091f22a88ab31b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pose_manager: {fileID: 0}
+  _pose_shiko: {fileID: 0}
+  _rogo_shiko: {fileID: 0}
+  _Chance: {fileID: 0}
+  _rShoulder: {fileID: 0}
+  _lCrotch: {fileID: 0}
+--- !u!114 &114357525026410580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786586645050886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3cb654f50626047b3ec8544d9d6623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pose_manager: {fileID: 0}
+  _pose_banana: {fileID: 0}
+  _rogo_banana: {fileID: 0}
+  _Chance: {fileID: 0}
+  _rShoulder: {fileID: 0}
+  _lCrotch: {fileID: 0}
+--- !u!114 &114484842529117852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786586645050886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46df6c94965fc974db6e75933257d5cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pose_manager: {fileID: 0}
+  _pose_hawk: {fileID: 0}
+  _rogo_taka: {fileID: 0}
+  _Chance: {fileID: 0}
+  _rShoulder: {fileID: 0}
+  _lCrotch: {fileID: 0}
+--- !u!114 &114767173414284888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786586645050886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1247ac1232980024285afc631af1541c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pose_manager: {fileID: 0}
+  _pose_k: {fileID: 0}
+  _rogo_k: {fileID: 0}
+  _Chance: {fileID: 0}
+  _rShoulder: {fileID: 0}
+  _lCrotch: {fileID: 0}
+--- !u!114 &114856836562410440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786586645050886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127a2293d84e39240b51250106b88eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pose_manager: {fileID: 0}
+  _pose_h: {fileID: 0}
+  _rogo_h: {fileID: 0}
+  _Chance: {fileID: 0}
+  _rShoulder: {fileID: 0}
+  _lCrotch: {fileID: 0}
+--- !u!114 &114891914617294338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786586645050886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8747ac270687f54a8ed3b5f54e3bbc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pose_manager: {fileID: 0}
+  _pose_big: {fileID: 0}
+  _rogo_dainozi: {fileID: 0}
+  _Chance: {fileID: 0}
+  _rShoulder: {fileID: 0}
+  _lCrotch: {fileID: 0}
+--- !u!114 &114898772511562148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786586645050886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a72a5a3efb1cd614fa4cfdc0d0dac7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pose_manager: {fileID: 0}
+  _pose_exit: {fileID: 0}
+  _rogo_exit: {fileID: 0}
+  _Chance: {fileID: 0}
+  _rShoulder: {fileID: 0}
+  _lCrotch: {fileID: 0}

@@ -40,8 +40,8 @@ public class State_K : MonoBehaviour {
         b = _Chance.GetComponent<Image>().color.b;
         alpha = _Chance.GetComponent<Image>().color.a;
 
-        _rShoulder = GameObject.Find("Player_RightHand1");
-        _lCrotch = GameObject.Find("Player_LeftLeg1");
+        _rShoulder = GameObject.FindGameObjectWithTag("Player_mixamorig:RightArm");
+        _lCrotch = GameObject.FindGameObjectWithTag("Player_mixamorig:LeftUpLeg");
         
     }
 

@@ -1469,7 +1469,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1158851611240132}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 5.7, y: 4, z: 3}
+  m_LocalPosition: {x: 17.4, y: 4, z: 3}
   m_LocalScale: {x: 400, y: 400, z: 400}
   m_Children:
   - {fileID: 4333761139768312}
@@ -1798,7 +1798,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -30.16418, y: 4.0577164, z: 11.68552}
+  m_ConnectedAnchor: {x: -18.464182, y: 4.0577164, z: 11.68552}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -1862,7 +1862,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -15.665114, y: 4.3493576, z: 0.71849966}
+  m_ConnectedAnchor: {x: -3.9651146, y: 4.3493576, z: 0.71849966}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -1958,7 +1958,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -20.155033, y: 4.3493576, z: 2.9999418}
+  m_ConnectedAnchor: {x: -8.455032, y: 4.3493576, z: 2.9999418}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1990,7 +1990,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -15.665114, y: 4.3493576, z: 5.2813845}
+  m_ConnectedAnchor: {x: -3.9651146, y: 4.3493576, z: 5.2813845}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -2214,7 +2214,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -30.164448, y: 4.0770836, z: -5.6848793}
+  m_ConnectedAnchor: {x: -18.464449, y: 4.0770836, z: -5.6848793}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -2589,7 +2589,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.003
+  m_Radius: 0.004
   m_Height: 0.02
   m_Direction: 1
   m_Center: {x: 0, y: 0.01, z: 0}
@@ -2602,7 +2602,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.003
+  m_Radius: 0.004
   m_Height: 0.02
   m_Direction: 1
   m_Center: {x: 0, y: 0.01, z: 0}
@@ -2615,7 +2615,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.004
+  m_Radius: 0.0042
   m_Height: 0.024
   m_Direction: 1
   m_Center: {x: 0, y: 0.006, z: 0}
@@ -2628,7 +2628,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.004
+  m_Radius: 0.0042
   m_Height: 0.03
   m_Direction: 1
   m_Center: {x: 0, y: 0.014, z: 0}
@@ -2641,7 +2641,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.003
+  m_Radius: 0.004
   m_Height: 0.03
   m_Direction: 1
   m_Center: {x: 0, y: 0.014, z: 0}
@@ -2654,7 +2654,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.004
+  m_Radius: 0.0042
   m_Height: 0.03
   m_Direction: 1
   m_Center: {x: 0, y: 0.014, z: 0}
@@ -2680,7 +2680,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.003
+  m_Radius: 0.004
   m_Height: 0.028
   m_Direction: 1
   m_Center: {x: 0, y: 0.014, z: 0}
@@ -2706,7 +2706,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.004
+  m_Radius: 0.0042
   m_Height: 0.026
   m_Direction: 1
   m_Center: {x: 0, y: 0.006, z: 0}

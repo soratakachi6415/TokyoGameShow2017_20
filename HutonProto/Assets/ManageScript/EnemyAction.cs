@@ -111,14 +111,19 @@ public class EnemyAction : MonoBehaviour {
 
         //パーツの追加
         #region
-        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftArm"));     //0
-        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftForeArm")); //1
-        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightArm"));    //2
-        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightForeArm"));//3
-        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftUpLeg"));   //4
-        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftLeg"));     //5
-        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightUpLeg"));  //6
-        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightLeg"));    //7
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftArm"));      //0
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftForeArm"));  //1
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightArm"));     //2
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightForeArm")); //3
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftUpLeg"));    //4
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftLeg"));      //5
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightUpLeg"));   //6
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightLeg"));     //7
+        //挙動とは関係のないパーツ
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:Hips"));         //8
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:LeftShoulder")); //9
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:RightShoulder"));//10
+        Parent_handleg_top.Add(GameObject.Find("Enemy_Top_mixamorig:Spine"));        //11
 
         Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:LeftArm"));     //0
         Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:LeftForeArm")); //1
@@ -128,6 +133,11 @@ public class EnemyAction : MonoBehaviour {
         Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:LeftLeg"));     //5
         Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:RightUpLeg"));  //6
         Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:RightLeg"));    //7
+        //挙動とは関係のないパーツ
+        Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:Hips"));         //8
+        Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:LeftShoulder")); //9
+        Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:RightShoulder"));//10
+        Parent_handleg_bottom.Add(GameObject.Find("Enemy_Bottom_mixamorig:Spine"));        //11
         #endregion
 
         m_rotate_min = m_rand_rotate_Min / 360;  //ランダム最小角度
@@ -147,9 +157,6 @@ public class EnemyAction : MonoBehaviour {
             SetParts_Bottom();
         }
 
-        Cnt[0] += Time.deltaTime;
-        Cnt[1] += Time.deltaTime;
-
         //上のエネミー行動
         #region
         if (t[0] < 0.8f)
@@ -160,22 +167,28 @@ public class EnemyAction : MonoBehaviour {
                                           m_rand_parts_top.transform.rotation.z, m_rand_parts_top.transform.rotation.w);
             m_rand_parts_top.transform.rotation = Quaternion.Slerp(m_rand_parts_top.transform.rotation, m_rand_euler_top, t[0]);
         }
-        else actionFlag_top = false;
-
+        else
+        {
+            Cnt[0] += Time.deltaTime;
+            actionFlag_top = false;
+        }
         t[0] += moveSpeed_sec_Top;
         #endregion
 
         //下のエネミー行動
         #region
-        if(t[1] > 0.0f && t[1] < 0.8f)
+        if (t[1] > 0.0f && t[1] < 0.8f)
         {
             actionFlag_bottom = true;
             m_rand_euler_bottom = new Quaternion(m_rand_parts_bottom.transform.rotation.x, m_rand_euler_bottom.y,
                                            m_rand_parts_bottom.transform.rotation.z, m_rand_parts_bottom.transform.rotation.w);
             m_rand_parts_bottom.transform.rotation = Quaternion.Slerp(m_rand_parts_bottom.transform.rotation, m_rand_euler_bottom, t[1]);
         }
-        else actionFlag_bottom = false;
-
+        else
+        {
+            Cnt[1] += Time.deltaTime;
+            actionFlag_bottom = false;
+        }
         t[1] += moveSpeed_sec_Bottom;
         #endregion
  
@@ -200,7 +213,7 @@ public class EnemyAction : MonoBehaviour {
     //難易度に応じて敵のステータスが変動
     private void ChangeLevel()
     {
-        switch(GameObject.Find("GameDate").GetComponent<GameData>().GameLevel)
+        switch(GameObject.Find("GameData").GetComponent<GameData>().GameLevel)
         {
             case "Easy":
                 moveSpeed_sec_Min = 5.0f;
@@ -209,7 +222,7 @@ public class EnemyAction : MonoBehaviour {
                 coolTime_Max = 15.0f;
                 m_rand_rotate_Min = 37.0f;
                 m_rand_rotate_Max = 50.0f;
-                level = 180;
+                level = 60;
                 break;
             case "Normal":
                 moveSpeed_sec_Min = 4.0f;
@@ -218,7 +231,7 @@ public class EnemyAction : MonoBehaviour {
                 coolTime_Max = 10.0f;
                 m_rand_rotate_Min = 37.0f;
                 m_rand_rotate_Max = 50.0f;
-                level = 120;
+                level = 60;
                 break;
             case "Hard":
                 moveSpeed_sec_Min = 1.0f;
@@ -472,7 +485,7 @@ public class EnemyAction : MonoBehaviour {
     public void ReAppear(GameObject obj) 
     {
         //快眠ポイント取得
-        int point = GameObject.Find("ScriptController").GetComponent<SleepGageScript>().sleepPoint;
+        int point = GetComponent<SleepGageScript>().sleepPoint;
         
 
         if(point >= 1 && point <= 2) //快眠ポイントが１～２のとき
@@ -505,6 +518,54 @@ public class EnemyAction : MonoBehaviour {
         {
             ReAppear_bottom(obj);
             Reappear[1] = 3;  //再出現後の行動回数
+        }
+        //一部ジョイントを繋げる
+        ConnectedBody(obj, true);
+    }
+    //ConnectedBodyの着脱
+    public void ConnectedBody(GameObject enemy,bool connect)
+    {
+        if (connect)
+        {
+            if(enemy == topEnemy)
+            {
+                //上エネミー
+                Parent_handleg_top[0].GetComponent<HingeJoint>().connectedBody = Parent_handleg_top[9].GetComponent<Rigidbody>();
+                Parent_handleg_top[2].GetComponent<HingeJoint>().connectedBody = Parent_handleg_top[10].GetComponent<Rigidbody>();
+                Parent_handleg_top[4].GetComponent<HingeJoint>().connectedBody = Parent_handleg_top[8].GetComponent<Rigidbody>();
+                Parent_handleg_top[6].GetComponent<HingeJoint>().connectedBody = Parent_handleg_top[8].GetComponent<Rigidbody>();
+                Parent_handleg_top[11].GetComponent<HingeJoint>().connectedBody = Parent_handleg_top[8].GetComponent<Rigidbody>();
+            }
+            else if(enemy == bottomEnemy)
+            {
+                //下エネミー
+                Parent_handleg_bottom[0].GetComponent<HingeJoint>().connectedBody = Parent_handleg_bottom[9].GetComponent<Rigidbody>();
+                Parent_handleg_bottom[2].GetComponent<HingeJoint>().connectedBody = Parent_handleg_bottom[10].GetComponent<Rigidbody>();
+                Parent_handleg_bottom[4].GetComponent<HingeJoint>().connectedBody = Parent_handleg_bottom[8].GetComponent<Rigidbody>();
+                Parent_handleg_bottom[6].GetComponent<HingeJoint>().connectedBody = Parent_handleg_bottom[8].GetComponent<Rigidbody>();
+                Parent_handleg_bottom[11].GetComponent<HingeJoint>().connectedBody = Parent_handleg_bottom[8].GetComponent<Rigidbody>();
+            }
+        }
+        else if(!connect)
+        {
+            if (enemy == topEnemy)
+            {
+                //上エネミー
+                Parent_handleg_top[0].GetComponent<HingeJoint>().connectedBody = null;
+                Parent_handleg_top[2].GetComponent<HingeJoint>().connectedBody = null;
+                Parent_handleg_top[4].GetComponent<HingeJoint>().connectedBody = null;
+                Parent_handleg_top[6].GetComponent<HingeJoint>().connectedBody = null;
+                Parent_handleg_top[11].GetComponent<HingeJoint>().connectedBody = null;
+            }
+            else if (enemy == bottomEnemy)
+            {
+                //下エネミー
+                Parent_handleg_bottom[0].GetComponent<HingeJoint>().connectedBody = null;
+                Parent_handleg_bottom[2].GetComponent<HingeJoint>().connectedBody = null;
+                Parent_handleg_bottom[4].GetComponent<HingeJoint>().connectedBody = null;
+                Parent_handleg_bottom[6].GetComponent<HingeJoint>().connectedBody = null;
+                Parent_handleg_bottom[11].GetComponent<HingeJoint>().connectedBody = null;
+            }
         }
     }
 

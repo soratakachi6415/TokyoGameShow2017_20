@@ -122,16 +122,17 @@ public class Pose_shiko : MonoBehaviour
         //ポーズの画像の情報
         pose_shiko.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
-        //
+        //transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
+
         AnglesCheck();
         //腕を基準にした場合の判定
         ArmflagCheck();
         //足を基準にした場合の判定
         FootflagCheck();
-        if (imageDisplay == false)
+
+        if (imageDisplay ==false)
         {
-          ShikoPoseDisplayfalse();
+            ShikoPoseDisplayfalse();
         }
 
         if (imageDisplay == true)
@@ -147,6 +148,7 @@ public class Pose_shiko : MonoBehaviour
         {
             imageDisplay = false;            
         }
+
         if (R_arm_flag == true &&
                    L_arm_flag == true &&
                    R_leg_flag == true &&

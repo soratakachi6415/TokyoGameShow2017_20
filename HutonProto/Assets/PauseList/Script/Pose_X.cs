@@ -66,8 +66,11 @@ public class Pose_X : MonoBehaviour
 
     //成功したポーズの判定で使う
     public string posename = "pose_X";
-    //
+    //ポーズが決まった際のふらぐ
     public bool DecidePose_X = false;
+    //ポーズの決めた数を数えるフラグ
+    public bool pose_countflag=false;
+    public int pose_count=0;
 
     void Start()
     {
@@ -86,7 +89,7 @@ public class Pose_X : MonoBehaviour
     void Update()
     {
         pose_X.GetComponent<Image>().color = new Color(r, g, b, alpha);
-        this.transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
+        //this.transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 
         //プレイヤーStatusから所得する
         R_shoulder = playerstatus.R_shoulder_Y;
@@ -133,12 +136,12 @@ public class Pose_X : MonoBehaviour
 
         if (imageDisplay == false)
         {
-            XPoseDisplayfalse();
+           // XPoseDisplayfalse();
         }
 
         if (imageDisplay == true)
         {
-            XPoseDisplaytrue();
+           // XPoseDisplaytrue();
         }
 
         //どれも入っていなかったら画像を表示しない
@@ -150,14 +153,32 @@ public class Pose_X : MonoBehaviour
             imageDisplay = false;
         }
 
+        //決めた回数を数えるフラグ
         if (R_arm_flag == true &&
-          L_arm_flag == true &&
-          R_leg_flag == true &&
-          L_leg_flag == true)
+            L_arm_flag == true &&
+            R_leg_flag == true &&
+            L_leg_flag == true)
         {
             DecidePose_X = true;
         }
 
+        if (R_arm_flag == false ||
+            L_arm_flag == false ||
+            R_leg_flag == false ||
+            L_leg_flag == false)
+        {
+            DecidePose_X = false;
+            pose_countflag = false;
+        }
+
+        if (pose_countflag == false)
+        {
+            if (DecidePose_X == true)
+            {
+                pose_count++;
+                pose_countflag = true;
+            }
+        }
     }
     void AnglesCheck()
     {

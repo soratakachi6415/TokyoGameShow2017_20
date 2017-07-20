@@ -19,9 +19,13 @@ public class State_Banana : MonoBehaviour {
     public Image _Chance;
     private float r, g, b, alpha;
 
-    public GameObject _rShoulder;
-    public GameObject _lCrotch;
-    
+    private GameObject _rShoulder;
+    private GameObject _lCrotch;
+    private GameObject _lShoulder;
+    private GameObject _rCrotch;
+
+    public GameObject _score;
+    public GameObject _point;
     // Use this for initialization
     void Start () {
         _pose_manager = GameObject.FindGameObjectWithTag("Posemanager").GetComponent<PoseManager>();
@@ -38,9 +42,13 @@ public class State_Banana : MonoBehaviour {
         b = _Chance.GetComponent<Image>().color.b;
         alpha = _Chance.GetComponent<Image>().color.a;
 
-        _rShoulder = GameObject.Find("Player_RightHand1");
-        _lCrotch = GameObject.Find("Player_LeftLeg1");
-        
+        _rShoulder  = GameObject.FindGameObjectWithTag("Player_mixamorig:RightArm");
+        _lCrotch      = GameObject.FindGameObjectWithTag("Player_mixamorig:LeftUpLeg");
+        _lShoulder  = GameObject.FindGameObjectWithTag("Player_mixamorig:LeftArm");
+        _rCrotch     = GameObject.FindGameObjectWithTag("Player_mixamorig:RightArm");
+
+        _score = (GameObject)Resources.Load("Prefab/ScoreImage");
+        _point = (GameObject)Resources.Load("Prefab/Point");
     }
 
     // Update is called once per frame
@@ -187,6 +195,11 @@ public class State_Banana : MonoBehaviour {
 
     public void RogoDraw()
     {
+        if(_pose_upper == true)
+        {
+            Vector3 pos = _rCrotch.transform.position;
+            Vector3 score_pos = new Vector3(pos.x, pos.y, pos.z);
+        }
         rogo_a = 1.0f;
     }
 
@@ -202,7 +215,7 @@ public class State_Banana : MonoBehaviour {
         if (_pose_upper == true)
         {
             Vector3 pos = _rShoulder.transform.position;
-                        _Chance.transform.position = new Vector3(pos.x, pos.y + 5.0f, pos.z - 2.0f);
+            _Chance.transform.position = new Vector3(pos.x, pos.y + 5.0f, pos.z - 2.0f);
         }
         // 左太ももの座標を取得する
         if (_pose_lower == true)

@@ -1,120 +1,171 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(ReplayManager))]
 public class ReplayManagerGUI : MonoBehaviour
 {
-    public Scene_manager currentsce;
+    public enum State
+    {
+        Initialize,
+        RecoodStart,
+        Recooding,
+        RecoodStop,
+        ReplayStart,
+        Replaying,
+        ReplayStop
+    }
 
+    private Scene_manager currentsce;
     private ReplayManager man;
-
+    private Clock clock;
 	private bool recorded = false;
-
-	private int mode = 0;
-
+	public State nextMode = State.Initialize ;
 	private string text = "Start Recording";
-
 	private float frame = 0;
+    private float replayCoolTime;
+    private Replayable replayable;
+    public GameObject imageObject;
 
-	// Use this for initialization
-	void Start ()
+    void Awake()
+    {
+        //SceneManager.sceneLoaded += SceneLoaded;
+    }
+
+    // Use this for initialization
+    void Start ()
 	{
 		man = GetComponent<ReplayManager> ();
         currentsce = GameObject.FindGameObjectWithTag("Scenemanager").GetComponent<Scene_manager>();
+        clock = GameObject.FindGameObjectWithTag("Clock").GetComponent<Clock>();
+        replayable = GameObject.FindGameObjectWithTag("Respawn").GetComponent<Replayable>();
     }
 
-	// Update is called once per frame
-	void OnGUI ()
-	{
-		
-		if (mode == 0) {
-            man.Initialize();
-            //if (GUILayout.Button("StartRecording"))
-            //{
-            //    man.StartRecording();
-            //    text = "Recording...";
-            //    mode = 1;
-            //}
-            man.StartRecording();
-            text = "Recording...";
-            mode = 1;
-            Debug.Log("Recording...");
-        }
-		if (mode == 1) {
-            //if (GUILayout.Button("StopRecording"))
-            //{
-            //    man.StopRecording();
-            //    text = "Recording Stopped";
-            //    mode = 2;
-            //    recorded = true;
-            //}
+    //public void SceneLoaded(Scene scene, LoadSceneMode sceneMode)
+    //{
+    //    if (scene.name == "Result")
+    //    {
+    //        man.StopRecording();
+    //        //recorded = true;
+    //        Debug.Log("stop");
 
-            if (currentsce.currentscene == "Result") // シーン移行時が行われるようなら
+    //        man.StartReplay();
+    //        text = "Replaying...";
+    //        this.nextMode = State.Replaying;
+    //        Debug.Log("restart");
+    //    }
+
+    //    if (scene.name == "Title")
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
+
+    // Update is called once per frame
+    void Update ()
+	{
+        if (nextMode == State.Initialize)
+        {
+            man.Initialize();
+            Debug.Log("Initialize");
+            if (currentsce.currentscene == "main")
+            {
+                nextMode = State.RecoodStart;
+            }
+        }
+
+        if (currentsce.currentscene == "main")
+        {
+            if (nextMode == State.RecoodStart)
+            {
+                man.StartRecording();
+                text = "Recording...";
+                nextMode = State.Recooding;
+                Debug.Log("Recording...");
+            }
+        }
+
+        if (nextMode == State.Recooding)
+        {
+            if (clock.hour == 0 && clock.timer == 0)
+            {
+                nextMode = State.RecoodStop;
+                Debug.Log("Recooding Stop!!!");
+            }
+            else
+            {
+                Debug.Log("Recoording now!!!");
+                nextMode = State.Recooding;
+            }
+        }
+
+        if (nextMode == State.RecoodStop)
+        {
+            if (clock.hour == 0 && clock.timer == 0)
             {
                 man.StopRecording();
                 text = "recording stopped";
-                mode = 2;
-                //recorded = true;
-                Debug.Log("stop");
+                nextMode = State.ReplayStart;
+                Debug.Log("Recood Stop");
             }
         }
-		
-		if (mode == 2) {
-            //if (GUILayout.Button("StartReplay"))
-            //{
-            //    man.StartReplay();
-            //    text = "Replaying...";
-            //    mode = 3;
-            //}
-            // リザルトシーンに移行したら
-            if (currentsce.currentscene == "Result") // リザルトシーンに移行したら再生
+
+        if (currentsce.currentscene == "Result")
+        {
+            if (nextMode == State.ReplayStart)
             {
                 man.StartReplay();
-                text = "Replaying...";
-                mode = 3;
-                Debug.Log("restart");
+                Debug.Log("Replay Start!!!");
+                nextMode = State.Replaying;
             }
         }
 
-        if (mode == 3) {
-            //if (GUILayout.Button("StopReplay"))
-            //{
-            //    man.StopReplay();
-            //    text = "Replay Stopped";
-            //    mode = 2;
-            //}
-            //if () // リプレイを手動で停止をしたい場合
-            //{
-            //    man.StopReplay();
-            //    text = "Replay Stopped";
-            //    mode = 2;
-            //}
+        if (nextMode == State.Replaying)
+        {
+            if (replayable.idx + 1 == man.MaxRecordCount())
+            {
+                nextMode = State.ReplayStop;
+                Debug.Log("Stopします!!!");
+            }
+            else
+            {
+                nextMode = State.Replaying;
+                Debug.Log("Replaying");
+            }
         }
-		
-		GUILayout.Label (text);
-		
-		if (recorded) {
-			int max = man.MaxRecordCount ();
-			GUILayout.Label ("" + max + " Recorded");
-			
-			float f = GUILayout.HorizontalSlider (frame, 0, max);
-			if (((int)f) != ((int)frame)) {
-				
-				
-				if (mode == 3) {
-					man.StopReplay ();
-					mode = 2;
-				}
-				
-				frame = f;
-				man.Playback ((int)frame);
-			}
-		}
 
-        //if (GUILayout.Button("Reset"))
-        //{
-        //    Application.LoadLevel(Application.loadedLevel);
-        //}
+        if (nextMode == State.ReplayStop)
+        {
+            if (replayable.idx + 1 == man.MaxRecordCount())
+            {
+                man.StopReplay();
+                Debug.Log("Replay Stop!!!");
+            }
+        }
+    }
 
+    void OnGUI ()
+    {
+        GUILayout.Label(text);
+
+        if (recorded)
+        {
+            int max = man.MaxRecordCount();
+            GUILayout.Label("" + max + " Recorded");
+
+            float f = GUILayout.HorizontalSlider(frame, 0, max);
+            if (((int)f) != ((int)frame))
+            {
+                if (nextMode == State.ReplayStop)
+                {
+                    man.StopReplay();
+                    nextMode = State.ReplayStart;
+                }
+
+                frame = f;
+                man.Playback((int)frame);
+            }
+        }
     }
 }

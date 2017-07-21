@@ -51,7 +51,10 @@ public class Replayable : MonoBehaviour
 	[HideInInspector]
 	public float duration;
 
-	public void StartRecording ()
+    public int idx;
+
+
+    public void StartRecording ()
 	{
 		StopCoroutine ("Record");
 		SendMessage ("RecordStarting", SendMessageOptions.DontRequireReceiver);
@@ -83,8 +86,7 @@ public class Replayable : MonoBehaviour
 		while (replaying) {
 			bool atTheEnd = false;
 			
-			int idx = replayCount + 1;
-			
+			idx = replayCount + 1;
 			//It's already arrived at the end
 			if (atTheEnd) {
 				SendMessage ("ReplayPlaying", idx, SendMessageOptions.DontRequireReceiver);

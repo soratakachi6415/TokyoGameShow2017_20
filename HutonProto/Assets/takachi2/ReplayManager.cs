@@ -41,7 +41,7 @@ public class ReplayManager : MonoBehaviour
 		if (replayables == null)
 			return;
 		
-		float f = (maxRecordPerSecond == 0) ? 0 : 1f / maxRecordPerSecond;
+		float f = (maxRecordPerSecond == 0) ? 0 : 0.1f / maxRecordPerSecond;
 		foreach (Replayable r in replayables) {
 			if (r.replayGroup != replayGroup)
 				continue;

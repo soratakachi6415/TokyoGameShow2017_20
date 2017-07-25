@@ -54,13 +54,13 @@ public class MoviePlayer : MonoBehaviour
             yield return lag;
 
             hide.enabled = false;
-            EnableGameObj(false);
+            StartCoroutine(EnableGameObj(false));
 
             yield return waitMovie;
             Debug.Log("Stop");
 
             hide.enabled = true;
-            EnableGameObj(true);
+            yield return StartCoroutine(EnableGameObj(true));
             player.Stop();
             for (float t = 1.0f; t > 0.0f; t -= Time.deltaTime)
             {
@@ -80,11 +80,12 @@ public class MoviePlayer : MonoBehaviour
         hide.color = col;
     }
 
-    void EnableGameObj(bool enable)
+    IEnumerator EnableGameObj(bool enable)
     {
         foreach (GameObject obj in hideGameObj)
         {
             obj.SetActive(enable);
+            yield return null;
         }
     }
 }

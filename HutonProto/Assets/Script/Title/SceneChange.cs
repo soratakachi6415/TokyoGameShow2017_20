@@ -5,16 +5,27 @@ using UnityEngine;
 public class SceneChange : MonoBehaviour {
 
     public Scene_manager scenemanager_;
+    public Fademanager   fadeManager;
+
+    public Color color;
 
 	void Start () {
-        scenemanager_ = GameObject.FindGameObjectWithTag("Scenemanager").GetComponent<Scene_manager>();        	
+        scenemanager_ = Scene_manager.Instance;
+        fadeManager   = Fademanager.Instance;
 	}
-	
+
 	void Update () {
+
 	}
 
     public void onNextscene()
     {
+        StartCoroutine(NextScene());
+    }
+
+    private IEnumerator NextScene()
+    {
+        yield return fadeManager.FadeIn(color);
         scenemanager_.NextScene();
     }
 }

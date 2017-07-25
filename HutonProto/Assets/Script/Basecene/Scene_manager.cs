@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class Scene_manager : MonoBehaviour
 {
+    //シングルトンの実装
+    private static Scene_manager instance;
+    public  static Scene_manager Instance
+    {
+        get { return instance; }
+    }
+
     /*シーン遷移の管理*/
     // 2017/5/09 最終編集佐伯
 
@@ -33,6 +40,18 @@ public class Scene_manager : MonoBehaviour
     /*フェードの管理*/
     //trueがロード中,falseがロード中じゃない
     private bool loadingnow = false;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -200,6 +219,7 @@ public class Scene_manager : MonoBehaviour
             else if (Scene_state == Scenestate.ResultScene)
             {
                 Debug.Log("タイトルのシーンへ");
+
                 //追加ではなく読み込みし直しをしてスコア等の初期化
                 SceneManager.LoadScene("BaseScene");
             }

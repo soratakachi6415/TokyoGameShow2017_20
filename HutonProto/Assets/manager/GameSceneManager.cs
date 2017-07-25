@@ -25,7 +25,8 @@ public class GameSceneManager : MonoBehaviour
     public bool gameSuccess=true;
     //アラームがなってる時間
     public float alarmtime;
-    
+
+
 
     //ゲーム開始前かゲーム中かゲーム終了してるか
     public enum Gamestatus
@@ -56,24 +57,26 @@ public class GameSceneManager : MonoBehaviour
             Gamestatus_ = Gamestatus.Play_after;
             OnSuccess();
         }
-        
+
         //０になった場合
         if (currentsheepnum_<=0)
         {
             Gamestatus_ = Gamestatus.Play_after;
-            OnFailure();           
+            OnFailure();
         }
 
         //音が鳴り終わったらシーン遷移
         if (alarmtime <= 0)
         {
-            Scenenext();
+            alarmtime = float.MaxValue;
+            StartCoroutine(Scenenext());
         }
     }
 
     //成功した場合のシーン遷移
-    public void Scenenext()
+    IEnumerator Scenenext()
     {
+        yield return Fademanager.Instance.FadeIn(Color.white, 0.8f);
         scenemanager_.NextScene();
     }
 
@@ -82,13 +85,13 @@ public class GameSceneManager : MonoBehaviour
     {
         //Resultへ遷移
         //アラームが鳴り終わったらシーン遷移
-        alarmtime -= 1.0f * Time.deltaTime;       
+        alarmtime -= 1.0f * Time.deltaTime;
     }
-    
+
     //失敗した場合
     public void OnFailure()
     {
-        //Titleへ遷移      
+        //Titleへ遷移
         gameSuccess = false;
     }
     //ゲーム開始

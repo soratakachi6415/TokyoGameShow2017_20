@@ -86,7 +86,7 @@ public class Pose_muaythai : MonoBehaviour {
         //ポーズの画像の情報
         pose_muaythai.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
+        //transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 
         //プレイヤーStatusから所得する
         R_shoulder = playerstatus.R_shoulder_Y;

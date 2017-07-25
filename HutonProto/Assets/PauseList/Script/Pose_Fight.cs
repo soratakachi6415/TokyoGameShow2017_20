@@ -85,7 +85,7 @@ public class Pose_Fight : MonoBehaviour {
         //ポーズの画像の情報
         pose_fight.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
+        //transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 
         //角度の獲得
         R_shoulder = playerstatus.R_shoulder_Y;
@@ -125,8 +125,8 @@ public class Pose_Fight : MonoBehaviour {
         /***************************************/
         pose_fight.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 4, playerstatus.P_pos.position.z);
-        //
+        //transform.position = new Vector3(playerstatus.P_pos.position.x, 4, playerstatus.P_pos.position.z);
+        
         AnglesCheck();
         //
         ArmflagCheck();

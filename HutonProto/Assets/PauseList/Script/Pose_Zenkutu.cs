@@ -123,7 +123,7 @@ public class Pose_Zenkutu : MonoBehaviour
         /***************************************/
         pause_zenkutu.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
+        //transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
         //角度check
         AnglesCheck();
         //腕を基準にした場合の判定

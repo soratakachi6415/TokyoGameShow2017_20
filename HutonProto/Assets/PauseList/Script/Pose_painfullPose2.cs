@@ -88,7 +88,7 @@ public class Pose_painfullPose2 : MonoBehaviour {
         //ポーズの画像の情報
         pose_painfullpose2.GetComponent<Image>().color = new Color(r, g, b, alpha);
         //画像をプレイヤーの上、X、Yの調整
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z + 3.0f);
+        //transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z + 3.0f);
 
         //プレイヤーStatusから所得する
         R_shoulder = playerstatus.R_shoulder_Y;

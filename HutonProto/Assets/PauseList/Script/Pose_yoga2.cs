@@ -121,7 +121,7 @@ public class Pose_yoga2 : MonoBehaviour {
         /***************************************/
         pose_yoga2.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z + 3.0f);
+        //transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z + 3.0f);
 
         //腕を基準にした場合の判定
         ArmflagCheck();

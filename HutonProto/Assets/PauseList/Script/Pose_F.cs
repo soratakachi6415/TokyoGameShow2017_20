@@ -121,7 +121,7 @@ public class Pose_F : MonoBehaviour {
         /***************************************/
         pose_F.GetComponent<Image>().color = new Color(r, g, b, alpha);
 
-        transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
+        //transform.position = new Vector3(playerstatus.P_pos.position.x, 10, playerstatus.P_pos.position.z);
 
         AnglesCheck();
         //腕を基準にした場合の判定

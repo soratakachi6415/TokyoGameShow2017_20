@@ -43,10 +43,10 @@ public class PlayerStatus : MonoBehaviour
 
     /*プレイヤーの位置と角度を合わせる*/
     //プレイヤーの位置
-    public Transform P_pos;
-    //プレイヤーの回転角度
-    public float P_angle;
-    public Vector3 Playerpos;
+    //public Transform P_pos;
+    ////プレイヤーの回転角度
+    //public float P_angle;
+    //public Vector3 Playerpos;
     /**********************************/
 
     //角度の誤差の数値
@@ -54,20 +54,6 @@ public class PlayerStatus : MonoBehaviour
 
     void Start()
     {
-        //そのうちタグ判別に切り替えたい
-        //R_shoulder = GameObject.Find("Player_RightHand1");
-        //R_elbow = GameObject.Find("Player_RightHand2");
-        //R_crotch = GameObject.Find("Player_RightLeg1");
-        //R_knee = GameObject.Find("Player_RightLeg2");
-        //L_shoulder = GameObject.Find("Player_LeftHand1");
-        //L_elbow = GameObject.Find("Player_LeftHand2");
-        //L_crotch = GameObject.Find("Player_LeftLeg1");
-        //L_knee = GameObject.Find("Player_LeftLeg2");
-
-        //P_pos = GameObject.Find("Player_Body").GetComponent<Transform>().transform;
-        //P_angle = GameObject.Find("Player_Body").GetComponent<Transform>().transform.eulerAngles.y;
-
-
         R_shoulder = GameObject.Find("Player_mixamorig:RightArm");
         R_elbow = GameObject.Find("Player_mixamorig:RightForeArm");
         R_crotch = GameObject.Find("Player_mixamorig:RightUpLeg");
@@ -77,14 +63,13 @@ public class PlayerStatus : MonoBehaviour
         L_crotch = GameObject.Find("Player_mixamorig:LeftUpLeg");
         L_knee = GameObject.Find("Player_mixamorig:LeftLeg");
 
-        P_pos = GameObject.Find("Player_mixamorig:Hips").GetComponent<Transform>().transform;
-        Playerpos = P_pos.transform.position;
-        P_angle = P_pos.GetComponent<Transform>().transform.eulerAngles.y;
+        //P_pos = GameObject.Find("Player_mixamorig:Hips").GetComponent<Transform>().transform;
+        //Playerpos = P_pos.transform.position;
+        //P_angle = P_pos.GetComponent<Transform>().transform.eulerAngles.y;
     }
 
     void Update()
     {
-
         //各関節の現在の角度
         R_shoulder_Y = R_shoulder.transform .localEulerAngles.x;
         R_elbow_Y = R_elbow.transform       .localEulerAngles.x;

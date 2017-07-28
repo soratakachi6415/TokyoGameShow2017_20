@@ -2124,6 +2124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenemanager_: {fileID: 0}
+  fadeManager: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1122995657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3619,6 +3621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenemanager_: {fileID: 0}
+  fadeManager: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1672918375
 GameObject:
   m_ObjectHideFlags: 0
@@ -4193,6 +4197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenemanager_: {fileID: 0}
+  fadeManager: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1745795900
 MonoBehaviour:
   m_ObjectHideFlags: 0

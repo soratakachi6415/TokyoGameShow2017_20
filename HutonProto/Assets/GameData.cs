@@ -10,11 +10,11 @@ public class GameData : MonoBehaviour {
     public string GameLevel;
 
 	void Start () {
-        
+
 	}
-	
+
 	void Update () {
-        curentscene = GameObject.FindGameObjectWithTag("Scenemanager").GetComponent<Scene_manager>().currentscene;
+        curentscene = Scene_manager.Instance.currentscene;
         if (curentscene == "LevelSelect")
         {
             GameLevel = GameObject.Find("Levelselect").GetComponent<LevelselectManager>().gameLevel.ToString();
